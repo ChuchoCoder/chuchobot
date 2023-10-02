@@ -105,6 +105,6 @@ Si esto ocurre mientras el mercado está abierto, se recomienda cerrar la apliac
 
 Sí, la aplicación se conecta por WebSocket a Primary API y la misma recibe los datos de los instrumentos en tiempo real.
 
-## ¿La aplicación envía algún orden de compra o venta?
+## ¿La aplicación envía alguna orden de compra o venta?
 
 No, la aplicación no emite o envía ninguna orden de compra y venta al mercado. Solamente permite visualizar las oportunidades de arbitraje que existen en tiempo real.
