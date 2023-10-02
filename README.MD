@@ -83,12 +83,12 @@ No, la aplicación necesita tener acceso a Primary API (Matriz).
 
 El usuario y contraseña a utilizar es el mismo que se utiliza para ingresar en Matriz.
 
-![Login](docs\screenshots\Login.png)
+![Login](docs/screenshots/Login.png)
 
 ## Scanner de arbitraje de plazos
 
-![Scanner de arbitraje de plazos](docs\screenshots\ArbitrajePlazos.png)
+![Scanner de arbitraje de plazos](docs/screenshots/ArbitrajePlazos.png)
 
 Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana con el detalle del arbitraje. En dicha ventana se pueden cambiar los nominales, precios de compra/venta y comisión para poder obtener un cálculo aproximado de la ganancia/pérdida que se obtendría.
 
-![Scanner de arbitraje de plazos detalle](docs\screenshots\ArbitrajePlazoDetail.png)
+![Scanner de arbitraje de plazos detalle](docs/screenshots/ArbitrajePlazoDetail.png)
