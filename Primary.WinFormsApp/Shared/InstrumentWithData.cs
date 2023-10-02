@@ -1,0 +1,53 @@
+﻿using Primary.Data;
+using System.Diagnostics;
+
+namespace Primary.WinFormsApp
+{
+    [DebuggerDisplay("{Instrument.InstrumentId.Market}:{Instrument.InstrumentId.Symbol} {Instrument.Currency}")]
+    public class InstrumentWithData
+    {
+        public InstrumentDetail Instrument { get; set; }
+        public Entries Data { get; set; }
+
+        public void RefreshData()
+        {
+            Data = Argentina.Data.GetLatestOrNull(Instrument.InstrumentId.Symbol);
+        }
+        public bool UpdateData(string symbol, Entries data)
+        {
+            if (Instrument.InstrumentId.Symbol == symbol)
+            {
+                Data = data;
+                return true;
+            }
+
+            return false;
+        }
+
+        public InstrumentWithData(InstrumentDetail instrument)
+        {
+            Instrument = instrument;
+        }
+
+        public InstrumentWithData(InstrumentDetail instrument, Entries data)
+        {
+            Instrument = instrument;
+            Data = data;
+        }
+
+        public override string ToString()
+        {
+            return Instrument.InstrumentId.SymbolWithoutPrefix();
+        }
+
+        public bool HasBids()
+        {
+            return Data != null && Data.HasBids();
+        }
+
+        public bool HasOffers()
+        {
+            return Data != null && Data.HasOffers();
+        }
+    }
+}

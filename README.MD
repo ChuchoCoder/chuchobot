@@ -1,0 +1,94 @@
+# Chucho Bot
+
+## Requerimientos
+
+Para poder ejecutar la aplicación es necesario:
+
+- Windows
+- Microsoft .Net Framework 4.7.2
+- Acceso a Primary API provisto por ALyC (Matriz)
+
+## ¿Cómo puedo descargar la aplicación?
+
+Los releases se encuentran en la carpeta `Releases`
+
+- [Download\ChuchoBot2023-10-02.zip](Download/ChuchoBot2023-10-02.zip)
+
+## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
+
+1. Editar archivo `App.config` (Desarrollo) o `ChuchoBot.exe.config` (Release)
+2. Reemplazar setting `ApiBaseUrl` con URL provista por ALyC
+	```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.cocos.xoms.com.ar</value>
+	</setting>
+	```
+	Ejemplos:
+	- Cocos Capital: https://api.cocos.xoms.com.ar
+	- Eco Valores: https://api.eco.xoms.com.ar
+	- Veta Valores: https://api.veta.xoms.com.ar
+
+## ¿Cómo agregar/eliminar instrumentos a monitorear?
+
+1. Editar archivo `App.config` (Desarrollo) o `ChuchoBot.exe.config` (Release)
+2. Buscar setting `ArbitrationTickers` y agregar o quitar de la lista instrumentos 
+```xml
+<setting name="ArbitrationTickers" serializeAs="Xml">
+    <value>
+        <ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <string>AL29</string>
+        <string>AL30</string>
+        <string>AL35</string>
+        <string>AE38</string>
+        <string>AL41</string>
+        <string>AY24</string>
+        <string>GD29</string>
+        <string>GD30</string>
+        <string>GD35</string>
+        <string>GD38</string>
+        <string>GD41</string>
+        <string>GD46</string>
+        <string>GOLD</string>
+        <string>AAPL</string>
+        <string>AMZN</string>
+        <string>BABA</string>
+        <string>BIDU</string>
+        <string>BRKB</string>
+        <string>DISN</string>
+        <string>KO</string>
+        <string>MELI</string>
+        <string>MRK</string>
+        <string>MSFT</string>
+        <string>NVDA</string>
+        <string>PBR</string>
+        <string>TSLA</string>
+        <string>QCOM</string>
+        <string>XOM</string>
+        <string>DIA</string>
+        <string>EEM</string>
+        <string>XLE</string>
+        <string>QQQ</string>
+        <string>S31O3</string>
+        <string>X18O3</string>
+        </ArrayOfString>
+    </value>
+</setting>
+```
+
+## ¿Puedo utilizar la aplicación si no tengo acceso a Matriz?
+
+No, la aplicación necesita tener acceso a Primary API (Matriz).
+
+## ¿Cúal es mi usuario y contraseña para hacer Login?
+
+El usuario y contraseña a utilizar es el mismo que se utiliza para ingresar en Matriz.
+
+![Login](docs\screenshots\Login.png)
+
+## Scanner de arbitraje de plazos
+
+![Scanner de arbitraje de plazos](docs\screenshots\ArbitrajePlazos.png)
+
+Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana con el detalle del arbitraje. En dicha ventana se pueden cambiar los nominales, precios de compra/venta y comisión para poder obtener un cálculo aproximado de la ganancia/pérdida que se obtendría.
+
+![Scanner de arbitraje de plazos detalle](docs\screenshots\ArbitrajePlazoDetail.png)

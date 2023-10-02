@@ -1,0 +1,417 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Primary.WinFormsApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Enabled24Hours" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="USDARS" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">365</Value>
+    </Setting>
+    <Setting Name="Comision" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.1</Value>
+    </Setting>
+    <Setting Name="DerechoMercado" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.01</Value>
+    </Setting>
+    <Setting Name="DerechoMercadoCEDEAR" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.08</Value>
+    </Setting>
+    <Setting Name="OwnedTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;AL30&lt;/string&gt;
+  &lt;string&gt;AL29&lt;/string&gt;
+  &lt;string&gt;AE38&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ApiBaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api.cocos.xoms.com.ar</Value>
+    </Setting>
+    <Setting Name="CEDEARs" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;AAPL&lt;/string&gt;
+  &lt;string&gt;AAPLC&lt;/string&gt;
+  &lt;string&gt;AAPLD&lt;/string&gt;
+  &lt;string&gt;ABBV&lt;/string&gt;
+  &lt;string&gt;ABEV&lt;/string&gt;
+  &lt;string&gt;ABT&lt;/string&gt;
+  &lt;string&gt;ACHD&lt;/string&gt;
+  &lt;string&gt;ADBE&lt;/string&gt;
+  &lt;string&gt;ADGO&lt;/string&gt;
+  &lt;string&gt;ADI&lt;/string&gt;
+  &lt;string&gt;AEM&lt;/string&gt;
+  &lt;string&gt;AIG&lt;/string&gt;
+  &lt;string&gt;AMD&lt;/string&gt;
+  &lt;string&gt;AMDD&lt;/string&gt;
+  &lt;string&gt;AMGN&lt;/string&gt;
+  &lt;string&gt;AMX&lt;/string&gt;
+  &lt;string&gt;AMXD&lt;/string&gt;
+  &lt;string&gt;AMZN&lt;/string&gt;
+  &lt;string&gt;AMZNC&lt;/string&gt;
+  &lt;string&gt;AMZND&lt;/string&gt;
+  &lt;string&gt;ARCO&lt;/string&gt;
+  &lt;string&gt;AUY&lt;/string&gt;
+  &lt;string&gt;AUYD&lt;/string&gt;
+  &lt;string&gt;AVGO&lt;/string&gt;
+  &lt;string&gt;AVY&lt;/string&gt;
+  &lt;string&gt;AXP&lt;/string&gt;
+  &lt;string&gt;AXPD&lt;/string&gt;
+  &lt;string&gt;AZN&lt;/string&gt;
+  &lt;string&gt;AZND&lt;/string&gt;
+  &lt;string&gt;BA&lt;/string&gt;
+  &lt;string&gt;BA.C&lt;/string&gt;
+  &lt;string&gt;BA.CD&lt;/string&gt;
+  &lt;string&gt;BABA&lt;/string&gt;
+  &lt;string&gt;BABAC&lt;/string&gt;
+  &lt;string&gt;BABAD&lt;/string&gt;
+  &lt;string&gt;BAD&lt;/string&gt;
+  &lt;string&gt;BB&lt;/string&gt;
+  &lt;string&gt;BBD&lt;/string&gt;
+  &lt;string&gt;BBDC&lt;/string&gt;
+  &lt;string&gt;BBDD&lt;/string&gt;
+  &lt;string&gt;BBV&lt;/string&gt;
+  &lt;string&gt;BCS&lt;/string&gt;
+  &lt;string&gt;BHP&lt;/string&gt;
+  &lt;string&gt;BIDU&lt;/string&gt;
+  &lt;string&gt;BIDUD&lt;/string&gt;
+  &lt;string&gt;BIIB&lt;/string&gt;
+  &lt;string&gt;BIOX&lt;/string&gt;
+  &lt;string&gt;BK&lt;/string&gt;
+  &lt;string&gt;BMY&lt;/string&gt;
+  &lt;string&gt;BNG&lt;/string&gt;
+  &lt;string&gt;BP&lt;/string&gt;
+  &lt;string&gt;BPD&lt;/string&gt;
+  &lt;string&gt;BRFS&lt;/string&gt;
+  &lt;string&gt;BRKB&lt;/string&gt;
+  &lt;string&gt;BSBR&lt;/string&gt;
+  &lt;string&gt;C&lt;/string&gt;
+  &lt;string&gt;C.D&lt;/string&gt;
+  &lt;string&gt;CAAP&lt;/string&gt;
+  &lt;string&gt;CAH&lt;/string&gt;
+  &lt;string&gt;CAHD&lt;/string&gt;
+  &lt;string&gt;CAT&lt;/string&gt;
+  &lt;string&gt;CATD&lt;/string&gt;
+  &lt;string&gt;CDE&lt;/string&gt;
+  &lt;string&gt;CHL&lt;/string&gt;
+  &lt;string&gt;CL&lt;/string&gt;
+  &lt;string&gt;COST&lt;/string&gt;
+  &lt;string&gt;CRM&lt;/string&gt;
+  &lt;string&gt;CS&lt;/string&gt;
+  &lt;string&gt;CSCO&lt;/string&gt;
+  &lt;string&gt;CSCOD&lt;/string&gt;
+  &lt;string&gt;CVX&lt;/string&gt;
+  &lt;string&gt;CVXD&lt;/string&gt;
+  &lt;string&gt;CX&lt;/string&gt;
+  &lt;string&gt;DD&lt;/string&gt;
+  &lt;string&gt;DE&lt;/string&gt;
+  &lt;string&gt;DESP&lt;/string&gt;
+  &lt;string&gt;DESPD&lt;/string&gt;
+  &lt;string&gt;DISN&lt;/string&gt;
+  &lt;string&gt;DISND&lt;/string&gt;
+  &lt;string&gt;DOCU&lt;/string&gt;
+  &lt;string&gt;EBAY&lt;/string&gt;
+  &lt;string&gt;EBAYD&lt;/string&gt;
+  &lt;string&gt;EFX&lt;/string&gt;
+  &lt;string&gt;ERIC&lt;/string&gt;
+  &lt;string&gt;ERJ&lt;/string&gt;
+  &lt;string&gt;ERJD&lt;/string&gt;
+  &lt;string&gt;ETSY&lt;/string&gt;
+  &lt;string&gt;FB&lt;/string&gt;
+  &lt;string&gt;FBD&lt;/string&gt;
+  &lt;string&gt;FCX&lt;/string&gt;
+  &lt;string&gt;FDX&lt;/string&gt;
+  &lt;string&gt;FDXD&lt;/string&gt;
+  &lt;string&gt;FMX&lt;/string&gt;
+  &lt;string&gt;FSLR&lt;/string&gt;
+  &lt;string&gt;GE&lt;/string&gt;
+  &lt;string&gt;GEC&lt;/string&gt;
+  &lt;string&gt;GFI&lt;/string&gt;
+  &lt;string&gt;GGB&lt;/string&gt;
+  &lt;string&gt;GILD&lt;/string&gt;
+  &lt;string&gt;GILDC&lt;/string&gt;
+  &lt;string&gt;GILDD&lt;/string&gt;
+  &lt;string&gt;GLNT&lt;/string&gt;
+  &lt;string&gt;GLNTD&lt;/string&gt;
+  &lt;string&gt;GLW&lt;/string&gt;
+  &lt;string&gt;GOGLD&lt;/string&gt;
+  &lt;string&gt;GOLD&lt;/string&gt;
+  &lt;string&gt;GOLDC&lt;/string&gt;
+  &lt;string&gt;GOLDD&lt;/string&gt;
+  &lt;string&gt;GOOGL&lt;/string&gt;
+  &lt;string&gt;GPRK&lt;/string&gt;
+  &lt;string&gt;GS&lt;/string&gt;
+  &lt;string&gt;GSD&lt;/string&gt;
+  &lt;string&gt;GSK&lt;/string&gt;
+  &lt;string&gt;GSKD&lt;/string&gt;
+  &lt;string&gt;HAL&lt;/string&gt;
+  &lt;string&gt;HD&lt;/string&gt;
+  &lt;string&gt;HL&lt;/string&gt;
+  &lt;string&gt;HMC&lt;/string&gt;
+  &lt;string&gt;HMY&lt;/string&gt;
+  &lt;string&gt;HMYD&lt;/string&gt;
+  &lt;string&gt;HON&lt;/string&gt;
+  &lt;string&gt;HPQ&lt;/string&gt;
+  &lt;string&gt;HSBC&lt;/string&gt;
+  &lt;string&gt;HSY&lt;/string&gt;
+  &lt;string&gt;HWM&lt;/string&gt;
+  &lt;string&gt;IBM&lt;/string&gt;
+  &lt;string&gt;IBMD&lt;/string&gt;
+  &lt;string&gt;INTC&lt;/string&gt;
+  &lt;string&gt;INTCD&lt;/string&gt;
+  &lt;string&gt;ITUB&lt;/string&gt;
+  &lt;string&gt;ITUBD&lt;/string&gt;
+  &lt;string&gt;JD&lt;/string&gt;
+  &lt;string&gt;JNJ&lt;/string&gt;
+  &lt;string&gt;JNJC&lt;/string&gt;
+  &lt;string&gt;JNJD&lt;/string&gt;
+  &lt;string&gt;JPM&lt;/string&gt;
+  &lt;string&gt;JPMD&lt;/string&gt;
+  &lt;string&gt;KMB&lt;/string&gt;
+  &lt;string&gt;KO&lt;/string&gt;
+  &lt;string&gt;KOC&lt;/string&gt;
+  &lt;string&gt;KOD&lt;/string&gt;
+  &lt;string&gt;LLY&lt;/string&gt;
+  &lt;string&gt;LMT&lt;/string&gt;
+  &lt;string&gt;LMTD&lt;/string&gt;
+  &lt;string&gt;LVS&lt;/string&gt;
+  &lt;string&gt;LYG&lt;/string&gt;
+  &lt;string&gt;MA&lt;/string&gt;
+  &lt;string&gt;MCD&lt;/string&gt;
+  &lt;string&gt;MCDD&lt;/string&gt;
+  &lt;string&gt;MDT&lt;/string&gt;
+  &lt;string&gt;MELI&lt;/string&gt;
+  &lt;string&gt;MELIC&lt;/string&gt;
+  &lt;string&gt;MELID&lt;/string&gt;
+  &lt;string&gt;MMC&lt;/string&gt;
+  &lt;string&gt;MMM&lt;/string&gt;
+  &lt;string&gt;MMMD&lt;/string&gt;
+  &lt;string&gt;MO&lt;/string&gt;
+  &lt;string&gt;MOD&lt;/string&gt;
+  &lt;string&gt;MRK&lt;/string&gt;
+  &lt;string&gt;MRKD&lt;/string&gt;
+  &lt;string&gt;MSFT&lt;/string&gt;
+  &lt;string&gt;MSFTC&lt;/string&gt;
+  &lt;string&gt;MSFTD&lt;/string&gt;
+  &lt;string&gt;NEM&lt;/string&gt;
+  &lt;string&gt;NEMD&lt;/string&gt;
+  &lt;string&gt;NFLX&lt;/string&gt;
+  &lt;string&gt;NFLXD&lt;/string&gt;
+  &lt;string&gt;NGG&lt;/string&gt;
+  &lt;string&gt;NKE&lt;/string&gt;
+  &lt;string&gt;NKED&lt;/string&gt;
+  &lt;string&gt;NOKA&lt;/string&gt;
+  &lt;string&gt;NTES&lt;/string&gt;
+  &lt;string&gt;NVDA&lt;/string&gt;
+  &lt;string&gt;NVDAD&lt;/string&gt;
+  &lt;string&gt;NVS&lt;/string&gt;
+  &lt;string&gt;NVSD&lt;/string&gt;
+  &lt;string&gt;OGZD&lt;/string&gt;
+  &lt;string&gt;OGZDD&lt;/string&gt;
+  &lt;string&gt;ORAN&lt;/string&gt;
+  &lt;string&gt;ORCL&lt;/string&gt;
+  &lt;string&gt;PAAS&lt;/string&gt;
+  &lt;string&gt;PBR&lt;/string&gt;
+  &lt;string&gt;PBRD&lt;/string&gt;
+  &lt;string&gt;PEP&lt;/string&gt;
+  &lt;string&gt;PFE&lt;/string&gt;
+  &lt;string&gt;PFED&lt;/string&gt;
+  &lt;string&gt;PG&lt;/string&gt;
+  &lt;string&gt;PGD&lt;/string&gt;
+  &lt;string&gt;PHG&lt;/string&gt;
+  &lt;string&gt;PKS&lt;/string&gt;
+  &lt;string&gt;PSX&lt;/string&gt;
+  &lt;string&gt;PTR&lt;/string&gt;
+  &lt;string&gt;PYPL&lt;/string&gt;
+  &lt;string&gt;PYPLD&lt;/string&gt;
+  &lt;string&gt;QCOM&lt;/string&gt;
+  &lt;string&gt;QCOMC&lt;/string&gt;
+  &lt;string&gt;QCOMD&lt;/string&gt;
+  &lt;string&gt;RDS&lt;/string&gt;
+  &lt;string&gt;RIO&lt;/string&gt;
+  &lt;string&gt;RTX&lt;/string&gt;
+  &lt;string&gt;SAN&lt;/string&gt;
+  &lt;string&gt;SAP&lt;/string&gt;
+  &lt;string&gt;SBS&lt;/string&gt;
+  &lt;string&gt;SBUX&lt;/string&gt;
+  &lt;string&gt;SCCO&lt;/string&gt;
+  &lt;string&gt;SHOP&lt;/string&gt;
+  &lt;string&gt;SID&lt;/string&gt;
+  &lt;string&gt;SLB&lt;/string&gt;
+  &lt;string&gt;SLBD&lt;/string&gt;
+  &lt;string&gt;SNAP&lt;/string&gt;
+  &lt;string&gt;SNOW&lt;/string&gt;
+  &lt;string&gt;SONY&lt;/string&gt;
+  &lt;string&gt;SPOT&lt;/string&gt;
+  &lt;string&gt;SQ&lt;/string&gt;
+  &lt;string&gt;SUZ&lt;/string&gt;
+  &lt;string&gt;T&lt;/string&gt;
+  &lt;string&gt;TD&lt;/string&gt;
+  &lt;string&gt;TEN&lt;/string&gt;
+  &lt;string&gt;TEND&lt;/string&gt;
+  &lt;string&gt;TGT&lt;/string&gt;
+  &lt;string&gt;TMD&lt;/string&gt;
+  &lt;string&gt;TMO&lt;/string&gt;
+  &lt;string&gt;TOT&lt;/string&gt;
+  &lt;string&gt;TRIP&lt;/string&gt;
+  &lt;string&gt;TSLA&lt;/string&gt;
+  &lt;string&gt;TSLAC&lt;/string&gt;
+  &lt;string&gt;TSLAD&lt;/string&gt;
+  &lt;string&gt;TSM&lt;/string&gt;
+  &lt;string&gt;TWTR&lt;/string&gt;
+  &lt;string&gt;TWTRD&lt;/string&gt;
+  &lt;string&gt;TXN&lt;/string&gt;
+  &lt;string&gt;TXR&lt;/string&gt;
+  &lt;string&gt;UGP&lt;/string&gt;
+  &lt;string&gt;UL&lt;/string&gt;
+  &lt;string&gt;UNH&lt;/string&gt;
+  &lt;string&gt;UNP&lt;/string&gt;
+  &lt;string&gt;V&lt;/string&gt;
+  &lt;string&gt;VALE&lt;/string&gt;
+  &lt;string&gt;VALED&lt;/string&gt;
+  &lt;string&gt;VD&lt;/string&gt;
+  &lt;string&gt;VIST&lt;/string&gt;
+  &lt;string&gt;VISTD&lt;/string&gt;
+  &lt;string&gt;VIV&lt;/string&gt;
+  &lt;string&gt;VOD&lt;/string&gt;
+  &lt;string&gt;VRSN&lt;/string&gt;
+  &lt;string&gt;VZ&lt;/string&gt;
+  &lt;string&gt;VZD&lt;/string&gt;
+  &lt;string&gt;WBA&lt;/string&gt;
+  &lt;string&gt;WFC&lt;/string&gt;
+  &lt;string&gt;WFCC&lt;/string&gt;
+  &lt;string&gt;WFCD&lt;/string&gt;
+  &lt;string&gt;WMT&lt;/string&gt;
+  &lt;string&gt;WMTD&lt;/string&gt;
+  &lt;string&gt;X&lt;/string&gt;
+  &lt;string&gt;XD&lt;/string&gt;
+  &lt;string&gt;XOM&lt;/string&gt;
+  &lt;string&gt;XOMD&lt;/string&gt;
+  &lt;string&gt;XROX&lt;/string&gt;
+  &lt;string&gt;YELP&lt;/string&gt;
+  &lt;string&gt;ZM&lt;/string&gt;
+  &lt;string&gt;SPY&lt;/string&gt;
+  &lt;string&gt;SPYD&lt;/string&gt;
+  &lt;string&gt;SPYC&lt;/string&gt;
+  &lt;string&gt;XOMD&lt;/string&gt;
+  &lt;string&gt;DIAD&lt;/string&gt;
+  &lt;string&gt;EEMD&lt;/string&gt;
+  &lt;string&gt;XLED&lt;/string&gt;
+  &lt;string&gt;QQQD&lt;/string&gt;
+  &lt;string&gt;XOMC&lt;/string&gt;
+  &lt;string&gt;DIAC&lt;/string&gt;
+  &lt;string&gt;EEMC&lt;/string&gt;
+  &lt;string&gt;XLEC&lt;/string&gt;
+  &lt;string&gt;QQQC&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;S31O3;SO3D;SO3C&lt;/string&gt;
+  &lt;string&gt;X18O3;XO3D;XO3C&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ArbitrationTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;AL29&lt;/string&gt;
+  &lt;string&gt;AL30&lt;/string&gt;
+  &lt;string&gt;AL35&lt;/string&gt;
+  &lt;string&gt;AE38&lt;/string&gt;
+  &lt;string&gt;AL41&lt;/string&gt;
+  &lt;string&gt;AY24&lt;/string&gt;
+  &lt;string&gt;GD29&lt;/string&gt;
+  &lt;string&gt;GD30&lt;/string&gt;
+  &lt;string&gt;GD35&lt;/string&gt;
+  &lt;string&gt;GD38&lt;/string&gt;
+  &lt;string&gt;GD41&lt;/string&gt;
+  &lt;string&gt;GD46&lt;/string&gt;
+  &lt;string&gt;GOLD&lt;/string&gt;
+  &lt;string&gt;AAPL&lt;/string&gt;
+  &lt;string&gt;AMZN&lt;/string&gt;
+  &lt;string&gt;BABA&lt;/string&gt;
+  &lt;string&gt;BIDU&lt;/string&gt;
+  &lt;string&gt;BRKB&lt;/string&gt;
+  &lt;string&gt;DISN&lt;/string&gt;
+  &lt;string&gt;KO&lt;/string&gt;
+  &lt;string&gt;MELI&lt;/string&gt;
+  &lt;string&gt;MRK&lt;/string&gt;
+  &lt;string&gt;MSFT&lt;/string&gt;
+  &lt;string&gt;NVDA&lt;/string&gt;
+  &lt;string&gt;PBR&lt;/string&gt;
+  &lt;string&gt;TSLA&lt;/string&gt;
+  &lt;string&gt;QCOM&lt;/string&gt;
+  &lt;string&gt;XOM&lt;/string&gt;
+  &lt;string&gt;DIA&lt;/string&gt;
+  &lt;string&gt;EEM&lt;/string&gt;
+  &lt;string&gt;XLE&lt;/string&gt;
+  &lt;string&gt;QQQ&lt;/string&gt;
+  &lt;string&gt;S31O3&lt;/string&gt;
+  &lt;string&gt;X18O3&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="WatchedTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;GGAL&lt;/string&gt;
+  &lt;string&gt;BMA&lt;/string&gt;
+  &lt;string&gt;BBAR&lt;/string&gt;
+  &lt;string&gt;PAM&lt;/string&gt;
+  &lt;string&gt;GOLD&lt;/string&gt;
+  &lt;string&gt;AAPL&lt;/string&gt;
+  &lt;string&gt;AMZN&lt;/string&gt;
+  &lt;string&gt;BABA&lt;/string&gt;
+  &lt;string&gt;BIDU&lt;/string&gt;
+  &lt;string&gt;BRKB&lt;/string&gt;
+  &lt;string&gt;DISN&lt;/string&gt;
+  &lt;string&gt;KO&lt;/string&gt;
+  &lt;string&gt;MELI&lt;/string&gt;
+  &lt;string&gt;MRK&lt;/string&gt;
+  &lt;string&gt;MSFT&lt;/string&gt;
+  &lt;string&gt;NVDA&lt;/string&gt;
+  &lt;string&gt;PBR&lt;/string&gt;
+  &lt;string&gt;TSLA&lt;/string&gt;
+  &lt;string&gt;QCOM&lt;/string&gt;
+  &lt;string&gt;YPFD&lt;/string&gt;
+  &lt;string&gt;ALUA&lt;/string&gt;
+  &lt;string&gt;TXAR&lt;/string&gt;
+  &lt;string&gt;AL29&lt;/string&gt;
+  &lt;string&gt;AL30&lt;/string&gt;
+  &lt;string&gt;AL35&lt;/string&gt;
+  &lt;string&gt;AE38&lt;/string&gt;
+  &lt;string&gt;AL41&lt;/string&gt;
+  &lt;string&gt;GD29&lt;/string&gt;
+  &lt;string&gt;GD30&lt;/string&gt;
+  &lt;string&gt;GD35&lt;/string&gt;
+  &lt;string&gt;GD38&lt;/string&gt;
+  &lt;string&gt;GD41&lt;/string&gt;
+  &lt;string&gt;GD46&lt;/string&gt;
+  &lt;string&gt;SPY&lt;/string&gt;
+  &lt;string&gt;XOM&lt;/string&gt;
+  &lt;string&gt;DIA&lt;/string&gt;
+  &lt;string&gt;EEM&lt;/string&gt;
+  &lt;string&gt;XLE&lt;/string&gt;
+  &lt;string&gt;QQQ&lt;/string&gt;
+  &lt;string&gt;S31O3&lt;/string&gt;
+  &lt;string&gt;X18O3&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">95</Value>
+    </Setting>
+    <Setting Name="ArancelCaucionColocadora" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1.5</Value>
+    </Setting>
+    <Setting Name="ArancelCaucionTomadora" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">2.5</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
