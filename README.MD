@@ -92,3 +92,19 @@ El usuario y contraseña a utilizar es el mismo que se utiliza para ingresar en 
 Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana con el detalle del arbitraje. En dicha ventana se pueden cambiar los nominales, precios de compra/venta y comisión para poder obtener un cálculo aproximado de la ganancia/pérdida que se obtendría.
 
 ![Scanner de arbitraje de plazos detalle](docs/screenshots/ArbitrajePlazoDetail.png)
+
+## ¿Por qué aparece el icono de WiFi rojo y el texto "DISCONNECTED"?
+
+Cuando la aplicación deja de recibir datos por WebSocket, el icono de WiFi pasa de verde a rojo para avisar que puede existir algún problema con la conexión. Esto también ocurre cuando antes de la apertura y después de la finalización de la rueda.
+
+![Disconnected](docs/screenshots/Disconnected.png)
+
+Si esto ocurre mientras el mercado está abierto, se recomienda cerrar la apliación y volver a ejecutarla.
+
+## ¿La aplicación recibe datos en tiempo real?
+
+Sí, la aplicación se conecta por WebSocket a Primary API y la misma recibe los datos de los instrumentos en tiempo real.
+
+## ¿La aplicación envía algún orden de compra o venta?
+
+No, la aplicación no emite o envía ninguna orden de compra y venta al mercado. Solamente permite visualizar las oportunidades de arbitraje que existen en tiempo real.
