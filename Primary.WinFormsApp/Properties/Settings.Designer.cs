@@ -269,6 +269,7 @@ namespace Primary.WinFormsApp.Properties {
   <string>QQQ</string>
   <string>S31O3</string>
   <string>X18O3</string>
+  <string>MTR</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection ArbitrationTickers {
             get {

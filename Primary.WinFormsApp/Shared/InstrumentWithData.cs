@@ -11,8 +11,12 @@ namespace Primary.WinFormsApp
 
         public void RefreshData()
         {
+            if (Instrument == null)
+                return;
+
             Data = Argentina.Data.GetLatestOrNull(Instrument.InstrumentId.Symbol);
         }
+
         public bool UpdateData(string symbol, Entries data)
         {
             if (Instrument.InstrumentId.Symbol == symbol)

@@ -192,9 +192,17 @@ namespace Primary.WinFormsApp
             }
         }
 
-        public InstrumentDetail GetInstrumentDetail(string symbol)
+        public InstrumentDetail GetInstrumentDetailOrNull(string symbol)
         {
             var instrument = Data.AllInstruments.FirstOrDefault(x => x.InstrumentId.Symbol == symbol);
+
+            return instrument;
+
+        }
+
+        public InstrumentDetail GetInstrumentDetail(string symbol)
+        {
+            var instrument = GetInstrumentDetailOrNull(symbol);
 
             if (instrument == null)
                 throw new KeyNotFoundException($"Symbol '{symbol}' not found.");

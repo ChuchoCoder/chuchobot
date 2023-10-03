@@ -12,9 +12,9 @@ namespace Primary.WinFormsApp
 
             try
             {
-                T48 = new InstrumentWithData(Argentina.Data.GetInstrumentDetail(ticker.ToMervalSymbol48H()));
-                T24 = new InstrumentWithData(Argentina.Data.GetInstrumentDetail(ticker.ToMervalSymbol24H()));
-                TCI = new InstrumentWithData(Argentina.Data.GetInstrumentDetail(ticker.ToMervalSymbolCI()));
+                T48 = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ticker.ToMervalSymbol48H()));
+                T24 = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ticker.ToMervalSymbol24H()));
+                TCI = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ticker.ToMervalSymbolCI()));
 
             }
             catch (Exception ex)
