@@ -100,7 +100,7 @@ Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana
 
 ## ¿Por qué aparece el icono de WiFi rojo y el texto "DISCONNECTED"?
 
-Cuando la aplicación deja de recibir datos por WebSocket, el icono de WiFi pasa de verde a rojo para avisar que puede existir algún problema con la conexión. Esto también ocurre cuando antes de la apertura y después de la finalización de la rueda.
+Cuando la aplicación deja de recibir datos por WebSocket, el icono de WiFi pasa de verde a rojo para avisar que puede existir algún problema con la conexión. Esto también ocurre antes de la apertura y luego de la finalización de la rueda.
 
 ![Disconnected](docs/screenshots/Disconnected.png)
 
