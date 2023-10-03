@@ -8,11 +8,15 @@ Para poder ejecutar la aplicación es necesario:
 - Microsoft .Net Framework 4.7.2
 - Acceso a Primary API provisto por ALyC (Matriz)
 
-## ¿Cómo puedo descargar la aplicación?
+## ¿Cómo puedo ejecutar la aplicación?
 
-Los releases se encuentran en la carpeta `Releases`
+Los releases se encuentran en la sección `Releases`
 
-- [Download\ChuchoBot2023-10-02.zip](Download/ChuchoBot2023-10-02.zip)
+- Ir a la seccion Releases. Ejemplo: [releases/tag/2023-Oct-02](releases/tag/2023-Oct-02)
+- Descargar el archivo `ChuchoBot2023-10-02.zip`
+- Descomprimir en una carpeta
+- Configurar ALyC en archivo de configuración `ChuchoBot.exe.config` (ver instrucciones abajo)
+- Ejecutar `ChuchoBot.exe`
 
 ## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
 
@@ -23,10 +27,11 @@ Los releases se encuentran en la carpeta `Releases`
 		<value>https://api.cocos.xoms.com.ar</value>
 	</setting>
 	```
-	Ejemplos:
-	- Cocos Capital: https://api.cocos.xoms.com.ar
-	- Eco Valores: https://api.eco.xoms.com.ar
-	- Veta Valores: https://api.veta.xoms.com.ar
+	Dependiendo del broker que te provee el acceso a Matrix, reemplazar el `value` del setting anterior por:
+	- **Cocos Capital (requiere plan 🥥 Cocos Pro)**: `<value>https://api.cocos.xoms.com.ar</value>`
+	- **Eco Valores**: `<value>https://api.eco.xoms.com.ar</value>`
+	- **Veta Capital**: `<value>https://api.veta.xoms.com.ar</value>`
+	- **Bull Market Brokers**: `<value>https://api.bull.xoms.com.ar</value>`
 
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
