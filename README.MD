@@ -12,7 +12,7 @@ Para poder ejecutar la aplicación es necesario:
 
 Los releases se encuentran en la sección `Releases`
 
-- Ir a la seccion Releases. Ejemplo: [releases/tag/2023-Oct-02](releases/tag/2023-Oct-02)
+- Ir a la seccion [Releases](https://github.com/ChuchoCoder/chuchobot/releases)
 - Descargar el archivo `ChuchoBot2023-10-02.zip`
 - Descomprimir en una carpeta
 - Configurar ALyC en archivo de configuración `ChuchoBot.exe.config` (ver instrucciones abajo)
