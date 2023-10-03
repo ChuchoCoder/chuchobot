@@ -98,6 +98,18 @@ Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana
 
 ![Scanner de arbitraje de plazos detalle](docs/screenshots/ArbitrajePlazoDetail.png)
 
+## Scanner para comprar/vender dolar MEP y CCL
+
+La aplicación permite visualizar en tiempo real en que instrumentos conviene comprar y vender dolar MEP y CCL.
+
+### Dolar MEP
+
+![Scanner de Dolar MEP](docs/screenshots/DolarMEP.png)
+
+### Dolar CCL
+
+![Scanner de Dolar CCL](docs/screenshots/DolarCCL.png)
+
 ## ¿Por qué aparece el icono de WiFi rojo y el texto "DISCONNECTED"?
 
 Cuando la aplicación deja de recibir datos por WebSocket, el icono de WiFi pasa de verde a rojo para avisar que puede existir algún problema con la conexión. Esto también ocurre antes de la apertura y luego de la finalización de la rueda.
