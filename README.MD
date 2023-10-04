@@ -1,4 +1,4 @@
-# Chucho Bot
+# Chucho Bot 🤖
 
 ## Requerimientos
 
