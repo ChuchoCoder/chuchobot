@@ -12,31 +12,35 @@ Para poder ejecutar la aplicación es necesario:
 
 Los releases se encuentran en la sección `Releases`
 
-- Ir a la seccion [Releases](https://github.com/ChuchoCoder/chuchobot/releases)
-- Descargar el archivo `ChuchoBot2023-10-02.zip`
+- Ir a la sección [Releases](https://github.com/ChuchoCoder/chuchobot/releases)
+- Descargar el archivo zip `ChuchoBot2023-10-03.zip`
 - Descomprimir en una carpeta
 - Configurar ALyC en archivo de configuración `ChuchoBot.exe.config` (ver instrucciones abajo)
 - Ejecutar `ChuchoBot.exe`
 
 ## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
 
-1. Editar archivo `App.config` (Desarrollo) o `ChuchoBot.exe.config` (Release)
-2. Reemplazar setting `ApiBaseUrl` con URL provista por ALyC
+1. Editar archivo `ChuchoBot.exe.config`
+2. Reemplazar la URL en el setting `ApiBaseUrl` por la provista por ALyC
+
 	```xml
 	<setting name="ApiBaseUrl" serializeAs="String">
 		<value>https://api.cocos.xoms.com.ar</value>
 	</setting>
 	```
-	Dependiendo del broker que te provee el acceso a Matrix, reemplazar el `value` del setting anterior por:
+
+	Según el broker que te brinda acceso a Matriz, reemplazar el `<value>[URL_A_REEMPLAZAR]</value>` del setting anterior por:
 	- **Cocos Capital (requiere plan 🥥 Cocos Pro)**: `<value>https://api.cocos.xoms.com.ar</value>`
 	- **Eco Valores**: `<value>https://api.eco.xoms.com.ar</value>`
 	- **Veta Capital**: `<value>https://api.veta.xoms.com.ar</value>`
 	- **Bull Market Brokers**: `<value>https://api.bull.xoms.com.ar</value>`
 
+    > **Ejemplo**: Si tenés **Bull Market Brokers** busca `https://api.cocos.xoms.com.ar` y reemplaza por `https://api.bull.xoms.com.ar`
+
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
-1. Editar archivo `App.config` (Desarrollo) o `ChuchoBot.exe.config` (Release)
-2. Buscar setting `ArbitrationTickers` y agregar o quitar de la lista instrumentos 
+1. Editar archivo `ChuchoBot.exe.config`
+2. Buscar setting `ArbitrationTickers` y agregar o quitar elementos de la lista de instrumentos (Ejemplo: agregar `<string>GGAL</string>` para la acción de Galicia)
 ```xml
 <setting name="ArbitrationTickers" serializeAs="Xml">
     <value>
