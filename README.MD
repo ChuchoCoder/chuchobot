@@ -30,12 +30,33 @@ Los releases se encuentran en la sección `Releases`
 	```
 
 	Según el broker que te brinda acceso a Matriz, reemplazar el `<value>[URL_A_REEMPLAZAR]</value>` del setting anterior por:
-	- **Cocos Capital (requiere plan 🥥 Cocos Pro)**: `<value>https://api.cocos.xoms.com.ar</value>`
-	- **Eco Valores**: `<value>https://api.eco.xoms.com.ar</value>`
-	- **Veta Capital**: `<value>https://api.veta.xoms.com.ar</value>`
-	- **Bull Market Brokers**: `<value>https://api.bull.xoms.com.ar</value>`
 
-    > **Ejemplo**: Si tenés **Bull Market Brokers** busca `https://api.cocos.xoms.com.ar` y reemplaza por `https://api.bull.xoms.com.ar`
+	- **Cocos Capital (requiere plan 🥥 Cocos Pro)**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.cocos.xoms.com.ar</value>
+	</setting>
+	```
+	- **Eco Valores**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.eco.xoms.com.ar</value>
+	</setting>
+	```
+	- **Veta Capital**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.veta.xoms.com.ar</value>
+	</setting>
+	```
+	- **Bull Market Brokers**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.bull.xoms.com.ar</value>
+	</setting>
+	```
+
+> **Ejemplo**: Si tenés **Bull Market Brokers** busca `https://api.cocos.xoms.com.ar` y reemplaza por `https://api.bull.xoms.com.ar`
 
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
