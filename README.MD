@@ -18,6 +18,45 @@ Los releases se encuentran en la sección `Releases`
 - Configurar ALyC en archivo de configuración `ChuchoBot.exe.config` (ver instrucciones abajo)
 - Ejecutar `ChuchoBot.exe`
 
+## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
+
+1. Editar archivo `ChuchoBot.exe.config`
+2. Reemplazar la URL en el setting `ApiBaseUrl` por la provista por ALyC. **Ejemplo**: Si tenés **Bull Market Brokers** busca `https://api.cocos.xoms.com.ar` y reemplaza por `https://api.bull.xoms.com.ar`
+
+	```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.cocos.xoms.com.ar</value>
+	</setting>
+	```
+
+Dependiendo del broker que te brinda acceso a Matriz, reemplazar el setting anterior por:
+
+- **Cocos Capital (requiere plan 🥥 Cocos Pro)**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.cocos.xoms.com.ar</value>
+	</setting>
+	```
+- **Eco Valores**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.eco.xoms.com.ar</value>
+	</setting>
+	```
+- **Veta Capital**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.veta.xoms.com.ar</value>
+	</setting>
+	```
+- **Bull Market Brokers**:
+    ```xml
+	<setting name="ApiBaseUrl" serializeAs="String">
+		<value>https://api.bull.xoms.com.ar</value>
+	</setting>
+	```
+
+
 ## IMPORTANTE: Configurar Comisión Operación %
 
 La aplicación tiene configurado algunos instrumentos (no todos) que son utilizados para calcular automaticamente los Derechos de Mercado:
@@ -29,46 +68,6 @@ La aplicación tiene configurado algunos instrumentos (no todos) que son utiliza
 Además de los derechos de mercado, la comisión configurada por cada operación es de 0,10% (por defecto). Este porcentaje puede modificarse en la ventana de Arbitrajes de Plazos
 
 **Derechos de Mercado BYMA**: https://www.byma.com.ar/wp-content/uploads/dlm_uploads/2019/11/BYMA-Derechos-Mercado-sobre-Operaciones-2022-12-01.pdf
-
-## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
-
-1. Editar archivo `ChuchoBot.exe.config`
-2. Reemplazar la URL en el setting `ApiBaseUrl` por la provista por ALyC
-
-	```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.cocos.xoms.com.ar</value>
-	</setting>
-	```
-
-	Según el broker que te brinda acceso a Matriz, reemplazar el `<value>[URL_A_REEMPLAZAR]</value>` del setting anterior por:
-
-	- **Cocos Capital (requiere plan 🥥 Cocos Pro)**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.cocos.xoms.com.ar</value>
-	</setting>
-	```
-	- **Eco Valores**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.eco.xoms.com.ar</value>
-	</setting>
-	```
-	- **Veta Capital**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.veta.xoms.com.ar</value>
-	</setting>
-	```
-	- **Bull Market Brokers**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.bull.xoms.com.ar</value>
-	</setting>
-	```
-
-> **Ejemplo**: Si tenés **Bull Market Brokers** busca `https://api.cocos.xoms.com.ar` y reemplaza por `https://api.bull.xoms.com.ar`
 
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
