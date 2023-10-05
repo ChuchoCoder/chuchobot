@@ -95,12 +95,12 @@ namespace Primary.WinFormsApp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.08")]
-        public decimal DerechoMercadoCEDEAR {
+        public decimal DerechoMercadoAccionCEDEAR {
             get {
-                return ((decimal)(this["DerechoMercadoCEDEAR"]));
+                return ((decimal)(this["DerechoMercadoAccionCEDEAR"]));
             }
             set {
-                this["DerechoMercadoCEDEAR"] = value;
+                this["DerechoMercadoAccionCEDEAR"] = value;
             }
         }
         
@@ -212,10 +212,11 @@ namespace Primary.WinFormsApp.Properties {
             "ng>SPYD</string>\r\n  <string>SPYC</string>\r\n  <string>XOMD</string>\r\n  <string>DI" +
             "AD</string>\r\n  <string>EEMD</string>\r\n  <string>XLED</string>\r\n  <string>QQQD</s" +
             "tring>\r\n  <string>XOMC</string>\r\n  <string>DIAC</string>\r\n  <string>EEMC</string" +
-            ">\r\n  <string>XLEC</string>\r\n  <string>QQQC</string>\r\n</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection CEDEARs {
+            ">\r\n  <string>XLEC</string>\r\n  <string>QQQC</string>\r\n  <string>GGAL</string>\r\n  " +
+            "<string>BMA</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection AccionesCEDEARs {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["CEDEARs"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["AccionesCEDEARs"]));
             }
         }
         
@@ -362,6 +363,29 @@ namespace Primary.WinFormsApp.Properties {
             }
             set {
                 this["ArancelCaucionTomadora"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.001")]
+        public decimal DerechoMercadoLetra {
+            get {
+                return ((decimal)(this["DerechoMercadoLetra"]));
+            }
+            set {
+                this["DerechoMercadoLetra"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
+            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
+            "tring>S31O3</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection Letras {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));
             }
         }
     }

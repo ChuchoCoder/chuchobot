@@ -66,9 +66,9 @@ namespace Primary.WinFormsApp
         public InstrumentWithData Sell { get; private set; }
         public InstrumentWithData Buy { get; private set; }
 
-        public SettlementTermTradeCalculation Calculate(decimal nominales, decimal tasaCaucion, decimal comisionColocadora, decimal comisionTomadora)
+        public SettlementTermTradeCalculation Calculate(decimal nominales, decimal sellPrice, decimal buyPrice, decimal tasaCaucion, decimal comisionColocadora, decimal comisionTomadora)
         {
-            return Calculate(nominales, tasaCaucion, comisionColocadora, comisionTomadora, DiasLiq24H, DiasLiq48H);
+            return Calculate(nominales, sellPrice, buyPrice, tasaCaucion, comisionColocadora, comisionTomadora, DiasLiq24H, DiasLiq48H);
         }
 
         public SettlementTermTradeCalculation Calculate(decimal nominales, decimal tasaCaucion, decimal comisionColocadora, decimal comisionTomadora, int diasLiq24H, int diasLiq48H)
@@ -85,38 +85,51 @@ namespace Primary.WinFormsApp
 
                 if (nominales <= 0)
                 {
-                    trade.TradeSize = Math.Min(trade.SellSize, trade.BuySize);
-                }
-                else
-                {
-                    trade.TradeSize = nominales;
+                    nominales = Math.Min(trade.SellSize, trade.BuySize);
                 }
 
-                trade.SellPrice = Sell.Data.GetTopBidPrice();
-                trade.SellTotalSinComisiones = trade.SellPrice * trade.TradeSize * Sell.Instrument.PriceConvertionFactor;
-                trade.SellComisionDerechos = Sell.Instrument.CalculateComisionDerechosMercado(trade.SellTotalSinComisiones);
+                return Calculate(nominales, Sell.Data.GetTopBidPrice(), Buy.Data.GetTopOfferPrice(), tasaCaucion, comisionColocadora, comisionTomadora, diasLiq24H, diasLiq48H);
 
-                trade.BuyPrice = Buy.Data.GetTopOfferPrice();
-                trade.BuyTotalSinComisiones = trade.BuyPrice * trade.TradeSize * Buy.Instrument.PriceConvertionFactor;
-                trade.BuyComisionDerechos = Buy.Instrument.CalculateComisionDerechosMercado(trade.BuyTotalSinComisiones);
-
-                trade.DiasCaucion = Sell.Instrument.CalculateSettlementDays(Buy.Instrument, diasLiq24H, diasLiq48H);
-
-                var caucion = (tasaCaucion / 100m * trade.DiasCaucion / 365m);
-                trade.CaucionTarget = Math.Abs(caucion);
-                trade.InteresCaucion = trade.TotalACaucionar * trade.CaucionTarget;
-
-                trade.ArancelCaucion = trade.EsCaucionColocadora ? comisionColocadora : comisionTomadora;
-
-                trade.BuyPriceTarget = trade.SellPrice * (1 + trade.CaucionTarget);
-                trade.SellPriceTarget = trade.BuyPrice * (1 - trade.CaucionTarget);
-
-                trade.SpreadTNA = Math.Abs(((trade.BuyPriceTarget / trade.SellPriceTarget) - 1) / trade.DiasCaucion * 365m);
-
-                return trade;
             }
 
             return null;
+        }
+
+        public SettlementTermTradeCalculation Calculate(decimal nominales, decimal sellPrice, decimal buyPrice, decimal tasaCaucion, decimal comisionColocadora, decimal comisionTomadora, int diasLiq24H, int diasLiq48H)
+        {
+            DiasLiq24H = diasLiq24H;
+            DiasLiq48H = diasLiq48H;
+
+            var trade = new SettlementTermTradeCalculation();
+
+            trade.SellSize = nominales;
+            trade.BuySize = nominales;
+
+            trade.TradeSize = nominales;
+
+            trade.SellPrice = sellPrice;
+            trade.SellTotalSinComisiones = trade.SellPrice * trade.TradeSize * Sell.Instrument.PriceConvertionFactor;
+            trade.SellComisionDerechos = Sell.Instrument.CalculateComisionDerechosMercado(trade.SellTotalSinComisiones);
+
+            trade.BuyPrice = buyPrice;
+            trade.BuyTotalSinComisiones = trade.BuyPrice * trade.TradeSize * Buy.Instrument.PriceConvertionFactor;
+            trade.BuyComisionDerechos = Buy.Instrument.CalculateComisionDerechosMercado(trade.BuyTotalSinComisiones);
+
+            trade.DiasCaucion = Sell.Instrument.CalculateSettlementDays(Buy.Instrument, diasLiq24H, diasLiq48H);
+
+            var caucion = (tasaCaucion / 100m * trade.DiasCaucion / 365m);
+            trade.CaucionTarget = Math.Abs(caucion);
+            trade.InteresCaucion = trade.TotalACaucionar * trade.CaucionTarget;
+
+            trade.ArancelCaucion = trade.EsCaucionColocadora ? comisionColocadora : comisionTomadora;
+
+            trade.BuyPriceTarget = trade.SellPrice * (1 + trade.CaucionTarget);
+            trade.SellPriceTarget = trade.BuyPrice * (1 - trade.CaucionTarget);
+
+            trade.SpreadTNA = Math.Abs(((trade.BuyPriceTarget / trade.SellPriceTarget) - 1) / trade.DiasCaucion * 365m);
+
+            return trade;
+            
         }
 
         public decimal Spread

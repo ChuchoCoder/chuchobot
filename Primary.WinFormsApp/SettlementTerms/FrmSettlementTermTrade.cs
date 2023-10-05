@@ -56,8 +56,8 @@ namespace Primary.WinFormsApp
             CompraBidsOffers.ClickSize += CompraBidsOffers_ClickSize;
 
             var suffix = _trade.Sell.Instrument.IsCEDEAR() ? " (CEDEAR)" : "";
-            grpOwnedVenta.Text += " - " + _trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + suffix;
-            grpArbitrationCompra.Text += " - " + _trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + suffix;
+            grpOwnedVenta.Text = $"1. Vender {_trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + suffix} - Der. Mer.: ({_trade.Sell.Instrument.GetDerechosDeMercado():P})";
+            grpArbitrationCompra.Text = $"2. Comprar {_trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + suffix} - Der. Mer.: ({_trade.Buy.Instrument.GetDerechosDeMercado():P})";
 
             var sellTopSize = trade.Sell.Data.GetTopBidSize();
             var buyTopSize = trade.Buy.Data.GetTopOfferSize();
@@ -169,25 +169,25 @@ namespace Primary.WinFormsApp
         {
             if (numCompraPrice.Value > 0)
             {
-                var neto = _trade.Calculate(numOwnedVentaSize.Value, Settings.Default.TasaCaucion, Settings.Default.ArancelCaucionColocadora, Settings.Default.ArancelCaucionTomadora);
+                var neto = _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value, numCompraPrice.Value, Settings.Default.TasaCaucion, Settings.Default.ArancelCaucionColocadora, Settings.Default.ArancelCaucionTomadora);
 
                 lblVentaImporte.Text = $"Importe: {neto.SellTotalSinComisiones:C2}";
-                lblVentaComision.Text = $"Comisión: {-neto.SellComisionDerechos:C2}";
+                lblVentaComision.Text = $"DM. + Com.: {-neto.SellComisionDerechos:C2}";
 
                 lblCompraImporte.Text = $"Importe: {neto.BuyTotalSinComisiones:C2}";
-                lblCompraComision.Text = $"Comisión: {-neto.BuyComisionDerechos:C2}";
+                lblCompraComision.Text = $"DM. + Com.: {-neto.BuyComisionDerechos:C2}";
 
-                lblComisionTotal.Text = $"Total Comisión: {-neto.SellComisionDerechos - neto.BuyComisionDerechos:C2}";
+                lblComisionTotal.Text = $"Total Der.Mer. + Comisión: {-neto.SellComisionDerechos - neto.BuyComisionDerechos:C2}";
 
-                lblBuyPriceTarget.Text = "Target: " + neto.BuyPriceTarget.ToCurrency();
-                lblSellPriceTarget.Text = "Target: " + neto.SellPriceTarget.ToCurrency();
+                lblBuyPriceTarget.Text = "Px Arbitrado: " + neto.BuyPriceTarget.ToCurrency();
+                lblSellPriceTarget.Text = "Px Arbitrado: " + neto.SellPriceTarget.ToCurrency();
 
-                lblDiasCaucion.Text = "Días: " + neto.DiasCaucion.ToString();
-                lblMontoCaucion.Text = "Monto: " + neto.TotalACaucionar.ToCurrency();
+                lblDiasCaucion.Text = "Días Caución: " + neto.DiasCaucion.ToString();
+                lblMontoCaucion.Text = "Monto Caución: " + neto.TotalACaucionar.ToCurrency();
                 lblInteresNeto.Text = "Interés Neto: " + neto.InteresNeto.ToCurrency();
                 lblInteresCaucion.Text = "Interés: " + neto.InteresCaucion.ToCurrency();
-                lblIva.Text = "Iva: " + neto.IvaGastos.ToCurrency();
-                lblDerMerCaucion.Text = "Der. Mer.: " + neto.DerechosMercadoCaucion.ToCurrency();
+                lblIva.Text = "IVA: " + neto.IvaGastos.ToCurrency();
+                lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + neto.DerechosMercadoCaucion.ToCurrency();
                 lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + neto.GastosGarantia.ToCurrency();
                 lblArancelCaucion.Text = "Arancel: " + neto.ArancelCaucion.ToCurrency();
                 lblGastosCaucion.Text = "Gastos: " + neto.ComisionCaucionTotal.ToCurrency();

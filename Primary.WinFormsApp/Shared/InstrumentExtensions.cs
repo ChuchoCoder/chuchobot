@@ -25,7 +25,13 @@ namespace Primary.WinFormsApp
 
         public static bool IsCEDEAR(this InstrumentDetail instrumentDetail)
         {
-            var exists = Properties.Settings.Default.CEDEARs.Cast<string>().Any(x => instrumentDetail.InstrumentId.Symbol.StartsWith($"{Instrument.MervalPrefix}{x}"));
+            var exists = Properties.Settings.Default.AccionesCEDEARs.Cast<string>().Any(x => instrumentDetail.InstrumentId.Symbol.StartsWith($"{Instrument.MervalPrefix}{x}"));
+            return exists;
+        }
+
+        public static bool IsLetra(this InstrumentDetail instrumentDetail)
+        {
+            var exists = Properties.Settings.Default.Letras.Cast<string>().Any(x => instrumentDetail.InstrumentId.Symbol.StartsWith($"{Instrument.MervalPrefix}{x}"));
             return exists;
         }
 
@@ -34,7 +40,11 @@ namespace Primary.WinFormsApp
             // https://www.byma.com.ar/que-es-byma/derechos-membresias-2/
             if (instrumentDetail.IsCEDEAR())
             {
-                return (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoCEDEAR) / 100m;
+                return (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoAccionCEDEAR) / 100m;
+            }
+            else if (instrumentDetail.IsLetra())
+            {
+                return (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoLetra) / 100m;
             }
             else
             {

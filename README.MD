@@ -18,6 +18,18 @@ Los releases se encuentran en la sección `Releases`
 - Configurar ALyC en archivo de configuración `ChuchoBot.exe.config` (ver instrucciones abajo)
 - Ejecutar `ChuchoBot.exe`
 
+## IMPORTANTE: Configurar Comisión Operación %
+
+La aplicación tiene configurado algunos instrumentos (no todos) que son utilizados para calcular automaticamente los Derechos de Mercado:
+
+- **Acciones y CEDEARs 0,08%** (Instrumentos en setting `AccionesCEDEARs`)
+- **Letras 0,001%** (Instrumentos en setting `Letras`)
+- **Bonos 0,01%** (resto de instrumentos)
+
+Además de los derechos de mercado, la comisión configurada por cada operación es de 0,10% (por defecto). Este porcentaje puede modificarse en la ventana de Arbitrajes de Plazos
+
+**Derechos de Mercado BYMA**: https://www.byma.com.ar/wp-content/uploads/dlm_uploads/2019/11/BYMA-Derechos-Mercado-sobre-Operaciones-2022-12-01.pdf
+
 ## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
 
 1. Editar archivo `ChuchoBot.exe.config`
