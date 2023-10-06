@@ -37,7 +37,7 @@ namespace Primary.WinFormsApp
                     trades = trades.Where(x => x.Buy.Instrument.Currency != "ARS").ToList();
                 }
 
-                _arbitrationDataTable.Refresh(trades, diasLiq24H, diasLiq48H, numComision.Value, numComisionTomadora.Value, numComisionColocadora.Value, numTasa.Value);
+                _arbitrationDataTable.Refresh(trades, diasLiq24H, diasLiq48H, numComision.Value, numComisionTomadora.Value, numComisionColocadora.Value, numTasa.Value, chkOnlyProfitableTrades.Checked);
 
                 //grdArbitration.DataSource = _dataTable;
             }

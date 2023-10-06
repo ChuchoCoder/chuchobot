@@ -42,7 +42,7 @@ namespace Primary.WinFormsApp
         }
 
         public void Refresh(List<SettlementTermTrade> trades, int diasLiq24H, int diasLiq48H, decimal comision, 
-            decimal comisionCaucionTomadora, decimal comisionCaucionColocadora, decimal tasaCaucion)
+            decimal comisionCaucionTomadora, decimal comisionCaucionColocadora, decimal tasaCaucion, bool onlyProfitableTrades)
         {
             List<DataRow> processedRows = new List<DataRow>();
 
@@ -50,6 +50,11 @@ namespace Primary.WinFormsApp
             {
                 DataRow row;
                 var tradeProfit = trade.Calculate(0, tasaCaucion, comisionCaucionColocadora, comisionCaucionTomadora, diasLiq24H, diasLiq48H);
+
+                if (onlyProfitableTrades && tradeProfit.ProfitLoss < 0)
+                {
+                    continue;
+                }
 
                 string ownedVenta = trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
                 string arbitrationCompra = trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();

@@ -15,7 +15,7 @@
       <Value Profile="(Default)">365</Value>
     </Setting>
     <Setting Name="Comision" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0.1</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="DerechoMercado" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0.01</Value>

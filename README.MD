@@ -13,49 +13,24 @@ Para poder ejecutar la aplicación es necesario:
 Los releases se encuentran en la sección `Releases`
 
 - Ir a la sección [Releases](https://github.com/ChuchoCoder/chuchobot/releases)
-- Descargar el archivo zip `ChuchoBot2023-10-03.zip`
+- Descargar el archivo zip (Ejemplo: `ChuchoBot2023-10-06.zip`)
 - Descomprimir en una carpeta
-- Configurar ALyC en archivo de configuración `ChuchoBot.exe.config` (ver instrucciones abajo)
 - Ejecutar `ChuchoBot.exe`
 
-## ¿Cómo configurar ChuchoBot para utilizar la Primary API de mi ALyC?
+## ¿Cuál es la Primary API Base URL de mi ALyC?
 
-1. Editar archivo `ChuchoBot.exe.config`
-2. Reemplazar la URL en el setting `ApiBaseUrl` por la provista por ALyC. **Ejemplo**: Si tenés **Bull Market Brokers** busca `https://api.cocos.xoms.com.ar` y reemplaza por `https://api.bull.xoms.com.ar`
+En la ventana de **Primary Login**, reemplazar la `Primary API Basi URL` por la provista por ALyC. **Ejemplo**: Si tenés **Bull Market Brokers** usa `https://api.bull.xoms.com.ar`
 
-	```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.cocos.xoms.com.ar</value>
-	</setting>
-	```
+![Login](docs/screenshots/Login.png)
 
-Dependiendo del broker que te brinda acceso a Matriz, reemplazar el setting anterior por:
+- **Cocos Capital (requiere plan 🥥 Cocos Pro)**: ```https://api.cocos.xoms.com.ar```
+- **Eco Valores**: ```https://api.eco.xoms.com.ar```
+- **Veta Capital**: ```https://api.veta.xoms.com.ar```
+- **Bull Market Brokers**: ```https://api.bull.xoms.com.ar```
 
-- **Cocos Capital (requiere plan 🥥 Cocos Pro)**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.cocos.xoms.com.ar</value>
-	</setting>
-	```
-- **Eco Valores**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.eco.xoms.com.ar</value>
-	</setting>
-	```
-- **Veta Capital**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.veta.xoms.com.ar</value>
-	</setting>
-	```
-- **Bull Market Brokers**:
-    ```xml
-	<setting name="ApiBaseUrl" serializeAs="String">
-		<value>https://api.bull.xoms.com.ar</value>
-	</setting>
-	```
+### ¿Cúal es mi usuario y contraseña para hacer Login?
 
+El usuario y contraseña a utilizar es el mismo que se utiliza para ingresar en Matriz.
 
 ## IMPORTANTE: Configurar Comisión Operación %
 
@@ -119,12 +94,6 @@ Además de los derechos de mercado, la comisión configurada por cada operación
 ## ¿Puedo utilizar la aplicación si no tengo acceso a Matriz?
 
 No, la aplicación necesita tener acceso a Primary API (Matriz).
-
-## ¿Cúal es mi usuario y contraseña para hacer Login?
-
-El usuario y contraseña a utilizar es el mismo que se utiliza para ingresar en Matriz.
-
-![Login](docs/screenshots/Login.png)
 
 ## Scanner de arbitraje de plazos
 
