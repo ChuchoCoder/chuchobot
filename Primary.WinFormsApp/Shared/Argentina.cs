@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -37,7 +38,12 @@ namespace Primary.WinFormsApp
         public Argentina()
         {
             var url = Properties.Settings.Default.ApiBaseUrl;
-            Api = new Api(new Uri(url));
+            Init(url);
+        }
+
+        public void Init(string apiBaseUrl)
+        {
+            Api = new Api(new Uri(apiBaseUrl));
             _tokenSource = new CancellationTokenSource();
         }
 

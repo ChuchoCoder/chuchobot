@@ -116,12 +116,15 @@ namespace Primary.WinFormsApp.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://api.cocos.xoms.com.ar")]
         public string ApiBaseUrl {
             get {
                 return ((string)(this["ApiBaseUrl"]));
+            }
+            set {
+                this["ApiBaseUrl"] = value;
             }
         }
         

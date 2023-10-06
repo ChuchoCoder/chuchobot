@@ -19,6 +19,13 @@ namespace Primary.WinFormsApp
                 return txtUserName.Text;
             }
         }
+        public string BaseUrl
+        {
+            get
+            {
+                return txtBaseUrl.Text;
+            }
+        }
 
         public FrmLogin()
         {
@@ -39,9 +46,10 @@ namespace Primary.WinFormsApp
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            this.Text += " - " + Properties.Settings.Default.ApiBaseUrl;
+            this.txtBaseUrl.Text = Properties.Settings.Default.ApiBaseUrl;
             this.txtUserName.Text = Properties.Settings.Default.UserName;
             this.txtPassword.Text = Properties.Settings.Default.Password;
+
             if (txtUserName.Text.Length > 0)
             {
                 ActiveControl = txtPassword;

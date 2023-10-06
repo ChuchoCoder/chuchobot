@@ -31,7 +31,7 @@
   &lt;string&gt;AE38&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="ApiBaseUrl" Type="System.String" Scope="Application">
+    <Setting Name="ApiBaseUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://api.cocos.xoms.com.ar</Value>
     </Setting>
     <Setting Name="AccionesCEDEARs" Type="System.Collections.Specialized.StringCollection" Scope="Application">

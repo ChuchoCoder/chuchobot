@@ -49,6 +49,7 @@ namespace Primary.WinFormsApp
                 var text = this.Text;
                 this.Text = "Login user...";
                 Refresh();
+                Argentina.Data.Init(login.BaseUrl);
                 var success = await Argentina.Data.Api.Login(login.UserName, login.Password);
 
                 if (success == false)
@@ -58,6 +59,7 @@ namespace Primary.WinFormsApp
                 }
                 else
                 {
+                    Properties.Settings.Default.ApiBaseUrl = login.BaseUrl;
                     Properties.Settings.Default.UserName = login.UserName;
                     Properties.Settings.Default.Password = login.Password;
                     Properties.Settings.Default.Save();
