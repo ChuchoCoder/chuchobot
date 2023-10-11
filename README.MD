@@ -116,7 +116,7 @@ Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana
 
 ![Scanner de arbitraje de plazos detalle](docs/screenshots/ArbitrajePlazoDetail.png)
 
-### Operatoria cuando el plazo de la Venta es menor a Compra (requiere títulos en cartera)
+### Operatoria cuando el plazo de la Venta es menor al de Compra (requiere títulos en cartera)
 
 Cuando el plazo de la `1 Venta` es menor al de `2 Compra` es necesario contar con los títulos en cartera (Ejemplo: `1 Venta NVDA - CI` / `2 Compra NVDA - 48hs`).
 
@@ -127,7 +127,7 @@ La operación consiste en realizar las siguientes operaciones:
 3. **Colocar** en caución el resultado de la venta del paso **1**
    - Nota APB 🤦‍♂️: Si la venta del paso 1 se realizó en `24hs` se coloca el dinero en caución al siguiente día
 
-### Operatoria cuando el plazo de la Venta es mayor a Compra
+### Operatoria cuando el plazo de la Venta es mayor al de Compra
 
 Cuando el plazo de la `1 Venta` es mayor al de `2 Compra` será necesario contar con el dinero o poder tomar caución para cubrir el descubierto de lo comprado (Ejemplo: `1 Venta SPY - 48hs` / `2 Compra SPY - CI`).
 
