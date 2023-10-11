@@ -339,6 +339,7 @@
   &lt;string&gt;GOLD&lt;/string&gt;
   &lt;string&gt;AAPL&lt;/string&gt;
   &lt;string&gt;AMZN&lt;/string&gt;
+  &lt;string&gt;AMD&lt;/string&gt;
   &lt;string&gt;BABA&lt;/string&gt;
   &lt;string&gt;BIDU&lt;/string&gt;
   &lt;string&gt;BRKB&lt;/string&gt;
@@ -359,6 +360,10 @@
   &lt;string&gt;S31O3&lt;/string&gt;
   &lt;string&gt;X18O3&lt;/string&gt;
   &lt;string&gt;MTR&lt;/string&gt;
+  &lt;string&gt;SPY&lt;/string&gt;
+  &lt;string&gt;INTC&lt;/string&gt;
+  &lt;string&gt;DIA&lt;/string&gt;
+  &lt;string&gt;GOOGL&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="WatchedTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
@@ -423,6 +428,7 @@
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
   &lt;string&gt;S31O3&lt;/string&gt;
+  &lt;string&gt;X18O3&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
