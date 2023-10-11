@@ -111,5 +111,18 @@ namespace Primary.WinFormsApp
             Properties.Settings.Default.Comision = numComision.Value;
             Properties.Settings.Default.Save();
         }
+
+        private void numComisionTomadora_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ArancelCaucionTomadora = numComisionTomadora.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numComisionColocadora_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ArancelCaucionColocadora = numComisionColocadora.Value;
+            Properties.Settings.Default.Save();
+
+        }
     }
 }

@@ -301,6 +301,7 @@
             0,
             0,
             65536});
+            this.numComisionTomadora.ValueChanged += new System.EventHandler(this.numComisionTomadora_ValueChanged);
             // 
             // label3
             // 
@@ -501,6 +502,7 @@
             0,
             0,
             65536});
+            this.numComisionColocadora.ValueChanged += new System.EventHandler(this.numComisionColocadora_ValueChanged);
             // 
             // chkOnlyProfitableTrades
             // 
