@@ -76,7 +76,8 @@ namespace Primary.WinFormsApp
 
         public async Task Init()
         {
-            if (File.Exists("InstrumentsWithDetails.json") && (DateTime.Now - File.GetLastWriteTime("InstrumentsWithDetails.json")) < TimeSpan.FromDays(6))
+            var lastUpdatedTimeSpan = TimeSpan.FromHours(12);
+            if (File.Exists("InstrumentsWithDetails.json") && (DateTime.Now - File.GetLastWriteTime("InstrumentsWithDetails.json")) < lastUpdatedTimeSpan)
             {
                 var instrumentsJson = File.ReadAllText("InstrumentsWithDetails.json");
                 var instruments = JsonConvert.DeserializeObject<IEnumerable<InstrumentDetail>>(instrumentsJson);
