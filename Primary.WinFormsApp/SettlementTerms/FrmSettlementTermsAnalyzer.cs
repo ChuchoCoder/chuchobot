@@ -24,6 +24,23 @@ namespace Primary.WinFormsApp
                 var diasLiq24H = ((int)numDiasLiq24H.Value);
                 var diasLiq48H = ((int)numDiasLiq48H.Value);
 
+                var caucion24HTicker = Settlement.GetCaucionPesosTicker(diasLiq24H);
+                var caucion24HInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucion24HTicker);
+
+                if (caucion24HInstrument != null)
+                {
+                    var entries = Argentina.Data.GetLatestOrNull(caucion24HTicker);
+                    if (entries != null && entries.HasLastPrice())
+                    {
+                        numTasa.Value = entries.Last.Price.Value;
+                        numTasa.Enabled = false;
+                    }
+                    else
+                    {
+                        numTasa.Enabled = true;
+                    }
+                }
+
 
                 var trades = _processor.GetSettlementTermTrades(numTasa.Value, diasLiq24H, diasLiq48H);
 

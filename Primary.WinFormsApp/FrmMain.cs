@@ -128,6 +128,17 @@ namespace Primary.WinFormsApp
                 }
             }
 
+            // Caucion
+            for (int i = 1; i < 10; i++)
+            {
+                var caucionTicker = Settlement.GetCaucionPesosTicker(i);
+                var caucionInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucionTicker);
+                if (caucionInstrument != null)
+                {
+                    watchList.Add(caucionTicker);
+                }
+            }
+
         }
 
         private bool ShouldWatch(InstrumentDetail instrument)
