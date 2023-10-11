@@ -399,7 +399,7 @@
             this.chkDolarD.AutoSize = true;
             this.chkDolarD.Enabled = false;
             this.chkDolarD.Location = new System.Drawing.Point(12, 26);
-            this.chkDolarD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkDolarD.Margin = new System.Windows.Forms.Padding(2);
             this.chkDolarD.Name = "chkDolarD";
             this.chkDolarD.Size = new System.Drawing.Size(104, 17);
             this.chkDolarD.TabIndex = 16;
@@ -412,7 +412,7 @@
             this.chkPesos.Checked = true;
             this.chkPesos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPesos.Location = new System.Drawing.Point(12, 5);
-            this.chkPesos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkPesos.Margin = new System.Windows.Forms.Padding(2);
             this.chkPesos.Name = "chkPesos";
             this.chkPesos.Size = new System.Drawing.Size(83, 17);
             this.chkPesos.TabIndex = 17;
@@ -423,7 +423,7 @@
             // 
             this.numDiasLiq24H.Location = new System.Drawing.Point(672, 3);
             this.numDiasLiq24H.Maximum = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
@@ -460,7 +460,7 @@
             // 
             this.numDiasLiq48H.Location = new System.Drawing.Point(866, 3);
             this.numDiasLiq48H.Maximum = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
