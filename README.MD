@@ -8,6 +8,8 @@ Para poder ejecutar la aplicación es necesario:
 - Microsoft .Net Framework 4.7.2
 - Acceso a Primary API provisto por ALyC (Matriz)
 
+> Nota: No funciona en iOS, MacOS, Android o Linux.
+
 ## ¿Cómo puedo ejecutar la aplicación?
 
 Los releases se encuentran en la sección `Releases`
@@ -24,9 +26,12 @@ En la ventana de **Primary Login**, reemplazar la `Primary API Basi URL` por la 
 ![Login](docs/screenshots/Login.png)
 
 - **Cocos Capital (requiere plan 🥥 Cocos Pro)**: ```https://api.cocos.xoms.com.ar```
-- **Eco Valores**: ```https://api.eco.xoms.com.ar```
-- **Veta Capital**: ```https://api.veta.xoms.com.ar```
-- **Bull Market Brokers**: ```https://api.bull.xoms.com.ar```
+- **Eco Valores**: `https://api.eco.xoms.com.ar`
+- **Veta Capital**: `https://api.veta.xoms.com.ar`
+- **Bull Market Brokers**: `https://api.bull.xoms.com.ar`
+- **Cohen**: `https://api.cohen.xoms.com.ar/`
+- **Adcap**: `https://api.adcap.xoms.com.ar/`
+- **BCCH**: `https://api.bcch.xoms.com.ar/`
 
 ### ¿Cúal es mi usuario y contraseña para hacer Login?
 
@@ -43,6 +48,12 @@ La aplicación tiene configurado algunos instrumentos (no todos) que son utiliza
 Además de los derechos de mercado, la comisión configurada por cada operación es de 0,10% (por defecto). Este porcentaje puede modificarse en la ventana de Arbitrajes de Plazos
 
 **Derechos de Mercado BYMA**: https://www.byma.com.ar/wp-content/uploads/dlm_uploads/2019/11/BYMA-Derechos-Mercado-sobre-Operaciones-2022-12-01.pdf
+
+## IMPORTANTE: Configurar Comisión Caución Tomadora y Colocadora
+
+La aplicación tiene configurado valores arbitrarios para la comisión que cobra el broker al momento de colocar o tomar caución. 
+
+Para obtener un P&L correcto, es necesario configurar estos valores en los campos `Comisión Tomadora (TNA)` y `Comisión Colocadora (TNA)`.
 
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
@@ -97,11 +108,35 @@ No, la aplicación necesita tener acceso a Primary API (Matriz).
 
 ## Scanner de arbitraje de plazos
 
+El scanner de arbitraje de plazos permite detectar oportunidades para arbitrar plazos de distintos activos.
+
 ![Scanner de arbitraje de plazos](docs/screenshots/ArbitrajePlazos.png)
 
 Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana con el detalle del arbitraje. En dicha ventana se pueden cambiar los nominales, precios de compra/venta y comisión para poder obtener un cálculo aproximado de la ganancia/pérdida que se obtendría.
 
 ![Scanner de arbitraje de plazos detalle](docs/screenshots/ArbitrajePlazoDetail.png)
+
+### Operatoria cuando el plazo de la Venta es menor a Compra (requiere títulos en cartera)
+
+Cuando el plazo de la `1 Venta` es menor al de `2 Compra` es necesario contar con los títulos en cartera (Ejemplo: `1 Venta NVDA - CI` / `2 Compra NVDA - 48hs`).
+
+La operación consiste en realizar las siguientes operaciones:
+
+1. **Vender** el título en el plazo visualizado `CI` o `24hs`
+2. **Comprar** el título en el plazo visualizado `24hs` o `48hs`
+3. **Colocar** en caución el resultado de la venta del paso **1**
+   - Nota APB 🤦‍♂️: Si la venta del paso 1 se realizó en `24hs` se coloca el dinero en caución al siguiente día
+
+### Operatoria cuando el plazo de la Venta es mayor a Compra
+
+Cuando el plazo de la `1 Venta` es mayor al de `2 Compra` será necesario contar con el dinero o poder tomar caución para cubrir el descubierto de lo comprado (Ejemplo: `1 Venta SPY - 48hs` / `2 Compra SPY - CI`).
+
+La operación consiste en realizar las siguientes operaciones:
+
+1. **Comprar** el título en el plazo visualizado `CI` o `24hs`
+2. **Vender** el título en el plazo visualizado `24hs` o `48hs`
+3. **Tomar** caución por el total de la compra del paso **1**
+   - Nota APB 🤦‍♂️: Si la compra del paso 1 se realizó en `24hs` se deberá tomar el dinero en caución al siguiente día
 
 ## Scanner para comprar/vender dolar MEP y CCL
 
