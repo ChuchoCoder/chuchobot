@@ -7,33 +7,30 @@ namespace Primary.WinFormsApp
     {
         public static int GetDiasLiquidacion24H()
         {
-            var diasLiq = DateTime.Today.DayOfWeek == DayOfWeek.Friday ? 3 : 1;
-
-            for (int i = 0; i < 5; i++)
+            for (int caucionDiasLiq = 1; caucionDiasLiq < 10; caucionDiasLiq++)
             {
-                var caucionDiasLiq = diasLiq + i;
                 var caucionTicker = GetCaucionPesosTicker(caucionDiasLiq);
                 var caucionInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucionTicker);
                 if (caucionInstrument != null)
                     return caucionDiasLiq;
             }
 
+            var diasLiq = DateTime.Today.DayOfWeek == DayOfWeek.Friday ? 3 : 1;
             return diasLiq;
         }
 
-        public static int GetDiasLiquidacion48H()
+        public static int GetDiasLiquidacion48H(int diasLiquidacion24H)
         {
-            var diasLiq = DateTime.Today.DayOfWeek == DayOfWeek.Thursday || DateTime.Today.DayOfWeek == DayOfWeek.Friday ? 4 : 2;
 
-            for (int i = 0; i < 5; i++)
+            for (int caucionDiasLiq = diasLiquidacion24H+1; caucionDiasLiq < 10; caucionDiasLiq++)
             {
-                var caucionDiasLiq = diasLiq + i;
                 var caucionTicker = GetCaucionPesosTicker(caucionDiasLiq);
                 var caucionInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucionTicker);
                 if (caucionInstrument != null)
                     return caucionDiasLiq;
             }
 
+            var diasLiq = DateTime.Today.DayOfWeek == DayOfWeek.Thursday || DateTime.Today.DayOfWeek == DayOfWeek.Friday ? 4 : 2;
             return diasLiq;
         }
 

@@ -81,8 +81,9 @@ namespace Primary.WinFormsApp
             grdArbitration.AutoGenerateColumns = false;
             grdArbitration.DataSource = _arbitrationDataTable.DataTable;
 
-            numDiasLiq24H.Value = Settlement.GetDiasLiquidacion24H();
-            numDiasLiq48H.Value = Settlement.GetDiasLiquidacion48H();
+            int diasLiq24H = Settlement.GetDiasLiquidacion24H();
+            numDiasLiq24H.Value = diasLiq24H;
+            numDiasLiq48H.Value = Settlement.GetDiasLiquidacion48H(diasLiq24H);
 
             grdArbitration.Sort(grdArbitration.Columns["TNA"], System.ComponentModel.ListSortDirection.Descending);
 
