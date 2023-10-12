@@ -64,7 +64,7 @@ namespace Primary.WinFormsApp
         {
             // convert everything to TimeSpan
             TimeSpan start = new TimeSpan(10, 0, 0);
-            TimeSpan end = excludeAuctionPeriod ? new TimeSpan(16, 0, 0) : new TimeSpan(15, 57, 0);
+            TimeSpan end = excludeAuctionPeriod ? new TimeSpan(16, 30, 0) : new TimeSpan(16, 27, 0);
             TimeSpan now = DateTime.Now.TimeOfDay;
             // see if start comes before end
             if (start < end)
