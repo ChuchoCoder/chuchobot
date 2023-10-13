@@ -17,10 +17,10 @@
     <Setting Name="Comision" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="DerechoMercado" Type="System.Decimal" Scope="User">
+    <Setting Name="DerechoMercado" Type="System.Decimal" Scope="Application">
       <Value Profile="(Default)">0.01</Value>
     </Setting>
-    <Setting Name="DerechoMercadoAccionCEDEAR" Type="System.Decimal" Scope="User">
+    <Setting Name="DerechoMercadoAccionCEDEAR" Type="System.Decimal" Scope="Application">
       <Value Profile="(Default)">0.08</Value>
     </Setting>
     <Setting Name="OwnedTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
@@ -366,52 +366,6 @@
   &lt;string&gt;GOOGL&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="WatchedTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;GGAL&lt;/string&gt;
-  &lt;string&gt;BMA&lt;/string&gt;
-  &lt;string&gt;BBAR&lt;/string&gt;
-  &lt;string&gt;PAM&lt;/string&gt;
-  &lt;string&gt;GOLD&lt;/string&gt;
-  &lt;string&gt;AAPL&lt;/string&gt;
-  &lt;string&gt;AMZN&lt;/string&gt;
-  &lt;string&gt;BABA&lt;/string&gt;
-  &lt;string&gt;BIDU&lt;/string&gt;
-  &lt;string&gt;BRKB&lt;/string&gt;
-  &lt;string&gt;DISN&lt;/string&gt;
-  &lt;string&gt;KO&lt;/string&gt;
-  &lt;string&gt;MELI&lt;/string&gt;
-  &lt;string&gt;MRK&lt;/string&gt;
-  &lt;string&gt;MSFT&lt;/string&gt;
-  &lt;string&gt;NVDA&lt;/string&gt;
-  &lt;string&gt;PBR&lt;/string&gt;
-  &lt;string&gt;TSLA&lt;/string&gt;
-  &lt;string&gt;QCOM&lt;/string&gt;
-  &lt;string&gt;YPFD&lt;/string&gt;
-  &lt;string&gt;ALUA&lt;/string&gt;
-  &lt;string&gt;TXAR&lt;/string&gt;
-  &lt;string&gt;AL29&lt;/string&gt;
-  &lt;string&gt;AL30&lt;/string&gt;
-  &lt;string&gt;AL35&lt;/string&gt;
-  &lt;string&gt;AE38&lt;/string&gt;
-  &lt;string&gt;AL41&lt;/string&gt;
-  &lt;string&gt;GD29&lt;/string&gt;
-  &lt;string&gt;GD30&lt;/string&gt;
-  &lt;string&gt;GD35&lt;/string&gt;
-  &lt;string&gt;GD38&lt;/string&gt;
-  &lt;string&gt;GD41&lt;/string&gt;
-  &lt;string&gt;GD46&lt;/string&gt;
-  &lt;string&gt;SPY&lt;/string&gt;
-  &lt;string&gt;XOM&lt;/string&gt;
-  &lt;string&gt;DIA&lt;/string&gt;
-  &lt;string&gt;EEM&lt;/string&gt;
-  &lt;string&gt;XLE&lt;/string&gt;
-  &lt;string&gt;QQQ&lt;/string&gt;
-  &lt;string&gt;S31O3&lt;/string&gt;
-  &lt;string&gt;X18O3&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
     <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">95</Value>
     </Setting>
@@ -421,7 +375,7 @@
     <Setting Name="ArancelCaucionTomadora" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">2.5</Value>
     </Setting>
-    <Setting Name="DerechoMercadoLetra" Type="System.Decimal" Scope="User">
+    <Setting Name="DerechoMercadoLetra" Type="System.Decimal" Scope="Application">
       <Value Profile="(Default)">0.001</Value>
     </Setting>
     <Setting Name="Letras" Type="System.Collections.Specialized.StringCollection" Scope="Application">

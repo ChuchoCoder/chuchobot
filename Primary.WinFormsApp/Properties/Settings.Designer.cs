@@ -80,27 +80,21 @@ namespace Primary.WinFormsApp.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.01")]
         public decimal DerechoMercado {
             get {
                 return ((decimal)(this["DerechoMercado"]));
             }
-            set {
-                this["DerechoMercado"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.08")]
         public decimal DerechoMercadoAccionCEDEAR {
             get {
                 return ((decimal)(this["DerechoMercadoAccionCEDEAR"]));
-            }
-            set {
-                this["DerechoMercadoAccionCEDEAR"] = value;
             }
         }
         
@@ -286,58 +280,6 @@ namespace Primary.WinFormsApp.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
-  <string>GGAL</string>
-  <string>BMA</string>
-  <string>BBAR</string>
-  <string>PAM</string>
-  <string>GOLD</string>
-  <string>AAPL</string>
-  <string>AMZN</string>
-  <string>BABA</string>
-  <string>BIDU</string>
-  <string>BRKB</string>
-  <string>DISN</string>
-  <string>KO</string>
-  <string>MELI</string>
-  <string>MRK</string>
-  <string>MSFT</string>
-  <string>NVDA</string>
-  <string>PBR</string>
-  <string>TSLA</string>
-  <string>QCOM</string>
-  <string>YPFD</string>
-  <string>ALUA</string>
-  <string>TXAR</string>
-  <string>AL29</string>
-  <string>AL30</string>
-  <string>AL35</string>
-  <string>AE38</string>
-  <string>AL41</string>
-  <string>GD29</string>
-  <string>GD30</string>
-  <string>GD35</string>
-  <string>GD38</string>
-  <string>GD41</string>
-  <string>GD46</string>
-  <string>SPY</string>
-  <string>XOM</string>
-  <string>DIA</string>
-  <string>EEM</string>
-  <string>XLE</string>
-  <string>QQQ</string>
-  <string>S31O3</string>
-  <string>X18O3</string>
-</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection WatchedTickers {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["WatchedTickers"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("95")]
@@ -374,15 +316,12 @@ namespace Primary.WinFormsApp.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.001")]
         public decimal DerechoMercadoLetra {
             get {
                 return ((decimal)(this["DerechoMercadoLetra"]));
-            }
-            set {
-                this["DerechoMercadoLetra"] = value;
             }
         }
         

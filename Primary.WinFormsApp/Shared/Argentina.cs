@@ -24,6 +24,7 @@ namespace Primary.WinFormsApp
         public delegate void MarketDataEventHandler(Instrument instrument, Entries data);
         public event MarketDataEventHandler OnMarketData;
         public ConcurrentDictionary<string, Entries> LatestMarketData = new ConcurrentDictionary<string, Entries>();
+        private CancellationTokenSource cancellationTokenSource;
 
         public Entries GetLatestOrNull(string symbol)
         {
@@ -106,8 +107,16 @@ namespace Primary.WinFormsApp
 
         public Task WatchWithWebSocket(Instrument[] instruments)
         {
+
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+                marketDataSocket.Dispose();
+            }
+
+            cancellationTokenSource = new CancellationTokenSource();
             // Subscribe to all entries
-            marketDataSocket = Api.CreateMarketDataSocket(instruments, Constants.AllEntries, 1, 5);
+            marketDataSocket = Api.CreateMarketDataSocket(instruments, Constants.AllEntries, 1, 5, cancellationTokenSource.Token);
 
             marketDataSocket.OnData = OnReceiveMarketData;
             return marketDataSocket.Start().Unwrap();

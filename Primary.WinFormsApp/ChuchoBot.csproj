@@ -97,6 +97,12 @@
     <Compile Include="DolarArbitration\DolarArbitrationProcessor.cs" />
     <Compile Include="DolarArbitration\DolarArbitrationInstruments.cs" />
     <Compile Include="DolarArbitration\DolarTradedInstrument.cs" />
+    <Compile Include="Configuration\FrmStringCollectionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration\FrmStringCollectionEditor.Designer.cs">
+      <DependentUpon>FrmStringCollectionEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shared\FlashWindow.cs" />
     <Compile Include="Dolar\FrmDolarPrice.cs">
       <SubType>Form</SubType>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dolar\FrmDolarPrice.resx">
       <DependentUpon>FrmDolarPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration\FrmStringCollectionEditor.resx">
+      <DependentUpon>FrmStringCollectionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettlementTerms\FrmSettlementTermTrade.resx">
       <DependentUpon>FrmSettlementTermTrade.cs</DependentUpon>

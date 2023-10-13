@@ -16,9 +16,9 @@ namespace Primary.WinFormsApp
     public partial class FrmMain : Form
     {
         private List<string> watchList;
-        private List<Task> backgroundTasks = new List<Task>();
         private Instrument[] _watchedInstruments;
         private DateTime _lastUpdate;
+        private Task primaryWebSocket;
 
         public FrmMain()
         {
@@ -67,20 +67,16 @@ namespace Primary.WinFormsApp
                     this.Text = "Initiliazing Data...";
                     Refresh();
                     await Argentina.Data.Init();
-                    
+
                     this.Text = "Initiliazing Watchlist...";
                     Refresh();
-                    InitWatchList();
-                    _watchedInstruments = Argentina.Data.AllInstruments.Where(ShouldWatch).Select(x => x.InstrumentId).ToArray();
 
                     foreach (var item in Argentina.Data.AllInstruments.OrderBy(x => x.InstrumentId.SymbolWithoutPrefix()))
                     {
                         cmbInstruments.Items.Add(item);
                     }
 
-                    Argentina.Data.OnMarketData += Data_OnMarketData;
-
-                    backgroundTasks.Add(Argentina.Data.WatchWithWebSocket(_watchedInstruments));
+                    WatchInstrumentsWithWebSocket();
                     //backgroundTasks.AddRange(Argentina.Data.WatchWithRestApi(_watchedInstruments));
                     tmrConnection.Enabled = true;
                 }
@@ -88,6 +84,18 @@ namespace Primary.WinFormsApp
                 return true;
             }
             return false;
+        }
+
+        private void WatchInstrumentsWithWebSocket()
+        {
+            primaryWebSocket?.Dispose();
+
+            InitWatchList();
+            _watchedInstruments = Argentina.Data.AllInstruments.Where(ShouldWatch).Select(x => x.InstrumentId).ToArray();
+
+            Argentina.Data.OnMarketData += Data_OnMarketData;
+
+            primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
         }
 
         private void Data_OnMarketData(Instrument instrument, Entries data)
@@ -105,9 +113,8 @@ namespace Primary.WinFormsApp
             //var bonds = new[] { "AL29", "AL30", "AL35", "AE38", "AL41", "GD29", "GD30", "GD35", "GD38", "GD41", "GD46" };
             var owned = Properties.Settings.Default.OwnedTickers.Cast<string>().ToList();
             var arbitration = Properties.Settings.Default.ArbitrationTickers.Cast<string>().ToList();
-            var watched = Properties.Settings.Default.WatchedTickers.Cast<string>().ToList();
 
-            var bonds = arbitration.Concat(owned).Concat(watched).Distinct();
+            var bonds = arbitration.Concat(owned).Distinct();
 
             this.watchList = new List<string>();
             foreach (var item in bonds)
@@ -219,7 +226,11 @@ namespace Primary.WinFormsApp
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            backgroundTasks.Add(Argentina.Data.WatchWithWebSocket(_watchedInstruments));
+            if (primaryWebSocket != null)
+            {
+                primaryWebSocket.Dispose();
+            }
+            primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
         }
 
         private void compraMEPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,6 +266,44 @@ namespace Primary.WinFormsApp
             frm.Text = "Venta Dolar CCL";
             frm.Setup(x => x.GetDolarCableTrades(), true);
             frm.Show();
+
+        }
+
+        private void instrumentosParaArbitrajeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Configuration.FrmStringCollectionEditor();
+            frm.Text = instrumentosParaArbitrajeToolStripMenuItem.Text;
+            frm.Setting = Properties.Settings.Default.ArbitrationTickers;
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                WatchInstrumentsWithWebSocket();
+            }
+        }
+
+        private void tickersDCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Configuration.FrmStringCollectionEditor();
+            frm.Text = tickersDCToolStripMenuItem.Text;
+            frm.Setting = Properties.Settings.Default.TickersDC;
+            frm.ShowDialog();
+
+        }
+
+        private void accionesCEDEARsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Configuration.FrmStringCollectionEditor();
+            frm.Text = accionesCEDEARsToolStripMenuItem.Text;
+            frm.Setting = Properties.Settings.Default.AccionesCEDEARs;
+            frm.ShowDialog();
+        }
+
+        private void letrasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Configuration.FrmStringCollectionEditor();
+            frm.Text = letrasToolStripMenuItem.Text;
+            frm.Setting = Properties.Settings.Default.Letras;
+            frm.ShowDialog();
 
         }
     }

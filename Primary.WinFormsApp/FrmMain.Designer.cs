@@ -44,13 +44,18 @@
             this.cmbInstruments = new System.Windows.Forms.ToolStripComboBox();
             this.buscadorArbitrajesSimplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instrumentosParaArbitrajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accionesCEDEARsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.letrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tickersDCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrConnection = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loginToolStripMenuItem,
@@ -60,25 +65,27 @@
             this.dolarPricesToolStripMenuItem,
             this.marketDataToolStripMenuItem,
             this.buscadorArbitrajesSimplesToolStripMenuItem,
-            this.refreshDataToolStripMenuItem});
+            this.refreshDataToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.configuraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1600, 42);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(93, 36);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.connectToolStripMenuItem.Text = "Connect";
             this.connectToolStripMenuItem.Visible = false;
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
@@ -86,7 +93,7 @@
             // historicDataToolStripMenuItem
             // 
             this.historicDataToolStripMenuItem.Name = "historicDataToolStripMenuItem";
-            this.historicDataToolStripMenuItem.Size = new System.Drawing.Size(170, 36);
+            this.historicDataToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.historicDataToolStripMenuItem.Text = "Historic Data";
             this.historicDataToolStripMenuItem.Visible = false;
             this.historicDataToolStripMenuItem.Click += new System.EventHandler(this.historicDataToolStripMenuItem_Click);
@@ -94,7 +101,7 @@
             // buscadorDeArbitrajesToolStripMenuItem
             // 
             this.buscadorDeArbitrajesToolStripMenuItem.Name = "buscadorDeArbitrajesToolStripMenuItem";
-            this.buscadorDeArbitrajesToolStripMenuItem.Size = new System.Drawing.Size(198, 36);
+            this.buscadorDeArbitrajesToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.buscadorDeArbitrajesToolStripMenuItem.Text = "Arbitrajes Dolar";
             this.buscadorDeArbitrajesToolStripMenuItem.Click += new System.EventHandler(this.buscadorDeArbitrajesToolStripMenuItem_Click);
             // 
@@ -106,35 +113,35 @@
             this.compraCCLToolStripMenuItem,
             this.ventaCCLToolStripMenuItem});
             this.dolarPricesToolStripMenuItem.Name = "dolarPricesToolStripMenuItem";
-            this.dolarPricesToolStripMenuItem.Size = new System.Drawing.Size(159, 36);
+            this.dolarPricesToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.dolarPricesToolStripMenuItem.Text = "Dolar Prices";
             this.dolarPricesToolStripMenuItem.Click += new System.EventHandler(this.dolarPricesToolStripMenuItem_Click);
             // 
             // compraMEPToolStripMenuItem
             // 
             this.compraMEPToolStripMenuItem.Name = "compraMEPToolStripMenuItem";
-            this.compraMEPToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.compraMEPToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.compraMEPToolStripMenuItem.Text = "Compra MEP";
             this.compraMEPToolStripMenuItem.Click += new System.EventHandler(this.compraMEPToolStripMenuItem_Click);
             // 
             // ventaMEPToolStripMenuItem
             // 
             this.ventaMEPToolStripMenuItem.Name = "ventaMEPToolStripMenuItem";
-            this.ventaMEPToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.ventaMEPToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.ventaMEPToolStripMenuItem.Text = "Venta MEP";
             this.ventaMEPToolStripMenuItem.Click += new System.EventHandler(this.ventaMEPToolStripMenuItem_Click);
             // 
             // compraCCLToolStripMenuItem
             // 
             this.compraCCLToolStripMenuItem.Name = "compraCCLToolStripMenuItem";
-            this.compraCCLToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.compraCCLToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.compraCCLToolStripMenuItem.Text = "Compra CCL";
             this.compraCCLToolStripMenuItem.Click += new System.EventHandler(this.compraCCLToolStripMenuItem_Click);
             // 
             // ventaCCLToolStripMenuItem
             // 
             this.ventaCCLToolStripMenuItem.Name = "ventaCCLToolStripMenuItem";
-            this.ventaCCLToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.ventaCCLToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.ventaCCLToolStripMenuItem.Text = "Venta CCL";
             this.ventaCCLToolStripMenuItem.Click += new System.EventHandler(this.ventaCCLToolStripMenuItem_Click);
             // 
@@ -143,31 +150,74 @@
             this.marketDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmbInstruments});
             this.marketDataToolStripMenuItem.Name = "marketDataToolStripMenuItem";
-            this.marketDataToolStripMenuItem.Size = new System.Drawing.Size(158, 36);
+            this.marketDataToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.marketDataToolStripMenuItem.Text = "MarketData";
             this.marketDataToolStripMenuItem.Visible = false;
             // 
             // cmbInstruments
             // 
-            this.cmbInstruments.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbInstruments.Name = "cmbInstruments";
-            this.cmbInstruments.Size = new System.Drawing.Size(121, 40);
+            this.cmbInstruments.Size = new System.Drawing.Size(121, 23);
             this.cmbInstruments.SelectedIndexChanged += new System.EventHandler(this.cmbInstruments_SelectedIndexChanged);
             // 
             // buscadorArbitrajesSimplesToolStripMenuItem
             // 
             this.buscadorArbitrajesSimplesToolStripMenuItem.Name = "buscadorArbitrajesSimplesToolStripMenuItem";
-            this.buscadorArbitrajesSimplesToolStripMenuItem.Size = new System.Drawing.Size(231, 36);
+            this.buscadorArbitrajesSimplesToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
             this.buscadorArbitrajesSimplesToolStripMenuItem.Text = "Arbitrajes de Plazo";
             this.buscadorArbitrajesSimplesToolStripMenuItem.Click += new System.EventHandler(this.buscadorArbitrajesSimplesToolStripMenuItem_Click);
             // 
             // refreshDataToolStripMenuItem
             // 
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
-            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(169, 36);
+            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
             this.refreshDataToolStripMenuItem.Visible = false;
             this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.instrumentosParaArbitrajeToolStripMenuItem,
+            this.accionesCEDEARsToolStripMenuItem,
+            this.letrasToolStripMenuItem,
+            this.tickersDCToolStripMenuItem});
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // instrumentosParaArbitrajeToolStripMenuItem
+            // 
+            this.instrumentosParaArbitrajeToolStripMenuItem.Name = "instrumentosParaArbitrajeToolStripMenuItem";
+            this.instrumentosParaArbitrajeToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.instrumentosParaArbitrajeToolStripMenuItem.Text = "Instrumentos a monitorear";
+            this.instrumentosParaArbitrajeToolStripMenuItem.Click += new System.EventHandler(this.instrumentosParaArbitrajeToolStripMenuItem_Click);
+            // 
+            // accionesCEDEARsToolStripMenuItem
+            // 
+            this.accionesCEDEARsToolStripMenuItem.Name = "accionesCEDEARsToolStripMenuItem";
+            this.accionesCEDEARsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.accionesCEDEARsToolStripMenuItem.Text = "Acciones && CEDEARs";
+            this.accionesCEDEARsToolStripMenuItem.Click += new System.EventHandler(this.accionesCEDEARsToolStripMenuItem_Click);
+            // 
+            // letrasToolStripMenuItem
+            // 
+            this.letrasToolStripMenuItem.Name = "letrasToolStripMenuItem";
+            this.letrasToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.letrasToolStripMenuItem.Text = "Letras";
+            this.letrasToolStripMenuItem.Click += new System.EventHandler(this.letrasToolStripMenuItem_Click);
+            // 
+            // tickersDCToolStripMenuItem
+            // 
+            this.tickersDCToolStripMenuItem.Name = "tickersDCToolStripMenuItem";
+            this.tickersDCToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.tickersDCToolStripMenuItem.Text = "Excepciones de instrumentos $,D,C";
+            this.tickersDCToolStripMenuItem.Click += new System.EventHandler(this.tickersDCToolStripMenuItem_Click);
             // 
             // tmrConnection
             // 
@@ -176,14 +226,13 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 866);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmMain";
             this.Text = "Arbitrador de Peronia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -212,6 +261,12 @@
         private System.Windows.Forms.ToolStripMenuItem ventaMEPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compraCCLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaCCLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem instrumentosParaArbitrajeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accionesCEDEARsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem letrasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tickersDCToolStripMenuItem;
     }
 }
 
