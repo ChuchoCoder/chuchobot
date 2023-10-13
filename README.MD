@@ -57,50 +57,13 @@ Para obtener un P&L correcto, es necesario configurar estos valores en los campo
 
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
-1. Editar archivo `ChuchoBot.exe.config`
-2. Buscar setting `ArbitrationTickers` y agregar o quitar elementos de la lista de instrumentos (Ejemplo: agregar `<string>GGAL</string>` para la acción de Galicia)
-```xml
-<setting name="ArbitrationTickers" serializeAs="Xml">
-    <value>
-        <ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <string>AL29</string>
-        <string>AL30</string>
-        <string>AL35</string>
-        <string>AE38</string>
-        <string>AL41</string>
-        <string>AY24</string>
-        <string>GD29</string>
-        <string>GD30</string>
-        <string>GD35</string>
-        <string>GD38</string>
-        <string>GD41</string>
-        <string>GD46</string>
-        <string>GOLD</string>
-        <string>AAPL</string>
-        <string>AMZN</string>
-        <string>BABA</string>
-        <string>BIDU</string>
-        <string>BRKB</string>
-        <string>DISN</string>
-        <string>KO</string>
-        <string>MELI</string>
-        <string>MRK</string>
-        <string>MSFT</string>
-        <string>NVDA</string>
-        <string>PBR</string>
-        <string>TSLA</string>
-        <string>QCOM</string>
-        <string>XOM</string>
-        <string>DIA</string>
-        <string>EEM</string>
-        <string>XLE</string>
-        <string>QQQ</string>
-        <string>S31O3</string>
-        <string>X18O3</string>
-        </ArrayOfString>
-    </value>
-</setting>
-```
+1. Ir a `Configuración` => `Instrumentos a monitorear`
+
+    ![Configuracion](docs/screenshots/Configuracion.png)
+
+2. Agregar o quitar instrumentos a la lista (1 instrumento por linea). **Ejemplo**: Agregar `GGAL` para monitorear la acción de Galicia.
+
+    ![Instrumentos a Monitorear](docs/screenshots/InstrumentosMonitorear.png)
 
 ## ¿Puedo utilizar la aplicación si no tengo acceso a Matriz?
 
