@@ -1,13 +1,8 @@
 ﻿using Primary.Data;
-using Primary.WebSockets;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,8 +29,10 @@ namespace Primary.WinFormsApp
                 //frmArbitrationAnalyzer.WindowState = FormWindowState.Maximized;
                 //frmArbitrationAnalyzer.Show();
 
-                var frmSettlementAnalyzer = new FrmSettlementTermsAnalyzer();
-                frmSettlementAnalyzer.WindowState = FormWindowState.Maximized;
+                var frmSettlementAnalyzer = new FrmSettlementTermsAnalyzer
+                {
+                    WindowState = FormWindowState.Maximized
+                };
                 frmSettlementAnalyzer.Show();
             }
         }
@@ -46,15 +43,15 @@ namespace Primary.WinFormsApp
 
             if (login.ShowDialog() == DialogResult.OK)
             {
-                var text = this.Text;
-                this.Text = "Login user...";
+                var text = Text;
+                Text = "Login user...";
                 Refresh();
                 Argentina.Data.Init(login.BaseUrl);
                 var success = await Argentina.Data.Api.Login(login.UserName, login.Password);
 
                 if (success == false)
                 {
-                    MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
+                    _ = MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
                     return await Login();
                 }
                 else
@@ -64,23 +61,23 @@ namespace Primary.WinFormsApp
                     Properties.Settings.Default.Password = login.Password;
                     Properties.Settings.Default.Save();
 
-                    this.Text = "Initiliazing Data...";
+                    Text = "Initiliazing Data...";
                     Refresh();
                     await Argentina.Data.Init();
 
-                    this.Text = "Initiliazing Watchlist...";
+                    Text = "Initiliazing Watchlist...";
                     Refresh();
 
                     foreach (var item in Argentina.Data.AllInstruments.OrderBy(x => x.InstrumentId.SymbolWithoutPrefix()))
                     {
-                        cmbInstruments.Items.Add(item);
+                        _ = cmbInstruments.Items.Add(item);
                     }
 
                     WatchInstrumentsWithWebSocket();
                     //backgroundTasks.AddRange(Argentina.Data.WatchWithRestApi(_watchedInstruments));
                     tmrConnection.Enabled = true;
                 }
-                this.Text = text;
+                Text = text;
                 return true;
             }
             return false;
@@ -116,7 +113,7 @@ namespace Primary.WinFormsApp
 
             var bonds = arbitration.Concat(owned).Distinct();
 
-            this.watchList = new List<string>();
+            watchList = new List<string>();
             foreach (var item in bonds)
             {
                 if (item.ContainsMultipleTickers())
@@ -136,7 +133,7 @@ namespace Primary.WinFormsApp
             }
 
             // Caucion
-            for (int i = 1; i < 10; i++)
+            for (var i = 1; i < 10; i++)
             {
                 var caucionTicker = Settlement.GetCaucionPesosTicker(i);
                 var caucionInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucionTicker);
@@ -150,17 +147,12 @@ namespace Primary.WinFormsApp
 
         private bool ShouldWatch(InstrumentDetail instrument)
         {
-            if (watchList.Contains(instrument.InstrumentId.Symbol))
-            {
-                return true;
-            }
-
-            return false;
+            return watchList.Contains(instrument.InstrumentId.Symbol);
         }
 
         private async void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            await Login();
+            _ = await Login();
         }
 
         private void historicDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,7 +185,7 @@ namespace Primary.WinFormsApp
 
         private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Argentina.Data.RefreshMarketData(_watchedInstruments).ToArray();
+            _ = Argentina.Data.RefreshMarketData(_watchedInstruments).ToArray();
         }
 
         private void buscadorArbitrajesSimplesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,36 +199,40 @@ namespace Primary.WinFormsApp
         {
             var dif = DateTime.Now - _lastUpdate;
 
-            if (dif.TotalSeconds < 10)
+            var connected = dif.TotalSeconds < 15;
+
+            if (connected)
             {
-                this.Icon = Properties.Resources.green_wifi;
-                this.Text = $"Connected - Last WebSocket Message: {_lastUpdate:HH:mm:ss} {dif.TotalSeconds:#0} seconds ago";
+                Icon = Properties.Resources.green_wifi;
+                Text = "Chucho Bot 🤖";
             }
             else
             {
-                this.Icon = Properties.Resources.red_wifi;
-                this.Text = $"DISCONNECTED - Last WebSocket Message: {_lastUpdate:HH:mm:ss} {dif.TotalSeconds:#0} seconds ago";
+                Icon = Properties.Resources.red_wifi;
+                Text = $"Chucho Bot 🤖 - Desconectado (último mensaje: hace {dif.TotalSeconds:#0} segundos)";
             }
 
             foreach (Form openedForm in Application.OpenForms)
             {
-                openedForm.Icon = this.Icon;
+                if (!connected)
+                {
+                    openedForm.Icon = Icon;
+                }
             }
         }
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (primaryWebSocket != null)
-            {
-                primaryWebSocket.Dispose();
-            }
+            primaryWebSocket?.Dispose();
             primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
         }
 
         private void compraMEPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice();
-            frm.Text = "Compra Dolar MEP";
+            var frm = new FrmDolarPrice
+            {
+                Text = "Compra Dolar MEP"
+            };
             frm.Setup(x => x.GetDolarMEPTrades(), false);
             frm.Show();
 
@@ -244,8 +240,10 @@ namespace Primary.WinFormsApp
 
         private void ventaMEPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice();
-            frm.Text = "Venta Dolar MEP";
+            var frm = new FrmDolarPrice
+            {
+                Text = "Venta Dolar MEP"
+            };
             frm.Setup(x => x.GetDolarMEPTrades(), true);
             frm.Show();
 
@@ -253,8 +251,10 @@ namespace Primary.WinFormsApp
 
         private void compraCCLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice();
-            frm.Text = "Compra Dolar CCL";
+            var frm = new FrmDolarPrice
+            {
+                Text = "Compra Dolar CCL"
+            };
             frm.Setup(x => x.GetDolarCableTrades(), false);
             frm.Show();
 
@@ -262,8 +262,10 @@ namespace Primary.WinFormsApp
 
         private void ventaCCLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice();
-            frm.Text = "Venta Dolar CCL";
+            var frm = new FrmDolarPrice
+            {
+                Text = "Venta Dolar CCL"
+            };
             frm.Setup(x => x.GetDolarCableTrades(), true);
             frm.Show();
 
@@ -271,9 +273,11 @@ namespace Primary.WinFormsApp
 
         private void instrumentosParaArbitrajeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Configuration.FrmStringCollectionEditor();
-            frm.Text = instrumentosParaArbitrajeToolStripMenuItem.Text;
-            frm.Setting = Properties.Settings.Default.ArbitrationTickers;
+            var frm = new Configuration.FrmStringCollectionEditor
+            {
+                Text = instrumentosParaArbitrajeToolStripMenuItem.Text,
+                Setting = Properties.Settings.Default.ArbitrationTickers
+            };
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -283,27 +287,33 @@ namespace Primary.WinFormsApp
 
         private void tickersDCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Configuration.FrmStringCollectionEditor();
-            frm.Text = tickersDCToolStripMenuItem.Text;
-            frm.Setting = Properties.Settings.Default.TickersDC;
-            frm.ShowDialog();
+            var frm = new Configuration.FrmStringCollectionEditor
+            {
+                Text = tickersDCToolStripMenuItem.Text,
+                Setting = Properties.Settings.Default.TickersDC
+            };
+            _ = frm.ShowDialog();
 
         }
 
         private void accionesCEDEARsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Configuration.FrmStringCollectionEditor();
-            frm.Text = accionesCEDEARsToolStripMenuItem.Text;
-            frm.Setting = Properties.Settings.Default.AccionesCEDEARs;
-            frm.ShowDialog();
+            var frm = new Configuration.FrmStringCollectionEditor
+            {
+                Text = accionesCEDEARsToolStripMenuItem.Text,
+                Setting = Properties.Settings.Default.AccionesCEDEARs
+            };
+            _ = frm.ShowDialog();
         }
 
         private void letrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Configuration.FrmStringCollectionEditor();
-            frm.Text = letrasToolStripMenuItem.Text;
-            frm.Setting = Properties.Settings.Default.Letras;
-            frm.ShowDialog();
+            var frm = new Configuration.FrmStringCollectionEditor
+            {
+                Text = letrasToolStripMenuItem.Text,
+                Setting = Properties.Settings.Default.Letras
+            };
+            _ = frm.ShowDialog();
 
         }
     }
