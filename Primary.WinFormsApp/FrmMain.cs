@@ -211,14 +211,6 @@ namespace Primary.WinFormsApp
                 Icon = Properties.Resources.red_wifi;
                 Text = $"Chucho Bot 🤖 - Desconectado (último mensaje: hace {dif.TotalSeconds:#0} segundos)";
             }
-
-            foreach (Form openedForm in Application.OpenForms)
-            {
-                if (!connected)
-                {
-                    openedForm.Icon = Icon;
-                }
-            }
         }
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
