@@ -370,6 +370,11 @@
             // 
             this.numTasa.DecimalPlaces = 2;
             this.numTasa.Location = new System.Drawing.Point(469, 2);
+            this.numTasa.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numTasa.Minimum = new decimal(new int[] {
             1,
             0,
