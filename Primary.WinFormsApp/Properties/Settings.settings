@@ -321,7 +321,7 @@
   &lt;string&gt;X18O3;XO3D;XO3C&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="ArbitrationTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+    <Setting Name="ArbitrationTickers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
   &lt;string&gt;AL29&lt;/string&gt;

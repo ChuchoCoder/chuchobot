@@ -85,7 +85,7 @@ namespace Primary.WinFormsApp
 
         private void WatchInstrumentsWithWebSocket()
         {
-            primaryWebSocket?.Dispose();
+            //primaryWebSocket?.Dispose();
 
             InitWatchList();
             _watchedInstruments = Argentina.Data.AllInstruments.Where(ShouldWatch).Select(x => x.InstrumentId).ToArray();
