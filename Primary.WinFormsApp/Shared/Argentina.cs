@@ -108,10 +108,17 @@ namespace Primary.WinFormsApp
         public Task WatchWithWebSocket(Instrument[] instruments)
         {
 
-            if (cancellationTokenSource != null)
+            try
             {
-                cancellationTokenSource.Cancel();
-                marketDataSocket.Dispose();
+                if (cancellationTokenSource != null)
+                {
+                    cancellationTokenSource.Cancel();
+                    marketDataSocket.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
             }
 
             cancellationTokenSource = new CancellationTokenSource();

@@ -85,8 +85,6 @@ namespace Primary.WinFormsApp
 
         private void WatchInstrumentsWithWebSocket()
         {
-            primaryWebSocket?.Dispose();
-
             InitWatchList();
             _watchedInstruments = Argentina.Data.AllInstruments.Where(ShouldWatch).Select(x => x.InstrumentId).ToArray();
 
@@ -215,7 +213,6 @@ namespace Primary.WinFormsApp
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            primaryWebSocket?.Dispose();
             primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
         }
 
