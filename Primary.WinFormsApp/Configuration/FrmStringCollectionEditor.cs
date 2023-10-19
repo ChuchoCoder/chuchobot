@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,51 @@ namespace Primary.WinFormsApp.Configuration
             }
             txtSetting.SelectionStart = 0;
             txtSetting.SelectionLength = 0;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            // Crear una instancia de OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            // Configurar el OpenFileDialog
+            openFileDialog.Filter = "Archivos CSV (*.csv)|*.csv";
+            openFileDialog.Title = "Selecciona un archivo CSV";
+
+            // Mostrar el cuadro de diálogo
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                // Verificar si el archivo existe
+                if (File.Exists(filePath))
+                {
+                    try
+                    {
+                        // Leer el contenido del archivo CSV
+                        string[] lines = File.ReadAllLines(filePath);
+                        txtSetting.Text = "";
+                        foreach (string line in lines)
+                        {
+                            txtSetting.Text += line + Environment.NewLine;
+                        }
+                        txtSetting.SelectionStart = 0;
+                        txtSetting.SelectionLength = 0;
+                    }
+                    catch (IOException exc)
+                    {
+                        MessageBox.Show("Error al leer el archivo: " + exc.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El archivo seleccionado no existe.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se seleccionó ningún archivo.");
+            }
         }
     }
 }
