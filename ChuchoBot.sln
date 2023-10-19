@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.MD = README.MD
+		ArbitrationTickers.csv = ArbitrationTickers.csv
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primary", "Primary\Primary.csproj", "{93F50E83-D1EA-4537-BD12-B9DED3203341}"
