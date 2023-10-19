@@ -32,7 +32,7 @@
             this.txtSetting = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnLoadFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSetting
@@ -40,11 +40,11 @@
             this.txtSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSetting.Location = new System.Drawing.Point(12, 35);
+            this.txtSetting.Location = new System.Drawing.Point(12, 12);
             this.txtSetting.Multiline = true;
             this.txtSetting.Name = "txtSetting";
             this.txtSetting.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSetting.Size = new System.Drawing.Size(545, 479);
+            this.txtSetting.Size = new System.Drawing.Size(545, 502);
             this.txtSetting.TabIndex = 0;
             // 
             // btnSave
@@ -71,22 +71,23 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button2
+            // btnLoadFile
             // 
-            this.button2.Location = new System.Drawing.Point(12, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Subir Archivo";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnLoadFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLoadFile.Location = new System.Drawing.Point(12, 520);
+            this.btnLoadFile.Name = "btnLoadFile";
+            this.btnLoadFile.Size = new System.Drawing.Size(139, 23);
+            this.btnLoadFile.TabIndex = 4;
+            this.btnLoadFile.Text = "Abrir Archivo";
+            this.btnLoadFile.UseVisualStyleBackColor = true;
+            this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
             // 
             // FrmStringCollectionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 555);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnLoadFile);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtSetting);
@@ -105,6 +106,6 @@
         private System.Windows.Forms.TextBox txtSetting;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnLoadFile;
     }
 }

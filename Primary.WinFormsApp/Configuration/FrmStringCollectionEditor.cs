@@ -46,7 +46,7 @@ namespace Primary.WinFormsApp.Configuration
             txtSetting.SelectionLength = 0;
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void btnLoadFile_Click(object sender, EventArgs e)
         {
             // Crear una instancia de OpenFileDialog
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -75,19 +75,15 @@ namespace Primary.WinFormsApp.Configuration
                         txtSetting.SelectionStart = 0;
                         txtSetting.SelectionLength = 0;
                     }
-                    catch (IOException exc)
+                    catch (IOException ex)
                     {
-                        MessageBox.Show("Error al leer el archivo: " + exc.Message);
+                        MessageBox.Show("Error al leer el archivo: " + ex.Message);
                     }
                 }
                 else
                 {
                     MessageBox.Show("El archivo seleccionado no existe.");
                 }
-            }
-            else
-            {
-                MessageBox.Show("No se seleccionó ningún archivo.");
             }
         }
     }
