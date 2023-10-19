@@ -48,6 +48,29 @@ namespace Primary.WinFormsApp
             _tokenSource = new CancellationTokenSource();
         }
 
+        Api.Position[] _positions;
+        public Api.Position[] Positions
+        {
+            get
+            {
+                if (_positions == null)
+                {
+                    _positions = Api.GetPositions().Result;
+                }
+                return _positions;
+            }
+        }
+
+        public bool CanTickerBeSelledInCI(string ticker)
+        {
+            return Positions.Any(x => x.Symbol == ticker && x.Instrument.SettlType == Api.SettlementType.CI);
+        }
+
+        public bool CanTickerBeSelledIn24H(string ticker)
+        {
+            return Positions.Any(x => x.Symbol == ticker && x.Instrument.SettlType == Api.SettlementType.T24H);
+        }
+
         public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
         {
             // convert everything to TimeSpan
