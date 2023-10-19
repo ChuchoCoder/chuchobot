@@ -191,28 +191,28 @@ namespace Primary.WinFormsApp
 
     public class SettlementTermArbitrationProcessor
     {
-        public List<DolarTradedInstrument> tradedInstruments = new List<DolarTradedInstrument>();
+        public List<DolarTradedInstrument> TradedInstruments = new List<DolarTradedInstrument>();
 
         internal void Init()
         {
-            foreach (var ownedTicker in Properties.Settings.Default.ArbitrationTickers)
+            foreach (var arbitrationTickers in Properties.Settings.Default.ArbitrationTickers)
             {
-                if (ownedTicker.ContainsMultipleTickers())
+                if (arbitrationTickers.ContainsMultipleTickers())
                 {
-                    var dolarTradedInstrument = new DolarTradedInstrument(ownedTicker.GetPesosTicker(), ownedTicker.GetDolarTicker(), ownedTicker.GetCableTicker());
-                    tradedInstruments.Add(dolarTradedInstrument);
+                    var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers.GetPesosTicker(), arbitrationTickers.GetDolarTicker(), arbitrationTickers.GetCableTicker());
+                    TradedInstruments.Add(dolarTradedInstrument);
                 }
                 else
                 {
-                    var dolarTradedInstrument = new DolarTradedInstrument(ownedTicker);
-                    tradedInstruments.Add(dolarTradedInstrument);
+                    var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers);
+                    TradedInstruments.Add(dolarTradedInstrument);
                 }
             }
         }
 
         public void RefreshData()
         {
-            foreach (var dolarTradedInstrument in tradedInstruments)
+            foreach (var dolarTradedInstrument in TradedInstruments)
             {
                 dolarTradedInstrument.RefreshData();
             }
@@ -222,7 +222,7 @@ namespace Primary.WinFormsApp
         {
             var allTrades = new List<SettlementTermTrade>();
 
-            foreach (var tradedInstrument in tradedInstruments)
+            foreach (var tradedInstrument in TradedInstruments)
             {
                 var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
                 if (trades != null && trades.Count() > 0)
