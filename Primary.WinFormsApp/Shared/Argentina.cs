@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Primary;
 using Primary.Data;
 using Primary.WebSockets;
 using System;
@@ -25,6 +26,8 @@ namespace Primary.WinFormsApp
         public event MarketDataEventHandler OnMarketData;
         public ConcurrentDictionary<string, Entries> LatestMarketData = new ConcurrentDictionary<string, Entries>();
         private CancellationTokenSource cancellationTokenSource;
+        private static TimeZoneInfo ArgentinaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Argentina Standard Time");
+        private static DateTimeOffset Now => TimeZoneInfo.ConvertTime(DateTime.Now, ArgentinaTimeZone);
 
         public Entries GetLatestOrNull(string symbol)
         {
@@ -48,12 +51,46 @@ namespace Primary.WinFormsApp
             _tokenSource = new CancellationTokenSource();
         }
 
+        public Api.Position[] Positions { get; set; }
+
+        public void RefreshPositions()
+        {
+            if (Accounts != null)
+            {
+                Positions = Api.GetPositions(Accounts).Result;
+            }
+        }
+
+        public Api.Account[] Accounts { get; set; }
+
+        public void RefreshAccounts()
+        {
+            Accounts = Api.GetAccounts().Result;
+        }
+
+        public bool CanTickerBeSelledInCI(string ticker)
+        {
+            if (Positions == null)
+                return true;
+
+            return Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI));
+        }
+
+        public bool CanTickerBeSelledIn24H(string ticker)
+        {
+            if (Positions == null)
+                return true;
+
+            return Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI || x.Instrument.SettlType == Api.SettlementType.T24H));
+        }
+
         public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
         {
             // convert everything to TimeSpan
             TimeSpan start = new TimeSpan(10, 0, 0);
             TimeSpan end = excludeAuctionPeriod ? new TimeSpan(17, 0, 0) : new TimeSpan(17, 57, 0);
-            TimeSpan now = DateTime.Now.TimeOfDay;
+            TimeSpan now = Now.TimeOfDay;
+
             // see if start comes before end
             if (start < end)
                 return start <= now && now <= end;
@@ -66,7 +103,8 @@ namespace Primary.WinFormsApp
             // convert everything to TimeSpan
             TimeSpan start = new TimeSpan(10, 0, 0);
             TimeSpan end = excludeAuctionPeriod ? new TimeSpan(16, 30, 0) : new TimeSpan(16, 27, 0);
-            TimeSpan now = DateTime.Now.TimeOfDay;
+            TimeSpan now = Now.TimeOfDay;
+
             // see if start comes before end
             if (start < end)
                 return start <= now && now <= end;

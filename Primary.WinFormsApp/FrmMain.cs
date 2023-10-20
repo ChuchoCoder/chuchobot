@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace Primary.WinFormsApp
 {
@@ -14,6 +15,8 @@ namespace Primary.WinFormsApp
         private Instrument[] _watchedInstruments;
         private DateTime _lastUpdate;
         private Task primaryWebSocket;
+        private System.Timers.Timer AccountsTimer = new System.Timers.Timer(1000);
+        private System.Timers.Timer PositionsTimer = new System.Timers.Timer(1000);
 
         public FrmMain()
         {
@@ -22,6 +25,9 @@ namespace Primary.WinFormsApp
 
         private async void FrmMain_Load(object sender, EventArgs e)
         {
+            AccountsTimer.Elapsed += tmrAccounts_Tick;
+            PositionsTimer.Elapsed += tmrPositions_Tick;
+
             if (await Login())
             {
                 //var frmArbitrationAnalyzer = new FrmArbitrationAnalyzer();
@@ -76,6 +82,7 @@ namespace Primary.WinFormsApp
                     WatchInstrumentsWithWebSocket();
                     //backgroundTasks.AddRange(Argentina.Data.WatchWithRestApi(_watchedInstruments));
                     tmrConnection.Enabled = true;
+                    AccountsTimer.Start();
                 }
                 Text = text;
                 return true;
@@ -304,6 +311,39 @@ namespace Primary.WinFormsApp
             };
             _ = frm.ShowDialog();
 
+        }
+
+        private void tmrPositions_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                PositionsTimer.Stop();
+                Argentina.Data.RefreshPositions();
+                PositionsTimer.Interval = Convert.ToInt32(TimeSpan.FromMinutes(1).TotalMilliseconds);
+                PositionsTimer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex);
+            }
+        }
+
+        private void tmrAccounts_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                AccountsTimer.Stop();
+                Argentina.Data.RefreshAccounts();
+                AccountsTimer.Interval = Convert.ToInt32(TimeSpan.FromMinutes(30).TotalMilliseconds);
+                AccountsTimer.Start();
+                PositionsTimer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex);
+            }
         }
     }
 }
