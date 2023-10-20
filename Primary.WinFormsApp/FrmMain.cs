@@ -17,6 +17,7 @@ namespace Primary.WinFormsApp
         private Task primaryWebSocket;
         private System.Timers.Timer AccountsTimer = new System.Timers.Timer(1000);
         private System.Timers.Timer PositionsTimer = new System.Timers.Timer(1000);
+        private bool LoginSuccessfull;
 
         public FrmMain()
         {
@@ -53,9 +54,9 @@ namespace Primary.WinFormsApp
                 Text = "Login user...";
                 Refresh();
                 Argentina.Data.Init(login.BaseUrl);
-                var success = await Argentina.Data.Api.Login(login.UserName, login.Password);
+                LoginSuccessfull = await Argentina.Data.Api.Login(login.UserName, login.Password);
 
-                if (success == false)
+                if (LoginSuccessfull == false)
                 {
                     _ = MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
                     return await Login();
@@ -92,12 +93,15 @@ namespace Primary.WinFormsApp
 
         private void WatchInstrumentsWithWebSocket()
         {
-            InitWatchList();
-            _watchedInstruments = Argentina.Data.AllInstruments.Where(ShouldWatch).Select(x => x.InstrumentId).ToArray();
+            if (LoginSuccessfull)
+            {
+                InitWatchList();
+                _watchedInstruments = Argentina.Data.AllInstruments.Where(ShouldWatch).Select(x => x.InstrumentId).ToArray();
 
-            Argentina.Data.OnMarketData += Data_OnMarketData;
+                Argentina.Data.OnMarketData += Data_OnMarketData;
 
-            primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
+                primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
+            }
         }
 
         private void Data_OnMarketData(Instrument instrument, Entries data)
@@ -269,15 +273,18 @@ namespace Primary.WinFormsApp
 
         private bool ValidateInstrument(string[] settings)
         {
-            foreach (var setting in settings)
+            if (Argentina.Data.AllInstruments != null)
             {
-                var tickers = setting.Split(' ', ';');
-                foreach (var ticker in tickers)
+                foreach (var setting in settings)
                 {
-                    if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
-                            {
-                        MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                    var tickers = setting.Split(' ', ';');
+                    foreach (var ticker in tickers)
+                    {
+                        if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
+                        {
+                            MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
                     }
                 }
             }
