@@ -267,12 +267,30 @@ namespace Primary.WinFormsApp
 
         }
 
+        private bool ValidateInstrument(string[] settings)
+        {
+            foreach (var setting in settings)
+            {
+                var tickers = setting.Split(' ', ';');
+                foreach (var ticker in tickers)
+                {
+                    if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
+                            {
+                        MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         private void instrumentosParaArbitrajeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Configuration.FrmStringCollectionEditor
             {
                 Text = instrumentosParaArbitrajeToolStripMenuItem.Text,
-                Setting = Properties.Settings.Default.ArbitrationTickers
+                Setting = Properties.Settings.Default.ArbitrationTickers,
+                Validator = ValidateInstrument
             };
 
             if (frm.ShowDialog() == DialogResult.OK)
@@ -286,7 +304,8 @@ namespace Primary.WinFormsApp
             var frm = new Configuration.FrmStringCollectionEditor
             {
                 Text = tickersDCToolStripMenuItem.Text,
-                Setting = Properties.Settings.Default.TickersDC
+                Setting = Properties.Settings.Default.TickersDC,
+                Validator = ValidateInstrument
             };
             _ = frm.ShowDialog();
 
@@ -307,7 +326,8 @@ namespace Primary.WinFormsApp
             var frm = new Configuration.FrmStringCollectionEditor
             {
                 Text = letrasToolStripMenuItem.Text,
-                Setting = Properties.Settings.Default.Letras
+                Setting = Properties.Settings.Default.Letras,
+                Validator = ValidateInstrument
             };
             _ = frm.ShowDialog();
 

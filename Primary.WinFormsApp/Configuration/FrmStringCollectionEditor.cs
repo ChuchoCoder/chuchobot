@@ -16,6 +16,7 @@ namespace Primary.WinFormsApp.Configuration
     public partial class FrmStringCollectionEditor : Form
     {
         public StringCollection Setting { get; set; }
+        public Func<string[], bool> Validator { get; set; }
 
         public FrmStringCollectionEditor()
         {
@@ -25,10 +26,18 @@ namespace Primary.WinFormsApp.Configuration
         private void btnSave_Click(object sender, EventArgs e)
         {
             var settings = txtSetting.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            Setting.Clear();
-            Setting.AddRange(settings);
-            Properties.Settings.Default.Save();
-            Close();
+
+            if (Validator == null || Validator(settings))
+            {
+                Setting.Clear();
+                Setting.AddRange(settings);
+                Properties.Settings.Default.Save();
+                Close();
+            }
+            else
+            {
+                this.DialogResult = DialogResult.None;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
