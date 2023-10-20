@@ -20,6 +20,14 @@ namespace Primary.WinFormsApp
         {
             try
             {
+                timer1.Enabled = false;
+                numComision.Value = Properties.Settings.Default.Comision;
+                // Deshabilitar si no existen posiciones
+                chkOnlyShowTradesWithTickersOwned.Enabled = Argentina.Data.Positions != null;
+                if (chkOnlyShowTradesWithTickersOwned.Enabled == false)
+                {
+                    chkOnlyShowTradesWithTickersOwned.Checked = false;
+                }
                 _processor.RefreshData();
                 var diasLiq24H = ((int)numDiasLiq24H.Value);
                 var diasLiq48H = ((int)numDiasLiq48H.Value);
@@ -42,7 +50,7 @@ namespace Primary.WinFormsApp
                 }
 
 
-                var trades = _processor.GetSettlementTermTrades(numTasa.Value, diasLiq24H, diasLiq48H);
+                var trades = _processor.GetSettlementTermTrades(numTasa.Value, diasLiq24H, diasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
 
                 if (!chkDolarD.Checked)
                 {
@@ -60,7 +68,12 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex);
+            }
+            finally
+            {
+                timer1.Enabled = true;
             }
         }
 

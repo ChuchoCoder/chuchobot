@@ -545,10 +545,8 @@ public class Api
         public decimal OriginalSellSize { get; set; }
     }
 
-    public async Task<Position[]> GetPositions()
+    public async Task<Position[]> GetPositions(Account[] accounts)
     {
-        var accounts = await GetAccounts();
-
         var allPositions = new List<Position>();
         foreach (var account in accounts)
         {
