@@ -49,18 +49,7 @@ namespace Primary.WinFormsApp
                     }
                 }
 
-
-                var trades = _processor.GetSettlementTermTrades(numTasa.Value, diasLiq24H, diasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
-
-                if (!chkDolarD.Checked)
-                {
-                    trades = trades.Where(x => x.Buy.Instrument.Currency != "USD").ToList();
-                }
-
-                if (!chkPesos.Checked)
-                {
-                    trades = trades.Where(x => x.Buy.Instrument.Currency != "ARS").ToList();
-                }
+                var trades = _processor.GetSettlementTermTradesPesos(numTasa.Value, diasLiq24H, diasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
 
                 _arbitrationDataTable.Refresh(trades, diasLiq24H, diasLiq48H, numComision.Value, numComisionTomadora.Value, numComisionColocadora.Value, numTasa.Value, chkOnlyProfitableTrades.Checked);
 
