@@ -1,6 +1,7 @@
 ﻿using Primary.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Primary.WinFormsApp
 {
@@ -32,6 +33,12 @@ namespace Primary.WinFormsApp
         public static bool Is48H(this InstrumentDetail instrumentDetail)
         {
             return instrumentDetail.InstrumentId.Symbol.EndsWith($" - {Settlement48H}");
+        }
+
+        public static string GetTicker(this string symbol)
+        {
+            var split = symbol.Split('-');
+            return split[split.Length - 2];
         }
 
         public static int GetSettlementDays(this InstrumentDetail instrumentDetail, int diasLiq24H, int diasLiq48H)

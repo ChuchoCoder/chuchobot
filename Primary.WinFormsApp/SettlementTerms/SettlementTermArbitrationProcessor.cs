@@ -218,21 +218,21 @@ namespace Primary.WinFormsApp
             }
         }
 
-        public List<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, int diasLiq48H)
+        public List<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
         {
             var allTrades = new List<SettlementTermTrade>();
 
             foreach (var tradedInstrument in TradedInstruments)
             {
-                var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
+                var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
                 if (trades != null && trades.Count() > 0)
                     allTrades.AddRange(trades);
 
-                var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
+                var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
                 if (dolarTrades != null && dolarTrades.Count() > 0)
                     allTrades.AddRange(dolarTrades);
 
-                var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
+                var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
                 if (cableTrades != null && cableTrades.Count() > 0)
                     allTrades.AddRange(cableTrades);
             }

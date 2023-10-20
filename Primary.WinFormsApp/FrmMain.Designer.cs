@@ -255,7 +255,6 @@
         private System.Windows.Forms.ToolStripMenuItem dolarPricesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscadorArbitrajesSimplesToolStripMenuItem;
-        private System.Windows.Forms.Timer tmrConnection;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compraMEPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaMEPToolStripMenuItem;
@@ -267,6 +266,7 @@
         private System.Windows.Forms.ToolStripMenuItem accionesCEDEARsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem letrasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tickersDCToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrConnection;
     }
 }
 

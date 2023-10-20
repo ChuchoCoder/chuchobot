@@ -75,6 +75,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numComisionColocadora = new System.Windows.Forms.NumericUpDown();
             this.chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
+            this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numComisionTomadora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBuySellSize)).BeginInit();
@@ -112,7 +113,7 @@
             this.ArbitrationCompra,
             this.DolarCompraLast,
             this.DolarVentaLast});
-            this.grdArbitration.Location = new System.Drawing.Point(12, 54);
+            this.grdArbitration.Location = new System.Drawing.Point(12, 74);
             this.grdArbitration.Name = "grdArbitration";
             this.grdArbitration.ReadOnly = true;
             this.grdArbitration.RowHeadersVisible = false;
@@ -121,7 +122,7 @@
             this.grdArbitration.ShowCellErrors = false;
             this.grdArbitration.ShowEditingIcon = false;
             this.grdArbitration.ShowRowErrors = false;
-            this.grdArbitration.Size = new System.Drawing.Size(1374, 384);
+            this.grdArbitration.Size = new System.Drawing.Size(1374, 364);
             this.grdArbitration.TabIndex = 2;
             this.grdArbitration.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArbitration_CellContentClick);
             this.grdArbitration.DoubleClick += new System.EventHandler(this.grdArbitration_DoubleClick);
@@ -511,18 +512,30 @@
             // 
             // chkOnlyProfitableTrades
             // 
-            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(763, 29);
+            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(12, 48);
             this.chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
             this.chkOnlyProfitableTrades.Size = new System.Drawing.Size(208, 19);
             this.chkOnlyProfitableTrades.TabIndex = 24;
             this.chkOnlyProfitableTrades.Text = "Ver sólo arbitrajes con profit";
             this.chkOnlyProfitableTrades.UseVisualStyleBackColor = true;
             // 
+            // chkOnlyShowTradesWithTickersOwned
+            // 
+            this.chkOnlyShowTradesWithTickersOwned.Checked = true;
+            this.chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(261, 49);
+            this.chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
+            this.chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(405, 19);
+            this.chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
+            this.chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
+            this.chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
+            // 
             // FrmSettlementTermsAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1398, 450);
+            this.Controls.Add(this.chkOnlyShowTradesWithTickersOwned);
             this.Controls.Add(this.chkOnlyProfitableTrades);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numComisionColocadora);
@@ -595,5 +608,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DolarCompraLast;
         private System.Windows.Forms.DataGridViewTextBoxColumn DolarVentaLast;
         private System.Windows.Forms.CheckBox chkOnlyProfitableTrades;
+        private System.Windows.Forms.CheckBox chkOnlyShowTradesWithTickersOwned;
     }
 }

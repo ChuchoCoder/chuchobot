@@ -42,9 +42,10 @@ namespace Primary.WinFormsApp
             TCI.RefreshData();
         }
 
-        public IEnumerable<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, int diasLiq48H)
+        public IEnumerable<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
         {
-            if (Argentina.Data.CanTickerBeSelledIn24H(T24.Instrument.InstrumentId.Symbol))
+            if (onlyShowTradesWithTickersOwned == false || 
+                (T24?.Instrument?.InstrumentId != null && Argentina.Data.CanTickerBeSelledIn24H(T24.Instrument.InstrumentId.Symbol.GetTicker())))
             {
                 var t48_24 = GetSettlementTermTrade(T48, T24, tasaCaucion, diasLiq24H, diasLiq48H);
                 if (t48_24 != null)
@@ -57,7 +58,8 @@ namespace Primary.WinFormsApp
 
             if (Argentina.IsCIOpen())
             {
-                if (Argentina.Data.CanTickerBeSelledInCI(TCI.Instrument.InstrumentId.Symbol))
+                if (onlyShowTradesWithTickersOwned == false || 
+                    (TCI?.Instrument?.InstrumentId != null &&  Argentina.Data.CanTickerBeSelledInCI(TCI.Instrument.InstrumentId.Symbol.GetTicker())))
                 {
                     var t48_CI = GetSettlementTermTrade(T48, TCI, tasaCaucion, diasLiq24H, diasLiq48H);
                     if (t48_CI != null)
