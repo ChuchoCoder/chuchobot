@@ -191,48 +191,48 @@ namespace Primary.WinFormsApp
 
     public class SettlementTermArbitrationProcessor
     {
-        public List<DolarTradedInstrument> tradedInstruments = new List<DolarTradedInstrument>();
+        public List<DolarTradedInstrument> TradedInstruments = new List<DolarTradedInstrument>();
 
         internal void Init()
         {
-            foreach (var ownedTicker in Properties.Settings.Default.ArbitrationTickers)
+            foreach (var arbitrationTickers in Properties.Settings.Default.ArbitrationTickers)
             {
-                if (ownedTicker.ContainsMultipleTickers())
+                if (arbitrationTickers.ContainsMultipleTickers())
                 {
-                    var dolarTradedInstrument = new DolarTradedInstrument(ownedTicker.GetPesosTicker(), ownedTicker.GetDolarTicker(), ownedTicker.GetCableTicker());
-                    tradedInstruments.Add(dolarTradedInstrument);
+                    var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers.GetPesosTicker(), arbitrationTickers.GetDolarTicker(), arbitrationTickers.GetCableTicker());
+                    TradedInstruments.Add(dolarTradedInstrument);
                 }
                 else
                 {
-                    var dolarTradedInstrument = new DolarTradedInstrument(ownedTicker);
-                    tradedInstruments.Add(dolarTradedInstrument);
+                    var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers);
+                    TradedInstruments.Add(dolarTradedInstrument);
                 }
             }
         }
 
         public void RefreshData()
         {
-            foreach (var dolarTradedInstrument in tradedInstruments)
+            foreach (var dolarTradedInstrument in TradedInstruments)
             {
                 dolarTradedInstrument.RefreshData();
             }
         }
 
-        public List<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, int diasLiq48H)
+        public List<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
         {
             var allTrades = new List<SettlementTermTrade>();
 
-            foreach (var tradedInstrument in tradedInstruments)
+            foreach (var tradedInstrument in TradedInstruments)
             {
-                var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
+                var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
                 if (trades != null && trades.Count() > 0)
                     allTrades.AddRange(trades);
 
-                var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
+                var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
                 if (dolarTrades != null && dolarTrades.Count() > 0)
                     allTrades.AddRange(dolarTrades);
 
-                var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H);
+                var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
                 if (cableTrades != null && cableTrades.Count() > 0)
                     allTrades.AddRange(cableTrades);
             }

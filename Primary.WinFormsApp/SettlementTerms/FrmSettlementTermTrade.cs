@@ -24,8 +24,11 @@ namespace Primary.WinFormsApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Stop();
             if (_trade == null)
                 return;
+
+            numComision.Value = Properties.Settings.Default.Comision;
 
             VentaBidsOffers.LoadData(_trade.Sell.Data);
 
@@ -40,6 +43,8 @@ namespace Primary.WinFormsApp
             {
                 numCompraPrice.Value = _trade.Buy.Data.GetTopOfferPrice();
             }
+
+            timer1.Start();
         }
 
         internal void Init(SettlementTermTrade trade)
@@ -182,6 +187,8 @@ namespace Primary.WinFormsApp
                 lblBuyPriceTarget.Text = "Px Arbitrado: " + neto.BuyPriceTarget.ToCurrency();
                 lblSellPriceTarget.Text = "Px Arbitrado: " + neto.SellPriceTarget.ToCurrency();
 
+                var tipoCaucion = neto.DiasCaucion > 0 ? "Tomadora" : "Colocadora";
+                this.groupBox1.Text = "Caución " + tipoCaucion;
                 lblDiasCaucion.Text = "Días Caución: " + neto.DiasCaucion.ToString();
                 lblMontoCaucion.Text = "Monto Caución: " + neto.TotalACaucionar.ToCurrency();
                 lblInteresNeto.Text = "Interés Neto: " + neto.InteresNeto.ToCurrency();
