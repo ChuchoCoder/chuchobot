@@ -60,14 +60,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.numComisionTomadora = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numBuySellSize = new System.Windows.Forms.NumericUpDown();
             this.numComision = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.numTasa = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.chkDolarD = new System.Windows.Forms.CheckBox();
-            this.chkPesos = new System.Windows.Forms.CheckBox();
             this.numDiasLiq24H = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -78,7 +74,6 @@
             this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numComisionTomadora)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBuySellSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numComision)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTasa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDiasLiq24H)).BeginInit();
@@ -113,7 +108,7 @@
             this.ArbitrationCompra,
             this.DolarCompraLast,
             this.DolarVentaLast});
-            this.grdArbitration.Location = new System.Drawing.Point(12, 74);
+            this.grdArbitration.Location = new System.Drawing.Point(12, 64);
             this.grdArbitration.Name = "grdArbitration";
             this.grdArbitration.ReadOnly = true;
             this.grdArbitration.RowHeadersVisible = false;
@@ -122,7 +117,7 @@
             this.grdArbitration.ShowCellErrors = false;
             this.grdArbitration.ShowEditingIcon = false;
             this.grdArbitration.ShowRowErrors = false;
-            this.grdArbitration.Size = new System.Drawing.Size(1374, 364);
+            this.grdArbitration.Size = new System.Drawing.Size(1374, 374);
             this.grdArbitration.TabIndex = 2;
             this.grdArbitration.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArbitration_CellContentClick);
             this.grdArbitration.DoubleClick += new System.EventHandler(this.grdArbitration_DoubleClick);
@@ -278,7 +273,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(351, 33);
+            this.label2.Location = new System.Drawing.Point(351, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 7;
@@ -287,7 +282,7 @@
             // numComisionTomadora
             // 
             this.numComisionTomadora.DecimalPlaces = 3;
-            this.numComisionTomadora.Location = new System.Drawing.Point(264, 2);
+            this.numComisionTomadora.Location = new System.Drawing.Point(910, 12);
             this.numComisionTomadora.Minimum = new decimal(new int[] {
             1,
             0,
@@ -304,44 +299,10 @@
             65536});
             this.numComisionTomadora.ValueChanged += new System.EventHandler(this.numComisionTomadora_ValueChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(572, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Nominales a usar: ";
-            this.label3.Visible = false;
-            // 
-            // numBuySellSize
-            // 
-            this.numBuySellSize.Location = new System.Drawing.Point(672, 28);
-            this.numBuySellSize.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numBuySellSize.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numBuySellSize.Name = "numBuySellSize";
-            this.numBuySellSize.Size = new System.Drawing.Size(82, 20);
-            this.numBuySellSize.TabIndex = 8;
-            this.numBuySellSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numBuySellSize.Value = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numBuySellSize.Visible = false;
-            // 
             // numComision
             // 
             this.numComision.DecimalPlaces = 2;
-            this.numComision.Location = new System.Drawing.Point(469, 28);
+            this.numComision.Location = new System.Drawing.Point(469, 38);
             this.numComision.Minimum = new decimal(new int[] {
             1,
             0,
@@ -361,7 +322,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(122, 2);
+            this.label4.Location = new System.Drawing.Point(770, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(134, 13);
             this.label4.TabIndex = 11;
@@ -370,7 +331,7 @@
             // numTasa
             // 
             this.numTasa.DecimalPlaces = 2;
-            this.numTasa.Location = new System.Drawing.Point(469, 2);
+            this.numTasa.Location = new System.Drawing.Point(469, 12);
             this.numTasa.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -395,40 +356,15 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(376, 6);
+            this.label6.Location = new System.Drawing.Point(376, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Tasa Caucion%: ";
             // 
-            // chkDolarD
-            // 
-            this.chkDolarD.AutoSize = true;
-            this.chkDolarD.Enabled = false;
-            this.chkDolarD.Location = new System.Drawing.Point(12, 26);
-            this.chkDolarD.Margin = new System.Windows.Forms.Padding(2);
-            this.chkDolarD.Name = "chkDolarD";
-            this.chkDolarD.Size = new System.Drawing.Size(104, 17);
-            this.chkDolarD.TabIndex = 16;
-            this.chkDolarD.Text = "Títulos en D o C";
-            this.chkDolarD.UseVisualStyleBackColor = true;
-            // 
-            // chkPesos
-            // 
-            this.chkPesos.AutoSize = true;
-            this.chkPesos.Checked = true;
-            this.chkPesos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPesos.Location = new System.Drawing.Point(12, 5);
-            this.chkPesos.Margin = new System.Windows.Forms.Padding(2);
-            this.chkPesos.Name = "chkPesos";
-            this.chkPesos.Size = new System.Drawing.Size(83, 17);
-            this.chkPesos.TabIndex = 17;
-            this.chkPesos.Text = "Títulos en $";
-            this.chkPesos.UseVisualStyleBackColor = true;
-            // 
             // numDiasLiq24H
             // 
-            this.numDiasLiq24H.Location = new System.Drawing.Point(672, 3);
+            this.numDiasLiq24H.Location = new System.Drawing.Point(672, 12);
             this.numDiasLiq24H.Maximum = new decimal(new int[] {
             10,
             0,
@@ -448,7 +384,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(566, 4);
+            this.label5.Location = new System.Drawing.Point(566, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 13);
             this.label5.TabIndex = 19;
@@ -457,7 +393,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(760, 4);
+            this.label7.Location = new System.Drawing.Point(569, 40);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 13);
             this.label7.TabIndex = 21;
@@ -465,7 +401,7 @@
             // 
             // numDiasLiq48H
             // 
-            this.numDiasLiq48H.Location = new System.Drawing.Point(866, 3);
+            this.numDiasLiq48H.Location = new System.Drawing.Point(672, 38);
             this.numDiasLiq48H.Maximum = new decimal(new int[] {
             10,
             0,
@@ -484,7 +420,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 27);
+            this.label1.Location = new System.Drawing.Point(769, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 13);
             this.label1.TabIndex = 22;
@@ -493,7 +429,7 @@
             // numComisionColocadora
             // 
             this.numComisionColocadora.DecimalPlaces = 3;
-            this.numComisionColocadora.Location = new System.Drawing.Point(263, 27);
+            this.numComisionColocadora.Location = new System.Drawing.Point(910, 38);
             this.numComisionColocadora.Minimum = new decimal(new int[] {
             1,
             0,
@@ -512,7 +448,7 @@
             // 
             // chkOnlyProfitableTrades
             // 
-            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(12, 48);
+            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(12, 38);
             this.chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
             this.chkOnlyProfitableTrades.Size = new System.Drawing.Size(208, 19);
             this.chkOnlyProfitableTrades.TabIndex = 24;
@@ -523,9 +459,9 @@
             // 
             this.chkOnlyShowTradesWithTickersOwned.Checked = true;
             this.chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(261, 49);
+            this.chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(12, 12);
             this.chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
-            this.chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(405, 19);
+            this.chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(298, 19);
             this.chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
             this.chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
             this.chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
@@ -544,14 +480,10 @@
             this.Controls.Add(this.numDiasLiq48H);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numDiasLiq24H);
-            this.Controls.Add(this.chkPesos);
-            this.Controls.Add(this.chkDolarD);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numTasa);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numComision);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.numBuySellSize);
             this.Controls.Add(this.numComisionTomadora);
             this.Controls.Add(this.grdArbitration);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -560,7 +492,6 @@
             this.Load += new System.EventHandler(this.FrmArbitrationBestTrades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numComisionTomadora)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBuySellSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numComision)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTasa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDiasLiq24H)).EndInit();
@@ -577,16 +508,12 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numComisionTomadora;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numBuySellSize;
         private System.Windows.Forms.NumericUpDown numComision;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProfitLast;
         private System.Windows.Forms.NumericUpDown numTasa;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox chkDolarD;
-        private System.Windows.Forms.CheckBox chkPesos;
         private System.Windows.Forms.NumericUpDown numDiasLiq24H;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
