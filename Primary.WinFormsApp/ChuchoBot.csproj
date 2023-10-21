@@ -252,7 +252,7 @@
         <DependentUpon>App.config</DependentUpon>
     </None>
   </ItemGroup>
-  <Target Name="SetAppConfigAfterBuild">
+  <Target Name="AfterBuild">
     <Delete Files="$(TargetDir)$(TargetFileName).config" />
     <Copy SourceFiles="$(ProjectDir)\App.$(Configuration).config"
           DestinationFiles="$(TargetDir)$(TargetFileName).config" />
