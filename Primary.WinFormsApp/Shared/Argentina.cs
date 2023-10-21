@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Primary;
 using Primary.Data;
 using Primary.WebSockets;
 using System;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,7 +14,7 @@ namespace Primary.WinFormsApp
 {
     public class Argentina
     {
-        public readonly static Argentina Data = new Argentina();
+        public static readonly Argentina Data = new Argentina();
         private CancellationTokenSource _tokenSource;
 
         public Primary.Api Api;
@@ -26,17 +24,12 @@ namespace Primary.WinFormsApp
         public event MarketDataEventHandler OnMarketData;
         public ConcurrentDictionary<string, Entries> LatestMarketData = new ConcurrentDictionary<string, Entries>();
         private CancellationTokenSource cancellationTokenSource;
-        private static TimeZoneInfo ArgentinaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Argentina Standard Time");
+        private static readonly TimeZoneInfo ArgentinaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Argentina Standard Time");
         private static DateTimeOffset Now => TimeZoneInfo.ConvertTime(DateTime.Now, ArgentinaTimeZone);
 
         public Entries GetLatestOrNull(string symbol)
         {
-            if (LatestMarketData.ContainsKey(symbol))
-            {
-                return LatestMarketData[symbol];
-            }
-
-            return null;
+            return LatestMarketData.ContainsKey(symbol) ? LatestMarketData[symbol] : null;
         }
 
         public Argentina()
@@ -57,7 +50,10 @@ namespace Primary.WinFormsApp
         {
             if (Accounts != null)
             {
-                Positions = Api.GetPositions(Accounts).Result;
+                using (var track = Telemetry.TrackTime(nameof(RefreshPositions)))
+                {
+                    Positions = Api.GetPositions(Accounts).Result;
+                }
             }
         }
 
@@ -65,35 +61,35 @@ namespace Primary.WinFormsApp
 
         public void RefreshAccounts()
         {
-            Accounts = Api.GetAccounts().Result;
+            using (var track = Telemetry.TrackTime(nameof(RefreshAccounts)))
+            {
+                Accounts = Api.GetAccounts().Result;
+            }
         }
 
         public bool CanTickerBeSelledInCI(string ticker)
         {
-            if (Positions == null)
-                return true;
-
-            return Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI));
+            return Positions == null || Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI));
         }
 
         public bool CanTickerBeSelledIn24H(string ticker)
         {
-            if (Positions == null)
-                return true;
-
-            return Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI || x.Instrument.SettlType == Api.SettlementType.T24H));
+            return Positions == null
+|| Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI || x.Instrument.SettlType == Api.SettlementType.T24H));
         }
 
         public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
         {
             // convert everything to TimeSpan
-            TimeSpan start = new TimeSpan(10, 0, 0);
-            TimeSpan end = excludeAuctionPeriod ? new TimeSpan(17, 0, 0) : new TimeSpan(17, 57, 0);
-            TimeSpan now = Now.TimeOfDay;
+            var start = new TimeSpan(10, 0, 0);
+            var end = excludeAuctionPeriod ? new TimeSpan(17, 0, 0) : new TimeSpan(17, 57, 0);
+            var now = Now.TimeOfDay;
 
             // see if start comes before end
             if (start < end)
+            {
                 return start <= now && now <= end;
+            }
             // start is after end, so do the inverse comparison
             return !(end < now && now < start);
         }
@@ -101,13 +97,15 @@ namespace Primary.WinFormsApp
         public static bool IsCIOpen(bool excludeAuctionPeriod = true)
         {
             // convert everything to TimeSpan
-            TimeSpan start = new TimeSpan(10, 0, 0);
-            TimeSpan end = excludeAuctionPeriod ? new TimeSpan(16, 30, 0) : new TimeSpan(16, 27, 0);
-            TimeSpan now = Now.TimeOfDay;
+            var start = new TimeSpan(10, 0, 0);
+            var end = excludeAuctionPeriod ? new TimeSpan(16, 30, 0) : new TimeSpan(16, 27, 0);
+            var now = Now.TimeOfDay;
 
             // see if start comes before end
             if (start < end)
+            {
                 return start <= now && now <= end;
+            }
             // start is after end, so do the inverse comparison
             return !(end < now && now < start);
         }
@@ -118,16 +116,20 @@ namespace Primary.WinFormsApp
             var lastUpdatedTimeSpan = TimeSpan.FromHours(12);
             if (File.Exists("InstrumentsWithDetails.json") && (DateTime.Now - File.GetLastWriteTime("InstrumentsWithDetails.json")) < lastUpdatedTimeSpan)
             {
+                Telemetry.LogInformation($"Reading InstrumentsWithDetails from file");
                 var instrumentsJson = File.ReadAllText("InstrumentsWithDetails.json");
                 var instruments = JsonConvert.DeserializeObject<IEnumerable<InstrumentDetail>>(instrumentsJson);
                 AllInstruments = instruments.OrderBy(x => x.InstrumentId.Symbol).ToList();
             }
             else
             {
-                var instruments = await Api.GetAllInstrumentsWithDetails();
-                AllInstruments = instruments.OrderBy(x => x.InstrumentId.Symbol).ToList();
-                var instrumentsJson = JsonConvert.SerializeObject(AllInstruments, Formatting.Indented);
-                File.WriteAllText("InstrumentsWithDetails.json", instrumentsJson);
+                using (var tracker = Telemetry.TrackTime($"Fetching InstrumentsWithDetails from API"))
+                {
+                    var instruments = await Api.GetAllInstrumentsWithDetails();
+                    AllInstruments = instruments.OrderBy(x => x.InstrumentId.Symbol).ToList();
+                    var instrumentsJson = JsonConvert.SerializeObject(AllInstruments, Formatting.Indented);
+                    File.WriteAllText("InstrumentsWithDetails.json", instrumentsJson);
+                }
             }
         }
 
@@ -156,7 +158,7 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(ex.Message);
+                Telemetry.LogWarning(nameof(WatchWithWebSocket), ex);
             }
 
             cancellationTokenSource = new CancellationTokenSource();
@@ -174,7 +176,7 @@ namespace Primary.WinFormsApp
                 if (marketData.Instrument != null)
                 {
                     //Console.WriteLine(marketData.Instrument?.Symbol + ": " + marketData.Data?.Last?.Price);
-                    LatestMarketData.AddOrUpdate(marketData.Instrument.Symbol, marketData.Data, (key, data) => marketData.Data);
+                    _ = LatestMarketData.AddOrUpdate(marketData.Instrument.Symbol, marketData.Data, (key, data) => marketData.Data);
 
                     OnMarketData?.Invoke(marketData.Instrument, marketData.Data);
 
@@ -182,7 +184,7 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Telemetry.LogError(nameof(OnReceiveMarketData), ex);
                 throw ex;
             }
         }
@@ -195,7 +197,7 @@ namespace Primary.WinFormsApp
                 {
                     var marketDataRestApi = await api.GetMarketData(instrument);
 
-                    LatestMarketData.AddOrUpdate(instrument.Symbol, marketDataRestApi.Data, (key, data) => marketDataRestApi.Data);
+                    _ = LatestMarketData.AddOrUpdate(instrument.Symbol, marketDataRestApi.Data, (key, data) => marketDataRestApi.Data);
 
                     OnMarketData?.Invoke(instrument, marketDataRestApi.Data);
 
@@ -208,16 +210,16 @@ namespace Primary.WinFormsApp
                 }
                 catch (OperationCanceledException ex)
                 {
-                    Console.WriteLine(ex);
+                    Telemetry.LogWarning(nameof(PullMarketData), ex);
                     return;
                 }
                 catch (WebException ex)
                 {
-                    Console.WriteLine(ex);
+                    Telemetry.LogWarning(nameof(PullMarketData), ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Telemetry.LogError(nameof(PullMarketData), ex);
                     throw ex;
                 }
             }
@@ -238,17 +240,17 @@ namespace Primary.WinFormsApp
             {
                 var marketDataRestApi = await Api.GetMarketData(instrument);
 
-                LatestMarketData.AddOrUpdate(instrument.Symbol, marketDataRestApi.Data, (key, data) => marketDataRestApi.Data);
+                _ = LatestMarketData.AddOrUpdate(instrument.Symbol, marketDataRestApi.Data, (key, data) => marketDataRestApi.Data);
 
                 OnMarketData?.Invoke(instrument, marketDataRestApi.Data);
             }
             catch (WebException ex)
             {
-                Console.WriteLine(ex);
+                Telemetry.LogError(nameof(RefreshMarketData), ex);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Telemetry.LogError(nameof(RefreshMarketData), ex);
                 throw ex;
             }
         }
@@ -265,11 +267,7 @@ namespace Primary.WinFormsApp
         {
             var instrument = GetInstrumentDetailOrNull(symbol);
 
-            if (instrument == null)
-                throw new KeyNotFoundException($"Symbol '{symbol}' not found.");
-
-            return instrument;
-
+            return instrument == null ? throw new KeyNotFoundException($"Symbol '{symbol}' not found.") : instrument;
         }
     }
 }

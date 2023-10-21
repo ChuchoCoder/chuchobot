@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Primary.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -139,7 +140,7 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Telemetry.LogError(nameof(timer1_Tick), ex);
             }
         }
 

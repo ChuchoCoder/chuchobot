@@ -26,6 +26,10 @@ namespace Primary.WinFormsApp
 
         private async void FrmMain_Load(object sender, EventArgs e)
         {
+            Telemetry.InitializeLogging();
+            Telemetry.LogInformation("Application started");
+            Application.ThreadException += Application_ThreadException;
+            Application.ApplicationExit += Application_ApplicationExit;
             AccountsTimer.Elapsed += tmrAccounts_Tick;
             PositionsTimer.Elapsed += tmrPositions_Tick;
 
@@ -44,6 +48,16 @@ namespace Primary.WinFormsApp
             }
         }
 
+        private void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            Telemetry.LogInformation("Application Exit");
+        }
+
+        private void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Telemetry.LogError("Application ThreadException", e.Exception, true);
+        }
+
         private async Task<bool> Login()
         {
             var login = new FrmLogin();
@@ -58,11 +72,13 @@ namespace Primary.WinFormsApp
 
                 if (LoginSuccessfull == false)
                 {
+                    Telemetry.Log($"Login Failed {login.BaseUrl}", logLevel: LogLevel.Warning);
                     _ = MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
                     return await Login();
                 }
                 else
                 {
+                    Telemetry.Log($"Login Successfull {login.BaseUrl}", logLevel: LogLevel.Information);
                     Properties.Settings.Default.ApiBaseUrl = login.BaseUrl;
                     Properties.Settings.Default.UserName = login.UserName;
                     Properties.Settings.Default.Password = login.Password;
@@ -219,6 +235,7 @@ namespace Primary.WinFormsApp
             {
                 Icon = Properties.Resources.red_wifi;
                 Text = $"Chucho Bot 🤖 - Desconectado (último mensaje: hace {dif.TotalSeconds:#0} segundos)";
+                Telemetry.LogWarning(Text);
             }
         }
 
@@ -283,6 +300,7 @@ namespace Primary.WinFormsApp
                         if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
                         {
                             MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Telemetry.LogWarning($"El instrumento {ticker} no existe.");
                             return false;
                         }
                     }
@@ -352,7 +370,7 @@ namespace Primary.WinFormsApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.Error.WriteLine(ex);
+                Telemetry.LogError(nameof(tmrPositions_Tick), ex);
             }
         }
 
@@ -369,7 +387,7 @@ namespace Primary.WinFormsApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.Error.WriteLine(ex);
+                Telemetry.LogError(nameof(tmrAccounts_Tick), ex);
             }
         }
     }
