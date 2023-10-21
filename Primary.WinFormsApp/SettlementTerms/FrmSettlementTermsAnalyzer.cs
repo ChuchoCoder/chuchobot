@@ -21,44 +21,46 @@ namespace Primary.WinFormsApp
             try
             {
                 timer1.Enabled = false;
-                numComision.Value = Properties.Settings.Default.Comision;
-                // Deshabilitar si no existen posiciones
-                chkOnlyShowTradesWithTickersOwned.Enabled = Argentina.Data.Positions != null;
-                if (chkOnlyShowTradesWithTickersOwned.Enabled == false)
+                using (var track = Telemetry.TrackTime("Scanner arbitrajes de plazo"))
                 {
-                    chkOnlyShowTradesWithTickersOwned.Checked = false;
-                }
-                _processor.RefreshData();
-                var diasLiq24H = ((int)numDiasLiq24H.Value);
-                var diasLiq48H = ((int)numDiasLiq48H.Value);
-
-                var caucion24HTicker = Settlement.GetCaucionPesosTicker(diasLiq24H);
-                var caucion24HInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucion24HTicker);
-
-                if (caucion24HInstrument != null)
-                {
-                    var entries = Argentina.Data.GetLatestOrNull(caucion24HTicker);
-                    if (entries != null && entries.HasLastPrice())
+                    numComision.Value = Properties.Settings.Default.Comision;
+                    // Deshabilitar si no existen posiciones
+                    chkOnlyShowTradesWithTickersOwned.Enabled = Argentina.Data.Positions != null;
+                    if (chkOnlyShowTradesWithTickersOwned.Enabled == false)
                     {
-                        numTasa.Value = entries.Last.Price.Value;
-                        numTasa.Enabled = false;
+                        chkOnlyShowTradesWithTickersOwned.Checked = false;
                     }
-                    else
+                    _processor.RefreshData();
+                    var diasLiq24H = ((int)numDiasLiq24H.Value);
+                    var diasLiq48H = ((int)numDiasLiq48H.Value);
+
+                    var caucion24HTicker = Settlement.GetCaucionPesosTicker(diasLiq24H);
+                    var caucion24HInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucion24HTicker);
+
+                    if (caucion24HInstrument != null)
                     {
-                        numTasa.Enabled = true;
+                        var entries = Argentina.Data.GetLatestOrNull(caucion24HTicker);
+                        if (entries != null && entries.HasLastPrice())
+                        {
+                            numTasa.Value = entries.Last.Price.Value;
+                            numTasa.Enabled = false;
+                        }
+                        else
+                        {
+                            numTasa.Enabled = true;
+                        }
                     }
+
+                    var trades = _processor.GetSettlementTermTradesPesos(numTasa.Value, diasLiq24H, diasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
+
+                    _arbitrationDataTable.Refresh(trades, diasLiq24H, diasLiq48H, numComision.Value, numComisionTomadora.Value, numComisionColocadora.Value, numTasa.Value, chkOnlyProfitableTrades.Checked);
                 }
-
-                var trades = _processor.GetSettlementTermTradesPesos(numTasa.Value, diasLiq24H, diasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
-
-                _arbitrationDataTable.Refresh(trades, diasLiq24H, diasLiq48H, numComision.Value, numComisionTomadora.Value, numComisionColocadora.Value, numTasa.Value, chkOnlyProfitableTrades.Checked);
-
                 //grdArbitration.DataSource = _dataTable;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.Error.WriteLine(ex);
+                Telemetry.LogError(nameof(timer1_Tick), ex);
             }
             finally
             {

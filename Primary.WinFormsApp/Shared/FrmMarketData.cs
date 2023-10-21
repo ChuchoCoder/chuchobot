@@ -30,7 +30,7 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Telemetry.LogError(nameof(OnMarketData), ex);
             }
         }
 
