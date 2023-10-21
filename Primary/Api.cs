@@ -493,14 +493,7 @@ public class Api
         public string SymbolReference { get; set; }
 
         [JsonProperty("settlType")]
-        public string SettlType { get; set; }
-    }
-
-    public static class SettlementType
-    {
-        public const string CI = "0";
-        public const string T24H = "1";
-        public const string T48H = "2";
+        public SettlementType SettlementType { get; set; }
     }
 
     public class Position

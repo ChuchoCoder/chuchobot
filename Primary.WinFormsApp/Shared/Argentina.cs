@@ -69,13 +69,16 @@ namespace Primary.WinFormsApp
 
         public bool CanTickerBeSelledInCI(string ticker)
         {
-            return Positions == null || Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI));
+            return Positions == null || Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlementType == SettlementType.CI));
         }
 
         public bool CanTickerBeSelledIn24H(string ticker)
         {
             return Positions == null
-|| Positions.Any(x => x.Symbol.Contains(ticker) && (x.Instrument.SettlType == Api.SettlementType.CI || x.Instrument.SettlType == Api.SettlementType.T24H));
+                || Positions.Any(x =>
+                    x.Symbol.Contains(ticker)
+                    && (x.Instrument.SettlementType == SettlementType.CI || x.Instrument.SettlementType == SettlementType.T24H)
+                    );
         }
 
         public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
@@ -267,7 +270,7 @@ namespace Primary.WinFormsApp
         {
             var instrument = GetInstrumentDetailOrNull(symbol);
 
-            return instrument == null ? throw new KeyNotFoundException($"Symbol '{symbol}' not found.") : instrument;
+            return instrument ?? throw new KeyNotFoundException($"Symbol '{symbol}' not found.");
         }
     }
 }
