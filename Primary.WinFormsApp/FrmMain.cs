@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
+using Primary.WinFormsApp.Properties;
 
 namespace Primary.WinFormsApp
 {
@@ -33,6 +34,11 @@ namespace Primary.WinFormsApp
             AccountsTimer.Elapsed += tmrAccounts_Tick;
             PositionsTimer.Elapsed += tmrPositions_Tick;
 
+            Settings.Default.Upgrade();
+            Settings.Default.Save();
+
+            ShowVersion();
+
             if (await Login())
             {
                 //var frmArbitrationAnalyzer = new FrmArbitrationAnalyzer();
@@ -56,6 +62,17 @@ namespace Primary.WinFormsApp
         private void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             Telemetry.LogError("Application ThreadException", e.Exception, true);
+        }
+
+        public void SetConnectionStatus(bool isConnected = true)
+        {
+            connected.Visible = isConnected;
+            disconnected.Visible = !isConnected;
+        }
+
+        public void ShowVersion()
+        {
+            appVersion.Text = $"v{Telemetry.Version}";
         }
 
         private async Task<bool> Login()
@@ -83,6 +100,7 @@ namespace Primary.WinFormsApp
                     Properties.Settings.Default.UserName = login.UserName;
                     Properties.Settings.Default.Password = login.Password;
                     Properties.Settings.Default.Save();
+                    SetConnectionStatus();
 
                     Text = "Initiliazing Data...";
                     Refresh();
@@ -226,15 +244,16 @@ namespace Primary.WinFormsApp
 
             var connected = dif.TotalSeconds < 15;
 
+            SetConnectionStatus(connected);
             if (connected)
             {
-                Icon = Properties.Resources.green_wifi;
-                Text = "Chucho Bot 🤖";
+                Icon = Properties.Resources.Robot;
+                statusInformation.Text = "";
             }
             else
             {
                 Icon = Properties.Resources.red_wifi;
-                Text = $"Chucho Bot 🤖 - Desconectado (último mensaje: hace {dif.TotalSeconds:#0} segundos)";
+                statusInformation.Text = $"Ultimo mensaje recibido hace {dif.TotalSeconds:#0} segundos";
                 Telemetry.LogWarning(Text);
             }
         }

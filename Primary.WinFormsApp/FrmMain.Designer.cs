@@ -51,7 +51,13 @@
             this.letrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tickersDCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrConnection = new System.Windows.Forms.Timer(this.components);
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.connected = new System.Windows.Forms.ToolStripStatusLabel();
+            this.disconnected = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusInformation = new System.Windows.Forms.ToolStripStatusLabel();
+            this.appVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -224,21 +230,67 @@
             this.tmrConnection.Interval = 3000;
             this.tmrConnection.Tick += new System.EventHandler(this.tmrConnection_Tick);
             // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connected,
+            this.disconnected,
+            this.statusInformation,
+            this.appVersion});
+            this.statusBar.Location = new System.Drawing.Point(0, 428);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(800, 22);
+            this.statusBar.TabIndex = 3;
+            // 
+            // connected
+            // 
+            this.connected.Image = ((System.Drawing.Image)(resources.GetObject("connected.Image")));
+            this.connected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.connected.Name = "connected";
+            this.connected.Size = new System.Drawing.Size(81, 17);
+            this.connected.Text = "Conectado";
+            this.connected.Visible = false;
+            // 
+            // disconnected
+            // 
+            this.disconnected.Image = ((System.Drawing.Image)(resources.GetObject("disconnected.Image")));
+            this.disconnected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.disconnected.Name = "disconnected";
+            this.disconnected.Size = new System.Drawing.Size(98, 17);
+            this.disconnected.Text = "Desconectado";
+            this.disconnected.Visible = false;
+            // 
+            // statusInformation
+            // 
+            this.statusInformation.Name = "statusInformation";
+            this.statusInformation.Size = new System.Drawing.Size(499, 17);
+            this.statusInformation.Spring = true;
+            // 
+            // appVersion
+            // 
+            this.appVersion.Name = "appVersion";
+            this.appVersion.Size = new System.Drawing.Size(76, 17);
+            this.appVersion.Text = "v2023.10.23.0";
+            this.appVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.Text = "Chucho Bot 🤖";
+            this.Text = "Chucho Bot ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +319,11 @@
         private System.Windows.Forms.ToolStripMenuItem letrasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tickersDCToolStripMenuItem;
         private System.Windows.Forms.Timer tmrConnection;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel disconnected;
+        private System.Windows.Forms.ToolStripStatusLabel statusInformation;
+        private System.Windows.Forms.ToolStripStatusLabel appVersion;
+        private System.Windows.Forms.ToolStripStatusLabel connected;
     }
 }
 
