@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermLauncher));
             this.listInstrumentos = new System.Windows.Forms.ListBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -40,6 +41,7 @@
             this.rdoSellCI = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLaunch = new System.Windows.Forms.Button();
+            this.chkOnlyCurrentPositions = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -53,7 +55,7 @@
             this.listInstrumentos.FormattingEnabled = true;
             this.listInstrumentos.Location = new System.Drawing.Point(6, 45);
             this.listInstrumentos.Name = "listInstrumentos";
-            this.listInstrumentos.Size = new System.Drawing.Size(468, 329);
+            this.listInstrumentos.Size = new System.Drawing.Size(468, 303);
             this.listInstrumentos.TabIndex = 0;
             // 
             // txtBuscar
@@ -80,10 +82,12 @@
             // rdoBuy48H
             // 
             this.rdoBuy48H.AutoSize = true;
+            this.rdoBuy48H.Checked = true;
             this.rdoBuy48H.Location = new System.Drawing.Point(6, 65);
             this.rdoBuy48H.Name = "rdoBuy48H";
             this.rdoBuy48H.Size = new System.Drawing.Size(66, 17);
             this.rdoBuy48H.TabIndex = 2;
+            this.rdoBuy48H.TabStop = true;
             this.rdoBuy48H.Text = "48 horas";
             this.rdoBuy48H.UseVisualStyleBackColor = true;
             // 
@@ -100,12 +104,10 @@
             // rdoBuyCI
             // 
             this.rdoBuyCI.AutoSize = true;
-            this.rdoBuyCI.Checked = true;
             this.rdoBuyCI.Location = new System.Drawing.Point(6, 19);
             this.rdoBuyCI.Name = "rdoBuyCI";
             this.rdoBuyCI.Size = new System.Drawing.Size(114, 17);
             this.rdoBuyCI.TabIndex = 0;
-            this.rdoBuyCI.TabStop = true;
             this.rdoBuyCI.Text = "Contado Inmediato";
             this.rdoBuyCI.UseVisualStyleBackColor = true;
             // 
@@ -125,12 +127,10 @@
             // rdoSell48H
             // 
             this.rdoSell48H.AutoSize = true;
-            this.rdoSell48H.Checked = true;
             this.rdoSell48H.Location = new System.Drawing.Point(6, 65);
             this.rdoSell48H.Name = "rdoSell48H";
             this.rdoSell48H.Size = new System.Drawing.Size(66, 17);
             this.rdoSell48H.TabIndex = 2;
-            this.rdoSell48H.TabStop = true;
             this.rdoSell48H.Text = "48 horas";
             this.rdoSell48H.UseVisualStyleBackColor = true;
             // 
@@ -147,10 +147,12 @@
             // rdoSellCI
             // 
             this.rdoSellCI.AutoSize = true;
+            this.rdoSellCI.Checked = true;
             this.rdoSellCI.Location = new System.Drawing.Point(6, 19);
             this.rdoSellCI.Name = "rdoSellCI";
             this.rdoSellCI.Size = new System.Drawing.Size(114, 17);
             this.rdoSellCI.TabIndex = 0;
+            this.rdoSellCI.TabStop = true;
             this.rdoSellCI.Text = "Contado Inmediato";
             this.rdoSellCI.UseVisualStyleBackColor = true;
             // 
@@ -161,9 +163,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.txtBuscar);
             this.groupBox3.Controls.Add(this.listInstrumentos);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 32);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(480, 389);
+            this.groupBox3.Size = new System.Drawing.Size(480, 369);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Seleccionar Instrumento";
@@ -180,15 +182,28 @@
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
+            // chkOnlyCurrentPositions
+            // 
+            this.chkOnlyCurrentPositions.AutoSize = true;
+            this.chkOnlyCurrentPositions.Location = new System.Drawing.Point(12, 9);
+            this.chkOnlyCurrentPositions.Name = "chkOnlyCurrentPositions";
+            this.chkOnlyCurrentPositions.Size = new System.Drawing.Size(196, 17);
+            this.chkOnlyCurrentPositions.TabIndex = 7;
+            this.chkOnlyCurrentPositions.Text = "Mostrar sólo instrumentos en cartera";
+            this.chkOnlyCurrentPositions.UseVisualStyleBackColor = true;
+            this.chkOnlyCurrentPositions.CheckedChanged += new System.EventHandler(this.chkOnlyCurrentPositions_CheckedChanged);
+            // 
             // FrmSettlementTermLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 543);
+            this.Controls.Add(this.chkOnlyCurrentPositions);
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSettlementTermLauncher";
             this.Text = "Abrir arbitraje de plazos para instrumento";
             this.Load += new System.EventHandler(this.FrmSettlementTermLauncher_Load);
@@ -199,6 +214,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -216,5 +232,6 @@
         private System.Windows.Forms.RadioButton rdoSellCI;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnLaunch;
+        private System.Windows.Forms.CheckBox chkOnlyCurrentPositions;
     }
 }

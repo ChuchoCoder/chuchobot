@@ -381,6 +381,12 @@ namespace Primary.WinFormsApp
             {
                 PositionsTimer.Stop();
                 Argentina.Data.RefreshPositions();
+
+                if (Argentina.Data.HasPositions() == false)
+                {
+                    statusInformation.Text = $"No se encontraron posiciones para ninguna de las cuentas asociadas";
+                }
+
                 PositionsTimer.Interval = Convert.ToInt32(TimeSpan.FromMinutes(1).TotalMilliseconds);
                 PositionsTimer.Start();
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,6 +17,12 @@ namespace Primary.WinFormsApp.SettlementTerms
 
         private void FrmSettlementTermLauncher_Load(object sender, EventArgs e)
         {
+            if (Argentina.Data.HasPositions())
+            {
+                chkOnlyCurrentPositions.Enabled = false;
+                chkOnlyCurrentPositions.Text += " (No existen posiciones)";
+            }
+
             _instruments = Argentina.Data.AllInstruments.Where(x => x.IsPesos()).Select(x => x.InstrumentId.Ticker()).Distinct().OrderBy(x => x).ToArray();
 
             foreach (var item in _instruments)
@@ -28,7 +35,29 @@ namespace Primary.WinFormsApp.SettlementTerms
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            var instruments = _instruments.Where(x => x.IndexOf(txtBuscar.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            FilterInstruments();
+        }
+
+        private void FilterInstruments()
+        {
+            IEnumerable<string> instruments = _instruments;
+
+            Func<string, bool> onlyShowCurrentPositionFilter = x => true;
+
+            if (chkOnlyCurrentPositions.Checked)
+            {
+                onlyShowCurrentPositionFilter = x => Argentina.Data.TickerExistsInPositions(x);
+            }
+
+            Func<string, bool> textSearchFilter = x => true;
+
+            if (string.IsNullOrWhiteSpace(txtBuscar.Text) == false)
+            {
+                textSearchFilter = x => x.IndexOf(txtBuscar.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
+
+            instruments = instruments.Where(x => textSearchFilter(x) && onlyShowCurrentPositionFilter(x));
+
             listInstrumentos.Items.Clear();
             foreach (var item in instruments)
             {
@@ -93,6 +122,11 @@ namespace Primary.WinFormsApp.SettlementTerms
             var frm = new FrmSettlementTermTrade();
             frm.Init(trade);
             frm.Show();
+        }
+
+        private void chkOnlyCurrentPositions_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterInstruments();
         }
     }
 }
