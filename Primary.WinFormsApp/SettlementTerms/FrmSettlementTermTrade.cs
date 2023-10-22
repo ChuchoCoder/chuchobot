@@ -174,40 +174,43 @@ namespace Primary.WinFormsApp
         {
             if (numCompraPrice.Value > 0)
             {
-                var neto = _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value, numCompraPrice.Value, Settings.Default.TasaCaucion, Settings.Default.ArancelCaucionColocadora, Settings.Default.ArancelCaucionTomadora);
+                _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value, numCompraPrice.Value, Settings.Default.TasaCaucion);
 
-                lblVentaImporte.Text = $"Importe: {neto.SellTotalSinComisiones:C2}";
-                lblVentaComision.Text = $"DM. + Com.: {-neto.SellComisionDerechos:C2}";
+                lblVentaImporte.Text = $"Importe: {_trade.SellTotalSinComisiones:C2}";
+                lblVentaComision.Text = $"DM. + Com.: {-_trade.SellComisionDerechos:C2}";
 
-                lblCompraImporte.Text = $"Importe: {neto.BuyTotalSinComisiones:C2}";
-                lblCompraComision.Text = $"DM. + Com.: {-neto.BuyComisionDerechos:C2}";
+                lblCompraImporte.Text = $"Importe: {_trade.BuyTotalSinComisiones:C2}";
+                lblCompraComision.Text = $"DM. + Com.: {-_trade.BuyComisionDerechos:C2}";
 
-                lblComisionTotal.Text = $"Total Der.Mer. + Comisión: {-neto.SellComisionDerechos - neto.BuyComisionDerechos:C2}";
+                lblComisionTotal.Text = $"Total Der.Mer. + Comisión: {-_trade.SellComisionDerechos - _trade.BuyComisionDerechos:C2}";
 
-                lblBuyPriceTarget.Text = "Px Arbitrado: " + neto.BuyPriceTarget.ToCurrency();
-                lblSellPriceTarget.Text = "Px Arbitrado: " + neto.SellPriceTarget.ToCurrency();
+                lblBuyPriceTarget.Text = "Px Arbitrado: " + _trade.BuyPriceTarget.ToCurrency();
+                lblSellPriceTarget.Text = "Px Arbitrado: " + _trade.SellPriceTarget.ToCurrency();
 
-                var tipoCaucion = neto.DiasCaucion > 0 ? "Tomadora" : "Colocadora";
+                var tipoCaucion = _trade.EsCaucionColocadora ? "Colocadora" : "Tomadora";
                 this.groupBox1.Text = "Caución " + tipoCaucion;
-                lblDiasCaucion.Text = "Días Caución: " + neto.DiasCaucion.ToString();
-                lblMontoCaucion.Text = "Monto Caución: " + neto.TotalACaucionar.ToCurrency();
-                lblInteresNeto.Text = "Interés Neto: " + neto.InteresNeto.ToCurrency();
-                lblInteresCaucion.Text = "Interés: " + neto.InteresCaucion.ToCurrency();
-                lblIva.Text = "IVA: " + neto.IvaGastos.ToCurrency();
-                lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + neto.DerechosMercadoCaucion.ToCurrency();
-                lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + neto.GastosGarantia.ToCurrency();
-                lblArancelCaucion.Text = "Arancel: " + neto.ArancelCaucion.ToCurrency();
-                lblGastosCaucion.Text = "Gastos: " + neto.ComisionCaucionTotal.ToCurrency();
+                lblDiasCaucion.Text = "Días Caución: " + _trade.Caucion.Dias.ToString();
 
-                lblNetoCaucion.Text = "Caución: " + neto.InteresNeto.ToCurrency();
+                lblMontoCaucion.Text = "Importe Neto: " + _trade.Caucion.ImporteBruto.ToCurrency();
+                lblInteresNeto.Text = "Interés Neto: " + _trade.Caucion.InteresNeto.ToCurrency();
+                lblInteresCaucion.Text = "Interés: " + _trade.Caucion.Interes.ToCurrency();
+                
+                lblIva.Text = "IVA: " + _trade.Caucion.IVAGastos.ToCurrency();
+                
+                lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + _trade.Caucion.DerechosMercado.ToCurrency();
+                lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + _trade.Caucion.GastosGarantia.ToCurrency();
+                lblArancelCaucion.Text = "Arancel: " + _trade.Caucion.Arancel.ToCurrency();
+                lblGastosCaucion.Text = "Gastos: " + _trade.Caucion.TotalGastos.ToCurrency();
 
-                var difVentaCompra = neto.SellTotalSinComisiones - neto.BuyTotalSinComisiones;
+                lblNetoCaucion.Text = "Caución: " + _trade.Caucion.InteresNeto.ToCurrency();
+
+                var difVentaCompra = _trade.SellTotalSinComisiones - _trade.BuyTotalSinComisiones;
                 lblDifVentaCompra.Text = "Venta - Compra: " + difVentaCompra.ToCurrency();
 
-                lblProfitPesos.Text = $"Profit: {neto.ProfitLoss:C2}";
+                lblProfitPesos.Text = $"Profit: {_trade.ProfitLoss:C2}";
 
-                var percentage = neto.ProfitLoss / neto.BuyTotalSinComisiones;
-                lblHeader.Text = $"Profit: {neto.ProfitLoss:C2} ({percentage:P2})";
+                var percentage = _trade.ProfitLoss / _trade.BuyTotalSinComisiones;
+                lblHeader.Text = $"Profit: {_trade.ProfitLoss:C2} ({percentage:P2})";
             }
         }
 

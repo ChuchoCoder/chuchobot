@@ -538,7 +538,7 @@
             this.lblMontoCaucion.Name = "lblMontoCaucion";
             this.lblMontoCaucion.Size = new System.Drawing.Size(255, 18);
             this.lblMontoCaucion.TabIndex = 31;
-            this.lblMontoCaucion.Text = "Monto Caucion:";
+            this.lblMontoCaucion.Text = "ImporteBruto Caucion:";
             // 
             // lblGastosCaucion
             // 
