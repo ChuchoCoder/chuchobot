@@ -30,18 +30,24 @@ namespace Primary.WinFormsApp
 
             numComision.Value = Properties.Settings.Default.Comision;
 
-            VentaBidsOffers.LoadData(_trade.Sell.Data);
-
-            CompraBidsOffers.LoadData(_trade.Buy.Data);
-
-            if (VentaPriceAutoUpdate)
+            if (_trade.Sell.Data != null)
             {
-                numVentaPrice.Value = _trade.Sell.Data.GetTopBidPrice();
+                VentaBidsOffers.LoadData(_trade.Sell.Data);
+
+                if (VentaPriceAutoUpdate)
+                {
+                    numVentaPrice.Value = _trade.Sell.Data.GetTopBidPrice();
+                }
             }
 
-            if (CompraPriceAutoUpdate)
+            if (_trade.Buy.Data != null)
             {
-                numCompraPrice.Value = _trade.Buy.Data.GetTopOfferPrice();
+                CompraBidsOffers.LoadData(_trade.Buy.Data);
+
+                if (CompraPriceAutoUpdate)
+                {
+                    numCompraPrice.Value = _trade.Buy.Data.GetTopOfferPrice();
+                }
             }
 
             timer1.Start();
@@ -64,14 +70,14 @@ namespace Primary.WinFormsApp
             grpOwnedVenta.Text = $"1. Vender {_trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + suffix} - Der. Mer.: ({_trade.Sell.Instrument.GetDerechosDeMercado():P})";
             grpArbitrationCompra.Text = $"2. Comprar {_trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + suffix} - Der. Mer.: ({_trade.Buy.Instrument.GetDerechosDeMercado():P})";
 
-            var sellTopSize = trade.Sell.Data.GetTopBidSize();
-            var buyTopSize = trade.Buy.Data.GetTopOfferSize();
+            var sellTopSize = trade.Sell.HasBids() ? trade.Sell.Data.GetTopBidSize() : 0;
+            var buyTopSize = trade.Buy.HasOffers() ? trade.Buy.Data.GetTopOfferSize() : 0;
 
             numOwnedVentaSize.Value = Math.Min(sellTopSize, buyTopSize);
-            if (_trade.Sell.Data.Last != null)
+            if (_trade.Sell.Data?.Last != null)
                 numVentaPrice.Value = _trade.Sell.Data.Last.Price.Value;
 
-            if (_trade.Buy.Data.Last != null)
+            if (_trade.Buy.Data?.Last != null)
                 numCompraPrice.Value = _trade.Buy.Data.Last.Price.Value;
 
 
