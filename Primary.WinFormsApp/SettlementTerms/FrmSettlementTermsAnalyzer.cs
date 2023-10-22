@@ -23,7 +23,6 @@ namespace Primary.WinFormsApp
                 timer1.Enabled = false;
                 using (var track = Telemetry.TrackTime("Scanner arbitrajes de plazo"))
                 {
-                    numComision.Value = Properties.Settings.Default.Comision;
                     // Deshabilitar si no existen posiciones
                     chkOnlyShowTradesWithTickersOwned.Enabled = Argentina.Data.Positions != null;
                     if (chkOnlyShowTradesWithTickersOwned.Enabled == false)
@@ -31,29 +30,12 @@ namespace Primary.WinFormsApp
                         chkOnlyShowTradesWithTickersOwned.Checked = false;
                     }
                     _processor.RefreshData();
-                    var diasLiq24H = ((int)numDiasLiq24H.Value);
-                    var diasLiq48H = ((int)numDiasLiq48H.Value);
 
-                    var caucion24HTicker = Settlement.GetCaucionPesosTicker(diasLiq24H);
-                    var caucion24HInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucion24HTicker);
+                    settlementTermSettings.RefreshValues();
 
-                    if (caucion24HInstrument != null)
-                    {
-                        var entries = Argentina.Data.GetLatestOrNull(caucion24HTicker);
-                        if (entries != null && entries.HasLastPrice())
-                        {
-                            numTasa.Value = entries.Last.Price.Value;
-                            numTasa.Enabled = false;
-                        }
-                        else
-                        {
-                            numTasa.Enabled = true;
-                        }
-                    }
+                    var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
 
-                    var trades = _processor.GetSettlementTermTradesPesos(numTasa.Value, diasLiq24H, diasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
-
-                    _arbitrationDataTable.Refresh(trades, diasLiq24H, diasLiq48H, numComision.Value, numComisionTomadora.Value, numComisionColocadora.Value, numTasa.Value, chkOnlyProfitableTrades.Checked);
+                    _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.Comision, settlementTermSettings.ArancelCaucionTomadora, settlementTermSettings.ArancelCaucionColocadora, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
                 }
                 //grdArbitration.DataSource = _dataTable;
             }
@@ -71,10 +53,6 @@ namespace Primary.WinFormsApp
 
         private void FrmArbitrationBestTrades_Load(object sender, EventArgs e)
         {
-            numComision.Value = Properties.Settings.Default.Comision;
-            numTasa.Value = Properties.Settings.Default.TasaCaucion;
-            numComisionColocadora.Value = Properties.Settings.Default.ArancelCaucionColocadora;
-            numComisionTomadora.Value = Properties.Settings.Default.ArancelCaucionTomadora;
             _processor = new SettlementTermArbitrationProcessor();
 
             _processor.Init();
@@ -84,10 +62,6 @@ namespace Primary.WinFormsApp
             grdArbitration.MultiSelect = false;
             grdArbitration.AutoGenerateColumns = false;
             grdArbitration.DataSource = _arbitrationDataTable.DataTable;
-
-            int diasLiq24H = Settlement.GetDiasLiquidacion24H();
-            numDiasLiq24H.Value = diasLiq24H;
-            numDiasLiq48H.Value = Settlement.GetDiasLiquidacion48H(diasLiq24H);
 
             grdArbitration.Sort(grdArbitration.Columns["TNA"], System.ComponentModel.ListSortDirection.Descending);
 
@@ -109,41 +83,6 @@ namespace Primary.WinFormsApp
 
         private void label5_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void numFeriados24H_ValueChanged(object sender, EventArgs e)
-        {
-            numDiasLiq48H.Minimum = numDiasLiq24H.Value;
-
-            if (numDiasLiq48H.Value < numDiasLiq24H.Value)
-            {
-                numDiasLiq48H.Value = numDiasLiq24H.Value;
-            }
-        }
-
-        private void numTasa_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.TasaCaucion = numTasa.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numComision_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Comision = numComision.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numComisionTomadora_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.ArancelCaucionTomadora = numComisionTomadora.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void numComisionColocadora_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.ArancelCaucionColocadora = numComisionColocadora.Value;
-            Properties.Settings.Default.Save();
 
         }
     }

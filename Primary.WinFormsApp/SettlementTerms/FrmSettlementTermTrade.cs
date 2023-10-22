@@ -8,8 +8,6 @@ namespace Primary.WinFormsApp
     {
         private SettlementTermTrade _trade;
 
-        public decimal Comision => numComision.Value / 100;
-
         public FrmSettlementTermTrade()
         {
             InitializeComponent();
@@ -18,7 +16,6 @@ namespace Primary.WinFormsApp
         private void FrmArbitrationTrade_Load(object sender, EventArgs e)
         {
             numDolar.Value = Properties.Settings.Default.USDARS;
-            numComision.Value = Properties.Settings.Default.Comision;
             timer1_Tick(sender, e);
         }
 
@@ -28,7 +25,7 @@ namespace Primary.WinFormsApp
             if (_trade == null)
                 return;
 
-            numComision.Value = Properties.Settings.Default.Comision;
+            settlementTermSettings1.RefreshValues();
 
             if (_trade.Sell.Data != null)
             {
@@ -270,13 +267,6 @@ namespace Primary.WinFormsApp
         private void numDolar_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.USDARS = numDolar.Value;
-            Properties.Settings.Default.Save();
-            CalculateOwnedCompraTotalAndProfit();
-        }
-
-        private void numComision_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Comision = numComision.Value;
             Properties.Settings.Default.Save();
             CalculateOwnedCompraTotalAndProfit();
         }
