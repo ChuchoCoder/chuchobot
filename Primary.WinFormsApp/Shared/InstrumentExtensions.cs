@@ -25,24 +25,40 @@ namespace Primary.WinFormsApp
 
         public static bool IsCEDEAR(this InstrumentDetail instrumentDetail)
         {
-            var exists = Properties.Settings.Default.AccionesCEDEARs.Cast<string>().Any(x => instrumentDetail.InstrumentId.Symbol.StartsWith($"{Instrument.MervalPrefix}{x}"));
+            return IsCEDEAR(instrumentDetail.InstrumentId.Symbol);
+        }
+
+        public static bool IsCEDEAR(this string ticker)
+        {
+            var exists = Properties.Settings.Default.AccionesCEDEARs.Cast<string>().Any(x => ticker.StartsWith($"{Instrument.MervalPrefix}{x}"));
             return exists;
         }
 
         public static bool IsLetra(this InstrumentDetail instrumentDetail)
         {
-            var exists = Properties.Settings.Default.Letras.Cast<string>().Any(x => instrumentDetail.InstrumentId.Symbol.StartsWith($"{Instrument.MervalPrefix}{x}"));
+            var exists = IsLetra(instrumentDetail.InstrumentId.Symbol);
+            return exists;
+        }
+
+        public static bool IsLetra(this string ticker)
+        {
+            var exists = Properties.Settings.Default.Letras.Cast<string>().Any(x => ticker.StartsWith($"{Instrument.MervalPrefix}{x}"));
             return exists;
         }
 
         public static decimal GetDerechosDeMercado(this InstrumentDetail instrumentDetail)
         {
+            return GetDerechosDeMercado(instrumentDetail.InstrumentId.Symbol);
+        }
+
+        public static decimal GetDerechosDeMercado(this string ticker)
+        {
             // https://www.byma.com.ar/que-es-byma/derechos-membresias-2/
-            if (instrumentDetail.IsCEDEAR())
+            if (ticker.IsCEDEAR())
             {
                 return (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoAccionCEDEAR) / 100m;
             }
-            else if (instrumentDetail.IsLetra())
+            else if (ticker.IsLetra())
             {
                 return (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoLetra) / 100m;
             }

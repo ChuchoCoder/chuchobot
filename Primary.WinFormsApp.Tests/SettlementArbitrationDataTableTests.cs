@@ -27,7 +27,8 @@ namespace Primary.WinFormsApp.Tests
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 1, 2).Should().NotBeNull();
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(100000, 83m, 1.5m, 2.5m, 1, 2);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(100000, 83m, 1, 2);
 
             _ = trade.ProfitLoss.Should().BeApproximately(22887m, 5);
         }
@@ -44,7 +45,8 @@ namespace Primary.WinFormsApp.Tests
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 4, 5).Should().NotBeNull();
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(100000, 83m, 1.5m, 2.5m, 4, 5);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(100000, 83m, 4, 5);
 
             _ = trade.ProfitLoss.Should().BeApproximately(137355, 5);
         }
@@ -61,7 +63,8 @@ namespace Primary.WinFormsApp.Tests
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 1, 2).Should().BeNull();
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(100000, 83m, 1.5m, 2.5m, 1, 2);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(100000, 83m, 1, 2);
 
             _ = trade.ProfitLoss.Should().BeApproximately(-15278, 5);
         }
@@ -82,7 +85,8 @@ namespace Primary.WinFormsApp.Tests
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 1, 2).Should().BeNull();
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(100000, 83m, 1.5m, 2.5m, 1, 2);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(100000, 83m, 1, 2);
 
             _ = trade.ProfitLoss.Should().BeApproximately(-15278, 5);
         }
@@ -103,7 +107,8 @@ namespace Primary.WinFormsApp.Tests
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 1, 2).Should().NotBeNull();
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(100000, 83m, 1.5m, 2.5m, 1, 2);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(100000, 83m, 1, 2);
 
             _ = trade.ProfitLoss.Should().BeApproximately(75522m, 5);
         }
@@ -124,12 +129,11 @@ namespace Primary.WinFormsApp.Tests
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 95m, 1, 2).Should().NotBeNull();
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(5, 95m, 1.5m, 2.5m, 1, 2);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(5, 95m, 1, 2);
 
             _ = trade.ProfitLoss.Should().BeApproximately(353m, 1);
         }
-
-
 
         [TestMethod]
         public void Arbitraje_Buy_48H_Sell_24H_FinDeSemana()
@@ -145,9 +149,10 @@ namespace Primary.WinFormsApp.Tests
 
             days.Should().Be(1);
 
-            var trade = new SettlementTermTrade(buy, sell).Calculate(19705, 95m, 1.5m, 2.5m, 3, 4);
+            var trade = new SettlementTermTrade(buy, sell);
+            trade.Calculate(19705, 95m, 3, 4);
 
-            trade.SellPriceTarget.Should().BeLessThanOrEqualTo(trade.BuyPrice);
+            trade.SellPriceTarget.Should().BeLessThan(trade.BuyPrice);
             trade.BuyPriceTarget.Should().BeGreaterThan(trade.SellPrice);
 
             _ = trade.ProfitLoss.Should().BeApproximately(-2035m, 1);

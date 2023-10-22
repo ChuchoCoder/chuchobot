@@ -112,6 +112,9 @@
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SettlementTerms\Caucion.cs" />
+    <Compile Include="SettlementTerms\SettlementTermTrade.cs" />
+    <Compile Include="SettlementTerms\SettlementTermTradeCalculation.cs" />
     <Compile Include="Shared\FlashWindow.cs" />
     <Compile Include="Dolar\FrmDolarPrice.cs">
       <SubType>Form</SubType>
