@@ -20,9 +20,9 @@ namespace Primary.WinFormsApp
         public static bool AppInsightsEnabled { get; private set; }
 
 
-        private static readonly string AppName = Assembly.GetExecutingAssembly().GetName().Name;
-        private static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        private static readonly string SessionId = Guid.NewGuid().ToString();
+        public static readonly string AppName = Assembly.GetExecutingAssembly().GetName().Name;
+        public static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public static readonly string SessionId = Guid.NewGuid().ToString();
 
         /// <summary>
         /// Starts the Application Insights logging functionality

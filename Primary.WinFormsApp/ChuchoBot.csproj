@@ -246,16 +246,15 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.Debug.config">
-        <DependentUpon>App.config</DependentUpon>
+      <DependentUpon>App.config</DependentUpon>
     </None>
     <None Include="App.Release.config">
-        <DependentUpon>App.config</DependentUpon>
+      <DependentUpon>App.config</DependentUpon>
     </None>
   </ItemGroup>
   <Target Name="AfterBuild">
     <Delete Files="$(TargetDir)$(TargetFileName).config" />
-    <Copy SourceFiles="$(ProjectDir)\App.$(Configuration).config"
-          DestinationFiles="$(TargetDir)$(TargetFileName).config" />
+    <Copy SourceFiles="$(ProjectDir)\App.$(Configuration).config" DestinationFiles="$(TargetDir)$(TargetFileName).config" />
   </Target>
   <ItemGroup>
     <ProjectReference Include="..\Primary\Primary.csproj">
@@ -285,6 +284,12 @@
     <Content Include="Resources\activity_productivity_icon-icons.com_51080.ico" />
     <Content Include="Resources\arargentinaflag_111670.ico" />
     <Content Include="Resources\cash_40532.ico" />
+    <None Include="Resources\icons8-wi-fi-24-green.png" />
+    <None Include="Resources\icons8-wi-fi-24-red.png" />
+    <None Include="Resources\robot_32.ico" />
+    <None Include="Resources\robot_64.ico" />
+    <None Include="Resources\robot_128.ico" />
+    <None Include="Resources\Robot.ico" />
     <Content Include="Resources\security-protection-protect-key-password-login_108554.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
