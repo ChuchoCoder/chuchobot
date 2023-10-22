@@ -66,6 +66,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.rdoBuy48H);
             this.groupBox1.Controls.Add(this.rdoBuy24H);
             this.groupBox1.Controls.Add(this.rdoBuyCI);
@@ -110,6 +111,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.rdoSell48H);
             this.groupBox2.Controls.Add(this.rdoSell24H);
             this.groupBox2.Controls.Add(this.rdoSellCI);
