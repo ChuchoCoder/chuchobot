@@ -1,5 +1,6 @@
 ﻿using Primary.WinFormsApp.Properties;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Primary.WinFormsApp
@@ -16,6 +17,10 @@ namespace Primary.WinFormsApp
         private void FrmArbitrationTrade_Load(object sender, EventArgs e)
         {
             numDolar.Value = Properties.Settings.Default.USDARS;
+            SizeAutoUpdate = true;
+            CompraPriceAutoUpdate = true;
+            VentaPriceAutoUpdate = true;
+
             timer1_Tick(sender, e);
         }
 
@@ -38,6 +43,8 @@ namespace Primary.WinFormsApp
                 {
                     numVentaPrice.Value = _trade.Sell.Data.GetTopBidPrice();
                 }
+
+                
             }
 
             if (_trade.Buy.Data != null)
@@ -48,6 +55,15 @@ namespace Primary.WinFormsApp
                 {
                     numCompraPrice.Value = _trade.Buy.Data.GetTopOfferPrice();
                 }
+            }
+
+            if (SizeAutoUpdate)
+            {
+                var topCompraSize = _trade.Buy.Data.GetTopOfferSize();
+                var topVentaSize = _trade.Sell.Data.GetTopBidSize();
+                var minSize = Math.Min(topCompraSize, topVentaSize);
+                numCompraSize.Value = minSize;
+                numOwnedVentaSize.Value = minSize;
             }
 
             timer1.Start();
@@ -91,18 +107,38 @@ namespace Primary.WinFormsApp
             numCompraPrice.Increment = _trade.Buy.Instrument.IsPesos() ? 1 : 0.01m;
         }
 
-
-        public bool CompraPriceAutoUpdate
+        public bool SizeAutoUpdate
         {
             get
             {
-                return numCompraPrice.ForeColor == System.Drawing.Color.Red;
+                return numCompraSize.ForeColor == System.Drawing.Color.Blue;
             }
             set
             {
                 if (value)
                 {
-                    numCompraPrice.ForeColor = System.Drawing.Color.Red;
+                    numCompraSize.ForeColor = System.Drawing.Color.Blue;
+                    numOwnedVentaSize.ForeColor = System.Drawing.Color.Blue;
+                }
+                else
+                {
+                    numCompraSize.ForeColor = System.Drawing.SystemColors.WindowText;
+                    numOwnedVentaSize.ForeColor = SystemColors.WindowText;
+                }
+            }
+        }
+
+        public bool CompraPriceAutoUpdate
+        {
+            get
+            {
+                return numCompraPrice.ForeColor == System.Drawing.Color.Blue;
+            }
+            set
+            {
+                if (value)
+                {
+                    numCompraPrice.ForeColor = System.Drawing.Color.Blue;
                 }
                 else
                 {
@@ -115,13 +151,13 @@ namespace Primary.WinFormsApp
         {
             get
             {
-                return numVentaPrice.ForeColor == System.Drawing.Color.Red;
+                return numVentaPrice.ForeColor == System.Drawing.Color.Blue;
             }
             set
             {
                 if (value)
                 {
-                    numVentaPrice.ForeColor = System.Drawing.Color.Red;
+                    numVentaPrice.ForeColor = System.Drawing.Color.Blue;
                 }
                 else
                 {
@@ -133,6 +169,7 @@ namespace Primary.WinFormsApp
         private void CompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             numCompraSize.Value = e.Value;
+            SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopOffer;
         }
 
         private void CompraBidsOffers_ClickPrice(object sender, BidOffersEventArgs e)
@@ -151,6 +188,7 @@ namespace Primary.WinFormsApp
         private void VentaBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             numOwnedVentaSize.Value = e.Value;
+            SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopBid;
         }
 
         private void VentaBidsOffers_ClickPrice(object sender, BidOffersEventArgs e)
@@ -205,7 +243,7 @@ namespace Primary.WinFormsApp
                 lblInteresNeto.Text = "Interés Neto: " + _trade.Caucion.InteresNeto.ToCurrency();
 
                 lblIva.Text = "IVA: " + _trade.Caucion.IVAGastos.ToCurrency();
-                
+
                 lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + _trade.Caucion.DerechosMercado.ToCurrency();
                 lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + _trade.Caucion.GastosGarantia.ToCurrency();
                 lblArancelCaucion.Text = "Arancel: " + _trade.Caucion.Arancel.ToCurrency();
@@ -220,6 +258,17 @@ namespace Primary.WinFormsApp
 
                 var percentage = _trade.BuyTotalSinComisiones != 0 ? _trade.ProfitLoss / _trade.BuyTotalSinComisiones : 0;
                 lblHeader.Text = $"Profit: {_trade.ProfitLoss:C2} ({percentage:P2})";
+
+                if (_trade.ProfitLoss > 0)
+                {
+                    lblHeader.ForeColor = Color.Green;
+                    lblProfitPesos.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblHeader.ForeColor = Color.Red;
+                    lblProfitPesos.ForeColor = Color.Red;
+                }
             }
         }
 
@@ -278,6 +327,16 @@ namespace Primary.WinFormsApp
             Properties.Settings.Default.USDARS = numDolar.Value;
             Properties.Settings.Default.Save();
             CalculateOwnedCompraTotalAndProfit();
+        }
+
+        private void numOwnedVentaSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numCompraSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SizeAutoUpdate = false;
         }
     }
 }
