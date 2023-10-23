@@ -27,6 +27,9 @@ namespace Primary.WinFormsApp
 
             settlementTermSettings1.RefreshValues();
 
+            _trade.Buy.RefreshData();
+            _trade.Sell.RefreshData();
+
             if (_trade.Sell.Data != null)
             {
                 VentaBidsOffers.LoadData(_trade.Sell.Data);
@@ -53,6 +56,9 @@ namespace Primary.WinFormsApp
         internal void Init(SettlementTermTrade trade)
         {
             _trade = trade;
+
+            _trade.Buy.RefreshData();
+            _trade.Sell.RefreshData();
 
             VentaBidsOffers.InstrumentDetail = trade.Sell.Instrument;
             CompraBidsOffers.InstrumentDetail = trade.Buy.Instrument;
@@ -194,25 +200,25 @@ namespace Primary.WinFormsApp
                 this.groupBox1.Text = "Caución " + tipoCaucion;
                 lblDiasCaucion.Text = "Días Caución: " + _trade.Caucion.Dias.ToString();
 
-                lblMontoCaucion.Text = "Importe Neto: " + _trade.Caucion.ImporteBruto.ToCurrency();
-                lblInteresNeto.Text = "Interés Neto: " + _trade.Caucion.InteresNeto.ToCurrency();
+                lblMontoCaucion.Text = "Importe a caucionar: " + _trade.Caucion.ImporteBruto.ToCurrency();
                 lblInteresCaucion.Text = "Interés: " + _trade.Caucion.Interes.ToCurrency();
-                
+                lblInteresNeto.Text = "Interés Neto: " + _trade.Caucion.InteresNeto.ToCurrency();
+
                 lblIva.Text = "IVA: " + _trade.Caucion.IVAGastos.ToCurrency();
                 
                 lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + _trade.Caucion.DerechosMercado.ToCurrency();
                 lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + _trade.Caucion.GastosGarantia.ToCurrency();
                 lblArancelCaucion.Text = "Arancel: " + _trade.Caucion.Arancel.ToCurrency();
-                lblGastosCaucion.Text = "Gastos: " + _trade.Caucion.TotalGastos.ToCurrency();
+                lblGastosCaucion.Text = "Total Gastos: " + _trade.Caucion.TotalGastos.ToCurrency();
 
-                lblNetoCaucion.Text = "Caución: " + _trade.Caucion.InteresNeto.ToCurrency();
+                lblNetoCaucion.Text = "Interés Neto Caución: " + _trade.Caucion.InteresNeto.ToCurrency();
 
                 var difVentaCompra = _trade.SellTotalSinComisiones - _trade.BuyTotalSinComisiones;
                 lblDifVentaCompra.Text = "Venta - Compra: " + difVentaCompra.ToCurrency();
 
                 lblProfitPesos.Text = $"Profit: {_trade.ProfitLoss:C2}";
 
-                var percentage = _trade.ProfitLoss / _trade.BuyTotalSinComisiones;
+                var percentage = _trade.BuyTotalSinComisiones != 0 ? _trade.ProfitLoss / _trade.BuyTotalSinComisiones : 0;
                 lblHeader.Text = $"Profit: {_trade.ProfitLoss:C2} ({percentage:P2})";
             }
         }
