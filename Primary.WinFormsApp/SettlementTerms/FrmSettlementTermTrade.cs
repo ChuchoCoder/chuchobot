@@ -57,7 +57,7 @@ namespace Primary.WinFormsApp
                 }
             }
 
-            if (SizeAutoUpdate)
+            if (SizeAutoUpdate && _trade.Buy.Data != null && _trade.Sell.Data != null)
             {
                 var topCompraSize = _trade.Buy.Data.GetTopOfferSize();
                 var topVentaSize = _trade.Sell.Data.GetTopBidSize();
