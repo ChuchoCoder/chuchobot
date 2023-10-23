@@ -55,6 +55,20 @@ La aplicación tiene configurado valores arbitrarios para la comisión que cobra
 
 Para obtener un P&L correcto, es necesario configurar estos valores en los campos `Comisión Tomadora (TNA)` y `Comisión Colocadora (TNA)`.
 
+## Telemetría
+
+Para deshabilitar la telemetría de la aplicación:
+
+1. Editar el archivo de configuración `ChuchoBot.exe.config`
+2. Eliminar sección de `<connectionStrings>...</connectionStrings>``
+
+```xml
+  <connectionStrings>
+    <add name="Primary.WinFormsApp.Properties.Settings.AppInsightsConnectionString"
+      connectionString="..." />
+  </connectionStrings>
+```
+
 ## ¿Cómo agregar/eliminar instrumentos a monitorear?
 
 1. Ir a `Configuración` => `Instrumentos a monitorear`
@@ -100,6 +114,12 @@ La operación consiste en realizar las siguientes operaciones:
 2. **Vender** el título en el plazo visualizado `24hs` o `48hs`
 3. **Tomar** caución por el total de la compra del paso **1**
    - Nota APB 🤦‍♂️: Si la compra del paso 1 se realizó en `24hs` se deberá tomar el dinero en caución al siguiente día
+
+### Abrir arbitraje de plazos para un instrumento
+
+Es posible abrir la ventana de arbitraje de plazos para un instrumento y plazos de liquidación específicos:
+
+![Abrir arbitraje de plazos para un instrumento](docs/screenshots/ArbitrajePlazosLauncher.png)
 
 ## Scanner para comprar/vender dolar MEP y CCL
 
