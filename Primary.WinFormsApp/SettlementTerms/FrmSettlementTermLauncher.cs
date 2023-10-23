@@ -71,7 +71,7 @@ namespace Primary.WinFormsApp.SettlementTerms
         {
             if (listInstrumentos.SelectedItem == null)
             {
-                MessageBox.Show("Seleccionar el intrumento");
+                MessageBox.Show("Seleccionar el intrumento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -79,7 +79,7 @@ namespace Primary.WinFormsApp.SettlementTerms
 
             if (Settings.Default.ArbitrationTickers.TickerExists(buySymbol) == false)
             {
-                MessageBox.Show($"El instrumento '{buySymbol}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion");
+                MessageBox.Show($"El instrumento '{buySymbol}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -99,7 +99,7 @@ namespace Primary.WinFormsApp.SettlementTerms
 
             if (buyInstrument == null)
             {
-                MessageBox.Show($"No se encontró el instrumento '{buySymbol}'");
+                MessageBox.Show($"No se encontró el instrumento '{buySymbol}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -121,7 +121,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             var sellInstrument = Argentina.Data.GetInstrumentDetailOrNull(sellSymbol);
             if (sellInstrument == null)
             {
-                MessageBox.Show($"No se encontró el instrumento '{sellInstrument}'");
+                MessageBox.Show($"No se encontró el instrumento '{sellInstrument}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             var sell = new InstrumentWithData(sellInstrument);
