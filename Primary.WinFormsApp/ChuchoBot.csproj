@@ -273,9 +273,8 @@
       <DependentUpon>App.config</DependentUpon>
     </None>
   </ItemGroup>
-  <Target Name="AfterBuild">
-    <Delete Files="$(TargetDir)$(TargetFileName).config" />
-    <Copy SourceFiles="$(ProjectDir)\App.$(Configuration).config" DestinationFiles="$(TargetDir)$(TargetFileName).config" />
+  <Target Name="SetAppConfig" AfterTargets="AfterBuild">
+    <Copy SourceFiles="$(ProjectDir)\App.$(Configuration).config" DestinationFiles="$(TargetDir)$(TargetFileName).config" OverwriteReadOnlyFiles="true" />
   </Target>
   <ItemGroup>
     <ProjectReference Include="..\Primary\Primary.csproj">
