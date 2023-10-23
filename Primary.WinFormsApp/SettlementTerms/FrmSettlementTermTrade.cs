@@ -1,5 +1,6 @@
 ﻿using Primary.WinFormsApp.Properties;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Primary.WinFormsApp
@@ -16,6 +17,10 @@ namespace Primary.WinFormsApp
         private void FrmArbitrationTrade_Load(object sender, EventArgs e)
         {
             numDolar.Value = Properties.Settings.Default.USDARS;
+            SizeAutoUpdate = true;
+            CompraPriceAutoUpdate = true;
+            VentaPriceAutoUpdate = true;
+
             timer1_Tick(sender, e);
         }
 
@@ -27,6 +32,9 @@ namespace Primary.WinFormsApp
 
             settlementTermSettings1.RefreshValues();
 
+            _trade.Buy.RefreshData();
+            _trade.Sell.RefreshData();
+
             if (_trade.Sell.Data != null)
             {
                 VentaBidsOffers.LoadData(_trade.Sell.Data);
@@ -35,6 +43,8 @@ namespace Primary.WinFormsApp
                 {
                     numVentaPrice.Value = _trade.Sell.Data.GetTopBidPrice();
                 }
+
+                
             }
 
             if (_trade.Buy.Data != null)
@@ -47,12 +57,24 @@ namespace Primary.WinFormsApp
                 }
             }
 
+            if (SizeAutoUpdate)
+            {
+                var topCompraSize = _trade.Buy.Data.GetTopOfferSize();
+                var topVentaSize = _trade.Sell.Data.GetTopBidSize();
+                var minSize = Math.Min(topCompraSize, topVentaSize);
+                numCompraSize.Value = minSize;
+                numOwnedVentaSize.Value = minSize;
+            }
+
             timer1.Start();
         }
 
         internal void Init(SettlementTermTrade trade)
         {
             _trade = trade;
+
+            _trade.Buy.RefreshData();
+            _trade.Sell.RefreshData();
 
             VentaBidsOffers.InstrumentDetail = trade.Sell.Instrument;
             CompraBidsOffers.InstrumentDetail = trade.Buy.Instrument;
@@ -85,18 +107,38 @@ namespace Primary.WinFormsApp
             numCompraPrice.Increment = _trade.Buy.Instrument.IsPesos() ? 1 : 0.01m;
         }
 
-
-        public bool CompraPriceAutoUpdate
+        public bool SizeAutoUpdate
         {
             get
             {
-                return numCompraPrice.ForeColor == System.Drawing.Color.Red;
+                return numCompraSize.ForeColor == System.Drawing.Color.Blue;
             }
             set
             {
                 if (value)
                 {
-                    numCompraPrice.ForeColor = System.Drawing.Color.Red;
+                    numCompraSize.ForeColor = System.Drawing.Color.Blue;
+                    numOwnedVentaSize.ForeColor = System.Drawing.Color.Blue;
+                }
+                else
+                {
+                    numCompraSize.ForeColor = System.Drawing.SystemColors.WindowText;
+                    numOwnedVentaSize.ForeColor = SystemColors.WindowText;
+                }
+            }
+        }
+
+        public bool CompraPriceAutoUpdate
+        {
+            get
+            {
+                return numCompraPrice.ForeColor == System.Drawing.Color.Blue;
+            }
+            set
+            {
+                if (value)
+                {
+                    numCompraPrice.ForeColor = System.Drawing.Color.Blue;
                 }
                 else
                 {
@@ -109,13 +151,13 @@ namespace Primary.WinFormsApp
         {
             get
             {
-                return numVentaPrice.ForeColor == System.Drawing.Color.Red;
+                return numVentaPrice.ForeColor == System.Drawing.Color.Blue;
             }
             set
             {
                 if (value)
                 {
-                    numVentaPrice.ForeColor = System.Drawing.Color.Red;
+                    numVentaPrice.ForeColor = System.Drawing.Color.Blue;
                 }
                 else
                 {
@@ -127,6 +169,7 @@ namespace Primary.WinFormsApp
         private void CompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             numCompraSize.Value = e.Value;
+            SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopOffer;
         }
 
         private void CompraBidsOffers_ClickPrice(object sender, BidOffersEventArgs e)
@@ -145,6 +188,7 @@ namespace Primary.WinFormsApp
         private void VentaBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             numOwnedVentaSize.Value = e.Value;
+            SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopBid;
         }
 
         private void VentaBidsOffers_ClickPrice(object sender, BidOffersEventArgs e)
@@ -177,40 +221,54 @@ namespace Primary.WinFormsApp
         {
             if (numCompraPrice.Value > 0)
             {
-                var neto = _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value, numCompraPrice.Value, Settings.Default.TasaCaucion, Settings.Default.ArancelCaucionColocadora, Settings.Default.ArancelCaucionTomadora);
+                _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value, numCompraPrice.Value, Settings.Default.TasaCaucion);
 
-                lblVentaImporte.Text = $"Importe: {neto.SellTotalSinComisiones:C2}";
-                lblVentaComision.Text = $"DM. + Com.: {-neto.SellComisionDerechos:C2}";
+                lblVentaImporte.Text = $"Importe: {_trade.SellTotalSinComisiones:C2}";
+                lblVentaComision.Text = $"DM. + Com.: {-_trade.SellComisionDerechos:C2}";
 
-                lblCompraImporte.Text = $"Importe: {neto.BuyTotalSinComisiones:C2}";
-                lblCompraComision.Text = $"DM. + Com.: {-neto.BuyComisionDerechos:C2}";
+                lblCompraImporte.Text = $"Importe: {_trade.BuyTotalSinComisiones:C2}";
+                lblCompraComision.Text = $"DM. + Com.: {-_trade.BuyComisionDerechos:C2}";
 
-                lblComisionTotal.Text = $"Total Der.Mer. + Comisión: {-neto.SellComisionDerechos - neto.BuyComisionDerechos:C2}";
+                lblComisionTotal.Text = $"Total Der.Mer. + Comisión: {-_trade.SellComisionDerechos - _trade.BuyComisionDerechos:C2}";
 
-                lblBuyPriceTarget.Text = "Px Arbitrado: " + neto.BuyPriceTarget.ToCurrency();
-                lblSellPriceTarget.Text = "Px Arbitrado: " + neto.SellPriceTarget.ToCurrency();
+                lblBuyPriceTarget.Text = "Px Arbitrado: " + _trade.BuyPriceTarget.ToCurrency();
+                lblSellPriceTarget.Text = "Px Arbitrado: " + _trade.SellPriceTarget.ToCurrency();
 
-                var tipoCaucion = neto.DiasCaucion > 0 ? "Tomadora" : "Colocadora";
+                var tipoCaucion = _trade.EsCaucionColocadora ? "Colocadora" : "Tomadora";
                 this.groupBox1.Text = "Caución " + tipoCaucion;
-                lblDiasCaucion.Text = "Días Caución: " + neto.DiasCaucion.ToString();
-                lblMontoCaucion.Text = "Monto Caución: " + neto.TotalACaucionar.ToCurrency();
-                lblInteresNeto.Text = "Interés Neto: " + neto.InteresNeto.ToCurrency();
-                lblInteresCaucion.Text = "Interés: " + neto.InteresCaucion.ToCurrency();
-                lblIva.Text = "IVA: " + neto.IvaGastos.ToCurrency();
-                lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + neto.DerechosMercadoCaucion.ToCurrency();
-                lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + neto.GastosGarantia.ToCurrency();
-                lblArancelCaucion.Text = "Arancel: " + neto.ArancelCaucion.ToCurrency();
-                lblGastosCaucion.Text = "Gastos: " + neto.ComisionCaucionTotal.ToCurrency();
+                lblDiasCaucion.Text = "Días Caución: " + _trade.Caucion.Dias.ToString();
 
-                lblNetoCaucion.Text = "Caución: " + neto.InteresNeto.ToCurrency();
+                lblMontoCaucion.Text = "Importe a caucionar: " + _trade.Caucion.ImporteBruto.ToCurrency();
+                lblInteresCaucion.Text = "Interés: " + _trade.Caucion.Interes.ToCurrency();
+                lblInteresNeto.Text = "Interés Neto: " + _trade.Caucion.InteresNeto.ToCurrency();
 
-                var difVentaCompra = neto.SellTotalSinComisiones - neto.BuyTotalSinComisiones;
+                lblIva.Text = "IVA: " + _trade.Caucion.IVAGastos.ToCurrency();
+
+                lblDerMerCaucion.Text = $"Der. Mer. {_trade.Sell.Instrument.GetDerechosDeMercado():P}: " + _trade.Caucion.DerechosMercado.ToCurrency();
+                lblGtoGtiaCaucion.Text = "Gtos. Gtias.: " + _trade.Caucion.GastosGarantia.ToCurrency();
+                lblArancelCaucion.Text = "Arancel: " + _trade.Caucion.Arancel.ToCurrency();
+                lblGastosCaucion.Text = "Total Gastos: " + _trade.Caucion.TotalGastos.ToCurrency();
+
+                lblNetoCaucion.Text = "Interés Neto Caución: " + _trade.Caucion.InteresNeto.ToCurrency();
+
+                var difVentaCompra = _trade.SellTotalSinComisiones - _trade.BuyTotalSinComisiones;
                 lblDifVentaCompra.Text = "Venta - Compra: " + difVentaCompra.ToCurrency();
 
-                lblProfitPesos.Text = $"Profit: {neto.ProfitLoss:C2}";
+                lblProfitPesos.Text = $"Profit: {_trade.ProfitLoss:C2}";
 
-                var percentage = neto.ProfitLoss / neto.BuyTotalSinComisiones;
-                lblHeader.Text = $"Profit: {neto.ProfitLoss:C2} ({percentage:P2})";
+                var percentage = _trade.BuyTotalSinComisiones != 0 ? _trade.ProfitLoss / _trade.BuyTotalSinComisiones : 0;
+                lblHeader.Text = $"Profit: {_trade.ProfitLoss:C2} ({percentage:P2})";
+
+                if (_trade.ProfitLoss > 0)
+                {
+                    lblHeader.ForeColor = Color.Green;
+                    lblProfitPesos.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblHeader.ForeColor = Color.Red;
+                    lblProfitPesos.ForeColor = Color.Red;
+                }
             }
         }
 
@@ -269,6 +327,16 @@ namespace Primary.WinFormsApp
             Properties.Settings.Default.USDARS = numDolar.Value;
             Properties.Settings.Default.Save();
             CalculateOwnedCompraTotalAndProfit();
+        }
+
+        private void numOwnedVentaSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numCompraSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SizeAutoUpdate = false;
         }
     }
 }

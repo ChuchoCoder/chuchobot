@@ -12,8 +12,8 @@ namespace Primary.WinFormsApp
         public void Init()
         {
             DataTable = new DataTable();
-            DataColumn ownedVentaColumn = DataTable.Columns.Add("KeyVenta", typeof(string));
-            DataColumn arbitrationCompraColumn = DataTable.Columns.Add("KeyCompra", typeof(string));
+            var ownedVentaColumn = DataTable.Columns.Add("KeyVenta", typeof(string));
+            var arbitrationCompraColumn = DataTable.Columns.Add("KeyCompra", typeof(string));
 
             DataTable.PrimaryKey = new DataColumn[] { ownedVentaColumn, arbitrationCompraColumn };
 
@@ -41,25 +41,24 @@ namespace Primary.WinFormsApp
             _ = DataTable.Columns.Add("TNA", typeof(decimal));
         }
 
-        public void Refresh(List<SettlementTermTrade> trades, int diasLiq24H, int diasLiq48H, decimal comision, 
-            decimal comisionCaucionTomadora, decimal comisionCaucionColocadora, decimal tasaCaucion, bool onlyProfitableTrades)
+        public void Refresh(List<SettlementTermTrade> trades, int diasLiq24H, int diasLiq48H, decimal tasaCaucion, bool onlyProfitableTrades)
         {
-            List<DataRow> processedRows = new List<DataRow>();
+            var processedRows = new List<DataRow>();
 
-            foreach (SettlementTermTrade trade in trades)
+            foreach (var trade in trades)
             {
                 DataRow row;
-                var tradeProfit = trade.Calculate(0, tasaCaucion, comisionCaucionColocadora, comisionCaucionTomadora, diasLiq24H, diasLiq48H);
+                trade.Calculate(0, tasaCaucion, diasLiq24H, diasLiq48H);
 
-                if (onlyProfitableTrades && tradeProfit.ProfitLoss < 0)
+                if (onlyProfitableTrades && trade.ProfitLoss < 0)
                 {
                     continue;
                 }
 
-                string ownedVenta = trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
-                string arbitrationCompra = trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
+                var ownedVenta = trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
+                var arbitrationCompra = trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
 
-                DataRow existingRow = DataTable.Rows.Find(new[] { ownedVenta, arbitrationCompra });
+                var existingRow = DataTable.Rows.Find(new[] { ownedVenta, arbitrationCompra });
 
                 if (existingRow != null)
                 {
@@ -77,24 +76,24 @@ namespace Primary.WinFormsApp
                 row["SpreadLast"] = trade.SpreadLast;
 
 
-                row["SellTotal"] = tradeProfit.SellTotalNeto;
-                row["BuyTotal"] = tradeProfit.BuyTotalNeto;
-                                
-                row["Comision"] = tradeProfit.BuyComisionDerechos + tradeProfit.SellComisionDerechos;
+                row["SellTotal"] = trade.SellTotalNeto;
+                row["BuyTotal"] = trade.BuyTotalNeto;
 
-                row["ComisionCaucion"] = tradeProfit.ComisionCaucionTotal;
+                row["Comision"] = trade.BuyComisionDerechos + trade.SellComisionDerechos;
 
-                row["Caucion"] = tradeProfit.TotalCaucionConInteres;
+                row["ComisionCaucion"] = trade.Caucion.TotalGastos;
 
-                row["Profit"] = tradeProfit.ProfitLoss;
-                row["ProfitCaucion"] = tradeProfit.InteresNeto;
+                row["Caucion"] = trade.Caucion.ImporteConInteres;
+
+                row["Profit"] = trade.ProfitLoss;
+                row["ProfitCaucion"] = trade.Caucion.InteresNeto;
 
                 row["Venta"] = trade.Sell.Data.HasBids() ? (object)trade.Sell.Data.Bids[0].Price : DBNull.Value;
                 row["Compra"] = trade.Buy.Data.HasOffers() ? (object)trade.Buy.Data.Offers[0].Price : DBNull.Value;
                 row["VentaLast"] = trade.Sell.Data.HasLastPrice() ? (object)trade.Sell.Data.Last.Price.Value : DBNull.Value;
                 row["CompraLast"] = trade.Buy.Data.HasLastPrice() ? (object)trade.Buy.Data.Last.Price.Value : DBNull.Value;
 
-                row["TNA"] = tradeProfit.SpreadTNA;
+                row["TNA"] = trade.SpreadTNA;
 
                 row["Trade"] = trade;
 
@@ -105,7 +104,7 @@ namespace Primary.WinFormsApp
                 processedRows.Add(row);
             }
 
-            List<DataRow> rowsToRemove = new List<DataRow>();
+            var rowsToRemove = new List<DataRow>();
             foreach (DataRow dataRow in DataTable.Rows)
             {
                 if (!processedRows.Contains(dataRow))
@@ -113,7 +112,7 @@ namespace Primary.WinFormsApp
                     rowsToRemove.Add(dataRow);
                 }
             }
-            foreach (DataRow dataRow in rowsToRemove)
+            foreach (var dataRow in rowsToRemove)
             {
                 DataTable.Rows.Remove(dataRow);
             }

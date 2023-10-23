@@ -35,7 +35,7 @@ namespace Primary.WinFormsApp
 
                     var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
 
-                    _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.Comision, settlementTermSettings.ArancelCaucionTomadora, settlementTermSettings.ArancelCaucionColocadora, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
+                    _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
                 }
                 //grdArbitration.DataSource = _dataTable;
             }
