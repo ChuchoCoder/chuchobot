@@ -51,9 +51,7 @@
             this.numCompraSize = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.numComision = new System.Windows.Forms.NumericUpDown();
             this.lblHeader = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.numDolar = new System.Windows.Forms.NumericUpDown();
             this.lblComisionTotal = new System.Windows.Forms.Label();
@@ -72,13 +70,13 @@
             this.lblGastosCaucion = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblNetoCaucion = new System.Windows.Forms.Label();
+            this.settlementTermSettings1 = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
             this.grpOwnedVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numVentaPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOwnedVentaSize)).BeginInit();
             this.grpArbitrationCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numComision)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDolar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -95,7 +93,7 @@
             this.grpOwnedVenta.Controls.Add(this.label2);
             this.grpOwnedVenta.Controls.Add(this.numOwnedVentaSize);
             this.grpOwnedVenta.Controls.Add(this.label1);
-            this.grpOwnedVenta.Location = new System.Drawing.Point(21, 97);
+            this.grpOwnedVenta.Location = new System.Drawing.Point(20, 127);
             this.grpOwnedVenta.Name = "grpOwnedVenta";
             this.grpOwnedVenta.Size = new System.Drawing.Size(584, 195);
             this.grpOwnedVenta.TabIndex = 1;
@@ -220,7 +218,7 @@
             this.grpArbitrationCompra.Controls.Add(this.label6);
             this.grpArbitrationCompra.Controls.Add(this.numCompraSize);
             this.grpArbitrationCompra.Controls.Add(this.label7);
-            this.grpArbitrationCompra.Location = new System.Drawing.Point(610, 97);
+            this.grpArbitrationCompra.Location = new System.Drawing.Point(610, 127);
             this.grpArbitrationCompra.Name = "grpArbitrationCompra";
             this.grpArbitrationCompra.Size = new System.Drawing.Size(573, 195);
             this.grpArbitrationCompra.TabIndex = 8;
@@ -341,21 +339,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // numComision
-            // 
-            this.numComision.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numComision.DecimalPlaces = 2;
-            this.numComision.Location = new System.Drawing.Point(1103, 54);
-            this.numComision.Name = "numComision";
-            this.numComision.Size = new System.Drawing.Size(80, 20);
-            this.numComision.TabIndex = 0;
-            this.numComision.Value = new decimal(new int[] {
-            27,
-            0,
-            0,
-            131072});
-            this.numComision.ValueChanged += new System.EventHandler(this.numComision_ValueChanged);
-            // 
             // lblHeader
             // 
             this.lblHeader.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -363,25 +346,15 @@
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(1207, 43);
+            this.lblHeader.Size = new System.Drawing.Size(1191, 43);
             this.lblHeader.TabIndex = 11;
             this.lblHeader.Text = "Profit: $ / %";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(1014, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 18);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Comisión %:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.Location = new System.Drawing.Point(837, 54);
+            this.label8.Location = new System.Drawing.Point(389, 60);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 18);
             this.label8.TabIndex = 20;
@@ -392,7 +365,7 @@
             // 
             this.numDolar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numDolar.DecimalPlaces = 2;
-            this.numDolar.Location = new System.Drawing.Point(902, 54);
+            this.numDolar.Location = new System.Drawing.Point(454, 60);
             this.numDolar.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -439,9 +412,9 @@
             // 
             this.lnkArbitration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnkArbitration.Location = new System.Drawing.Point(18, 61);
+            this.lnkArbitration.Location = new System.Drawing.Point(18, 59);
             this.lnkArbitration.Name = "lnkArbitration";
-            this.lnkArbitration.Size = new System.Drawing.Size(265, 19);
+            this.lnkArbitration.Size = new System.Drawing.Size(365, 19);
             this.lnkArbitration.TabIndex = 14;
             this.lnkArbitration.TabStop = true;
             this.lnkArbitration.Text = "Copiar";
@@ -522,7 +495,7 @@
             this.groupBox1.Controls.Add(this.lblInteresCaucion);
             this.groupBox1.Controls.Add(this.lblDerMerCaucion);
             this.groupBox1.Controls.Add(this.lblArancelCaucion);
-            this.groupBox1.Location = new System.Drawing.Point(24, 305);
+            this.groupBox1.Location = new System.Drawing.Point(21, 327);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -555,7 +528,7 @@
             this.groupBox2.Controls.Add(this.lblComisionTotal);
             this.groupBox2.Controls.Add(this.lblDifVentaCompra);
             this.groupBox2.Controls.Add(this.lblProfitPesos);
-            this.groupBox2.Location = new System.Drawing.Point(610, 305);
+            this.groupBox2.Location = new System.Drawing.Point(610, 327);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -573,19 +546,25 @@
             this.lblNetoCaucion.TabIndex = 23;
             this.lblNetoCaucion.Text = "Caución:";
             // 
+            // settlementTermSettings1
+            // 
+            this.settlementTermSettings1.Location = new System.Drawing.Point(540, 60);
+            this.settlementTermSettings1.Name = "settlementTermSettings1";
+            this.settlementTermSettings1.Size = new System.Drawing.Size(643, 48);
+            this.settlementTermSettings1.TabIndex = 32;
+            // 
             // FrmSettlementTermTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1207, 554);
+            this.ClientSize = new System.Drawing.Size(1191, 503);
+            this.Controls.Add(this.settlementTermSettings1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lnkArbitration);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.numDolar);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblHeader);
-            this.Controls.Add(this.numComision);
             this.Controls.Add(this.grpArbitrationCompra);
             this.Controls.Add(this.grpOwnedVenta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -601,7 +580,6 @@
             this.grpArbitrationCompra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numComision)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDolar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -625,9 +603,7 @@
         private System.Windows.Forms.NumericUpDown numCompraSize;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.NumericUpDown numComision;
         private System.Windows.Forms.Label lblHeader;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numDolar;
         private System.Windows.Forms.Label lblComisionTotal;
@@ -653,5 +629,6 @@
         private System.Windows.Forms.Label lblNetoCaucion;
         private System.Windows.Forms.Label lblSellPriceTarget;
         private System.Windows.Forms.Label lblBuyPriceTarget;
+        private SettlementTerms.SettlementTermSettings settlementTermSettings1;
     }
 }
