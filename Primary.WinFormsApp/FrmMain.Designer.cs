@@ -56,6 +56,8 @@
             this.disconnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusInformation = new System.Windows.Forms.ToolStripStatusLabel();
             this.appVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.abrirScannerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -68,9 +70,9 @@
             this.connectToolStripMenuItem,
             this.historicDataToolStripMenuItem,
             this.buscadorDeArbitrajesToolStripMenuItem,
+            this.buscadorArbitrajesSimplesToolStripMenuItem,
             this.dolarPricesToolStripMenuItem,
             this.marketDataToolStripMenuItem,
-            this.buscadorArbitrajesSimplesToolStripMenuItem,
             this.refreshDataToolStripMenuItem,
             this.toolStripMenuItem1,
             this.configuraciónToolStripMenuItem});
@@ -168,6 +170,9 @@
             // 
             // buscadorArbitrajesSimplesToolStripMenuItem
             // 
+            this.buscadorArbitrajesSimplesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirScannerToolStripMenuItem,
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem});
             this.buscadorArbitrajesSimplesToolStripMenuItem.Name = "buscadorArbitrajesSimplesToolStripMenuItem";
             this.buscadorArbitrajesSimplesToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
             this.buscadorArbitrajesSimplesToolStripMenuItem.Text = "Arbitrajes de Plazo";
@@ -263,7 +268,7 @@
             // statusInformation
             // 
             this.statusInformation.Name = "statusInformation";
-            this.statusInformation.Size = new System.Drawing.Size(499, 17);
+            this.statusInformation.Size = new System.Drawing.Size(709, 17);
             this.statusInformation.Spring = true;
             // 
             // appVersion
@@ -272,6 +277,20 @@
             this.appVersion.Size = new System.Drawing.Size(76, 17);
             this.appVersion.Text = "v2023.10.23.0";
             this.appVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // abrirScannerToolStripMenuItem
+            // 
+            this.abrirScannerToolStripMenuItem.Name = "abrirScannerToolStripMenuItem";
+            this.abrirScannerToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.abrirScannerToolStripMenuItem.Text = "Abrir scanner";
+            this.abrirScannerToolStripMenuItem.Click += new System.EventHandler(this.abrirScannerToolStripMenuItem_Click);
+            // 
+            // seleccionarInstrumentoYPlazosToolStripMenuItem
+            // 
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Name = "seleccionarInstrumentoYPlazosToolStripMenuItem";
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Text = "Seleccionar Instrumento y Plazos";
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Click += new System.EventHandler(this.seleccionarInstrumentoYPlazosToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -324,6 +343,8 @@
         private System.Windows.Forms.ToolStripStatusLabel statusInformation;
         private System.Windows.Forms.ToolStripStatusLabel appVersion;
         private System.Windows.Forms.ToolStripStatusLabel connected;
+        private System.Windows.Forms.ToolStripMenuItem abrirScannerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seleccionarInstrumentoYPlazosToolStripMenuItem;
     }
 }
 
