@@ -52,6 +52,9 @@ namespace Primary.WinFormsApp
 
         private void UpdateDataTable(List<DolarTrade> mepTrades, DataTable dataTable)
         {
+            if (mepTrades == null || dataTable == null)
+                return;
+
             List<DataRow> processedRows = new List<DataRow>();
 
             //IEnumerable<DolarTrade> trades = mepTrades.Where(x => x.Trade.Contains("S31O3"));

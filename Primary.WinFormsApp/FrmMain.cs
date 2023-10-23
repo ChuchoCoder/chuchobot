@@ -1,13 +1,12 @@
 ﻿using Primary.Data;
+using Primary.WinFormsApp.Properties;
+using Primary.WinFormsApp.SettlementTerms;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Timers;
-using Primary.WinFormsApp.Properties;
-using Primary.WinFormsApp.SettlementTerms;
 
 namespace Primary.WinFormsApp
 {
@@ -17,8 +16,8 @@ namespace Primary.WinFormsApp
         private Instrument[] _watchedInstruments;
         private DateTime _lastUpdate;
         private Task primaryWebSocket;
-        private System.Timers.Timer AccountsTimer = new System.Timers.Timer(1000);
-        private System.Timers.Timer PositionsTimer = new System.Timers.Timer(1000);
+        private readonly System.Timers.Timer AccountsTimer = new System.Timers.Timer(1000);
+        private readonly System.Timers.Timer PositionsTimer = new System.Timers.Timer(1000);
         private bool LoginSuccessfull;
 
         public FrmMain()
@@ -63,6 +62,17 @@ namespace Primary.WinFormsApp
         private void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             Telemetry.LogError("Application ThreadException", e.Exception, true);
+        }
+
+        public bool ValidateIsConnected()
+        {
+            if (connected.Visible == false)
+            {
+                _ = MessageBox.Show("La aplicación esta desconectada. El usuario debe hacer Login.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         public void SetConnectionStatus(bool isConnected = true)
@@ -208,9 +218,12 @@ namespace Primary.WinFormsApp
 
         private void buscadorDeArbitrajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmArbitrationAnalyzer = new FrmArbitrationAnalyzer();
-            //frmArbitrationAnalyzer.MdiParent = this;
-            frmArbitrationAnalyzer.Show();
+            if (ValidateIsConnected())
+            {
+                var frmArbitrationAnalyzer = new FrmArbitrationAnalyzer();
+                //frmArbitrationAnalyzer.MdiParent = this;
+                frmArbitrationAnalyzer.Show();
+            }
 
         }
 
@@ -263,46 +276,55 @@ namespace Primary.WinFormsApp
 
         private void compraMEPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice
-            {
-                Text = "Compra Dolar MEP"
-            };
-            frm.Setup(x => x.GetDolarMEPTrades(), false);
-            frm.Show();
 
+            if (ValidateIsConnected())
+            {
+                var frm = new FrmDolarPrice
+                {
+                    Text = "Compra Dolar MEP"
+                };
+                frm.Setup(x => x.GetDolarMEPTrades(), false);
+                frm.Show();
+            }
         }
 
         private void ventaMEPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice
+            if (ValidateIsConnected())
             {
-                Text = "Venta Dolar MEP"
-            };
-            frm.Setup(x => x.GetDolarMEPTrades(), true);
-            frm.Show();
-
+                var frm = new FrmDolarPrice
+                {
+                    Text = "Venta Dolar MEP"
+                };
+                frm.Setup(x => x.GetDolarMEPTrades(), true);
+                frm.Show();
+            }
         }
 
         private void compraCCLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice
+            if (ValidateIsConnected())
             {
-                Text = "Compra Dolar CCL"
-            };
-            frm.Setup(x => x.GetDolarCableTrades(), false);
-            frm.Show();
-
+                var frm = new FrmDolarPrice
+                {
+                    Text = "Compra Dolar CCL"
+                };
+                frm.Setup(x => x.GetDolarCableTrades(), false);
+                frm.Show();
+            }
         }
 
         private void ventaCCLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmDolarPrice
+            if (ValidateIsConnected())
             {
-                Text = "Venta Dolar CCL"
-            };
-            frm.Setup(x => x.GetDolarCableTrades(), true);
-            frm.Show();
-
+                var frm = new FrmDolarPrice
+                {
+                    Text = "Venta Dolar CCL"
+                };
+                frm.Setup(x => x.GetDolarCableTrades(), true);
+                frm.Show();
+            }
         }
 
         private bool ValidateInstrument(string[] settings)
@@ -316,7 +338,7 @@ namespace Primary.WinFormsApp
                     {
                         if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
                         {
-                            MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            _ = MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Telemetry.LogWarning($"El instrumento {ticker} no existe.");
                             return false;
                         }
@@ -392,7 +414,7 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Telemetry.LogError(nameof(tmrPositions_Tick), ex);
             }
         }
@@ -409,23 +431,29 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Telemetry.LogError(nameof(tmrAccounts_Tick), ex);
             }
         }
 
         private void abrirScannerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmSettlementTermsAnalyzer = new FrmSettlementTermsAnalyzer();
-            //frmSettlementTermsAnalyzer.MdiParent = this;
-            frmSettlementTermsAnalyzer.Show();
+            if (ValidateIsConnected())
+            {
+                var frmSettlementTermsAnalyzer = new FrmSettlementTermsAnalyzer();
+                //frmSettlementTermsAnalyzer.MdiParent = this;
+                frmSettlementTermsAnalyzer.Show();
+            }
         }
 
         private void seleccionarInstrumentoYPlazosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmSettlementTermsLauncher = new FrmSettlementTermLauncher();
-            //frmSettlementTermsAnalyzer.MdiParent = this;
-            frmSettlementTermsLauncher.Show();
+            if (ValidateIsConnected())
+            {
+                var frmSettlementTermsLauncher = new FrmSettlementTermLauncher();
+                //frmSettlementTermsAnalyzer.MdiParent = this;
+                frmSettlementTermsLauncher.Show();
+            }
         }
     }
 }

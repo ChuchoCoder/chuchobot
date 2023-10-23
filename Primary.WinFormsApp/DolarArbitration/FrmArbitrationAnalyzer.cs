@@ -98,11 +98,13 @@ namespace Primary.WinFormsApp
                     }
                     row["ProfitLast"] = bestTrade.ProfitLast;
 
-                    row["OwnedVenta"] = bestTrade.Owned.Sell.Data.HasBids() ? (object)bestTrade.Owned.Sell.Data.Bids[0].Price : DBNull.Value;
-                    row["ArbitrationCompra"] = bestTrade.Arbitration.Sell.Data.HasOffers() ? (object)bestTrade.Arbitration.Sell.Data.Offers[0].Price : DBNull.Value;
-                    row["ArbitrationVenta"] = bestTrade.Arbitration.Buy.Data.HasBids() ? (object)bestTrade.Arbitration.Buy.Data.Bids[0].Price : DBNull.Value;
-                    row["OwnedCompra"] = bestTrade.Owned.Buy.Data.HasOffers() ? (object)bestTrade.Owned.Buy.Data.Offers[0].Price : DBNull.Value;
-
+                    if (bestTrade.Owned.HasData() && bestTrade.Arbitration.HasData())
+                    {
+                        row["OwnedVenta"] = bestTrade.Owned.Sell.Data.HasBids() ? (object)bestTrade.Owned.Sell.Data.Bids[0].Price : DBNull.Value;
+                        row["ArbitrationCompra"] = bestTrade.Arbitration.Sell.Data.HasOffers() ? (object)bestTrade.Arbitration.Sell.Data.Offers[0].Price : DBNull.Value;
+                        row["ArbitrationVenta"] = bestTrade.Arbitration.Buy.Data.HasBids() ? (object)bestTrade.Arbitration.Buy.Data.Bids[0].Price : DBNull.Value;
+                        row["OwnedCompra"] = bestTrade.Owned.Buy.Data.HasOffers() ? (object)bestTrade.Owned.Buy.Data.Offers[0].Price : DBNull.Value;
+                    }
 
                     row["DolarCompra"] = bestTrade.Owned.BuyPrice;
                     row["DolarCompraLast"] = bestTrade.Owned.Last;

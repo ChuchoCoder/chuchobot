@@ -23,6 +23,9 @@ namespace Primary.WinFormsApp
         public delegate void MarketDataEventHandler(Instrument instrument, Entries data);
         public event MarketDataEventHandler OnMarketData;
         public ConcurrentDictionary<string, Entries> LatestMarketData = new ConcurrentDictionary<string, Entries>();
+
+        public Instrument[] WatchedInstruments { get; private set; }
+
         private CancellationTokenSource cancellationTokenSource;
         private static readonly TimeZoneInfo ArgentinaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Argentina Standard Time");
         private static DateTimeOffset Now => TimeZoneInfo.ConvertTime(DateTime.Now, ArgentinaTimeZone);
@@ -174,6 +177,7 @@ namespace Primary.WinFormsApp
                 Telemetry.LogWarning(nameof(WatchWithWebSocket), ex);
             }
 
+            WatchedInstruments = instruments;
             cancellationTokenSource = new CancellationTokenSource();
             // Subscribe to all entries
             marketDataSocket = Api.CreateMarketDataSocket(instruments, Constants.AllEntries, 1, 5, cancellationTokenSource.Token);

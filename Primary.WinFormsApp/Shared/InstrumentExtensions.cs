@@ -1,6 +1,8 @@
 ﻿using Primary.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace Primary.WinFormsApp
@@ -11,6 +13,11 @@ namespace Primary.WinFormsApp
         {
             var tickerSymbols = ticker.GetAllMervalSymbols();
             return instruments.Where(x => tickerSymbols.Contains(x.Symbol));
+        }
+
+        public static bool TickerExists(this StringCollection instruments, string ticker)
+        {
+            return instruments.Cast<string>().Any(x => string.Equals(x, ticker, StringComparison.OrdinalIgnoreCase));
         }
 
         public static bool IsPesos(this InstrumentDetail instrumentDetail)
