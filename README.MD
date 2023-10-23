@@ -87,6 +87,11 @@ No, la aplicación necesita tener acceso a Primary API (Matriz).
 
 El scanner de arbitraje de plazos permite detectar oportunidades para arbitrar plazos de distintos activos.
 
+Opciones:
+
+- **Ver sólo arbitrajes de según instrumentos en cartera**: Muestra sólo los arbitrajes que son posibles evaluando los instrumentos que se tienen en cartera.
+- **Ver sólo arbitrajes con profit**: Muestra sólo los arbitrajes donde la ganancia (columna P&L) sea positiva
+
 ![Scanner de arbitraje de plazos](docs/screenshots/ArbitrajePlazos.png)
 
 Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana con el detalle del arbitraje. En dicha ventana se pueden cambiar los nominales, precios de compra/venta y comisión para poder obtener un cálculo aproximado de la ganancia/pérdida que se obtendría.
