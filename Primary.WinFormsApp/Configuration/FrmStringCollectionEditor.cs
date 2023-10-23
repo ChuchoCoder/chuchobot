@@ -86,12 +86,12 @@ namespace Primary.WinFormsApp.Configuration
                     }
                     catch (IOException ex)
                     {
-                        MessageBox.Show("Error al leer el archivo: " + ex.Message);
+                        MessageBox.Show("Error al leer el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El archivo seleccionado no existe.");
+                    MessageBox.Show("El archivo seleccionado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
