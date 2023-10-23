@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
 using Primary.WinFormsApp.Properties;
+using Primary.WinFormsApp.SettlementTerms;
 
 namespace Primary.WinFormsApp
 {
@@ -233,9 +234,6 @@ namespace Primary.WinFormsApp
 
         private void buscadorArbitrajesSimplesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmSettlementTermsAnalyzer = new FrmSettlementTermsAnalyzer();
-            //frmSettlementTermsAnalyzer.MdiParent = this;
-            frmSettlementTermsAnalyzer.Show();
         }
 
         private void tmrConnection_Tick(object sender, EventArgs e)
@@ -383,6 +381,12 @@ namespace Primary.WinFormsApp
             {
                 PositionsTimer.Stop();
                 Argentina.Data.RefreshPositions();
+
+                if (Argentina.Data.HasPositions() == false)
+                {
+                    statusInformation.Text = $"No se encontraron posiciones para ninguna de las cuentas asociadas";
+                }
+
                 PositionsTimer.Interval = Convert.ToInt32(TimeSpan.FromMinutes(1).TotalMilliseconds);
                 PositionsTimer.Start();
             }
@@ -408,6 +412,20 @@ namespace Primary.WinFormsApp
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Telemetry.LogError(nameof(tmrAccounts_Tick), ex);
             }
+        }
+
+        private void abrirScannerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmSettlementTermsAnalyzer = new FrmSettlementTermsAnalyzer();
+            //frmSettlementTermsAnalyzer.MdiParent = this;
+            frmSettlementTermsAnalyzer.Show();
+        }
+
+        private void seleccionarInstrumentoYPlazosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmSettlementTermsLauncher = new FrmSettlementTermLauncher();
+            //frmSettlementTermsAnalyzer.MdiParent = this;
+            frmSettlementTermsLauncher.Show();
         }
     }
 }

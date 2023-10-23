@@ -115,6 +115,18 @@
     <Compile Include="SettlementTerms\Caucion.cs" />
     <Compile Include="SettlementTerms\SettlementTermTrade.cs" />
     <Compile Include="SettlementTerms\SettlementTermTradeCalculation.cs" />
+    <Compile Include="SettlementTerms\FrmSettlementTermLauncher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettlementTerms\FrmSettlementTermLauncher.Designer.cs">
+      <DependentUpon>FrmSettlementTermLauncher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettlementTerms\SettlementTermSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettlementTerms\SettlementTermSettings.Designer.cs">
+      <DependentUpon>SettlementTermSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shared\FlashWindow.cs" />
     <Compile Include="Dolar\FrmDolarPrice.cs">
       <SubType>Form</SubType>
@@ -198,6 +210,9 @@
     <EmbeddedResource Include="Configuration\FrmStringCollectionEditor.resx">
       <DependentUpon>FrmStringCollectionEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettlementTerms\FrmSettlementTermLauncher.resx">
+      <DependentUpon>FrmSettlementTermLauncher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettlementTerms\FrmSettlementTermTrade.resx">
       <DependentUpon>FrmSettlementTermTrade.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettlementTerms\SettlementTermSettings.resx">
+      <DependentUpon>SettlementTermSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Shared\FrmMarketData.resx">
       <DependentUpon>FrmMarketData.cs</DependentUpon>
