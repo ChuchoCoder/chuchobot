@@ -1,4 +1,5 @@
 ﻿using Primary.Data;
+using Primary.WinFormsApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -75,6 +76,13 @@ namespace Primary.WinFormsApp.SettlementTerms
             }
 
             string buySymbol = listInstrumentos.SelectedItem as string;
+
+            if (Settings.Default.ArbitrationTickers.TickerExists(buySymbol) == false)
+            {
+                MessageBox.Show($"El instrumento '{buySymbol}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion");
+                return;
+            }
+
             if (rdoBuyCI.Checked)
             {
                 buySymbol = buySymbol.ToMervalSymbolCI();
