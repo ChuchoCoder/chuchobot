@@ -197,6 +197,7 @@
             this.numOwnedVentaSize.TabIndex = 0;
             this.numOwnedVentaSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numOwnedVentaSize.ValueChanged += new System.EventHandler(this.numOwnedVentaSize_ValueChanged);
+            this.numOwnedVentaSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numOwnedVentaSize_KeyPress);
             // 
             // label1
             // 
@@ -323,6 +324,7 @@
             this.numCompraSize.TabIndex = 0;
             this.numCompraSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numCompraSize.ValueChanged += new System.EventHandler(this.numCompraSize_ValueChanged);
+            this.numCompraSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numCompraSize_KeyPress);
             // 
             // label7
             // 
@@ -511,7 +513,7 @@
             this.lblMontoCaucion.Name = "lblMontoCaucion";
             this.lblMontoCaucion.Size = new System.Drawing.Size(255, 18);
             this.lblMontoCaucion.TabIndex = 31;
-            this.lblMontoCaucion.Text = "Monto Caucion:";
+            this.lblMontoCaucion.Text = "Importe a Caucionar:";
             // 
             // lblGastosCaucion
             // 

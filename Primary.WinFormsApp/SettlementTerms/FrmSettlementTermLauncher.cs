@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Primary.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Primary.WinFormsApp.SettlementTerms
 
         private void FrmSettlementTermLauncher_Load(object sender, EventArgs e)
         {
-            if (Argentina.Data.HasPositions())
+            if (Argentina.Data.HasPositions() == false)
             {
                 chkOnlyCurrentPositions.Enabled = false;
                 chkOnlyCurrentPositions.Text += " (No existen posiciones)";
@@ -46,7 +47,7 @@ namespace Primary.WinFormsApp.SettlementTerms
 
             if (chkOnlyCurrentPositions.Checked)
             {
-                onlyShowCurrentPositionFilter = x => Argentina.Data.TickerExistsInPositions(x);
+                onlyShowCurrentPositionFilter = x => Argentina.Data.TickerExistsInPositions(Instrument.MervalPrefix + x);
             }
 
             Func<string, bool> textSearchFilter = x => true;
