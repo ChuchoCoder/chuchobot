@@ -46,6 +46,11 @@ namespace Primary.WinFormsApp
 
         public Api.Position[] Positions { get; set; }
 
+        public bool HasPositions()
+        {
+            return Positions != null && Positions.Length > 0;
+        }
+
         public void RefreshPositions()
         {
             if (Accounts != null)
@@ -79,6 +84,11 @@ namespace Primary.WinFormsApp
                     x.Symbol.Contains(ticker)
                     && (x.Instrument.SettlementType == SettlementType.CI || x.Instrument.SettlementType == SettlementType.T24H)
                     );
+        }
+
+        public bool TickerExistsInPositions(string ticker)
+        {
+            return Positions == null || Positions.Any(x => x.Symbol.Contains(ticker));
         }
 
         public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
