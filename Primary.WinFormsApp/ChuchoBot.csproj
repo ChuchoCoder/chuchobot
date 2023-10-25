@@ -97,9 +97,9 @@
     <Compile Include="Components\BidsOffersControl.Designer.cs">
       <DependentUpon>BidsOffersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DolarArbitration\DolarArbitrationTrade.cs" />
+    <Compile Include="DolarArbitration\RatioTrade.cs" />
     <Compile Include="DolarArbitration\DolarCalculatorProcessor.cs" />
-    <Compile Include="DolarArbitration\DolarTrade.cs" />
+    <Compile Include="DolarArbitration\BuySellTrade.cs" />
     <Compile Include="DolarArbitration\DolarArbitrationProcessor.cs" />
     <Compile Include="DolarArbitration\DolarArbitrationInstruments.cs" />
     <Compile Include="DolarArbitration\DolarTradedInstrument.cs" />

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Primary.WinFormsApp
 {
-    public partial class FrmArbitrationTrade : Form
+    public partial class FrmRatioTrade : Form
     {
-        private DolarArbitrationTrade _trade;
+        private RatioTrade _trade;
         private decimal _ownedVentaImporte;
         private decimal _ownedVentaComision;
         private decimal _ownedCompraImporte;
@@ -17,7 +17,7 @@ namespace Primary.WinFormsApp
         private decimal _ownedQuantityPerPrice;
         private decimal _arbitrationQuantityPerPrice;
 
-        public FrmArbitrationTrade()
+        public FrmRatioTrade()
         {
             InitializeComponent();
         }
@@ -32,51 +32,55 @@ namespace Primary.WinFormsApp
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (_trade == null)
-                return;
-
-            lblOwnedLast.Text = _trade.Owned.Last.ToCurrency();
-            if ( _trade.Owned.Last > 0)
             {
-                lblArbitrationDiff.Text = (_trade.Arbitration.Last / _trade.Owned.Last - 1m).ToString("P");
-                lblArbitrationLast.Text = _trade.Arbitration.Last.ToCurrency();
+                return;
             }
 
-            OwnedVentaBidsOffers.LoadData(_trade.Owned.Sell.Data);
-            OwnedCompraBidsOffers.LoadData(_trade.Owned.Buy.Data);
+            _trade.RefreshData();
 
-            ArbitrationCompraBidsOffers.LoadData(_trade.Arbitration.Sell.Data);
-            ArbitrationVentaBidsOffers.LoadData(_trade.Arbitration.Buy.Data);
+            lblOwnedLast.Text = _trade.SellThenBuy.Last.ToCurrency();
+            if (_trade.SellThenBuy.Last > 0)
+            {
+                lblArbitrationDiff.Text = ((_trade.BuyThenSell.Last / _trade.SellThenBuy.Last) - 1m).ToString("P");
+                lblArbitrationLast.Text = _trade.BuyThenSell.Last.ToCurrency();
+            }
+
+            OwnedVentaBidsOffers.LoadData(_trade.SellThenBuy.Sell.Data);
+            OwnedCompraBidsOffers.LoadData(_trade.SellThenBuy.Buy.Data);
+
+            ArbitrationCompraBidsOffers.LoadData(_trade.BuyThenSell.Sell.Data);
+            ArbitrationVentaBidsOffers.LoadData(_trade.BuyThenSell.Buy.Data);
 
             if (OwnedVentaPriceAutoUpdate)
             {
-                numOwnedVentaPrice.Value = _trade.Owned.Sell.Data.GetTopBidPrice();
+                numOwnedVentaPrice.Value = _trade.SellThenBuy.Sell.Data.GetTopBidPrice();
             }
 
             if (ArbitrationCompraPriceAutoUpdate)
             {
-                numArbitrationCompraPrice.Value = _trade.Arbitration.Sell.Data.GetTopOfferPrice();
+                numArbitrationCompraPrice.Value = _trade.BuyThenSell.Sell.Data.GetTopOfferPrice();
             }
 
             if (ArbitrationVentaPriceAutoUpdate)
             {
-                numArbitrationVentaPrice.Value = _trade.Arbitration.Buy.Data.GetTopBidPrice();
+                numArbitrationVentaPrice.Value = _trade.BuyThenSell.Buy.Data.GetTopBidPrice();
             }
 
             if (OwnedCompraPriceAutoUpdate)
             {
-                numOwnedCompraPrice.Value = _trade.Owned.Buy.Data.GetTopOfferPrice();
+                numOwnedCompraPrice.Value = _trade.SellThenBuy.Buy.Data.GetTopOfferPrice();
             }
 
         }
 
-        internal void Init(DolarArbitrationTrade trade)
+        internal void Init(RatioTrade trade)
         {
             _trade = trade;
 
-            OwnedVentaBidsOffers.InstrumentDetail= trade.Owned.Sell.Instrument;
-            OwnedCompraBidsOffers.InstrumentDetail = trade.Owned.Buy.Instrument;
-            ArbitrationVentaBidsOffers.InstrumentDetail = trade.Arbitration.Buy.Instrument;
-            ArbitrationCompraBidsOffers.InstrumentDetail = trade.Arbitration.Sell.Instrument;
+            OwnedVentaBidsOffers.InstrumentDetail = trade.SellThenBuy.Sell.Instrument;
+            OwnedCompraBidsOffers.InstrumentDetail = trade.SellThenBuy.Buy.Instrument;
+            ArbitrationVentaBidsOffers.InstrumentDetail = trade.BuyThenSell.Buy.Instrument;
+            ArbitrationCompraBidsOffers.InstrumentDetail = trade.BuyThenSell.Sell.Instrument;
 
             OwnedVentaBidsOffers.ClickPrice += OwnedVentaBidsOffers_ClickPrice;
             OwnedVentaBidsOffers.ClickSize += OwnedVentaBidsOffers_ClickSize;
@@ -90,126 +94,87 @@ namespace Primary.WinFormsApp
             ArbitrationVentaBidsOffers.ClickPrice += ArbitrationVentaBidsOffers_ClickPrice;
             ArbitrationVentaBidsOffers.ClickSize += ArbitrationVentaBidsOffers_ClickSize;
 
-            var ownedSuffix = _trade.Owned.Sell.Instrument.IsCEDEAR() ? " (CEDEAR)" : "";
-            var arbitrationSuffix = _trade.Arbitration.Sell.Instrument.IsCEDEAR() ? " (CEDEAR)" : "";
-            grpOwnedVenta.Text += " - " + _trade.Owned.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + ownedSuffix;
-            grpArbitrationCompra.Text += " - " + _trade.Arbitration.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + arbitrationSuffix;
-            grpArbitrationVenta.Text += " - " + _trade.Arbitration.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + arbitrationSuffix;
-            grpOwnedCompra.Text += " - " + _trade.Owned.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + ownedSuffix;
+            var ownedSuffix = _trade.SellThenBuy.Sell.Instrument.IsCEDEAR() ? " (CEDEAR)" : "";
+            var arbitrationSuffix = _trade.BuyThenSell.Sell.Instrument.IsCEDEAR() ? " (CEDEAR)" : "";
+            grpOwnedVenta.Text += " - " + _trade.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + ownedSuffix;
+            grpArbitrationCompra.Text += " - " + _trade.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix() + arbitrationSuffix;
+            grpArbitrationVenta.Text += " - " + _trade.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + arbitrationSuffix;
+            grpOwnedCompra.Text += " - " + _trade.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix() + ownedSuffix;
 
-            _ownedQuantityPerPrice = _trade.Owned.Buy.Instrument.PriceConvertionFactor;
-            _arbitrationQuantityPerPrice = _trade.Arbitration.Buy.Instrument.PriceConvertionFactor;
+            _ownedQuantityPerPrice = _trade.SellThenBuy.Buy.Instrument.PriceConvertionFactor;
+            _arbitrationQuantityPerPrice = _trade.BuyThenSell.Buy.Instrument.PriceConvertionFactor;
 
             numOwnedVentaSize.Value = 10000; // TODO: Get Max Size
-            if (_trade.Owned.Sell.Data.Last != null)
-                numOwnedVentaPrice.Value = _trade.Owned.Sell.Data.Last.Price.Value;
+            if (_trade.SellThenBuy.Sell.Data?.Last != null)
+            {
+                numOwnedVentaPrice.Value = _trade.SellThenBuy.Sell.Data.Last.Price.Value;
+            }
 
-            if (_trade.Arbitration.Sell.Data.Last != null)
-                numArbitrationCompraPrice.Value = _trade.Arbitration.Sell.Data.Last.Price.Value;
+            if (_trade.BuyThenSell.Sell.Data?.Last != null)
+            {
+                numArbitrationCompraPrice.Value = _trade.BuyThenSell.Sell.Data.Last.Price.Value;
+            }
 
-            if (_trade.Arbitration.Buy.Data.Last != null)
-                numArbitrationVentaPrice.Value = _trade.Arbitration.Buy.Data.Last.Price.Value;
+            if (_trade.BuyThenSell.Buy.Data?.Last != null)
+            {
+                numArbitrationVentaPrice.Value = _trade.BuyThenSell.Buy.Data.Last.Price.Value;
+            }
 
-            if (_trade.Owned.Buy.Data.Last != null)
-                numOwnedCompraPrice.Value = _trade.Owned.Buy.Data.Last.Price.Value;
+            if (_trade.SellThenBuy.Buy.Data?.Last != null)
+            {
+                numOwnedCompraPrice.Value = _trade.SellThenBuy.Buy.Data.Last.Price.Value;
+            }
 
-            this.Text = $"Venta {_trade.Owned.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Compra {_trade.Arbitration.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Venta {_trade.Arbitration.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Compra {_trade.Owned.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()}";
+            Text = $"Venta {_trade.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Compra {_trade.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Venta {_trade.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Compra {_trade.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()}";
             lnkArbitration.Text = Text;
 
-            numOwnedVentaPrice.Increment = _trade.Owned.Sell.Instrument.GetIncrement();
-            numOwnedCompraPrice.Increment = _trade.Owned.Buy.Instrument.GetIncrement();
-            numArbitrationVentaPrice.Increment = _trade.Arbitration.Buy.Instrument.GetIncrement();
-            numArbitrationCompraPrice.Increment = _trade.Arbitration.Sell.Instrument.GetIncrement();
+            numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.GetIncrement();
+            numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.GetIncrement();
+            numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Buy.Instrument.GetIncrement();
+            numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Sell.Instrument.GetIncrement();
 
-            numOwnedVentaPrice.DecimalPlaces = _trade.Owned.Sell.Instrument.InstrumentPricePrecision;
-            numOwnedCompraPrice.DecimalPlaces = _trade.Owned.Buy.Instrument.InstrumentPricePrecision;
-            numArbitrationVentaPrice.DecimalPlaces = _trade.Arbitration.Buy.Instrument.InstrumentPricePrecision;
-            numArbitrationCompraPrice.DecimalPlaces = _trade.Arbitration.Sell.Instrument.InstrumentPricePrecision;
+            numOwnedVentaPrice.DecimalPlaces = _trade.SellThenBuy.Sell.Instrument.InstrumentPricePrecision;
+            numOwnedCompraPrice.DecimalPlaces = _trade.SellThenBuy.Buy.Instrument.InstrumentPricePrecision;
+            numArbitrationVentaPrice.DecimalPlaces = _trade.BuyThenSell.Buy.Instrument.InstrumentPricePrecision;
+            numArbitrationCompraPrice.DecimalPlaces = _trade.BuyThenSell.Sell.Instrument.InstrumentPricePrecision;
 
-            lblDolarSell.Text = $"{_trade.Owned.Sell.Instrument.InstrumentId.Ticker()}";
-            lblDolarBuy.Text = $"{_trade.Arbitration.Sell.Instrument.InstrumentId.Ticker()}";
+            lblRatioSell.Text = $"{_trade.SellThenBuy.Sell.Instrument.InstrumentId.Ticker()}";
+            lblDolarBuy.Text = $"{_trade.BuyThenSell.Sell.Instrument.InstrumentId.Ticker()}";
+
+            lblCompraACurrency.Text = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
+            lblVentaACurrency.Text = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
+            lblCompraBCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
+            lblVentaBCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
         }
 
         public bool ArbitrationVentaPriceAutoUpdate
         {
-            get
-            {
-                return numArbitrationVentaPrice.ForeColor == System.Drawing.Color.Red;
-            }
-            set
-            {
-                if (value)
-                {
-                    numArbitrationVentaPrice.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    numArbitrationVentaPrice.ForeColor = System.Drawing.SystemColors.WindowText;
-                }
-            }
+            get => numArbitrationVentaPrice.ForeColor == System.Drawing.Color.Red;
+            set => numArbitrationVentaPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
         }
 
         public bool ArbitrationCompraPriceAutoUpdate
         {
-            get
-            {
-                return numArbitrationCompraPrice.ForeColor == System.Drawing.Color.Red;
-            }
-            set
-            {
-                if (value)
-                {
-                    numArbitrationCompraPrice.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    numArbitrationCompraPrice.ForeColor = System.Drawing.SystemColors.WindowText;
-                }
-            }
+            get => numArbitrationCompraPrice.ForeColor == System.Drawing.Color.Red;
+            set => numArbitrationCompraPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
         }
 
         public bool OwnedVentaPriceAutoUpdate
         {
-            get
-            {
-                return numOwnedVentaPrice.ForeColor == System.Drawing.Color.Red;
-            }
-            set
-            {
-                if (value)
-                {
-                    numOwnedVentaPrice.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    numOwnedVentaPrice.ForeColor = System.Drawing.SystemColors.WindowText;
-                }
-            }
+            get => numOwnedVentaPrice.ForeColor == System.Drawing.Color.Red;
+            set => numOwnedVentaPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
         }
 
         public bool OwnedCompraPriceAutoUpdate
         {
-            get
-            {
-                return numOwnedCompraPrice.ForeColor == System.Drawing.Color.Red;
-            }
-            set
-            {
-                if (value)
-                {
-                    numOwnedCompraPrice.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    numOwnedCompraPrice.ForeColor = System.Drawing.SystemColors.WindowText;
-                }
-            }
+            get => numOwnedCompraPrice.ForeColor == System.Drawing.Color.Red;
+            set => numOwnedCompraPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
         }
 
         private void ArbitrationCompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             numArbitrationCompraSize.Value = e.Value;
-            // Calcular el size en base al Arbitration Compra Size
+            // Calcular el size en base al BuyThenSell Compra Size
             var amount = numArbitrationCompraPrice.Value * numArbitrationCompraSize.Value * _arbitrationQuantityPerPrice;
             UpdateOwnedVentaSizeBasedOnAmount(amount);
         }
@@ -229,7 +194,7 @@ namespace Primary.WinFormsApp
         private void ArbitrationVentaBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             numArbitrationVentaSize.Value = e.Value;
-            // Calcular el size en base al Arbitration Venta usando el precio de Arbitration Compra 
+            // Calcular el size en base al BuyThenSell Venta usando el precio de BuyThenSell Compra 
             var amount = numArbitrationCompraPrice.Value * numArbitrationVentaSize.Value * _arbitrationQuantityPerPrice;
             UpdateOwnedVentaSizeBasedOnAmount(amount);
         }
@@ -253,7 +218,7 @@ namespace Primary.WinFormsApp
 
         private void OwnedCompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
-            // Ajusto el Owned Venta Size y dejo que el Owned Compra se calcule solo
+            // Ajusto el SellThenBuy Venta Size y dejo que el SellThenBuy Compra se calcule solo
             numOwnedVentaSize.Value = e.Value;
         }
 
@@ -277,22 +242,22 @@ namespace Primary.WinFormsApp
 
         public void CompleteOwnedVenta()
         {
-            txtOwnedVenta.Text = $"VENDER {numOwnedVentaSize.Value:#,##0} nominales de {_trade.Owned.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.Owned.Sell.Instrument.FormatPrice(numOwnedVentaPrice.Value)}";
+            txtOwnedVenta.Text = $"VENDER {numOwnedVentaSize.Value:#,##0} nominales de {_trade.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.SellThenBuy.Sell.Instrument.FormatPrice(numOwnedVentaPrice.Value)}";
         }
 
         public void CompleteOwnedCompra()
         {
-            txtOwnedCompra.Text = $"COMPRAR {numOwnedCompraSize.Value:#,##0} nominales de {_trade.Owned.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.Owned.Buy.Instrument.FormatPrice(numOwnedCompraPrice.Value)}";
+            txtOwnedCompra.Text = $"COMPRAR {numOwnedCompraSize.Value:#,##0} nominales de {_trade.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.SellThenBuy.Buy.Instrument.FormatPrice(numOwnedCompraPrice.Value)}";
         }
 
         public void CompleteArbitrationVenta()
         {
-            txtArbitrationVenta.Text = $"VENDER {numArbitrationVentaSize.Value:#,##0} nominales de {_trade.Arbitration.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.Arbitration.Buy.Instrument.FormatPrice(numArbitrationVentaPrice.Value)}";
+            txtArbitrationVenta.Text = $"VENDER {numArbitrationVentaSize.Value:#,##0} nominales de {_trade.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.BuyThenSell.Buy.Instrument.FormatPrice(numArbitrationVentaPrice.Value)}";
         }
 
         public void CompleteArbitrationCompra()
         {
-            txtArbitrationCompra.Text = $"COMPRAR {numArbitrationCompraSize.Value:#,##0} nominales de {_trade.Arbitration.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.Arbitration.Sell.Instrument.FormatPrice(numArbitrationCompraPrice.Value)}";
+            txtArbitrationCompra.Text = $"COMPRAR {numArbitrationCompraSize.Value:#,##0} nominales de {_trade.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} a {_trade.BuyThenSell.Sell.Instrument.FormatPrice(numArbitrationCompraPrice.Value)}";
         }
 
         public void CalculateOwnedVenta()
@@ -301,16 +266,11 @@ namespace Primary.WinFormsApp
             if (_ownedQuantityPerPrice > 0)
             {
                 _ownedVentaImporte = numOwnedVentaSize.Value * numOwnedVentaPrice.Value * _ownedQuantityPerPrice;
-                if (_trade.Owned.Sell.Instrument.IsPesos())
-                {
-                    _ownedVentaComision = _trade.Owned.Sell.Instrument.CalculateComisionDerechosMercado(_ownedVentaImporte);
-                }
-                else
-                {
-                    _ownedVentaComision = _trade.Owned.Sell.Instrument.CalculateComisionDerechosMercado(_ownedVentaImporte * numDolar.Value);
-                }
+                _ownedVentaComision = _trade.SellThenBuy.Sell.Instrument.IsPesos()
+                    ? _trade.SellThenBuy.Sell.Instrument.CalculateComisionDerechosMercado(_ownedVentaImporte)
+                    : _trade.SellThenBuy.Sell.Instrument.CalculateComisionDerechosMercado(_ownedVentaImporte * numDolar.Value);
 
-                lblOwnedVentaImporte.Text = "Importe: " + _trade.Owned.Sell.Instrument.FormatCurrency(_ownedVentaImporte);
+                lblOwnedVentaImporte.Text = "Importe: " + _trade.SellThenBuy.Sell.Instrument.FormatCurrency(_ownedVentaImporte);
                 lblOwnedComision.Text = "Comisión: " + _ownedVentaComision.ToCurrency();
 
                 CalculateArbitrationCompraSize();
@@ -327,7 +287,7 @@ namespace Primary.WinFormsApp
             {
                 if (numOwnedCompraPrice.Value > 0)
                 {
-                    if (_trade.Arbitration.Buy.Instrument.IsPesos())
+                    if (_trade.BuyThenSell.Buy.Instrument.IsPesos())
                     {
                         //var comisionUSD = (_arbtrationVentaComision + _ownedVentaComision) * numDolar.Value;
                         var size = Math.Floor((_arbitrationVentaImporte - _arbitrationVentaComision - _ownedVentaComision) / numOwnedCompraPrice.Value / _ownedQuantityPerPrice);
@@ -335,7 +295,7 @@ namespace Primary.WinFormsApp
                     }
                     else
                     {
-                        var size = Math.Floor((_arbitrationVentaImporte) / numOwnedCompraPrice.Value / _ownedQuantityPerPrice);
+                        var size = Math.Floor(_arbitrationVentaImporte / numOwnedCompraPrice.Value / _ownedQuantityPerPrice);
                         numOwnedCompraSize.Value = size <= 0 ? 0 : size;
                     }
                 }
@@ -348,7 +308,7 @@ namespace Primary.WinFormsApp
         {
             if (numArbitrationCompraPrice.Value > 0)
             {
-                numArbitrationCompraSize.Value = Math.Floor((_ownedVentaImporte) / numArbitrationCompraPrice.Value / _arbitrationQuantityPerPrice);
+                numArbitrationCompraSize.Value = Math.Floor(_ownedVentaImporte / numArbitrationCompraPrice.Value / _arbitrationQuantityPerPrice);
             }
             CalculateArbitrationCompraTotal();
             CalculateArbitrationVentaSize();
@@ -357,19 +317,14 @@ namespace Primary.WinFormsApp
 
         public void CalculateArbitrationCompraTotal()
         {
-            _arbitrationCompraImporte = (numArbitrationCompraPrice.Value * numArbitrationCompraSize.Value * _arbitrationQuantityPerPrice);
+            _arbitrationCompraImporte = numArbitrationCompraPrice.Value * numArbitrationCompraSize.Value * _arbitrationQuantityPerPrice;
 
-            if (_trade.Arbitration.Sell.Instrument.IsPesos())
-            {
-                _arbitrationCompraComision = _trade.Arbitration.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte);
-            }
-            else
-            {
-                _arbitrationCompraComision = _trade.Arbitration.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte * numDolar.Value);
-            }
+            _arbitrationCompraComision = _trade.BuyThenSell.Sell.Instrument.IsPesos()
+                ? _trade.BuyThenSell.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte)
+                : _trade.BuyThenSell.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte * numDolar.Value);
 
             lblArbirtationCompraComision.Text = "Comisión: " + _arbitrationCompraComision.ToCurrency();
-            lblArbitrationCompraImporte.Text = "Importe: " + _trade.Arbitration.Sell.Instrument.FormatCurrency(_arbitrationCompraImporte);
+            lblArbitrationCompraImporte.Text = "Importe: " + _trade.BuyThenSell.Sell.Instrument.FormatCurrency(_arbitrationCompraImporte);
         }
 
         public void CalculateArbitrationVentaSize()
@@ -382,17 +337,12 @@ namespace Primary.WinFormsApp
         public void CalculateArbitrationVentaTotal()
         {
             _arbitrationVentaImporte = numArbitrationVentaSize.Value * numArbitrationVentaPrice.Value * _arbitrationQuantityPerPrice;
-            if (_trade.Arbitration.Buy.Instrument.IsPesos())
-            {
-                _arbitrationVentaComision = _trade.Arbitration.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationVentaImporte);
-            }
-            else
-            {
-                _arbitrationVentaComision = _trade.Arbitration.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationVentaImporte * numDolar.Value);
-            }
+            _arbitrationVentaComision = _trade.BuyThenSell.Buy.Instrument.IsPesos()
+                ? _trade.BuyThenSell.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationVentaImporte)
+                : _trade.BuyThenSell.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationVentaImporte * numDolar.Value);
 
             lblArbitrationComision.Text = "Comisión: " + _arbitrationVentaComision.ToCurrency();
-            lblArbitrationVentaImporte.Text = "Importe: " + _trade.Arbitration.Buy.Instrument.FormatCurrency(_arbitrationVentaImporte);
+            lblArbitrationVentaImporte.Text = "Importe: " + _trade.BuyThenSell.Buy.Instrument.FormatCurrency(_arbitrationVentaImporte);
 
             CompleteArbitrationVenta();
             CalculateOwnedCompraSize();
@@ -402,62 +352,65 @@ namespace Primary.WinFormsApp
         {
             _ownedCompraImporte = numOwnedCompraSize.Value * numOwnedCompraPrice.Value * _ownedQuantityPerPrice;
 
-            if (_trade.Owned.Buy.Instrument.IsPesos())
-            {
-                _ownedCompraComision = _trade.Owned.Buy.Instrument.CalculateComisionDerechosMercado(_ownedCompraImporte);
-            }
-            else
-            {
-                _ownedCompraComision = _trade.Owned.Buy.Instrument.CalculateComisionDerechosMercado(_ownedCompraImporte * numDolar.Value);
-            }
+            _ownedCompraComision = _trade.SellThenBuy.Buy.Instrument.IsPesos()
+                ? _trade.SellThenBuy.Buy.Instrument.CalculateComisionDerechosMercado(_ownedCompraImporte)
+                : _trade.SellThenBuy.Buy.Instrument.CalculateComisionDerechosMercado(_ownedCompraImporte * numDolar.Value);
 
-            lblOwnedCompraImporte.Text = "Importe: " + _trade.Owned.Buy.Instrument.FormatCurrency(_ownedCompraImporte);
+            lblOwnedCompraImporte.Text = "Importe: " + _trade.SellThenBuy.Buy.Instrument.FormatCurrency(_ownedCompraImporte);
             lblOwnedCompraComision.Text = "Comisión: " + _arbitrationVentaComision.ToCurrency();
 
             var comisionTotal = _ownedVentaComision + _arbitrationVentaComision + _arbitrationCompraComision + _ownedCompraComision;
 
-            var dolarCompra = numOwnedVentaPrice.Value > 0 ? numOwnedCompraPrice.Value / numOwnedVentaPrice.Value : 0;
-            var dolarVenta = numArbitrationCompraPrice.Value > 0 ? numArbitrationVentaPrice.Value / numArbitrationCompraPrice.Value : 0;
-            var dolarDiff = dolarCompra > 0 ? dolarVenta / dolarCompra - 1 : 0;
 
             decimal profit;
 
-            
-            if (_trade.Owned.Buy.Instrument.IsPesos())
-            {
-                profit = _arbitrationVentaImporte - _ownedCompraImporte - comisionTotal;
-            }
-            else
-            {
-                profit = (_arbitrationVentaImporte - _ownedCompraImporte) * numDolar.Value - comisionTotal;
-            }
+            var esArbitrajeMismaMoneda = _trade.SellThenBuy.Buy.Instrument.IsPesos() == _trade.SellThenBuy.Sell.Instrument.IsPesos();
+            profit = esArbitrajeMismaMoneda
+                ? _arbitrationVentaImporte - _ownedCompraImporte - comisionTotal
+                : ((_arbitrationVentaImporte - _ownedCompraImporte) * numDolar.Value) - comisionTotal;
 
-            lblComisionTotal.Text = "Total Comision: " + (comisionTotal).ToCurrency();
-            lblTotalProfit.Text = "Total: " + _trade.Owned.Buy.Instrument.FormatCurrency(_arbitrationVentaImporte - _ownedCompraImporte);
+            lblComisionTotal.Text = "Total Comision: " + comisionTotal.ToCurrency();
+            lblTotalProfit.Text = "Total: " + _trade.SellThenBuy.Buy.Instrument.FormatCurrency(_arbitrationVentaImporte - _ownedCompraImporte);
 
             lblHeader.Text = "Profit: " + profit.ToCurrency();
-            lblHeader.Text += Environment.NewLine + $"Dolar Compra: {dolarCompra:C2}     {dolarVenta - dolarCompra:C2} ({dolarDiff:P})     Dolar Venta: {dolarVenta:C2}";
 
-            if (chkComprarNominales.Checked)
+
+            if (esArbitrajeMismaMoneda)
             {
-                lblProfitPesos.Text = "Profit Nominales : " + (numOwnedCompraSize.Value - numOwnedVentaSize.Value) + " Dif. " + (profit).ToCurrency();
+                var ratioCompra = GetRatioCompra();
+                var ratioVenta = GetRatioVenta();
+                var ratioDiff = ratioCompra > 0 ? (ratioVenta / ratioCompra) - 1 : 0;
+                lblHeader.Text += Environment.NewLine + $"Ratio Compra: {ratioCompra:P2}     {ratioVenta - ratioCompra:C2} ({ratioDiff:P})     Ratio Venta: {ratioVenta:P2}";
             }
             else
             {
-                lblProfitPesos.Text = "Profit: " + profit.ToCurrency();
+                var dolarCompra = numOwnedVentaPrice.Value > 0 ? numOwnedCompraPrice.Value / numOwnedVentaPrice.Value : 0;
+                var dolarVenta = numArbitrationCompraPrice.Value > 0 ? numArbitrationVentaPrice.Value / numArbitrationCompraPrice.Value : 0;
+                var dolarDiff = dolarCompra > 0 ? (dolarVenta / dolarCompra) - 1 : 0;
+                lblHeader.Text += Environment.NewLine + $"Dolar Compra: {dolarCompra:C2}     {dolarVenta - dolarCompra:C2} ({dolarDiff:P})     Dolar Venta: {dolarVenta:C2}";
             }
+            lblProfitPesos.Text = chkComprarNominales.Checked
+                ? "Profit Nominales : " + (numOwnedCompraSize.Value - numOwnedVentaSize.Value) + " Dif. " + profit.ToCurrency()
+                : "Profit: " + profit.ToCurrency();
 
-            if (profit < 0)
-            {
-                lblHeader.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                lblHeader.ForeColor = System.Drawing.Color.DarkGreen;
-            }
+            lblHeader.ForeColor = profit < 0 ? System.Drawing.Color.Red : System.Drawing.Color.DarkGreen;
 
 
             CompleteOwnedCompra();
+        }
+
+        private decimal GetRatioVenta()
+        {
+            return numOwnedCompraPrice.Value > numArbitrationVentaPrice.Value
+                ? numArbitrationVentaPrice.Value > 0 ? (numOwnedCompraPrice.Value / numArbitrationVentaPrice.Value) - 1 : 0
+                : numOwnedCompraPrice.Value > 0 ? (numArbitrationVentaPrice.Value / numOwnedCompraPrice.Value) - 1 : 0;
+        }
+
+        private decimal GetRatioCompra()
+        {
+            return numArbitrationCompraPrice.Value > numOwnedVentaPrice.Value
+                ? numOwnedVentaPrice.Value > 0 ? (numArbitrationCompraPrice.Value / numOwnedVentaPrice.Value) - 1 : 0
+                : numArbitrationCompraPrice.Value > 0 ? (numOwnedVentaPrice.Value / numArbitrationCompraPrice.Value) - 1 : 0;
         }
 
         private void numOwnedVentaSize_ValueChanged(object sender, EventArgs e)

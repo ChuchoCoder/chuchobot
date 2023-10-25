@@ -46,9 +46,9 @@ namespace Primary.WinFormsApp
             }
         }
 
-        public List<DolarArbitrationTrade> GetArbitrationTrades(decimal minProfit = 0.005m, bool mep = true, bool ccl = true, bool dc = true, bool cd = true)
+        public List<RatioTrade> GetArbitrationTrades(decimal minProfit = 0.005m, bool mep = true, bool ccl = true, bool dc = true, bool cd = true)
         {
-            var trades = new List<DolarArbitrationTrade>();
+            var trades = new List<RatioTrade>();
 
             foreach (var dolarArbitrationData in dolarArbitrationPairCollection)
             {

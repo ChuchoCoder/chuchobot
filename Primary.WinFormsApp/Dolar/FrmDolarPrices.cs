@@ -37,12 +37,12 @@ namespace Primary.WinFormsApp
 
         }
 
-        private static void UpdateDataTable(List<DolarTrade> mepTrades, DataTable dataTable)
+        private static void UpdateDataTable(List<BuySellTrade> mepTrades, DataTable dataTable)
         {
             var processedRows = new List<DataRow>();
 
-            //IEnumerable<DolarTrade> trades = mepTrades.Where(x => x.Trade.Contains("S31O3"));
-            DolarTrade[] trades = new DolarTrade[mepTrades.Count];
+            //IEnumerable<BuySellTrade> trades = mepTrades.Where(x => x.Trade.Contains("S31O3"));
+            BuySellTrade[] trades = new BuySellTrade[mepTrades.Count];
             mepTrades.CopyTo(trades);
 
             if (dataTable.Columns.Contains("Compra"))

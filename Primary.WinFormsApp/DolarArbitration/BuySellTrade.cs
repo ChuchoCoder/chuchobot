@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace Primary.WinFormsApp
 {
@@ -6,9 +7,9 @@ namespace Primary.WinFormsApp
     /// Permite obtener la cotización para comprar o vender Dolar
     /// </summary>
     [DebuggerDisplay("{Buy.Instrument.InstrumentId.Market}:{Buy.Instrument.InstrumentId.Symbol} {Buy.Instrument.Currency}")]
-    public class DolarTrade
+    public class BuySellTrade
     {
-        public DolarTrade(InstrumentWithData buy, InstrumentWithData sell)
+        public BuySellTrade(InstrumentWithData buy, InstrumentWithData sell)
         {
             Buy = buy;
             Sell = sell;
@@ -78,6 +79,12 @@ namespace Primary.WinFormsApp
         public bool HasData()
         {
             return Buy.Data != null && Sell.Data != null;
+        }
+
+        internal void RefreshData()
+        {
+            Buy.RefreshData();
+            Sell.RefreshData();
         }
     }
 }

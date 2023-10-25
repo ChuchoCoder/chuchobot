@@ -10,7 +10,7 @@ namespace Primary.WinFormsApp
     {
         private DolarCalculatorProcessor _processor;
         private DataTable _dolarTable;
-        private Func<DolarCalculatorProcessor, List<DolarTrade>> _getDolarPrices;
+        private Func<DolarCalculatorProcessor, List<BuySellTrade>> _getDolarPrices;
         private bool _displayDolarVenta;
 
         public FrmDolarPrice()
@@ -18,7 +18,7 @@ namespace Primary.WinFormsApp
             InitializeComponent();
         }
 
-        internal void Setup(Func<DolarCalculatorProcessor, List<DolarTrade>> getDolarPrices, bool displayDolarVenta)
+        internal void Setup(Func<DolarCalculatorProcessor, List<BuySellTrade>> getDolarPrices, bool displayDolarVenta)
         {
             _getDolarPrices = getDolarPrices;
             _displayDolarVenta = displayDolarVenta;
@@ -44,28 +44,28 @@ namespace Primary.WinFormsApp
             {
                 _processor.RefreshData();
 
-                List<DolarTrade> mepTrades = _getDolarPrices(_processor);
+                List<BuySellTrade> mepTrades = _getDolarPrices(_processor);
                 UpdateDataTable(mepTrades, _dolarTable);
             }
 
         }
 
-        private void UpdateDataTable(List<DolarTrade> mepTrades, DataTable dataTable)
+        private void UpdateDataTable(List<BuySellTrade> mepTrades, DataTable dataTable)
         {
             if (mepTrades == null || dataTable == null)
                 return;
 
             List<DataRow> processedRows = new List<DataRow>();
 
-            //IEnumerable<DolarTrade> trades = mepTrades.Where(x => x.Trade.Contains("S31O3"));
-            DolarTrade[] trades = new DolarTrade[mepTrades.Count];
+            //IEnumerable<BuySellTrade> trades = mepTrades.Where(x => x.Trade.Contains("S31O3"));
+            BuySellTrade[] trades = new BuySellTrade[mepTrades.Count];
             mepTrades.CopyTo(trades);
 
             trades = _displayDolarVenta == false
                 ? trades.Where(x => x.BuyPrice > 1).OrderBy(x => x.BuyPrice).Take(50).ToArray()
                 : trades.Where(x => x.SellPrice > 1).OrderByDescending(x => x.SellPrice).Take(50).ToArray();
 
-            foreach (DolarTrade trade in trades)
+            foreach (BuySellTrade trade in trades)
             {
                 string tradeKey = trade.Trade;
 
