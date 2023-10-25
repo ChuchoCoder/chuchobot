@@ -82,49 +82,49 @@ namespace Primary.WinFormsApp
         }
 
 
-        public IEnumerable<DolarTrade> GetDolarCableTrades()
+        public IEnumerable<BuySellTrade> GetDolarCableTrades()
         {
-            yield return new DolarTrade(TCI, Cable.TCI);
-            yield return new DolarTrade(T24, Cable.TCI);
-            yield return new DolarTrade(T48, Cable.TCI);
-            yield return new DolarTrade(T24, Cable.T24);
-            yield return new DolarTrade(T48, Cable.T24);
-            yield return new DolarTrade(T48, Cable.T48);
+            yield return new BuySellTrade(TCI, Cable.TCI);
+            yield return new BuySellTrade(T24, Cable.TCI);
+            yield return new BuySellTrade(T48, Cable.TCI);
+            yield return new BuySellTrade(T24, Cable.T24);
+            yield return new BuySellTrade(T48, Cable.T24);
+            yield return new BuySellTrade(T48, Cable.T48);
         }
 
-        public IEnumerable<DolarTrade> GetDolarMEPTrades()
+        public IEnumerable<BuySellTrade> GetDolarMEPTrades()
         {
-            yield return new DolarTrade(TCI, Dolar.TCI);
-            yield return new DolarTrade(TCI, Dolar.T24);
-            yield return new DolarTrade(TCI, Dolar.T48);
+            yield return new BuySellTrade(TCI, Dolar.TCI);
+            yield return new BuySellTrade(TCI, Dolar.T24);
+            yield return new BuySellTrade(TCI, Dolar.T48);
 
-            yield return new DolarTrade(T24, Dolar.TCI);
-            yield return new DolarTrade(T24, Dolar.T24);
-            yield return new DolarTrade(T24, Dolar.T48);
+            yield return new BuySellTrade(T24, Dolar.TCI);
+            yield return new BuySellTrade(T24, Dolar.T24);
+            yield return new BuySellTrade(T24, Dolar.T48);
 
-            yield return new DolarTrade(T48, Dolar.TCI);
-            yield return new DolarTrade(T48, Dolar.T24);
-            yield return new DolarTrade(T48, Dolar.T48);
+            yield return new BuySellTrade(T48, Dolar.TCI);
+            yield return new BuySellTrade(T48, Dolar.T24);
+            yield return new BuySellTrade(T48, Dolar.T48);
         }
 
-        public IEnumerable<DolarTrade> GetDolarMEPCableTrades()
+        public IEnumerable<BuySellTrade> GetDolarMEPCableTrades()
         {
-            yield return new DolarTrade(Dolar.TCI, Cable.TCI);
-            yield return new DolarTrade(Dolar.T24, Cable.TCI);
-            yield return new DolarTrade(Dolar.T48, Cable.TCI);
-            yield return new DolarTrade(Dolar.T24, Cable.T24);
-            yield return new DolarTrade(Dolar.T48, Cable.T24);
-            yield return new DolarTrade(Dolar.T48, Cable.T48);
+            yield return new BuySellTrade(Dolar.TCI, Cable.TCI);
+            yield return new BuySellTrade(Dolar.T24, Cable.TCI);
+            yield return new BuySellTrade(Dolar.T48, Cable.TCI);
+            yield return new BuySellTrade(Dolar.T24, Cable.T24);
+            yield return new BuySellTrade(Dolar.T48, Cable.T24);
+            yield return new BuySellTrade(Dolar.T48, Cable.T48);
         }
 
-        public IEnumerable<DolarTrade> GetDolarCableMEPTrades()
+        public IEnumerable<BuySellTrade> GetDolarCableMEPTrades()
         {
-            yield return new DolarTrade(Cable.TCI, Dolar.TCI);
-            yield return new DolarTrade(Cable.T24, Dolar.TCI);
-            yield return new DolarTrade(Cable.T48, Dolar.TCI);
-            yield return new DolarTrade(Cable.T24, Dolar.T24);
-            yield return new DolarTrade(Cable.T48, Dolar.T24);
-            yield return new DolarTrade(Cable.T48, Dolar.T48);
+            yield return new BuySellTrade(Cable.TCI, Dolar.TCI);
+            yield return new BuySellTrade(Cable.T24, Dolar.TCI);
+            yield return new BuySellTrade(Cable.T48, Dolar.TCI);
+            yield return new BuySellTrade(Cable.T24, Dolar.T24);
+            yield return new BuySellTrade(Cable.T48, Dolar.T24);
+            yield return new BuySellTrade(Cable.T48, Dolar.T48);
         }
 
     }

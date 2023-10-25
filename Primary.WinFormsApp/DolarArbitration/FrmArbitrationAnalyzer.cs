@@ -43,10 +43,10 @@ namespace Primary.WinFormsApp
                 {
                     trades = trades.Where(x => 
                         filteredTickers.Any(
-                            y => x.Owned.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
-                                x.Owned.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
-                                x.Arbitration.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
-                                x.Arbitration.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y)
+                            y => x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
+                                x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
+                                x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
+                                x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y)
                             )
                         ).ToList();
                 }
@@ -55,10 +55,10 @@ namespace Primary.WinFormsApp
                 {
                     trades = trades.Where(x =>
                         excludedTickers.Any(
-                            y => !x.Owned.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
-                                !x.Owned.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
-                                !x.Arbitration.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
-                                !x.Arbitration.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y)                                
+                            y => !x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
+                                !x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
+                                !x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
+                                !x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y)                                
                             )
                         ).ToList();
 
@@ -69,10 +69,10 @@ namespace Primary.WinFormsApp
 
                 foreach (var bestTrade in trades)
                 {
-                    var ownedVenta = bestTrade.Owned.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
-                    var arbitrationCompra = bestTrade.Arbitration.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
-                    var arbitrationVenta = bestTrade.Arbitration.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
-                    var ownedCompra = bestTrade.Owned.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
+                    var ownedVenta = bestTrade.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
+                    var arbitrationCompra = bestTrade.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
+                    var arbitrationVenta = bestTrade.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
+                    var ownedCompra = bestTrade.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
 
                     DataRow row;
                     var existingRow = _dataTable.Rows.Find(new[] { ownedVenta, arbitrationCompra, arbitrationVenta, ownedCompra });
@@ -98,20 +98,20 @@ namespace Primary.WinFormsApp
                     }
                     row["ProfitLast"] = bestTrade.ProfitLast;
 
-                    if (bestTrade.Owned.HasData() && bestTrade.Arbitration.HasData())
+                    if (bestTrade.SellThenBuy.HasData() && bestTrade.BuyThenSell.HasData())
                     {
-                        row["OwnedVenta"] = bestTrade.Owned.Sell.Data.HasBids() ? (object)bestTrade.Owned.Sell.Data.Bids[0].Price : DBNull.Value;
-                        row["ArbitrationCompra"] = bestTrade.Arbitration.Sell.Data.HasOffers() ? (object)bestTrade.Arbitration.Sell.Data.Offers[0].Price : DBNull.Value;
-                        row["ArbitrationVenta"] = bestTrade.Arbitration.Buy.Data.HasBids() ? (object)bestTrade.Arbitration.Buy.Data.Bids[0].Price : DBNull.Value;
-                        row["OwnedCompra"] = bestTrade.Owned.Buy.Data.HasOffers() ? (object)bestTrade.Owned.Buy.Data.Offers[0].Price : DBNull.Value;
+                        row["OwnedVenta"] = bestTrade.SellThenBuy.Sell.Data.HasBids() ? (object)bestTrade.SellThenBuy.Sell.Data.Bids[0].Price : DBNull.Value;
+                        row["ArbitrationCompra"] = bestTrade.BuyThenSell.Sell.Data.HasOffers() ? (object)bestTrade.BuyThenSell.Sell.Data.Offers[0].Price : DBNull.Value;
+                        row["ArbitrationVenta"] = bestTrade.BuyThenSell.Buy.Data.HasBids() ? (object)bestTrade.BuyThenSell.Buy.Data.Bids[0].Price : DBNull.Value;
+                        row["OwnedCompra"] = bestTrade.SellThenBuy.Buy.Data.HasOffers() ? (object)bestTrade.SellThenBuy.Buy.Data.Offers[0].Price : DBNull.Value;
                     }
 
-                    row["DolarCompra"] = bestTrade.Owned.BuyPrice;
-                    row["DolarCompraLast"] = bestTrade.Owned.Last;
-                    row["DolarVenta"] = bestTrade.Arbitration.SellPrice;
-                    row["DolarVentaLast"] = bestTrade.Arbitration.Last;
+                    row["DolarCompra"] = bestTrade.SellThenBuy.BuyPrice;
+                    row["DolarCompraLast"] = bestTrade.SellThenBuy.Last;
+                    row["DolarVenta"] = bestTrade.BuyThenSell.SellPrice;
+                    row["DolarVentaLast"] = bestTrade.BuyThenSell.Last;
 
-                    row["DolarArbitrationTrade"] = bestTrade;
+                    row["RatioTrade"] = bestTrade;
 
                     if (existingRow == null)
                     {
@@ -174,7 +174,7 @@ namespace Primary.WinFormsApp
             _dataTable.Columns.Add("DolarVenta", typeof(decimal));
             _dataTable.Columns.Add("DolarVentaLast", typeof(decimal));
 
-            _dataTable.Columns.Add("DolarArbitrationTrade", typeof(DolarArbitrationTrade));
+            _dataTable.Columns.Add("RatioTrade", typeof(RatioTrade));
 
             grdArbitration.MultiSelect = false;
             grdArbitration.AutoGenerateColumns = false;
@@ -190,8 +190,8 @@ namespace Primary.WinFormsApp
         {
             if (grdArbitration.SelectedRows.Count > 0)
             {
-                var frm = new FrmArbitrationTrade();
-                var trade = ((DataRowView)grdArbitration.SelectedRows[0].DataBoundItem).Row["DolarArbitrationTrade"] as DolarArbitrationTrade;
+                var frm = new FrmRatioTrade();
+                var trade = ((DataRowView)grdArbitration.SelectedRows[0].DataBoundItem).Row["RatioTrade"] as RatioTrade;
                 frm.Init(trade);
                 frm.MdiParent = MdiParent;
                 frm.Show();

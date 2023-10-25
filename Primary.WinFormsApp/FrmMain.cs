@@ -455,5 +455,35 @@ namespace Primary.WinFormsApp
                 frmSettlementTermsLauncher.Show();
             }
         }
+
+        private void longGD30ShortAL30ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
+            var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
+            
+            var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
+            var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
+            var ratioTrade = new RatioTrade(al30Trade, gd30Trade);
+
+            var frmRatioTrade = new FrmRatioTrade();
+            frmRatioTrade.Init(ratioTrade);
+            frmRatioTrade.Show();
+
+        }
+
+        private void longAL30ShortGD30ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
+            var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
+
+            var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
+            var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
+            var ratioTrade = new RatioTrade(gd30Trade, al30Trade);
+
+            var frmRatioTrade = new FrmRatioTrade();
+            frmRatioTrade.Init(ratioTrade);
+            frmRatioTrade.Show();
+
+        }
     }
 }

@@ -84,15 +84,24 @@ namespace Primary.WinFormsApp
         {
             if (sell.HasBids() && buy.HasOffers())
             {
-                var sellPrice = sell.Data.GetTopBidPrice();
-                var buyPrice = buy.Data.GetTopOfferPrice();
+                var sellBidPrice = sell.Data.GetTopBidPrice();
+                var buyOfferPrice = buy.Data.GetTopOfferPrice();
+
+                var sellOfferPrice = sell.Data.GetTopOfferPrice();
+                var buyBidPrice = buy.Data.GetTopBidPrice();
+
+                if (sellBidPrice >= sellOfferPrice || buyBidPrice >= buyOfferPrice)
+                {
+                    // No devolver trade porque no está habilitada la banda
+                    return null;
+                }
 
                 var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, diasLiq24H, diasLiq48H);
 
                 var caucion = tasaCaucion / 365m * days / 100m;
-                var targetSellPrice = buyPrice * (1m - caucion * 1.1m);
+                var targetSellPrice = buyOfferPrice * (1m - caucion * 1.1m);
 
-                if (sellPrice >= targetSellPrice)
+                if (sellBidPrice >= targetSellPrice)
                 {
                     return new SettlementTermTrade(buy, sell);
                 }

@@ -35,14 +35,14 @@ namespace Primary.WinFormsApp
             }
         }
 
-        public List<DolarTrade> GetDolarMEPTrades()
+        public List<BuySellTrade> GetDolarMEPTrades()
         {
-            List<DolarTrade> trades = new List<DolarTrade>();
+            List<BuySellTrade> trades = new List<BuySellTrade>();
 
             foreach (DolarTradedInstrument dolarArbitrationData in dolarTradedInstruments)
             {
 
-                IEnumerable<DolarTrade> dolarTrades = dolarArbitrationData.GetDolarMEPTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
+                IEnumerable<BuySellTrade> dolarTrades = dolarArbitrationData.GetDolarMEPTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
                 trades.AddRange(dolarTrades);
 
             }
@@ -50,13 +50,13 @@ namespace Primary.WinFormsApp
             return trades;
         }
 
-        public List<DolarTrade> GetDolarCableTrades()
+        public List<BuySellTrade> GetDolarCableTrades()
         {
-            List<DolarTrade> trades = new List<DolarTrade>();
+            List<BuySellTrade> trades = new List<BuySellTrade>();
 
             foreach (DolarTradedInstrument dolarArbitrationData in dolarTradedInstruments)
             {
-                IEnumerable<DolarTrade> dolarTrades = dolarArbitrationData.GetDolarCableTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
+                IEnumerable<BuySellTrade> dolarTrades = dolarArbitrationData.GetDolarCableTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
                 trades.AddRange(dolarTrades);
             }
 

@@ -60,6 +60,11 @@
             // numComisionColocadora
             // 
             this.numComisionColocadora.DecimalPlaces = 3;
+            this.numComisionColocadora.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.numComisionColocadora.Location = new System.Drawing.Point(559, 26);
             this.numComisionColocadora.Minimum = new decimal(new int[] {
             1,
@@ -154,6 +159,11 @@
             // numTasa
             // 
             this.numTasa.DecimalPlaces = 2;
+            this.numTasa.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.numTasa.Location = new System.Drawing.Point(118, 0);
             this.numTasa.Maximum = new decimal(new int[] {
             1000,
@@ -188,6 +198,11 @@
             // numComision
             // 
             this.numComision.DecimalPlaces = 2;
+            this.numComision.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
             this.numComision.Location = new System.Drawing.Point(118, 26);
             this.numComision.Minimum = new decimal(new int[] {
             1,
@@ -208,6 +223,11 @@
             // numComisionTomadora
             // 
             this.numComisionTomadora.DecimalPlaces = 3;
+            this.numComisionTomadora.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.numComisionTomadora.Location = new System.Drawing.Point(559, 0);
             this.numComisionTomadora.Minimum = new decimal(new int[] {
             1,

@@ -172,7 +172,7 @@
             this.OwnedVenta.DataPropertyName = "OwnedVenta";
             dataGridViewCellStyle3.Format = "C2";
             this.OwnedVenta.DefaultCellStyle = dataGridViewCellStyle3;
-            this.OwnedVenta.HeaderText = "Owned Venta";
+            this.OwnedVenta.HeaderText = "SellThenBuy Venta";
             this.OwnedVenta.MinimumWidth = 6;
             this.OwnedVenta.Name = "OwnedVenta";
             this.OwnedVenta.ReadOnly = true;
@@ -182,7 +182,7 @@
             this.ArbitrationCompra.DataPropertyName = "ArbitrationCompra";
             dataGridViewCellStyle4.Format = "C2";
             this.ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ArbitrationCompra.HeaderText = "Arbitration Compra";
+            this.ArbitrationCompra.HeaderText = "BuyThenSell Compra";
             this.ArbitrationCompra.MinimumWidth = 6;
             this.ArbitrationCompra.Name = "ArbitrationCompra";
             this.ArbitrationCompra.ReadOnly = true;
@@ -193,7 +193,7 @@
             dataGridViewCellStyle5.Format = "C2";
             dataGridViewCellStyle5.NullValue = null;
             this.ArbitrationVenta.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ArbitrationVenta.HeaderText = "Arbitration Venta";
+            this.ArbitrationVenta.HeaderText = "BuyThenSell Venta";
             this.ArbitrationVenta.MinimumWidth = 6;
             this.ArbitrationVenta.Name = "ArbitrationVenta";
             this.ArbitrationVenta.ReadOnly = true;
@@ -203,7 +203,7 @@
             this.OwnedCompra.DataPropertyName = "OwnedCompra";
             dataGridViewCellStyle6.Format = "C2";
             this.OwnedCompra.DefaultCellStyle = dataGridViewCellStyle6;
-            this.OwnedCompra.HeaderText = "Owned Compra";
+            this.OwnedCompra.HeaderText = "SellThenBuy Compra";
             this.OwnedCompra.MinimumWidth = 6;
             this.OwnedCompra.Name = "OwnedCompra";
             this.OwnedCompra.ReadOnly = true;
