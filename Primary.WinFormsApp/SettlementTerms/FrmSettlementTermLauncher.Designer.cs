@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermLauncher));
-            this.listInstrumentos = new System.Windows.Forms.ListBox();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoBuy48H = new System.Windows.Forms.RadioButton();
             this.rdoBuy24H = new System.Windows.Forms.RadioButton();
@@ -41,30 +39,11 @@
             this.rdoSellCI = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLaunch = new System.Windows.Forms.Button();
-            this.chkOnlyCurrentPositions = new System.Windows.Forms.CheckBox();
+            this.instrumentSearchList1 = new Primary.WinFormsApp.Shared.InstrumentSearchList();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // listInstrumentos
-            // 
-            this.listInstrumentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listInstrumentos.FormattingEnabled = true;
-            this.listInstrumentos.Location = new System.Drawing.Point(6, 45);
-            this.listInstrumentos.Name = "listInstrumentos";
-            this.listInstrumentos.Size = new System.Drawing.Size(468, 303);
-            this.listInstrumentos.TabIndex = 0;
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(6, 19);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(468, 20);
-            this.txtBuscar.TabIndex = 2;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // groupBox1
             // 
@@ -161,11 +140,10 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.txtBuscar);
-            this.groupBox3.Controls.Add(this.listInstrumentos);
-            this.groupBox3.Location = new System.Drawing.Point(12, 32);
+            this.groupBox3.Controls.Add(this.instrumentSearchList1);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(480, 369);
+            this.groupBox3.Size = new System.Drawing.Size(480, 389);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Seleccionar Instrumento";
@@ -182,29 +160,27 @@
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
-            // chkOnlyCurrentPositions
+            // instrumentSearchList1
             // 
-            this.chkOnlyCurrentPositions.AutoSize = true;
-            this.chkOnlyCurrentPositions.Location = new System.Drawing.Point(12, 9);
-            this.chkOnlyCurrentPositions.Name = "chkOnlyCurrentPositions";
-            this.chkOnlyCurrentPositions.Size = new System.Drawing.Size(196, 17);
-            this.chkOnlyCurrentPositions.TabIndex = 7;
-            this.chkOnlyCurrentPositions.Text = "Mostrar sólo instrumentos en cartera";
-            this.chkOnlyCurrentPositions.UseVisualStyleBackColor = true;
-            this.chkOnlyCurrentPositions.CheckedChanged += new System.EventHandler(this.chkOnlyCurrentPositions_CheckedChanged);
+            this.instrumentSearchList1.Location = new System.Drawing.Point(6, 19);
+            this.instrumentSearchList1.Name = "instrumentSearchList1";
+            this.instrumentSearchList1.Size = new System.Drawing.Size(468, 370);
+            this.instrumentSearchList1.TabIndex = 3;
             // 
             // FrmSettlementTermLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 543);
-            this.Controls.Add(this.chkOnlyCurrentPositions);
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmSettlementTermLauncher";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Abrir arbitraje de plazos para instrumento";
             this.Load += new System.EventHandler(this.FrmSettlementTermLauncher_Load);
             this.groupBox1.ResumeLayout(false);
@@ -212,16 +188,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listInstrumentos;
-        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdoBuy48H;
         private System.Windows.Forms.RadioButton rdoBuy24H;
@@ -232,6 +203,6 @@
         private System.Windows.Forms.RadioButton rdoSellCI;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnLaunch;
-        private System.Windows.Forms.CheckBox chkOnlyCurrentPositions;
+        private Shared.InstrumentSearchList instrumentSearchList1;
     }
 }

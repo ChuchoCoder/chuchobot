@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Primary.WinFormsApp
 {
     public partial class FrmRatioTrade : Form
     {
+        private static Color AutoColor = Color.Blue;
         private RatioTrade _trade;
         private decimal _ownedVentaImporte;
         private decimal _ownedVentaComision;
@@ -149,26 +151,26 @@ namespace Primary.WinFormsApp
 
         public bool ArbitrationVentaPriceAutoUpdate
         {
-            get => numArbitrationVentaPrice.ForeColor == System.Drawing.Color.Red;
-            set => numArbitrationVentaPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
+            get => numArbitrationVentaPrice.ForeColor == AutoColor;
+            set => numArbitrationVentaPrice.ForeColor = value ? AutoColor : System.Drawing.SystemColors.WindowText;
         }
 
         public bool ArbitrationCompraPriceAutoUpdate
         {
-            get => numArbitrationCompraPrice.ForeColor == System.Drawing.Color.Red;
-            set => numArbitrationCompraPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
+            get => numArbitrationCompraPrice.ForeColor == AutoColor;
+            set => numArbitrationCompraPrice.ForeColor = value ? AutoColor : System.Drawing.SystemColors.WindowText;
         }
 
         public bool OwnedVentaPriceAutoUpdate
         {
-            get => numOwnedVentaPrice.ForeColor == System.Drawing.Color.Red;
-            set => numOwnedVentaPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
+            get => numOwnedVentaPrice.ForeColor == AutoColor;
+            set => numOwnedVentaPrice.ForeColor = value ? AutoColor : System.Drawing.SystemColors.WindowText;
         }
 
         public bool OwnedCompraPriceAutoUpdate
         {
-            get => numOwnedCompraPrice.ForeColor == System.Drawing.Color.Red;
-            set => numOwnedCompraPrice.ForeColor = value ? System.Drawing.Color.Red : System.Drawing.SystemColors.WindowText;
+            get => numOwnedCompraPrice.ForeColor == AutoColor;
+            set => numOwnedCompraPrice.ForeColor = value ? AutoColor : System.Drawing.SystemColors.WindowText;
         }
 
         private void ArbitrationCompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
@@ -393,7 +395,7 @@ namespace Primary.WinFormsApp
                 ? "Profit Nominales : " + (numOwnedCompraSize.Value - numOwnedVentaSize.Value) + " Dif. " + profit.ToCurrency()
                 : "Profit: " + profit.ToCurrency();
 
-            lblHeader.ForeColor = profit < 0 ? System.Drawing.Color.Red : System.Drawing.Color.DarkGreen;
+            lblHeader.ForeColor = profit < 0 ? Color.Red : Color.DarkGreen;
 
 
             CompleteOwnedCompra();

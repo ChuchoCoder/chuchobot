@@ -1,4 +1,5 @@
 ﻿using Primary.Data;
+using Primary.WinFormsApp.DolarArbitration;
 using Primary.WinFormsApp.Properties;
 using Primary.WinFormsApp.SettlementTerms;
 using System;
@@ -69,6 +70,17 @@ namespace Primary.WinFormsApp
             if (connected.Visible == false)
             {
                 _ = MessageBox.Show("La aplicación esta desconectada. El usuario debe hacer Login.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ValidateUserHasLogin()
+        {
+            if (LoginSuccessfull == false)
+            {
+                _ = MessageBox.Show("El usuario debe hacer Login.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -218,7 +230,7 @@ namespace Primary.WinFormsApp
 
         private void buscadorDeArbitrajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frmArbitrationAnalyzer = new FrmArbitrationAnalyzer();
                 //frmArbitrationAnalyzer.MdiParent = this;
@@ -276,8 +288,7 @@ namespace Primary.WinFormsApp
 
         private void compraMEPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frm = new FrmDolarPrice
                 {
@@ -290,7 +301,7 @@ namespace Primary.WinFormsApp
 
         private void ventaMEPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frm = new FrmDolarPrice
                 {
@@ -303,7 +314,7 @@ namespace Primary.WinFormsApp
 
         private void compraCCLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frm = new FrmDolarPrice
                 {
@@ -316,7 +327,7 @@ namespace Primary.WinFormsApp
 
         private void ventaCCLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frm = new FrmDolarPrice
                 {
@@ -438,7 +449,7 @@ namespace Primary.WinFormsApp
 
         private void abrirScannerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frmSettlementTermsAnalyzer = new FrmSettlementTermsAnalyzer();
                 //frmSettlementTermsAnalyzer.MdiParent = this;
@@ -448,7 +459,7 @@ namespace Primary.WinFormsApp
 
         private void seleccionarInstrumentoYPlazosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ValidateIsConnected())
+            if (ValidateUserHasLogin())
             {
                 var frmSettlementTermsLauncher = new FrmSettlementTermLauncher();
                 //frmSettlementTermsAnalyzer.MdiParent = this;
@@ -458,31 +469,47 @@ namespace Primary.WinFormsApp
 
         private void longGD30ShortAL30ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
-            var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
-            
-            var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
-            var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
-            var ratioTrade = new RatioTrade(al30Trade, gd30Trade);
+            if (ValidateUserHasLogin())
+            {
+                var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
+                var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
 
-            var frmRatioTrade = new FrmRatioTrade();
-            frmRatioTrade.Init(ratioTrade);
-            frmRatioTrade.Show();
+                var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
+                var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
+                var ratioTrade = new RatioTrade(al30Trade, gd30Trade);
 
+                var frmRatioTrade = new FrmRatioTrade();
+                frmRatioTrade.Init(ratioTrade);
+                frmRatioTrade.Show();
+            }
         }
 
         private void longAL30ShortGD30ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
-            var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
+            if (ValidateUserHasLogin())
+            {
+                var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
+                var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
 
-            var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
-            var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
-            var ratioTrade = new RatioTrade(gd30Trade, al30Trade);
+                var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
+                var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
+                var ratioTrade = new RatioTrade(gd30Trade, al30Trade);
 
-            var frmRatioTrade = new FrmRatioTrade();
-            frmRatioTrade.Init(ratioTrade);
-            frmRatioTrade.Show();
+                var frmRatioTrade = new FrmRatioTrade();
+                frmRatioTrade.Init(ratioTrade);
+                frmRatioTrade.Show();
+            }
+
+        }
+
+        private void seleccionarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ValidateUserHasLogin())
+            {
+                var frmRatioTradeLauncher = new FrmRatioTradeLauncher();
+                //frmSettlementTermsAnalyzer.MdiParent = this;
+                frmRatioTradeLauncher.Show();
+            }
 
         }
     }
