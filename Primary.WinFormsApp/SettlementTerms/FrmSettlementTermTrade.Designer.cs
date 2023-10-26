@@ -569,6 +569,7 @@
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.grpArbitrationCompra);
             this.Controls.Add(this.grpOwnedVenta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmSettlementTermTrade";

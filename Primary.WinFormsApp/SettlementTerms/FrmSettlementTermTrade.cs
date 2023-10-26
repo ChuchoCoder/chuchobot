@@ -7,6 +7,7 @@ namespace Primary.WinFormsApp
 {
     public partial class FrmSettlementTermTrade : Form
     {
+        private static Color AutoColor = Color.Blue;
         private SettlementTermTrade _trade;
 
         public FrmSettlementTermTrade()
@@ -111,14 +112,14 @@ namespace Primary.WinFormsApp
         {
             get
             {
-                return numCompraSize.ForeColor == System.Drawing.Color.Blue;
+                return numCompraSize.ForeColor == AutoColor;
             }
             set
             {
                 if (value)
                 {
-                    numCompraSize.ForeColor = System.Drawing.Color.Blue;
-                    numOwnedVentaSize.ForeColor = System.Drawing.Color.Blue;
+                    numCompraSize.ForeColor = AutoColor;
+                    numOwnedVentaSize.ForeColor = AutoColor;
                 }
                 else
                 {
@@ -132,13 +133,13 @@ namespace Primary.WinFormsApp
         {
             get
             {
-                return numCompraPrice.ForeColor == System.Drawing.Color.Blue;
+                return numCompraPrice.ForeColor == AutoColor;
             }
             set
             {
                 if (value)
                 {
-                    numCompraPrice.ForeColor = System.Drawing.Color.Blue;
+                    numCompraPrice.ForeColor = AutoColor;
                 }
                 else
                 {
@@ -151,13 +152,13 @@ namespace Primary.WinFormsApp
         {
             get
             {
-                return numVentaPrice.ForeColor == System.Drawing.Color.Blue;
+                return numVentaPrice.ForeColor == AutoColor;
             }
             set
             {
                 if (value)
                 {
-                    numVentaPrice.ForeColor = System.Drawing.Color.Blue;
+                    numVentaPrice.ForeColor = AutoColor;
                 }
                 else
                 {

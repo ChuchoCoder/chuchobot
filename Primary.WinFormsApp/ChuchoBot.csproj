@@ -97,6 +97,12 @@
     <Compile Include="Components\BidsOffersControl.Designer.cs">
       <DependentUpon>BidsOffersControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DolarArbitration\FrmRatioTradeLauncher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DolarArbitration\FrmRatioTradeLauncher.Designer.cs">
+      <DependentUpon>FrmRatioTradeLauncher.cs</DependentUpon>
+    </Compile>
     <Compile Include="DolarArbitration\RatioTrade.cs" />
     <Compile Include="DolarArbitration\DolarCalculatorProcessor.cs" />
     <Compile Include="DolarArbitration\BuySellTrade.cs" />
@@ -152,11 +158,11 @@
     <Compile Include="DolarArbitration\FrmArbitrationAnalyzer.Designer.cs">
       <DependentUpon>FrmArbitrationAnalyzer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DolarArbitration\FrmArbitrationTrade.cs">
+    <Compile Include="DolarArbitration\FrmRatioTrade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DolarArbitration\FrmArbitrationTrade.Designer.cs">
-      <DependentUpon>FrmArbitrationTrade.cs</DependentUpon>
+    <Compile Include="DolarArbitration\FrmRatioTrade.Designer.cs">
+      <DependentUpon>FrmRatioTrade.cs</DependentUpon>
     </Compile>
     <Compile Include="Dolar\FrmDolarPrices.cs">
       <SubType>Form</SubType>
@@ -190,6 +196,12 @@
     </Compile>
     <Compile Include="Shared\Argentina.cs" />
     <Compile Include="Shared\InstrumentExtensions.cs" />
+    <Compile Include="Shared\InstrumentSearchList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Shared\InstrumentSearchList.Designer.cs">
+      <DependentUpon>InstrumentSearchList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shared\InstrumentWithData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -203,6 +215,9 @@
     <Compile Include="Telemetry.cs" />
     <EmbeddedResource Include="Components\BidsOffersControl.resx">
       <DependentUpon>BidsOffersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DolarArbitration\FrmRatioTradeLauncher.resx">
+      <DependentUpon>FrmRatioTradeLauncher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dolar\FrmDolarPrice.resx">
       <DependentUpon>FrmDolarPrice.cs</DependentUpon>
@@ -222,8 +237,8 @@
     <EmbeddedResource Include="DolarArbitration\FrmArbitrationAnalyzer.resx">
       <DependentUpon>FrmArbitrationAnalyzer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DolarArbitration\FrmArbitrationTrade.resx">
-      <DependentUpon>FrmArbitrationTrade.cs</DependentUpon>
+    <EmbeddedResource Include="DolarArbitration\FrmRatioTrade.resx">
+      <DependentUpon>FrmRatioTrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dolar\FrmDolarPrices.resx">
       <DependentUpon>FrmDolarPrices.cs</DependentUpon>
@@ -253,6 +268,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Shared\InstrumentSearchList.resx">
+      <DependentUpon>InstrumentSearchList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

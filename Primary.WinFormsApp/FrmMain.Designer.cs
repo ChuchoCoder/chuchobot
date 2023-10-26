@@ -52,15 +52,16 @@
             this.accionesCEDEARsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.letrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tickersDCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arbitrajeRatioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.longGD30ShortAL30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.longAL30ShortGD30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrConnection = new System.Windows.Forms.Timer(this.components);
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.connected = new System.Windows.Forms.ToolStripStatusLabel();
             this.disconnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusInformation = new System.Windows.Forms.ToolStripStatusLabel();
             this.appVersion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.arbitrajeRatioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.longGD30ShortAL30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.longAL30ShortGD30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -192,6 +193,7 @@
             // 
             // cmbInstruments
             // 
+            this.cmbInstruments.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbInstruments.Name = "cmbInstruments";
             this.cmbInstruments.Size = new System.Drawing.Size(121, 23);
             this.cmbInstruments.SelectedIndexChanged += new System.EventHandler(this.cmbInstruments_SelectedIndexChanged);
@@ -248,6 +250,30 @@
             this.tickersDCToolStripMenuItem.Text = "Excepciones de instrumentos $,D,C";
             this.tickersDCToolStripMenuItem.Click += new System.EventHandler(this.tickersDCToolStripMenuItem_Click);
             // 
+            // arbitrajeRatioToolStripMenuItem
+            // 
+            this.arbitrajeRatioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.longGD30ShortAL30ToolStripMenuItem,
+            this.longAL30ShortGD30ToolStripMenuItem,
+            this.seleccionarToolStripMenuItem});
+            this.arbitrajeRatioToolStripMenuItem.Name = "arbitrajeRatioToolStripMenuItem";
+            this.arbitrajeRatioToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.arbitrajeRatioToolStripMenuItem.Text = "Arbitraje Ratio";
+            // 
+            // longGD30ShortAL30ToolStripMenuItem
+            // 
+            this.longGD30ShortAL30ToolStripMenuItem.Name = "longGD30ShortAL30ToolStripMenuItem";
+            this.longGD30ShortAL30ToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.longGD30ShortAL30ToolStripMenuItem.Text = "Long GD30 / Short AL30";
+            this.longGD30ShortAL30ToolStripMenuItem.Click += new System.EventHandler(this.longGD30ShortAL30ToolStripMenuItem_Click);
+            // 
+            // longAL30ShortGD30ToolStripMenuItem
+            // 
+            this.longAL30ShortGD30ToolStripMenuItem.Name = "longAL30ShortGD30ToolStripMenuItem";
+            this.longAL30ShortGD30ToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.longAL30ShortGD30ToolStripMenuItem.Text = "Long AL30 / Short GD30";
+            this.longAL30ShortGD30ToolStripMenuItem.Click += new System.EventHandler(this.longAL30ShortGD30ToolStripMenuItem_Click);
+            // 
             // tmrConnection
             // 
             this.tmrConnection.Interval = 3000;
@@ -255,6 +281,7 @@
             // 
             // statusBar
             // 
+            this.statusBar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connected,
             this.disconnected,
@@ -270,7 +297,7 @@
             this.connected.Image = ((System.Drawing.Image)(resources.GetObject("connected.Image")));
             this.connected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.connected.Name = "connected";
-            this.connected.Size = new System.Drawing.Size(81, 17);
+            this.connected.Size = new System.Drawing.Size(85, 20);
             this.connected.Text = "Conectado";
             this.connected.Visible = false;
             // 
@@ -279,7 +306,7 @@
             this.disconnected.Image = ((System.Drawing.Image)(resources.GetObject("disconnected.Image")));
             this.disconnected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.disconnected.Name = "disconnected";
-            this.disconnected.Size = new System.Drawing.Size(98, 17);
+            this.disconnected.Size = new System.Drawing.Size(102, 20);
             this.disconnected.Text = "Desconectado";
             this.disconnected.Visible = false;
             // 
@@ -296,28 +323,12 @@
             this.appVersion.Text = "v2023.10.23.0";
             this.appVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // arbitrajeRatioToolStripMenuItem
+            // seleccionarToolStripMenuItem
             // 
-            this.arbitrajeRatioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.longGD30ShortAL30ToolStripMenuItem,
-            this.longAL30ShortGD30ToolStripMenuItem});
-            this.arbitrajeRatioToolStripMenuItem.Name = "arbitrajeRatioToolStripMenuItem";
-            this.arbitrajeRatioToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.arbitrajeRatioToolStripMenuItem.Text = "Arbitraje Ratio";
-            // 
-            // longGD30ShortAL30ToolStripMenuItem
-            // 
-            this.longGD30ShortAL30ToolStripMenuItem.Name = "longGD30ShortAL30ToolStripMenuItem";
-            this.longGD30ShortAL30ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.longGD30ShortAL30ToolStripMenuItem.Text = "Long GD30 / Short AL30";
-            this.longGD30ShortAL30ToolStripMenuItem.Click += new System.EventHandler(this.longGD30ShortAL30ToolStripMenuItem_Click);
-            // 
-            // longAL30ShortGD30ToolStripMenuItem
-            // 
-            this.longAL30ShortGD30ToolStripMenuItem.Name = "longAL30ShortGD30ToolStripMenuItem";
-            this.longAL30ShortGD30ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.longAL30ShortGD30ToolStripMenuItem.Text = "Long AL30 / Short GD30";
-            this.longAL30ShortGD30ToolStripMenuItem.Click += new System.EventHandler(this.longAL30ShortGD30ToolStripMenuItem_Click);
+            this.seleccionarToolStripMenuItem.Name = "seleccionarToolStripMenuItem";
+            this.seleccionarToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.seleccionarToolStripMenuItem.Text = "Seleccionar Instrumentos y Plazo";
+            this.seleccionarToolStripMenuItem.Click += new System.EventHandler(this.seleccionarToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -375,6 +386,7 @@
         private System.Windows.Forms.ToolStripMenuItem arbitrajeRatioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem longGD30ShortAL30ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem longAL30ShortGD30ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seleccionarToolStripMenuItem;
     }
 }
 

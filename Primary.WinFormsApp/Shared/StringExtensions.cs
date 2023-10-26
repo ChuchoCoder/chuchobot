@@ -35,6 +35,17 @@ namespace Primary.WinFormsApp
             return instrumentDetail.InstrumentId.Symbol.EndsWith($" - {Settlement48H}");
         }
 
+        public static string RemoveSettlement(this string symbol)
+        {
+            var index = symbol.LastIndexOf(" - ");
+            if (index > 0)
+            {
+                return symbol.Substring(0, index);
+            }
+
+            return symbol;
+        }
+
         public static string GetTicker(this string symbol)
         {
             var split = symbol.Split('-');
