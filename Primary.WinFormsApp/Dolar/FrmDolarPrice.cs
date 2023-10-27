@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,16 +13,18 @@ namespace Primary.WinFormsApp
         private DataTable _dolarTable;
         private Func<DolarCalculatorProcessor, List<BuySellTrade>> _getDolarPrices;
         private bool _displayDolarVenta;
+        private ListSortDirection _sortPrecio;
 
         public FrmDolarPrice()
         {
             InitializeComponent();
         }
 
-        internal void Setup(Func<DolarCalculatorProcessor, List<BuySellTrade>> getDolarPrices, bool displayDolarVenta)
+        internal void Setup(Func<DolarCalculatorProcessor, List<BuySellTrade>> getDolarPrices, bool displayDolarVenta, ListSortDirection sortPrecio)
         {
             _getDolarPrices = getDolarPrices;
             _displayDolarVenta = displayDolarVenta;
+            _sortPrecio = sortPrecio;
         }
 
         private void FrmDolarPrice_Load(object sender, EventArgs e)
@@ -35,6 +38,8 @@ namespace Primary.WinFormsApp
             _dolarTable = GetDataTable();
 
             grdDolar.DataSource = _dolarTable;
+
+            grdDolar.Sort(grdDolar.Columns["Precio"], _sortPrecio);
 
         }
 
@@ -84,6 +89,18 @@ namespace Primary.WinFormsApp
                 }
 
                 row["Last"] = trade.Last;
+                if (_displayDolarVenta)
+                {
+                    row["Precio"] = trade.SellPrice;
+                    row["Pesos"] = (object)trade.Buy.BidPrice() ?? DBNull.Value;
+                    row["USD"] = (object)trade.Sell.OfferPrice() ?? DBNull.Value;
+                }
+                else
+                {
+                    row["Precio"] = trade.BuyPrice;
+                    row["Pesos"] = (object)trade.Buy.OfferPrice() ?? DBNull.Value;
+                    row["USD"] = (object)trade.Sell.BidPrice() ?? DBNull.Value;
+                }
                 row["Precio"] = _displayDolarVenta == false ? trade.BuyPrice : (object)trade.SellPrice;
 
                 if (existingRow == null)
@@ -118,6 +135,8 @@ namespace Primary.WinFormsApp
 
             _ = dataTable.Columns.Add("Last", typeof(decimal));
             _ = dataTable.Columns.Add("Precio", typeof(decimal));
+            _ = dataTable.Columns.Add("Pesos", typeof(decimal));
+            _ = dataTable.Columns.Add("USD", typeof(decimal));
 
             return dataTable;
         }

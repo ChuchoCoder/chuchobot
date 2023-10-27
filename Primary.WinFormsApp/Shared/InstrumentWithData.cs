@@ -53,5 +53,22 @@ namespace Primary.WinFormsApp
         {
             return Data != null && Data.HasOffers();
         }
+
+        public decimal? BidPrice() {
+            if (HasBids())
+            {
+                return Data.GetTopBidPrice();
+            }
+            return null;
+        }
+
+        public decimal? OfferPrice()
+        {
+            if (HasBids())
+            {
+                return Data.GetTopOfferPrice();
+            }
+            return null;
+        }
     }
 }
