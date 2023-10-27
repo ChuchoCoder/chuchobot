@@ -108,6 +108,7 @@
             this.grpOwnedVenta.Controls.Add(this.lblVentaACurrency);
             this.grpOwnedVenta.Controls.Add(this.numOwnedVentaSize);
             this.grpOwnedVenta.Controls.Add(this.label1);
+            this.grpOwnedVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpOwnedVenta.Location = new System.Drawing.Point(8, 97);
             this.grpOwnedVenta.Name = "grpOwnedVenta";
             this.grpOwnedVenta.Size = new System.Drawing.Size(590, 195);
@@ -202,6 +203,7 @@
             this.numOwnedVentaSize.TabIndex = 0;
             this.numOwnedVentaSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numOwnedVentaSize.ValueChanged += new System.EventHandler(this.numOwnedVentaSize_ValueChanged);
+            this.numOwnedVentaSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numOwnedVentaSize_KeyPress);
             // 
             // label1
             // 
@@ -317,6 +319,7 @@
             this.numArbitrationCompraSize.TabIndex = 0;
             this.numArbitrationCompraSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numArbitrationCompraSize.ValueChanged += new System.EventHandler(this.numArbitrationCompraSize_ValueChanged);
+            this.numArbitrationCompraSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numArbitrationCompraSize_KeyPress);
             // 
             // label7
             // 
@@ -677,7 +680,7 @@
             // lblComisionTotal
             // 
             this.lblComisionTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComisionTotal.Location = new System.Drawing.Point(292, 506);
+            this.lblComisionTotal.Location = new System.Drawing.Point(292, 508);
             this.lblComisionTotal.Name = "lblComisionTotal";
             this.lblComisionTotal.Size = new System.Drawing.Size(183, 18);
             this.lblComisionTotal.TabIndex = 12;
@@ -687,7 +690,7 @@
             // lblTotalProfit
             // 
             this.lblTotalProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalProfit.Location = new System.Drawing.Point(481, 506);
+            this.lblTotalProfit.Location = new System.Drawing.Point(481, 508);
             this.lblTotalProfit.Name = "lblTotalProfit";
             this.lblTotalProfit.Size = new System.Drawing.Size(183, 18);
             this.lblTotalProfit.TabIndex = 21;
@@ -697,7 +700,7 @@
             // lblProfitPesos
             // 
             this.lblProfitPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfitPesos.Location = new System.Drawing.Point(670, 506);
+            this.lblProfitPesos.Location = new System.Drawing.Point(670, 508);
             this.lblProfitPesos.Name = "lblProfitPesos";
             this.lblProfitPesos.Size = new System.Drawing.Size(183, 18);
             this.lblProfitPesos.TabIndex = 22;
@@ -707,7 +710,7 @@
             // chkComprarNominales
             // 
             this.chkComprarNominales.AutoSize = true;
-            this.chkComprarNominales.Location = new System.Drawing.Point(897, 506);
+            this.chkComprarNominales.Location = new System.Drawing.Point(8, 509);
             this.chkComprarNominales.Name = "chkComprarNominales";
             this.chkComprarNominales.Size = new System.Drawing.Size(239, 17);
             this.chkComprarNominales.TabIndex = 23;
