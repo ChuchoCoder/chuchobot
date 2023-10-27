@@ -294,7 +294,7 @@ namespace Primary.WinFormsApp
                 {
                     Text = "Compra Dolar MEP"
                 };
-                frm.Setup(x => x.GetDolarMEPTrades(), false);
+                frm.Setup(x => x.GetDolarMEPTrades(), false, System.ComponentModel.ListSortDirection.Ascending);
                 frm.Show();
             }
         }
@@ -307,7 +307,7 @@ namespace Primary.WinFormsApp
                 {
                     Text = "Venta Dolar MEP"
                 };
-                frm.Setup(x => x.GetDolarMEPTrades(), true);
+                frm.Setup(x => x.GetDolarMEPTrades(), true, System.ComponentModel.ListSortDirection.Descending);
                 frm.Show();
             }
         }
@@ -320,7 +320,7 @@ namespace Primary.WinFormsApp
                 {
                     Text = "Compra Dolar CCL"
                 };
-                frm.Setup(x => x.GetDolarCableTrades(), false);
+                frm.Setup(x => x.GetDolarCableTrades(), false, System.ComponentModel.ListSortDirection.Ascending);
                 frm.Show();
             }
         }
@@ -333,7 +333,7 @@ namespace Primary.WinFormsApp
                 {
                     Text = "Venta Dolar CCL"
                 };
-                frm.Setup(x => x.GetDolarCableTrades(), true);
+                frm.Setup(x => x.GetDolarCableTrades(), true, System.ComponentModel.ListSortDirection.Descending);
                 frm.Show();
             }
         }

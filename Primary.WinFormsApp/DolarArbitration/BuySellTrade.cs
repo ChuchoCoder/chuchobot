@@ -47,7 +47,7 @@ namespace Primary.WinFormsApp
         }
 
         /// <summary>
-        /// Compra Dolar ($ Offer / USD Bid)
+        /// Compra Dolar (Buy Offer $ / Sell Bid USD)
         /// Obtiene el tipo de cambio para Comprar Dolar utilizando Pesos.Offers / Dolar.Bids
         /// </summary>
         public decimal BuyPrice // Barato
@@ -62,7 +62,7 @@ namespace Primary.WinFormsApp
         }
 
         /// <summary>
-        /// Venta Dolar ($ Bid / USD Offer)
+        /// Venta Dolar (Buy Bid $ / Sell Offer USD)
         /// Obtiene el tipo de cambio para Vender Dolar utilizando Pesos.Bids / Dolar.Offers
         /// </summary>
         public decimal SellPrice // Caro
