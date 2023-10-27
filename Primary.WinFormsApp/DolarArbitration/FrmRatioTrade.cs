@@ -28,6 +28,13 @@ namespace Primary.WinFormsApp
         {
             numDolar.Value = Properties.Settings.Default.USDARS;
             numComision.Value = Properties.Settings.Default.Comision;
+
+            OwnedVentaPriceAutoUpdate = true;
+            SizeAutoUpdate = true;
+            OwnedCompraPriceAutoUpdate = true;
+            ArbitrationCompraPriceAutoUpdate = true;
+            ArbitrationVentaPriceAutoUpdate = true;
+
             timer1_Tick(sender, e);
         }
 
@@ -73,6 +80,8 @@ namespace Primary.WinFormsApp
                 numOwnedCompraPrice.Value = _trade.SellThenBuy.Buy.Data.GetTopOfferPrice();
             }
 
+            CalculateAutoSize();
+
         }
 
         internal void Init(RatioTrade trade)
@@ -106,7 +115,9 @@ namespace Primary.WinFormsApp
             _ownedQuantityPerPrice = _trade.SellThenBuy.Buy.Instrument.PriceConvertionFactor;
             _arbitrationQuantityPerPrice = _trade.BuyThenSell.Buy.Instrument.PriceConvertionFactor;
 
-            numOwnedVentaSize.Value = 10000; // TODO: Get Max Size
+            numOwnedVentaSize.Value = 10000;
+            CalculateAutoSize();
+
             if (_trade.SellThenBuy.Sell.Data?.Last != null)
             {
                 numOwnedVentaPrice.Value = _trade.SellThenBuy.Sell.Data.Last.Price.Value;
@@ -149,6 +160,32 @@ namespace Primary.WinFormsApp
             lblVentaBCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
         }
 
+        private void CalculateAutoSize()
+        {
+            if (SizeAutoUpdate)
+            {
+                var sellBid = 10000m;
+                var sellTotal = 1m;
+                if (_trade.SellThenBuy.Sell.HasBids())
+                {
+                    sellBid = _trade.SellThenBuy.Sell.Data.GetTopBidSize();
+                    var sellPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice();
+                    sellTotal = sellBid * sellPrice;
+                }
+
+                var buyBid = 10000m;
+                var buyTotal = 1m;
+                if (_trade.BuyThenSell.Buy.HasOffers())
+                {
+                    buyBid = _trade.BuyThenSell.Buy.Data.GetTopOfferSize();
+                    var buyPrice = _trade.BuyThenSell.Buy.Data.GetTopOfferPrice();
+                    buyTotal = buyBid * buyPrice;
+                }
+
+                numOwnedVentaSize.Value = sellTotal > buyTotal ? buyBid : sellBid;
+            }
+        }
+
         public bool ArbitrationVentaPriceAutoUpdate
         {
             get => numArbitrationVentaPrice.ForeColor == AutoColor;
@@ -159,6 +196,12 @@ namespace Primary.WinFormsApp
         {
             get => numArbitrationCompraPrice.ForeColor == AutoColor;
             set => numArbitrationCompraPrice.ForeColor = value ? AutoColor : System.Drawing.SystemColors.WindowText;
+        }
+
+        public bool SizeAutoUpdate
+        {
+            get => numOwnedVentaSize.ForeColor == AutoColor;
+            set => numArbitrationCompraSize.ForeColor = numOwnedVentaSize.ForeColor = value ? AutoColor : System.Drawing.SystemColors.WindowText;
         }
 
         public bool OwnedVentaPriceAutoUpdate
@@ -175,6 +218,7 @@ namespace Primary.WinFormsApp
 
         private void ArbitrationCompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
+            SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopOffer;
             numArbitrationCompraSize.Value = e.Value;
             // Calcular el size en base al BuyThenSell Compra Size
             var amount = numArbitrationCompraPrice.Value * numArbitrationCompraSize.Value * _arbitrationQuantityPerPrice;
@@ -209,6 +253,8 @@ namespace Primary.WinFormsApp
 
         private void OwnedVentaBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
+            SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopBid;
+            
             numOwnedVentaSize.Value = e.Value;
         }
 
@@ -503,6 +549,16 @@ namespace Primary.WinFormsApp
             Properties.Settings.Default.Comision = numComision.Value;
             Properties.Settings.Default.Save();
             CalculateOwnedVenta();
+        }
+
+        private void numOwnedVentaSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numArbitrationCompraSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SizeAutoUpdate = false;
         }
     }
 }
