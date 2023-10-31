@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -201,6 +202,18 @@ namespace Primary.WinFormsApp
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void grdArbitration_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            if (e.RowIndex < 0 || e.RowIndex == dgv.NewRowIndex) return;
+
+            var cell = dgv["Profit", e.RowIndex];
+            if (cell.Value == null || cell.Value == DBNull.Value) return;
+
+            decimal value = (decimal)cell.Value;
+            dgv.Rows[e.RowIndex].DefaultCellStyle.ForeColor = value == 0 ? Color.Blue : value < 0 ? Color.Red : Color.Green;
         }
     }
 }

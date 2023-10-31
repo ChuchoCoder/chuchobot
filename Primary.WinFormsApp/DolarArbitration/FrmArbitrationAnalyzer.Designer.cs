@@ -100,8 +100,7 @@
             this.DolarVenta,
             this.DolarCompraLast,
             this.DolarVentaLast});
-            this.grdArbitration.Location = new System.Drawing.Point(6, 53);
-            this.grdArbitration.Margin = new System.Windows.Forms.Padding(6);
+            this.grdArbitration.Location = new System.Drawing.Point(3, 28);
             this.grdArbitration.Name = "grdArbitration";
             this.grdArbitration.ReadOnly = true;
             this.grdArbitration.RowHeadersVisible = false;
@@ -110,8 +109,9 @@
             this.grdArbitration.ShowCellErrors = false;
             this.grdArbitration.ShowEditingIcon = false;
             this.grdArbitration.ShowRowErrors = false;
-            this.grdArbitration.Size = new System.Drawing.Size(2620, 811);
+            this.grdArbitration.Size = new System.Drawing.Size(1310, 422);
             this.grdArbitration.TabIndex = 2;
+            this.grdArbitration.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdArbitration_CellFormatting);
             this.grdArbitration.DoubleClick += new System.EventHandler(this.grdArbitration_DoubleClick);
             // 
             // KeyOwnedVenta
@@ -258,15 +258,14 @@
             // numMinProfit
             // 
             this.numMinProfit.DecimalPlaces = 2;
-            this.numMinProfit.Location = new System.Drawing.Point(198, 8);
-            this.numMinProfit.Margin = new System.Windows.Forms.Padding(6);
+            this.numMinProfit.Location = new System.Drawing.Point(99, 4);
             this.numMinProfit.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             this.numMinProfit.Name = "numMinProfit";
-            this.numMinProfit.Size = new System.Drawing.Size(112, 31);
+            this.numMinProfit.Size = new System.Drawing.Size(56, 20);
             this.numMinProfit.TabIndex = 3;
             this.numMinProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numMinProfit.Value = new decimal(new int[] {
@@ -278,10 +277,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(10, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 25);
+            this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Min Profit %:";
             // 
@@ -290,10 +288,10 @@
             this.chkMEP.AutoSize = true;
             this.chkMEP.Checked = true;
             this.chkMEP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMEP.Location = new System.Drawing.Point(344, 8);
-            this.chkMEP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkMEP.Location = new System.Drawing.Point(172, 4);
+            this.chkMEP.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkMEP.Name = "chkMEP";
-            this.chkMEP.Size = new System.Drawing.Size(252, 29);
+            this.chkMEP.Size = new System.Drawing.Size(129, 17);
             this.chkMEP.TabIndex = 5;
             this.chkMEP.Text = "Arbitrajes MEP ($ / D)";
             this.chkMEP.UseVisualStyleBackColor = true;
@@ -301,10 +299,10 @@
             // chkCCL
             // 
             this.chkCCL.AutoSize = true;
-            this.chkCCL.Location = new System.Drawing.Point(603, 8);
-            this.chkCCL.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkCCL.Location = new System.Drawing.Point(302, 4);
+            this.chkCCL.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkCCL.Name = "chkCCL";
-            this.chkCCL.Size = new System.Drawing.Size(248, 29);
+            this.chkCCL.Size = new System.Drawing.Size(125, 17);
             this.chkCCL.TabIndex = 6;
             this.chkCCL.Text = "Arbitrajes CCL (C / $)";
             this.chkCCL.UseVisualStyleBackColor = true;
@@ -312,10 +310,10 @@
             // chkDolarDC
             // 
             this.chkDolarDC.AutoSize = true;
-            this.chkDolarDC.Location = new System.Drawing.Point(856, 8);
-            this.chkDolarDC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkDolarDC.Location = new System.Drawing.Point(428, 4);
+            this.chkDolarDC.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkDolarDC.Name = "chkDolarDC";
-            this.chkDolarDC.Size = new System.Drawing.Size(189, 29);
+            this.chkDolarDC.Size = new System.Drawing.Size(98, 17);
             this.chkDolarDC.TabIndex = 7;
             this.chkDolarDC.Text = "Arbitrajes D / C";
             this.chkDolarDC.UseVisualStyleBackColor = true;
@@ -323,10 +321,10 @@
             // chkDolarCD
             // 
             this.chkDolarCD.AutoSize = true;
-            this.chkDolarCD.Location = new System.Drawing.Point(1053, 8);
-            this.chkDolarCD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkDolarCD.Location = new System.Drawing.Point(526, 4);
+            this.chkDolarCD.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkDolarCD.Name = "chkDolarCD";
-            this.chkDolarCD.Size = new System.Drawing.Size(189, 29);
+            this.chkDolarCD.Size = new System.Drawing.Size(98, 17);
             this.chkDolarCD.TabIndex = 8;
             this.chkDolarCD.Text = "Arbitrajes C / D";
             this.chkDolarCD.UseVisualStyleBackColor = true;
@@ -334,20 +332,19 @@
             // txtFilter
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFilter.Location = new System.Drawing.Point(2272, 8);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFilter.Location = new System.Drawing.Point(1136, 4);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(334, 31);
+            this.txtFilter.Size = new System.Drawing.Size(169, 20);
             this.txtFilter.TabIndex = 9;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1352, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(676, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 25);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Alert %:";
             // 
@@ -359,15 +356,14 @@
             0,
             0,
             65536});
-            this.numAlert.Location = new System.Drawing.Point(1472, 9);
-            this.numAlert.Margin = new System.Windows.Forms.Padding(6);
+            this.numAlert.Location = new System.Drawing.Point(736, 5);
             this.numAlert.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             this.numAlert.Name = "numAlert";
-            this.numAlert.Size = new System.Drawing.Size(102, 31);
+            this.numAlert.Size = new System.Drawing.Size(51, 20);
             this.numAlert.TabIndex = 10;
             this.numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numAlert.Value = new decimal(new int[] {
@@ -380,10 +376,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2181, 11);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(1090, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 25);
+            this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Filter:";
             // 
@@ -391,27 +386,26 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1828, 11);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(914, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 25);
+            this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "Exclude:";
             // 
             // txtExclude
             // 
             this.txtExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtExclude.Location = new System.Drawing.Point(1953, 8);
-            this.txtExclude.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtExclude.Location = new System.Drawing.Point(976, 4);
+            this.txtExclude.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtExclude.Name = "txtExclude";
-            this.txtExclude.Size = new System.Drawing.Size(216, 31);
+            this.txtExclude.Size = new System.Drawing.Size(110, 20);
             this.txtExclude.TabIndex = 13;
             // 
             // FrmArbitrationAnalyzer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2626, 866);
+            this.ClientSize = new System.Drawing.Size(1313, 450);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtExclude);
             this.Controls.Add(this.label3);
@@ -426,7 +420,6 @@
             this.Controls.Add(this.numMinProfit);
             this.Controls.Add(this.grdArbitration);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmArbitrationAnalyzer";
             this.Text = "Scanner de arbitrajes";
             this.Load += new System.EventHandler(this.FrmArbitrationBestTrades_Load);

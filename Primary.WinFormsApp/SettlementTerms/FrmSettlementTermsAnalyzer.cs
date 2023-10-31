@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -84,6 +85,20 @@ namespace Primary.WinFormsApp
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void grdArbitration_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            if (e.RowIndex < 0 || e.RowIndex == dgv.NewRowIndex) return;
+
+            var cell = dgv["PL", e.RowIndex];
+            if (cell.Value == null || cell.Value == DBNull.Value) return;
+
+            decimal value = (decimal)cell.Value;
+            var cellStyle = dgv.Rows[e.RowIndex].DefaultCellStyle;
+            cellStyle.ForeColor = value == 0 ? Color.Black : value < 0 ? Color.Red : Color.Green;
+            cellStyle.Font = value > 0 ? new Font(e.CellStyle.Font, FontStyle.Bold) : new Font(e.CellStyle.Font, FontStyle.Regular);
         }
     }
 }
