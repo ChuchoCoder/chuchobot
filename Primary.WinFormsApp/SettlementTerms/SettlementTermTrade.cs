@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Primary.Data;
+using System;
 
 namespace Primary.WinFormsApp
 {
@@ -35,6 +36,11 @@ namespace Primary.WinFormsApp
         public decimal BuyPriceTarget { get; private set; }
 
         public decimal SpreadTNA { get; private set; }
+
+        /// <summary>
+        /// TNA Spread - TNA Caucion
+        /// </summary>
+        public decimal SpreadCaucion { get; private set; }
 
         public SettlementTermTrade(InstrumentWithData buy, InstrumentWithData sell)
         {
@@ -100,7 +106,7 @@ namespace Primary.WinFormsApp
             BuyPriceTarget = SellPrice * (1 + Caucion.Tasa);
             SellPriceTarget = BuyPrice * (1 - Caucion.Tasa);
 
-            SpreadTNA = Math.Abs(((BuyPriceTarget / SellPriceTarget) - 1) / DiasCaucion * 365m);
+            SpreadTNA = ((SellPrice/ BuyPrice) - 1m) / DiasCaucion * 365m;
 
             if (Caucion.EsColocadora)
             {
@@ -110,6 +116,8 @@ namespace Primary.WinFormsApp
             {
                 ProfitLoss = SellTotalNeto - BuyTotalNeto - Caucion.InteresNeto;
             }
+            var caucion = Caucion.TNA / 100m;
+            SpreadCaucion = SpreadTNA + caucion;
         }
 
         public decimal Spread
@@ -130,6 +138,7 @@ namespace Primary.WinFormsApp
         public decimal SpreadLast => HasData() && Buy.Data.HasLastPrice() && Sell.Data.HasLastPrice()
                     ? (Buy.Data.Last.Price.Value / Sell.Data.Last.Price.Value) - 1
                     : -100m;
+
 
         // Barato
         //public decimal BuyPrice => Buy.Data != null && Buy.Data.HasOffers() ? Buy.Data.Offers[0].Price : default;

@@ -18,6 +18,7 @@ namespace Primary.WinFormsApp
             DataTable.PrimaryKey = new DataColumn[] { ownedVentaColumn, arbitrationCompraColumn };
 
             _ = DataTable.Columns.Add("Spread", typeof(decimal));
+            _ = DataTable.Columns.Add("SpreadCaucion", typeof(decimal));
             _ = DataTable.Columns.Add("SpreadLast", typeof(decimal));
 
             _ = DataTable.Columns.Add("SellTotal", typeof(decimal));
@@ -94,6 +95,7 @@ namespace Primary.WinFormsApp
                 row["CompraLast"] = trade.Buy.Data.HasLastPrice() ? (object)trade.Buy.Data.Last.Price.Value : DBNull.Value;
 
                 row["TNA"] = trade.SpreadTNA;
+                row["SpreadCaucion"] = trade.SpreadTNA - trade.Caucion.TNA / 100m;
 
                 row["Trade"] = trade;
 
