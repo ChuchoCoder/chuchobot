@@ -19,8 +19,13 @@ namespace Primary.WinFormsApp.SettlementTerms
 
         private void FrmSettlementTermLauncher_Load(object sender, EventArgs e)
         {
+            instrumentSearchList1.InstrumentDoubleClick += InstrumentSearchList_InstrumentDoubleClick;
         }
 
+        private void InstrumentSearchList_InstrumentDoubleClick(object sender, EventArgs e)
+        {
+            btnLaunch_Click(sender, e);
+        }
 
         private void btnLaunch_Click(object sender, EventArgs e)
         {

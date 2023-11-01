@@ -22,7 +22,7 @@ namespace Primary.WinFormsApp
 
         public static bool IsPesos(this InstrumentDetail instrumentDetail)
         {
-            return string.Equals(instrumentDetail.Currency, "ARS", System.StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(instrumentDetail.Currency, "ARS", StringComparison.OrdinalIgnoreCase);
         }
 
         public static decimal GetIncrement(this InstrumentDetail instrumentDetail)
@@ -32,30 +32,31 @@ namespace Primary.WinFormsApp
 
         public static bool IsCEDEAR(this InstrumentDetail instrumentDetail)
         {
-            return IsCEDEAR(instrumentDetail.InstrumentId.Symbol);
+            return IsCEDEAR(instrumentDetail.InstrumentId.Ticker());
         }
 
         public static bool IsCEDEAR(this string ticker)
         {
-            var exists = Properties.Settings.Default.AccionesCEDEARs.Cast<string>().Any(x => ticker.StartsWith($"{Instrument.MervalPrefix}{x}"));
+            var exists = Properties.Settings.Default.AccionesCEDEARs.Cast<string>().Any(x => string.Equals(x, ticker, StringComparison.OrdinalIgnoreCase));
             return exists;
         }
 
         public static bool IsLetra(this InstrumentDetail instrumentDetail)
         {
-            var exists = IsLetra(instrumentDetail.InstrumentId.Symbol);
+            var exists = IsLetra(instrumentDetail.InstrumentId.Ticker());
             return exists;
         }
 
         public static bool IsLetra(this string ticker)
         {
-            var exists = Properties.Settings.Default.Letras.Cast<string>().Any(x => ticker.StartsWith($"{Instrument.MervalPrefix}{x}"));
+            var exists = Properties.Settings.Default.Letras.Cast<string>().Any(x => string.Equals(x, ticker, StringComparison.OrdinalIgnoreCase));
             return exists;
         }
 
         public static decimal GetDerechosDeMercado(this InstrumentDetail instrumentDetail)
         {
-            return GetDerechosDeMercado(instrumentDetail.InstrumentId.Symbol);
+            var ticker = instrumentDetail.InstrumentId.Ticker();
+            return GetDerechosDeMercado(ticker);
         }
 
         public static decimal GetDerechosDeMercado(this string ticker)
@@ -63,7 +64,10 @@ namespace Primary.WinFormsApp
             // https://www.byma.com.ar/que-es-byma/derechos-membresias-2/
             if (ticker.IsCEDEAR())
             {
-                return (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoAccionCEDEAR) / 100m;
+                var comision = Properties.Settings.Default.Comision / 100m;
+                var derMer = Properties.Settings.Default.DerechoMercadoAccionCEDEAR / 100m;
+                var ivaSobreDerMer = Properties.Settings.Default.DerechoMercadoAccionCEDEAR * 0.21m / 100m;
+                return comision + derMer + ivaSobreDerMer;
             }
             else if (ticker.IsLetra())
             {

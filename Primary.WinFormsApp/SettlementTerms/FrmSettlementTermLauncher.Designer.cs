@@ -38,8 +38,8 @@
             this.rdoSell24H = new System.Windows.Forms.RadioButton();
             this.rdoSellCI = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnLaunch = new System.Windows.Forms.Button();
             this.instrumentSearchList1 = new Primary.WinFormsApp.Shared.InstrumentSearchList();
+            this.btnLaunch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -148,6 +148,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Seleccionar Instrumento";
             // 
+            // instrumentSearchList1
+            // 
+            this.instrumentSearchList1.Location = new System.Drawing.Point(6, 19);
+            this.instrumentSearchList1.Name = "instrumentSearchList1";
+            this.instrumentSearchList1.SettlementsVisible = false;
+            this.instrumentSearchList1.Size = new System.Drawing.Size(468, 370);
+            this.instrumentSearchList1.TabIndex = 3;
+            // 
             // btnLaunch
             // 
             this.btnLaunch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -159,13 +167,6 @@
             this.btnLaunch.Text = "Ejecutar Arbitraje de Plazos";
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
-            // 
-            // instrumentSearchList1
-            // 
-            this.instrumentSearchList1.Location = new System.Drawing.Point(6, 19);
-            this.instrumentSearchList1.Name = "instrumentSearchList1";
-            this.instrumentSearchList1.Size = new System.Drawing.Size(468, 370);
-            this.instrumentSearchList1.TabIndex = 3;
             // 
             // FrmSettlementTermLauncher
             // 

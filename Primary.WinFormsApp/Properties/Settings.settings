@@ -85,6 +85,7 @@
   &lt;string&gt;BIIB&lt;/string&gt;
   &lt;string&gt;BIOX&lt;/string&gt;
   &lt;string&gt;BK&lt;/string&gt;
+  &lt;string&gt;BMA&lt;/string&gt;
   &lt;string&gt;BMY&lt;/string&gt;
   &lt;string&gt;BNG&lt;/string&gt;
   &lt;string&gt;BP&lt;/string&gt;
@@ -114,11 +115,15 @@
   &lt;string&gt;DE&lt;/string&gt;
   &lt;string&gt;DESP&lt;/string&gt;
   &lt;string&gt;DESPD&lt;/string&gt;
+  &lt;string&gt;DIAC&lt;/string&gt;
+  &lt;string&gt;DIAD&lt;/string&gt;
   &lt;string&gt;DISN&lt;/string&gt;
   &lt;string&gt;DISND&lt;/string&gt;
   &lt;string&gt;DOCU&lt;/string&gt;
   &lt;string&gt;EBAY&lt;/string&gt;
   &lt;string&gt;EBAYD&lt;/string&gt;
+  &lt;string&gt;EEMC&lt;/string&gt;
+  &lt;string&gt;EEMD&lt;/string&gt;
   &lt;string&gt;EFX&lt;/string&gt;
   &lt;string&gt;ERIC&lt;/string&gt;
   &lt;string&gt;ERJ&lt;/string&gt;
@@ -134,6 +139,7 @@
   &lt;string&gt;GE&lt;/string&gt;
   &lt;string&gt;GEC&lt;/string&gt;
   &lt;string&gt;GFI&lt;/string&gt;
+  &lt;string&gt;GGAL&lt;/string&gt;
   &lt;string&gt;GGB&lt;/string&gt;
   &lt;string&gt;GILD&lt;/string&gt;
   &lt;string&gt;GILDC&lt;/string&gt;
@@ -234,6 +240,9 @@
   &lt;string&gt;QCOM&lt;/string&gt;
   &lt;string&gt;QCOMC&lt;/string&gt;
   &lt;string&gt;QCOMD&lt;/string&gt;
+  &lt;string&gt;QQQ&lt;/string&gt;
+  &lt;string&gt;QQQC&lt;/string&gt;
+  &lt;string&gt;QQQD&lt;/string&gt;
   &lt;string&gt;RDS&lt;/string&gt;
   &lt;string&gt;RIO&lt;/string&gt;
   &lt;string&gt;RTX&lt;/string&gt;
@@ -250,6 +259,9 @@
   &lt;string&gt;SNOW&lt;/string&gt;
   &lt;string&gt;SONY&lt;/string&gt;
   &lt;string&gt;SPOT&lt;/string&gt;
+  &lt;string&gt;SPY&lt;/string&gt;
+  &lt;string&gt;SPYC&lt;/string&gt;
+  &lt;string&gt;SPYD&lt;/string&gt;
   &lt;string&gt;SQ&lt;/string&gt;
   &lt;string&gt;SUZ&lt;/string&gt;
   &lt;string&gt;T&lt;/string&gt;
@@ -292,26 +304,15 @@
   &lt;string&gt;WMTD&lt;/string&gt;
   &lt;string&gt;X&lt;/string&gt;
   &lt;string&gt;XD&lt;/string&gt;
+  &lt;string&gt;XLEC&lt;/string&gt;
+  &lt;string&gt;XLED&lt;/string&gt;
   &lt;string&gt;XOM&lt;/string&gt;
+  &lt;string&gt;XOMC&lt;/string&gt;
+  &lt;string&gt;XOMD&lt;/string&gt;
   &lt;string&gt;XOMD&lt;/string&gt;
   &lt;string&gt;XROX&lt;/string&gt;
   &lt;string&gt;YELP&lt;/string&gt;
   &lt;string&gt;ZM&lt;/string&gt;
-  &lt;string&gt;SPY&lt;/string&gt;
-  &lt;string&gt;SPYD&lt;/string&gt;
-  &lt;string&gt;SPYC&lt;/string&gt;
-  &lt;string&gt;XOMD&lt;/string&gt;
-  &lt;string&gt;DIAD&lt;/string&gt;
-  &lt;string&gt;EEMD&lt;/string&gt;
-  &lt;string&gt;XLED&lt;/string&gt;
-  &lt;string&gt;QQQD&lt;/string&gt;
-  &lt;string&gt;XOMC&lt;/string&gt;
-  &lt;string&gt;DIAC&lt;/string&gt;
-  &lt;string&gt;EEMC&lt;/string&gt;
-  &lt;string&gt;XLEC&lt;/string&gt;
-  &lt;string&gt;QQQC&lt;/string&gt;
-  &lt;string&gt;GGAL&lt;/string&gt;
-  &lt;string&gt;BMA&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
@@ -329,7 +330,6 @@
   &lt;string&gt;AL35&lt;/string&gt;
   &lt;string&gt;AE38&lt;/string&gt;
   &lt;string&gt;AL41&lt;/string&gt;
-  &lt;string&gt;AY24&lt;/string&gt;
   &lt;string&gt;GD29&lt;/string&gt;
   &lt;string&gt;GD30&lt;/string&gt;
   &lt;string&gt;GD35&lt;/string&gt;
@@ -357,8 +357,7 @@
   &lt;string&gt;EEM&lt;/string&gt;
   &lt;string&gt;XLE&lt;/string&gt;
   &lt;string&gt;QQQ&lt;/string&gt;
-  &lt;string&gt;S31O3&lt;/string&gt;
-  &lt;string&gt;X18O3&lt;/string&gt;
+  &lt;string&gt;X23N3&lt;/string&gt;
   &lt;string&gt;MTR&lt;/string&gt;
   &lt;string&gt;SPY&lt;/string&gt;
   &lt;string&gt;INTC&lt;/string&gt;
@@ -367,7 +366,7 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">95</Value>
+      <Value Profile="(Default)">108</Value>
     </Setting>
     <Setting Name="ArancelCaucionColocadora" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1.5</Value>

@@ -29,6 +29,7 @@ namespace Primary.WinFormsApp
             _ = DataTable.Columns.Add("ComisionCaucion", typeof(decimal));
 
             _ = DataTable.Columns.Add("Profit", typeof(decimal));
+            _ = DataTable.Columns.Add("ProfitPercentage", typeof(decimal));
             _ = DataTable.Columns.Add("ProfitCaucion", typeof(decimal));
 
             _ = DataTable.Columns.Add("Venta", typeof(decimal));
@@ -87,6 +88,7 @@ namespace Primary.WinFormsApp
                 row["Caucion"] = trade.Caucion.ImporteConInteres;
 
                 row["Profit"] = trade.ProfitLoss;
+                row["ProfitPercentage"] = trade.ProfitLoss / trade.BuyTotalNeto;
                 row["ProfitCaucion"] = trade.Caucion.InteresNeto;
 
                 row["Venta"] = trade.Sell.Data.HasBids() ? (object)trade.Sell.Data.Bids[0].Price : DBNull.Value;

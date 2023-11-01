@@ -64,6 +64,7 @@
             this.listInstrumentos.Name = "listInstrumentos";
             this.listInstrumentos.Size = new System.Drawing.Size(772, 446);
             this.listInstrumentos.TabIndex = 0;
+            this.listInstrumentos.DoubleClick += new System.EventHandler(this.listInstrumentos_DoubleClick);
             // 
             // InstrumentSearchList
             // 

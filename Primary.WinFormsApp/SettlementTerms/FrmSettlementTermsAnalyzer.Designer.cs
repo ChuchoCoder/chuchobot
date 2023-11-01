@@ -43,6 +43,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermsAnalyzer));
             this.grdArbitration = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -51,11 +52,12 @@
             this.settlementTermSettings = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
             this.KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TNA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpreadCaucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TNA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spread = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpreadLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProfitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Caucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,11 +86,12 @@
             this.grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KeyOwnedVenta,
             this.KeyArbitrationCompra,
-            this.TNA,
             this.SpreadCaucion,
+            this.TNA,
             this.Spread,
             this.SpreadLast,
             this.PL,
+            this.ProfitPercentage,
             this.Caucion,
             this.Comision,
             this.OwnedVenta,
@@ -161,24 +164,24 @@
             this.KeyArbitrationCompra.Name = "KeyArbitrationCompra";
             this.KeyArbitrationCompra.ReadOnly = true;
             // 
+            // SpreadCaucion
+            // 
+            this.SpreadCaucion.DataPropertyName = "SpreadCaucion";
+            dataGridViewCellStyle2.Format = "P";
+            this.SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SpreadCaucion.HeaderText = "Spread TNA - Caucion";
+            this.SpreadCaucion.Name = "SpreadCaucion";
+            this.SpreadCaucion.ReadOnly = true;
+            // 
             // TNA
             // 
             this.TNA.DataPropertyName = "TNA";
-            dataGridViewCellStyle2.Format = "P";
-            this.TNA.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "P";
+            this.TNA.DefaultCellStyle = dataGridViewCellStyle3;
             this.TNA.HeaderText = "Spread TNA";
             this.TNA.MinimumWidth = 10;
             this.TNA.Name = "TNA";
             this.TNA.ReadOnly = true;
-            // 
-            // SpreadCaucion
-            // 
-            this.SpreadCaucion.DataPropertyName = "SpreadCaucion";
-            dataGridViewCellStyle3.Format = "P";
-            this.SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SpreadCaucion.HeaderText = "Spread Caucion";
-            this.SpreadCaucion.Name = "SpreadCaucion";
-            this.SpreadCaucion.ReadOnly = true;
             // 
             // Spread
             // 
@@ -186,7 +189,7 @@
             dataGridViewCellStyle4.Format = "P";
             dataGridViewCellStyle4.NullValue = null;
             this.Spread.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Spread.HeaderText = "Spread";
+            this.Spread.HeaderText = "Spread %";
             this.Spread.MinimumWidth = 6;
             this.Spread.Name = "Spread";
             this.Spread.ReadOnly = true;
@@ -196,10 +199,11 @@
             this.SpreadLast.DataPropertyName = "SpreadLast";
             dataGridViewCellStyle5.Format = "P";
             this.SpreadLast.DefaultCellStyle = dataGridViewCellStyle5;
-            this.SpreadLast.HeaderText = "Spread Last";
+            this.SpreadLast.HeaderText = "Spread % Last";
             this.SpreadLast.MinimumWidth = 6;
             this.SpreadLast.Name = "SpreadLast";
             this.SpreadLast.ReadOnly = true;
+            this.SpreadLast.Visible = false;
             // 
             // PL
             // 
@@ -207,16 +211,25 @@
             dataGridViewCellStyle6.Format = "C0";
             dataGridViewCellStyle6.NullValue = null;
             this.PL.DefaultCellStyle = dataGridViewCellStyle6;
-            this.PL.HeaderText = "P&L";
+            this.PL.HeaderText = "P&L $";
             this.PL.MinimumWidth = 6;
             this.PL.Name = "PL";
             this.PL.ReadOnly = true;
             // 
+            // ProfitPercentage
+            // 
+            this.ProfitPercentage.DataPropertyName = "ProfitPercentage";
+            dataGridViewCellStyle7.Format = "P";
+            this.ProfitPercentage.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ProfitPercentage.HeaderText = "P&L %";
+            this.ProfitPercentage.Name = "ProfitPercentage";
+            this.ProfitPercentage.ReadOnly = true;
+            // 
             // Caucion
             // 
             this.Caucion.DataPropertyName = "Caucion";
-            dataGridViewCellStyle7.Format = "C0";
-            this.Caucion.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Format = "C0";
+            this.Caucion.DefaultCellStyle = dataGridViewCellStyle8;
             this.Caucion.HeaderText = "Caucion";
             this.Caucion.MinimumWidth = 6;
             this.Caucion.Name = "Caucion";
@@ -225,8 +238,8 @@
             // Comision
             // 
             this.Comision.DataPropertyName = "Comision";
-            dataGridViewCellStyle8.Format = "C0";
-            this.Comision.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Format = "C0";
+            this.Comision.DefaultCellStyle = dataGridViewCellStyle9;
             this.Comision.HeaderText = "Comision";
             this.Comision.MinimumWidth = 6;
             this.Comision.Name = "Comision";
@@ -235,8 +248,8 @@
             // OwnedVenta
             // 
             this.OwnedVenta.DataPropertyName = "Venta";
-            dataGridViewCellStyle9.Format = "C2";
-            this.OwnedVenta.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Format = "C2";
+            this.OwnedVenta.DefaultCellStyle = dataGridViewCellStyle10;
             this.OwnedVenta.HeaderText = "Venta";
             this.OwnedVenta.MinimumWidth = 6;
             this.OwnedVenta.Name = "OwnedVenta";
@@ -245,8 +258,8 @@
             // SellTotal
             // 
             this.SellTotal.DataPropertyName = "SellTotal";
-            dataGridViewCellStyle10.Format = "C0";
-            this.SellTotal.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Format = "C0";
+            this.SellTotal.DefaultCellStyle = dataGridViewCellStyle11;
             this.SellTotal.HeaderText = "Total Venta";
             this.SellTotal.MinimumWidth = 6;
             this.SellTotal.Name = "SellTotal";
@@ -256,8 +269,8 @@
             // BuyTotal
             // 
             this.BuyTotal.DataPropertyName = "BuyTotal";
-            dataGridViewCellStyle11.Format = "C0";
-            this.BuyTotal.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Format = "C0";
+            this.BuyTotal.DefaultCellStyle = dataGridViewCellStyle12;
             this.BuyTotal.HeaderText = "Total Compra";
             this.BuyTotal.MinimumWidth = 6;
             this.BuyTotal.Name = "BuyTotal";
@@ -267,8 +280,8 @@
             // ArbitrationCompra
             // 
             this.ArbitrationCompra.DataPropertyName = "Compra";
-            dataGridViewCellStyle12.Format = "C2";
-            this.ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Format = "C2";
+            this.ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle13;
             this.ArbitrationCompra.HeaderText = "Compra";
             this.ArbitrationCompra.MinimumWidth = 6;
             this.ArbitrationCompra.Name = "ArbitrationCompra";
@@ -277,8 +290,8 @@
             // DolarCompraLast
             // 
             this.DolarCompraLast.DataPropertyName = "CompraLast";
-            dataGridViewCellStyle13.Format = "C2";
-            this.DolarCompraLast.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle14.Format = "C2";
+            this.DolarCompraLast.DefaultCellStyle = dataGridViewCellStyle14;
             this.DolarCompraLast.HeaderText = "Compra Last";
             this.DolarCompraLast.MinimumWidth = 6;
             this.DolarCompraLast.Name = "DolarCompraLast";
@@ -288,8 +301,8 @@
             // DolarVentaLast
             // 
             this.DolarVentaLast.DataPropertyName = "VentaLast";
-            dataGridViewCellStyle14.Format = "C2";
-            this.DolarVentaLast.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.Format = "C2";
+            this.DolarVentaLast.DefaultCellStyle = dataGridViewCellStyle15;
             this.DolarVentaLast.HeaderText = "Venta Last";
             this.DolarVentaLast.MinimumWidth = 6;
             this.DolarVentaLast.Name = "DolarVentaLast";
@@ -325,11 +338,12 @@
         private SettlementTerms.SettlementTermSettings settlementTermSettings;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeyOwnedVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeyArbitrationCompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TNA;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpreadCaucion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TNA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spread;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpreadLast;
         private System.Windows.Forms.DataGridViewTextBoxColumn PL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProfitPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Caucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
         private System.Windows.Forms.DataGridViewTextBoxColumn OwnedVenta;
