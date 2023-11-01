@@ -106,7 +106,7 @@ namespace Primary.WinFormsApp
             BuyPriceTarget = SellPrice * (1 + Caucion.Tasa);
             SellPriceTarget = BuyPrice * (1 - Caucion.Tasa);
 
-            SpreadTNA = ((SellPrice/ BuyPrice) - 1m) / DiasCaucion * 365m;
+            SpreadTNA = Math.Abs(((SellPrice/ BuyPrice) - 1m) / DiasCaucion * 365m);
 
             if (Caucion.EsColocadora)
             {
@@ -117,7 +117,7 @@ namespace Primary.WinFormsApp
                 ProfitLoss = SellTotalNeto - BuyTotalNeto - Caucion.InteresNeto;
             }
             var caucion = Caucion.TNA / 100m;
-            SpreadCaucion = SpreadTNA + caucion;
+            SpreadCaucion = SpreadTNA - caucion;
         }
 
         public decimal Spread

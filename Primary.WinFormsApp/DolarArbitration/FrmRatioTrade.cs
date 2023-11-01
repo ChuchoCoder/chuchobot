@@ -158,6 +158,11 @@ namespace Primary.WinFormsApp
             lblVentaACurrency.Text = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
             lblCompraBCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
             lblVentaBCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
+
+            numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? 1 : 0.01m;
+            numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? 1 : 0.01m;
+            numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? 1 : 0.01m;
+            numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? 1 : 0.01m;
         }
 
         private void CalculateAutoSize()
@@ -254,7 +259,7 @@ namespace Primary.WinFormsApp
         private void OwnedVentaBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
             SizeAutoUpdate = e.ClickType == BidsOffersClickType.TopBid;
-            
+
             numOwnedVentaSize.Value = e.Value;
         }
 

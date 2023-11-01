@@ -84,9 +84,12 @@ namespace Primary.WinFormsApp
 
         public IEnumerable<BuySellTrade> GetDolarCableTrades()
         {
-            yield return new BuySellTrade(TCI, Cable.TCI);
-            yield return new BuySellTrade(T24, Cable.TCI);
-            yield return new BuySellTrade(T48, Cable.TCI);
+            if (Argentina.IsCIOpen())
+            {
+                yield return new BuySellTrade(TCI, Cable.TCI);
+                yield return new BuySellTrade(T24, Cable.TCI);
+                yield return new BuySellTrade(T48, Cable.TCI);
+            }
             yield return new BuySellTrade(T24, Cable.T24);
             yield return new BuySellTrade(T48, Cable.T24);
             yield return new BuySellTrade(T48, Cable.T48);
@@ -94,24 +97,32 @@ namespace Primary.WinFormsApp
 
         public IEnumerable<BuySellTrade> GetDolarMEPTrades()
         {
-            yield return new BuySellTrade(TCI, Dolar.TCI);
-            yield return new BuySellTrade(TCI, Dolar.T24);
-            yield return new BuySellTrade(TCI, Dolar.T48);
+            if (Argentina.IsCIOpen())
+            {
+                yield return new BuySellTrade(TCI, Dolar.TCI);
+                yield return new BuySellTrade(TCI, Dolar.T24);
+                yield return new BuySellTrade(TCI, Dolar.T48);
 
-            yield return new BuySellTrade(T24, Dolar.TCI);
+                yield return new BuySellTrade(T24, Dolar.TCI);
+
+                yield return new BuySellTrade(T48, Dolar.TCI);
+            }
             yield return new BuySellTrade(T24, Dolar.T24);
             yield return new BuySellTrade(T24, Dolar.T48);
 
-            yield return new BuySellTrade(T48, Dolar.TCI);
+            
             yield return new BuySellTrade(T48, Dolar.T24);
             yield return new BuySellTrade(T48, Dolar.T48);
         }
 
         public IEnumerable<BuySellTrade> GetDolarMEPCableTrades()
         {
-            yield return new BuySellTrade(Dolar.TCI, Cable.TCI);
-            yield return new BuySellTrade(Dolar.T24, Cable.TCI);
-            yield return new BuySellTrade(Dolar.T48, Cable.TCI);
+            if (Argentina.IsCIOpen())
+            {
+                yield return new BuySellTrade(Dolar.TCI, Cable.TCI);
+                yield return new BuySellTrade(Dolar.T24, Cable.TCI);
+                yield return new BuySellTrade(Dolar.T48, Cable.TCI);
+            }
             yield return new BuySellTrade(Dolar.T24, Cable.T24);
             yield return new BuySellTrade(Dolar.T48, Cable.T24);
             yield return new BuySellTrade(Dolar.T48, Cable.T48);
@@ -119,9 +130,12 @@ namespace Primary.WinFormsApp
 
         public IEnumerable<BuySellTrade> GetDolarCableMEPTrades()
         {
-            yield return new BuySellTrade(Cable.TCI, Dolar.TCI);
-            yield return new BuySellTrade(Cable.T24, Dolar.TCI);
-            yield return new BuySellTrade(Cable.T48, Dolar.TCI);
+            if (Argentina.IsCIOpen())
+            {
+                yield return new BuySellTrade(Cable.TCI, Dolar.TCI);
+                yield return new BuySellTrade(Cable.T24, Dolar.TCI);
+                yield return new BuySellTrade(Cable.T48, Dolar.TCI);
+            }
             yield return new BuySellTrade(Cable.T24, Dolar.T24);
             yield return new BuySellTrade(Cable.T48, Dolar.T24);
             yield return new BuySellTrade(Cable.T48, Dolar.T48);

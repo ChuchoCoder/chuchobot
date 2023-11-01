@@ -117,5 +117,15 @@ namespace Primary.WinFormsApp.Shared
         {
             FilterInstruments();
         }
+
+        public event EventHandler InstrumentDoubleClick;
+
+        private void listInstrumentos_DoubleClick(object sender, EventArgs e)
+        {
+            if (InstrumentDoubleClick != null)
+            {
+                InstrumentDoubleClick(sender, e);
+            }
+        }
     }
 }
