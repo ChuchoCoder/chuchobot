@@ -31,6 +31,7 @@ namespace Primary.WinFormsApp.Tests
             var trade = new SettlementTermTrade(buy, sell);
             trade.Calculate(100000, 83m, 1, 2);
 
+            trade.Caucion.InteresNeto.Should().BeApproximately(123, 5);
             _ = trade.ProfitLoss.Should().BeApproximately(22887m, 5);
         }
 

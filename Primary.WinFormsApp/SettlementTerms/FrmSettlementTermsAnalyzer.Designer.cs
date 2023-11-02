@@ -52,12 +52,12 @@
             this.settlementTermSettings = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
             this.KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProfitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpreadCaucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TNA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spread = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpreadLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProfitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Caucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,12 +86,12 @@
             this.grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KeyOwnedVenta,
             this.KeyArbitrationCompra,
+            this.PL,
+            this.ProfitPercentage,
             this.SpreadCaucion,
             this.TNA,
             this.Spread,
             this.SpreadLast,
-            this.PL,
-            this.ProfitPercentage,
             this.Caucion,
             this.Comision,
             this.OwnedVenta,
@@ -164,53 +164,12 @@
             this.KeyArbitrationCompra.Name = "KeyArbitrationCompra";
             this.KeyArbitrationCompra.ReadOnly = true;
             // 
-            // SpreadCaucion
-            // 
-            this.SpreadCaucion.DataPropertyName = "SpreadCaucion";
-            dataGridViewCellStyle2.Format = "P";
-            this.SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SpreadCaucion.HeaderText = "Spread TNA - Caucion";
-            this.SpreadCaucion.Name = "SpreadCaucion";
-            this.SpreadCaucion.ReadOnly = true;
-            // 
-            // TNA
-            // 
-            this.TNA.DataPropertyName = "TNA";
-            dataGridViewCellStyle3.Format = "P";
-            this.TNA.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TNA.HeaderText = "Spread TNA";
-            this.TNA.MinimumWidth = 10;
-            this.TNA.Name = "TNA";
-            this.TNA.ReadOnly = true;
-            // 
-            // Spread
-            // 
-            this.Spread.DataPropertyName = "Spread";
-            dataGridViewCellStyle4.Format = "P";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Spread.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Spread.HeaderText = "Spread %";
-            this.Spread.MinimumWidth = 6;
-            this.Spread.Name = "Spread";
-            this.Spread.ReadOnly = true;
-            // 
-            // SpreadLast
-            // 
-            this.SpreadLast.DataPropertyName = "SpreadLast";
-            dataGridViewCellStyle5.Format = "P";
-            this.SpreadLast.DefaultCellStyle = dataGridViewCellStyle5;
-            this.SpreadLast.HeaderText = "Spread % Last";
-            this.SpreadLast.MinimumWidth = 6;
-            this.SpreadLast.Name = "SpreadLast";
-            this.SpreadLast.ReadOnly = true;
-            this.SpreadLast.Visible = false;
-            // 
             // PL
             // 
             this.PL.DataPropertyName = "Profit";
-            dataGridViewCellStyle6.Format = "C0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.PL.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "C0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.PL.DefaultCellStyle = dataGridViewCellStyle2;
             this.PL.HeaderText = "P&L $";
             this.PL.MinimumWidth = 6;
             this.PL.Name = "PL";
@@ -219,11 +178,52 @@
             // ProfitPercentage
             // 
             this.ProfitPercentage.DataPropertyName = "ProfitPercentage";
-            dataGridViewCellStyle7.Format = "P";
-            this.ProfitPercentage.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Format = "P";
+            this.ProfitPercentage.DefaultCellStyle = dataGridViewCellStyle3;
             this.ProfitPercentage.HeaderText = "P&L %";
             this.ProfitPercentage.Name = "ProfitPercentage";
             this.ProfitPercentage.ReadOnly = true;
+            // 
+            // SpreadCaucion
+            // 
+            this.SpreadCaucion.DataPropertyName = "SpreadCaucion";
+            dataGridViewCellStyle4.Format = "P";
+            this.SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.SpreadCaucion.HeaderText = "Spread TNA - Caucion";
+            this.SpreadCaucion.Name = "SpreadCaucion";
+            this.SpreadCaucion.ReadOnly = true;
+            // 
+            // TNA
+            // 
+            this.TNA.DataPropertyName = "TNA";
+            dataGridViewCellStyle5.Format = "P";
+            this.TNA.DefaultCellStyle = dataGridViewCellStyle5;
+            this.TNA.HeaderText = "Spread TNA";
+            this.TNA.MinimumWidth = 10;
+            this.TNA.Name = "TNA";
+            this.TNA.ReadOnly = true;
+            // 
+            // Spread
+            // 
+            this.Spread.DataPropertyName = "Spread";
+            dataGridViewCellStyle6.Format = "P";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Spread.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Spread.HeaderText = "Spread %";
+            this.Spread.MinimumWidth = 6;
+            this.Spread.Name = "Spread";
+            this.Spread.ReadOnly = true;
+            // 
+            // SpreadLast
+            // 
+            this.SpreadLast.DataPropertyName = "SpreadLast";
+            dataGridViewCellStyle7.Format = "P";
+            this.SpreadLast.DefaultCellStyle = dataGridViewCellStyle7;
+            this.SpreadLast.HeaderText = "Spread % Last";
+            this.SpreadLast.MinimumWidth = 6;
+            this.SpreadLast.Name = "SpreadLast";
+            this.SpreadLast.ReadOnly = true;
+            this.SpreadLast.Visible = false;
             // 
             // Caucion
             // 
@@ -338,12 +338,12 @@
         private SettlementTerms.SettlementTermSettings settlementTermSettings;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeyOwnedVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeyArbitrationCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProfitPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpreadCaucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn TNA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spread;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpreadLast;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProfitPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Caucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
         private System.Windows.Forms.DataGridViewTextBoxColumn OwnedVenta;

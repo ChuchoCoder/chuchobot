@@ -64,7 +64,7 @@ namespace Primary.WinFormsApp
             grdArbitration.AutoGenerateColumns = false;
             grdArbitration.DataSource = _arbitrationDataTable.DataTable;
 
-            grdArbitration.Sort(grdArbitration.Columns["TNA"], System.ComponentModel.ListSortDirection.Descending);
+            grdArbitration.Sort(grdArbitration.Columns["ProfitPercentage"], System.ComponentModel.ListSortDirection.Descending);
 
         }
 
