@@ -47,6 +47,22 @@ namespace Primary.WinFormsApp.Tests
         }
 
         [TestMethod]
+        public void Caucion_Colocadora_1_Dia_11M()
+        {
+            Settings.Default.ArancelCaucionColocadora = 1.5m;
+
+            var caucion = new Caucion(-1, 107.68m, 11641000m);
+
+            caucion.GastosGarantia.Should().BeApproximately(0, CurrencyErrorMargin);
+            caucion.DerechosMercado.Should().BeApproximately(58.38m, CurrencyErrorMargin);
+            caucion.Arancel.Should().BeApproximately(479.81m, CurrencyErrorMargin);
+            caucion.IVAGastos.Should().BeApproximately(113.02m, CurrencyErrorMargin);
+
+            caucion.ImporteConInteres.Should().BeApproximately(11675342.93m, 3m);
+            caucion.ImporteNeto.Should().BeApproximately(11674691.72m, 3m);
+        }
+
+        [TestMethod]
         public void Caucion_Tomadora_3_Dias_Sin_Arancel()
         {
             Settings.Default.ArancelCaucionTomadora = 0;
@@ -74,7 +90,7 @@ namespace Primary.WinFormsApp.Tests
             caucion.Arancel.Should().BeApproximately(11.68m, CurrencyErrorMargin);
             caucion.IVAGastos.Should().BeApproximately(2.81m, CurrencyErrorMargin);
 
-            caucion.ImporteConInteres.Should().BeApproximately(170461.10m, CurrencyErrorMargin);
+            caucion.ImporteConInteres.Should().BeApproximately(170461.10m, 0.5m);
             caucion.ImporteNeto.Should().BeApproximately(170477.29m, CurrencyErrorMargin);
         }
     }

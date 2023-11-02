@@ -150,82 +150,71 @@ namespace Primary.WinFormsApp.Properties {
             "string>\r\n  <string>CSCO</string>\r\n  <string>CSCOD</string>\r\n  <string>CVX</strin" +
             "g>\r\n  <string>CVXD</string>\r\n  <string>CX</string>\r\n  <string>DD</string>\r\n  <st" +
             "ring>DE</string>\r\n  <string>DESP</string>\r\n  <string>DESPD</string>\r\n  <string>D" +
-            "IAC</string>\r\n  <string>DIAD</string>\r\n  <string>DISN</string>\r\n  <string>DISND<" +
-            "/string>\r\n  <string>DOCU</string>\r\n  <string>EBAY</string>\r\n  <string>EBAYD</str" +
-            "ing>\r\n  <string>EEMC</string>\r\n  <string>EEMD</string>\r\n  <string>EFX</string>\r\n" +
-            "  <string>ERIC</string>\r\n  <string>ERJ</string>\r\n  <string>ERJD</string>\r\n  <str" +
-            "ing>ETSY</string>\r\n  <string>FB</string>\r\n  <string>FBD</string>\r\n  <string>FCX<" +
-            "/string>\r\n  <string>FDX</string>\r\n  <string>FDXD</string>\r\n  <string>FMX</string" +
-            ">\r\n  <string>FSLR</string>\r\n  <string>GE</string>\r\n  <string>GEC</string>\r\n  <st" +
-            "ring>GFI</string>\r\n  <string>GGAL</string>\r\n  <string>GGB</string>\r\n  <string>GI" +
-            "LD</string>\r\n  <string>GILDC</string>\r\n  <string>GILDD</string>\r\n  <string>GLNT<" +
-            "/string>\r\n  <string>GLNTD</string>\r\n  <string>GLW</string>\r\n  <string>GOGLD</str" +
-            "ing>\r\n  <string>GOLD</string>\r\n  <string>GOLDC</string>\r\n  <string>GOLDD</string" +
-            ">\r\n  <string>GOOGL</string>\r\n  <string>GPRK</string>\r\n  <string>GS</string>\r\n  <" +
-            "string>GSD</string>\r\n  <string>GSK</string>\r\n  <string>GSKD</string>\r\n  <string>" +
-            "HAL</string>\r\n  <string>HD</string>\r\n  <string>HL</string>\r\n  <string>HMC</strin" +
-            "g>\r\n  <string>HMY</string>\r\n  <string>HMYD</string>\r\n  <string>HON</string>\r\n  <" +
-            "string>HPQ</string>\r\n  <string>HSBC</string>\r\n  <string>HSY</string>\r\n  <string>" +
-            "HWM</string>\r\n  <string>IBM</string>\r\n  <string>IBMD</string>\r\n  <string>INTC</s" +
-            "tring>\r\n  <string>INTCD</string>\r\n  <string>ITUB</string>\r\n  <string>ITUBD</stri" +
-            "ng>\r\n  <string>JD</string>\r\n  <string>JNJ</string>\r\n  <string>JNJC</string>\r\n  <" +
-            "string>JNJD</string>\r\n  <string>JPM</string>\r\n  <string>JPMD</string>\r\n  <string" +
-            ">KMB</string>\r\n  <string>KO</string>\r\n  <string>KOC</string>\r\n  <string>KOD</str" +
-            "ing>\r\n  <string>LLY</string>\r\n  <string>LMT</string>\r\n  <string>LMTD</string>\r\n " +
-            " <string>LVS</string>\r\n  <string>LYG</string>\r\n  <string>MA</string>\r\n  <string>" +
-            "MCD</string>\r\n  <string>MCDD</string>\r\n  <string>MDT</string>\r\n  <string>MELI</s" +
-            "tring>\r\n  <string>MELIC</string>\r\n  <string>MELID</string>\r\n  <string>MMC</strin" +
-            "g>\r\n  <string>MMM</string>\r\n  <string>MMMD</string>\r\n  <string>MO</string>\r\n  <s" +
-            "tring>MOD</string>\r\n  <string>MRK</string>\r\n  <string>MRKD</string>\r\n  <string>M" +
-            "SFT</string>\r\n  <string>MSFTC</string>\r\n  <string>MSFTD</string>\r\n  <string>NEM<" +
-            "/string>\r\n  <string>NEMD</string>\r\n  <string>NFLX</string>\r\n  <string>NFLXD</str" +
-            "ing>\r\n  <string>NGG</string>\r\n  <string>NKE</string>\r\n  <string>NKED</string>\r\n " +
-            " <string>NOKA</string>\r\n  <string>NTES</string>\r\n  <string>NVDA</string>\r\n  <str" +
-            "ing>NVDAD</string>\r\n  <string>NVS</string>\r\n  <string>NVSD</string>\r\n  <string>O" +
-            "GZD</string>\r\n  <string>OGZDD</string>\r\n  <string>ORAN</string>\r\n  <string>ORCL<" +
-            "/string>\r\n  <string>PAAS</string>\r\n  <string>PBR</string>\r\n  <string>PBRD</strin" +
-            "g>\r\n  <string>PEP</string>\r\n  <string>PFE</string>\r\n  <string>PFED</string>\r\n  <" +
-            "string>PG</string>\r\n  <string>PGD</string>\r\n  <string>PHG</string>\r\n  <string>PK" +
-            "S</string>\r\n  <string>PSX</string>\r\n  <string>PTR</string>\r\n  <string>PYPL</stri" +
-            "ng>\r\n  <string>PYPLD</string>\r\n  <string>QCOM</string>\r\n  <string>QCOMC</string>" +
-            "\r\n  <string>QCOMD</string>\r\n  <string>QQQ</string>\r\n  <string>QQQC</string>\r\n  <" +
-            "string>QQQD</string>\r\n  <string>RDS</string>\r\n  <string>RIO</string>\r\n  <string>" +
-            "RTX</string>\r\n  <string>SAN</string>\r\n  <string>SAP</string>\r\n  <string>SBS</str" +
-            "ing>\r\n  <string>SBUX</string>\r\n  <string>SCCO</string>\r\n  <string>SHOP</string>\r" +
-            "\n  <string>SID</string>\r\n  <string>SLB</string>\r\n  <string>SLBD</string>\r\n  <str" +
-            "ing>SNAP</string>\r\n  <string>SNOW</string>\r\n  <string>SONY</string>\r\n  <string>S" +
-            "POT</string>\r\n  <string>SPY</string>\r\n  <string>SPYC</string>\r\n  <string>SPYD</s" +
-            "tring>\r\n  <string>SQ</string>\r\n  <string>SUZ</string>\r\n  <string>T</string>\r\n  <" +
-            "string>TD</string>\r\n  <string>TEN</string>\r\n  <string>TEND</string>\r\n  <string>T" +
-            "GT</string>\r\n  <string>TMD</string>\r\n  <string>TMO</string>\r\n  <string>TOT</stri" +
-            "ng>\r\n  <string>TRIP</string>\r\n  <string>TSLA</string>\r\n  <string>TSLAC</string>\r" +
-            "\n  <string>TSLAD</string>\r\n  <string>TSM</string>\r\n  <string>TWTR</string>\r\n  <s" +
-            "tring>TWTRD</string>\r\n  <string>TXN</string>\r\n  <string>TXR</string>\r\n  <string>" +
-            "UGP</string>\r\n  <string>UL</string>\r\n  <string>UNH</string>\r\n  <string>UNP</stri" +
-            "ng>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n  <string>VALED</string>\r\n  " +
-            "<string>VD</string>\r\n  <string>VIST</string>\r\n  <string>VISTD</string>\r\n  <strin" +
-            "g>VIV</string>\r\n  <string>VOD</string>\r\n  <string>VRSN</string>\r\n  <string>VZ</s" +
-            "tring>\r\n  <string>VZD</string>\r\n  <string>WBA</string>\r\n  <string>WFC</string>\r\n" +
-            "  <string>WFCC</string>\r\n  <string>WFCD</string>\r\n  <string>WMT</string>\r\n  <str" +
-            "ing>WMTD</string>\r\n  <string>X</string>\r\n  <string>XD</string>\r\n  <string>XLEC</" +
-            "string>\r\n  <string>XLED</string>\r\n  <string>XOM</string>\r\n  <string>XOMC</string" +
-            ">\r\n  <string>XOMD</string>\r\n  <string>XOMD</string>\r\n  <string>XROX</string>\r\n  " +
-            "<string>YELP</string>\r\n  <string>ZM</string>\r\n</ArrayOfString>")]
+            "IA</string>\r\n  <string>DIAC</string>\r\n  <string>DIAD</string>\r\n  <string>DISN</s" +
+            "tring>\r\n  <string>DISND</string>\r\n  <string>DOCU</string>\r\n  <string>EBAY</strin" +
+            "g>\r\n  <string>EBAYD</string>\r\n  <string>EEMC</string>\r\n  <string>EEMD</string>\r\n" +
+            "  <string>EFX</string>\r\n  <string>ERIC</string>\r\n  <string>ERJ</string>\r\n  <stri" +
+            "ng>ERJD</string>\r\n  <string>ETSY</string>\r\n  <string>FB</string>\r\n  <string>FBD<" +
+            "/string>\r\n  <string>FCX</string>\r\n  <string>FDX</string>\r\n  <string>FDXD</string" +
+            ">\r\n  <string>FMX</string>\r\n  <string>FSLR</string>\r\n  <string>GE</string>\r\n  <st" +
+            "ring>GEC</string>\r\n  <string>GFI</string>\r\n  <string>GGAL</string>\r\n  <string>GG" +
+            "B</string>\r\n  <string>GILD</string>\r\n  <string>GILDC</string>\r\n  <string>GILDD</" +
+            "string>\r\n  <string>GLNT</string>\r\n  <string>GLNTD</string>\r\n  <string>GLW</strin" +
+            "g>\r\n  <string>GOGLD</string>\r\n  <string>GOLD</string>\r\n  <string>GOLDC</string>\r" +
+            "\n  <string>GOLDD</string>\r\n  <string>GOOGL</string>\r\n  <string>GPRK</string>\r\n  " +
+            "<string>GS</string>\r\n  <string>GSD</string>\r\n  <string>GSK</string>\r\n  <string>G" +
+            "SKD</string>\r\n  <string>HAL</string>\r\n  <string>HD</string>\r\n  <string>HL</strin" +
+            "g>\r\n  <string>HMC</string>\r\n  <string>HMY</string>\r\n  <string>HMYD</string>\r\n  <" +
+            "string>HON</string>\r\n  <string>HPQ</string>\r\n  <string>HSBC</string>\r\n  <string>" +
+            "HSY</string>\r\n  <string>HWM</string>\r\n  <string>IBM</string>\r\n  <string>IBMD</st" +
+            "ring>\r\n  <string>INTC</string>\r\n  <string>INTCD</string>\r\n  <string>ITUB</string" +
+            ">\r\n  <string>ITUBD</string>\r\n  <string>JD</string>\r\n  <string>JNJ</string>\r\n  <s" +
+            "tring>JNJC</string>\r\n  <string>JNJD</string>\r\n  <string>JPM</string>\r\n  <string>" +
+            "JPMD</string>\r\n  <string>KMB</string>\r\n  <string>KO</string>\r\n  <string>KOC</str" +
+            "ing>\r\n  <string>KOD</string>\r\n  <string>LLY</string>\r\n  <string>LMT</string>\r\n  " +
+            "<string>LMTD</string>\r\n  <string>LVS</string>\r\n  <string>LYG</string>\r\n  <string" +
+            ">MA</string>\r\n  <string>MCD</string>\r\n  <string>MCDD</string>\r\n  <string>MDT</st" +
+            "ring>\r\n  <string>MELI</string>\r\n  <string>MELIC</string>\r\n  <string>MELID</strin" +
+            "g>\r\n  <string>MMC</string>\r\n  <string>MMM</string>\r\n  <string>MMMD</string>\r\n  <" +
+            "string>MO</string>\r\n  <string>MOD</string>\r\n  <string>MRK</string>\r\n  <string>MR" +
+            "KD</string>\r\n  <string>MSFT</string>\r\n  <string>MSFTC</string>\r\n  <string>MSFTD<" +
+            "/string>\r\n  <string>NEM</string>\r\n  <string>NEMD</string>\r\n  <string>NFLX</strin" +
+            "g>\r\n  <string>NFLXD</string>\r\n  <string>NGG</string>\r\n  <string>NKE</string>\r\n  " +
+            "<string>NKED</string>\r\n  <string>NOKA</string>\r\n  <string>NTES</string>\r\n  <stri" +
+            "ng>NVDA</string>\r\n  <string>NVDAD</string>\r\n  <string>NVS</string>\r\n  <string>NV" +
+            "SD</string>\r\n  <string>OGZD</string>\r\n  <string>OGZDD</string>\r\n  <string>ORAN</" +
+            "string>\r\n  <string>ORCL</string>\r\n  <string>PAAS</string>\r\n  <string>PBR</string" +
+            ">\r\n  <string>PBRD</string>\r\n  <string>PEP</string>\r\n  <string>PFE</string>\r\n  <s" +
+            "tring>PFED</string>\r\n  <string>PG</string>\r\n  <string>PGD</string>\r\n  <string>PH" +
+            "G</string>\r\n  <string>PKS</string>\r\n  <string>PSX</string>\r\n  <string>PTR</strin" +
+            "g>\r\n  <string>PYPL</string>\r\n  <string>PYPLD</string>\r\n  <string>QCOM</string>\r\n" +
+            "  <string>QCOMC</string>\r\n  <string>QCOMD</string>\r\n  <string>QQQ</string>\r\n  <s" +
+            "tring>QQQC</string>\r\n  <string>QQQD</string>\r\n  <string>RDS</string>\r\n  <string>" +
+            "RIO</string>\r\n  <string>RTX</string>\r\n  <string>SAN</string>\r\n  <string>SAP</str" +
+            "ing>\r\n  <string>SBS</string>\r\n  <string>SBUX</string>\r\n  <string>SCCO</string>\r\n" +
+            "  <string>SHOP</string>\r\n  <string>SID</string>\r\n  <string>SLB</string>\r\n  <stri" +
+            "ng>SLBD</string>\r\n  <string>SNAP</string>\r\n  <string>SNOW</string>\r\n  <string>SO" +
+            "NY</string>\r\n  <string>SPOT</string>\r\n  <string>SPY</string>\r\n  <string>SPYC</st" +
+            "ring>\r\n  <string>SPYD</string>\r\n  <string>SQ</string>\r\n  <string>SUZ</string>\r\n " +
+            " <string>T</string>\r\n  <string>TD</string>\r\n  <string>TEN</string>\r\n  <string>TE" +
+            "ND</string>\r\n  <string>TGT</string>\r\n  <string>TMD</string>\r\n  <string>TMO</stri" +
+            "ng>\r\n  <string>TOT</string>\r\n  <string>TRIP</string>\r\n  <string>TSLA</string>\r\n " +
+            " <string>TSLAC</string>\r\n  <string>TSLAD</string>\r\n  <string>TSM</string>\r\n  <st" +
+            "ring>TWTR</string>\r\n  <string>TWTRD</string>\r\n  <string>TXN</string>\r\n  <string>" +
+            "TXR</string>\r\n  <string>UGP</string>\r\n  <string>UL</string>\r\n  <string>UNH</stri" +
+            "ng>\r\n  <string>UNP</string>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n  <s" +
+            "tring>VALED</string>\r\n  <string>VD</string>\r\n  <string>VIST</string>\r\n  <string>" +
+            "VISTD</string>\r\n  <string>VIV</string>\r\n  <string>VOD</string>\r\n  <string>VRSN</" +
+            "string>\r\n  <string>VZ</string>\r\n  <string>VZD</string>\r\n  <string>WBA</string>\r\n" +
+            "  <string>WFC</string>\r\n  <string>WFCC</string>\r\n  <string>WFCD</string>\r\n  <str" +
+            "ing>WMT</string>\r\n  <string>WMTD</string>\r\n  <string>X</string>\r\n  <string>XD</s" +
+            "tring>\r\n  <string>XLEC</string>\r\n  <string>XLED</string>\r\n  <string>XOM</string>" +
+            "\r\n  <string>XOMC</string>\r\n  <string>XOMD</string>\r\n  <string>XOMD</string>\r\n  <" +
+            "string>XROX</string>\r\n  <string>YELP</string>\r\n  <string>ZM</string>\r\n</ArrayOfS" +
+            "tring>")]
         public global::System.Collections.Specialized.StringCollection AccionesCEDEARs {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["AccionesCEDEARs"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>S31O3;SO3D;SO3C</string>\r\n  <string>X18O3;XO3D;XO3C</string>\r\n</ArrayOfStr" +
-            "ing>")]
-        public global::System.Collections.Specialized.StringCollection TickersDC {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["TickersDC"]));
             }
         }
         
@@ -328,21 +317,32 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>S31O3</string>\r\n  <string>X18O3</string>\r\n</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection Letras {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        public string AppInsightsConnectionString {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));
+                return ((string)(this["AppInsightsConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        public string AppInsightsConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
+            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
+            "tring>X23N3;XN3D;XN3C</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection TickersDC {
             get {
-                return ((string)(this["AppInsightsConnectionString"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["TickersDC"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
+            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
+            "tring>X23N3</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection Letras {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));
             }
         }
     }
