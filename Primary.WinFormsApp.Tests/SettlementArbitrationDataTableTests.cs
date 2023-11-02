@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Primary.Data;
+using Primary.WinFormsApp.Properties;
 
 namespace Primary.WinFormsApp.Tests
 {
@@ -12,18 +13,18 @@ namespace Primary.WinFormsApp.Tests
         [TestInitialize]
         public void Init()
         {
+            Settings.Default.Comision = 0;
+            Settings.Default.ArancelCaucionColocadora = 1.5m;
+            Settings.Default.ArancelCaucionTomadora = 2.5m;
             _sut = new SettlementArbitrationDataTable();
+            _sut.Init();
         }
 
         [TestMethod]
         public void Arbitraje_Buy_48H_Sell_CI_SinFeriado()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("AL30 - 48hs", 0.01m, 100000, 17260);
-            InstrumentWithData sell = Create("AL30 - CI", 0.01m, 100000, 17210);
+            InstrumentWithData buy = Create("AL30 - 48hs", 0.01m, 100000, 17250, 17260);
+            InstrumentWithData sell = Create("AL30 - CI", 0.01m, 100000, 17210, 17220);
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 1, 2).Should().NotBeNull();
 
@@ -36,12 +37,8 @@ namespace Primary.WinFormsApp.Tests
         [TestMethod]
         public void Arbitraje_Buy_48H_Sell_CI_ConFeriadoFinDeSemana()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("AL30 - 48hs", 0.01m, 100000, 17260);
-            InstrumentWithData sell = Create("AL30 - CI", 0.01m, 100000, 17210);
+            InstrumentWithData buy = Create("AL30 - 48hs", 0.01m, 100000, 17250, 17260);
+            InstrumentWithData sell = Create("AL30 - CI", 0.01m, 100000, 17210, 17220);
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 4, 5).Should().NotBeNull();
 
@@ -54,30 +51,25 @@ namespace Primary.WinFormsApp.Tests
         [TestMethod]
         public void Arbitraje_Buy_24H_Sell_CI()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("AL30 - 24hs", 0.01m, 100000, 17260);
-            InstrumentWithData sell = Create("AL30 - CI", 0.01m, 100000, 17210);
+            InstrumentWithData buy = Create("AL30 - 24hs", 0.01m, 100000, 17250, 17260);
+            InstrumentWithData sell = Create("AL30 - CI", 0.01m, 100000, 17210, 17220);
 
             TradedInstrumentWithSettlementTerms.GetSettlementTermTrade(buy, sell, 83m, 1, 2).Should().BeNull();
 
             var trade = new SettlementTermTrade(buy, sell);
             trade.Calculate(100000, 83m, 1, 2);
 
+            trade.BuyComisionDerechos.Should().BeApproximately(1726, 1);
+            trade.SellComisionDerechos.Should().BeApproximately(1721, 1);
+            trade.Caucion.InteresNeto.Should().BeApproximately(38169, 1);
             _ = trade.ProfitLoss.Should().BeApproximately(-15278, 5);
         }
 
         [TestMethod]
         public void Arbitraje_Buy_48H_Sell_24()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("AL30 - 48hs", 0.01m, 100000, 17260);
-            InstrumentWithData sell = Create("AL30 - 24hs", 0.01m, 100000, 17210);
+            InstrumentWithData buy = Create("AL30 - 48hs", 0.01m, 100000, 17250, 17260);
+            InstrumentWithData sell = Create("AL30 - 24hs", 0.01m, 100000, 17210, 17220);
 
             var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, 1, 2);
 
@@ -94,12 +86,8 @@ namespace Primary.WinFormsApp.Tests
         [TestMethod]
         public void Arbitraje_Buy_CI_Sell_48H_SinFeriado()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("AL30 - CI", 0.01m, 100000, 17100);
-            InstrumentWithData sell = Create("AL30 - 48hs", 0.01m, 100000, 17260);
+            InstrumentWithData buy = Create("AL30 - CI", 0.01m, 100000, 17090, 17100);
+            InstrumentWithData sell = Create("AL30 - 48hs", 0.01m, 100000, 17260, 17270);
 
             var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, 1, 2);
 
@@ -116,12 +104,8 @@ namespace Primary.WinFormsApp.Tests
         [TestMethod]
         public void Arbitraje_CEDEAR_Buy_48H_Sell_CI_SinFeriado()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("PBR - 48hs", 1m, 5, 10742);
-            InstrumentWithData sell = Create("PBR - CI", 1m, 5, 10760);
+            InstrumentWithData buy = Create("PBR - 48hs", 1m, 5, 10732, 10742);
+            InstrumentWithData sell = Create("PBR - CI", 1m, 5, 10760, 10770);
 
             var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, 1, 2);
 
@@ -138,12 +122,8 @@ namespace Primary.WinFormsApp.Tests
         [TestMethod]
         public void Arbitraje_Buy_48H_Sell_24H_FinDeSemana()
         {
-            _sut.Init();
-
-            Properties.Settings.Default.Comision = 0;
-
-            InstrumentWithData buy = Create("GD30 - 48hs", 1 / 100m, 19705, 26141.50m);
-            InstrumentWithData sell = Create("GD30 - 24hs", 1 / 100m, 19705, 26070); 
+            InstrumentWithData buy = Create("GD30 - 48hs", 1 / 100m, 19705, 26131.50m, 26141.50m);
+            InstrumentWithData sell = Create("GD30 - 24hs", 1 / 100m, 19705, 26070, 26080); 
 
             var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, 3, 4);
 
@@ -158,7 +138,7 @@ namespace Primary.WinFormsApp.Tests
             _ = trade.ProfitLoss.Should().BeApproximately(-2035m, 1);
         }
 
-        public InstrumentWithData Create(string ticker, decimal priceConversionFactor, decimal size, decimal price)
+        public InstrumentWithData Create(string ticker, decimal priceConversionFactor, decimal size, decimal bidPrice, decimal offerPrice)
         {
             InstrumentDetail instrument = new InstrumentDetail()
             {
@@ -170,10 +150,10 @@ namespace Primary.WinFormsApp.Tests
                 Data = new Entries()
                 {
                     Bids = new Trade[] {
-                        new Trade { Size = size, Price = price }
+                        new Trade { Size = size, Price = bidPrice }
                     },
                     Offers = new Trade[] {
-                        new Trade { Size = size, Price = price }
+                        new Trade { Size = size, Price = offerPrice }
                     }
                 }
             };
