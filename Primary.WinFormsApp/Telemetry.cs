@@ -54,6 +54,8 @@ namespace Primary.WinFormsApp
                     AppInsights = new TelemetryClient(config);
                     AppInsights.Context.Session.Id = SessionId;
                     AppInsights.Context.Component.Version = Version;
+                    AppInsights.Context.User.AuthenticatedUserId = Environment.UserName;
+                    AppInsights.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
 
                     // Create the actual logging instance that will be used to log 
                     AppRunTelemetry = AppInsights.StartOperation<RequestTelemetry>($"{AppName} - {Version}");

@@ -163,6 +163,17 @@ namespace Primary.WinFormsApp
             numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? 1 : 0.01m;
             numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? 1 : 0.01m;
             numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? 1 : 0.01m;
+
+            if (lblCompraACurrency.Text == lblVentaACurrency.Text)
+            {
+                lblDolar.Visible = false;
+                numDolar.Visible = false;
+                lblRatioSell.Visible = false;
+                lblOwnedLast.Visible = false;
+                lblArbitrationDiff.Visible = false;
+                lblArbitrationLast.Visible = false;
+                lblDolarBuy.Visible = false;
+            }
         }
 
         private void CalculateAutoSize()
@@ -432,8 +443,7 @@ namespace Primary.WinFormsApp
             {
                 var ratioCompra = GetRatioCompra();
                 var ratioVenta = GetRatioVenta();
-                var ratioDiff = ratioCompra > 0 ? (ratioVenta / ratioCompra) - 1 : 0;
-                lblHeader.Text += Environment.NewLine + $"Ratio Compra: {ratioCompra:P2}     {ratioVenta - ratioCompra:C2} ({ratioDiff:P})     Ratio Venta: {ratioVenta:P2}";
+                lblHeader.Text += Environment.NewLine + $"Ratio Compra: {ratioCompra:P2}     {ratioVenta - ratioCompra:P}     Ratio Venta: {ratioVenta:P2}";
             }
             else
             {

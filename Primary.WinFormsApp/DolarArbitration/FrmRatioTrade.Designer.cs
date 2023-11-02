@@ -587,6 +587,11 @@
             // numComision
             // 
             this.numComision.DecimalPlaces = 2;
+            this.numComision.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
             this.numComision.Location = new System.Drawing.Point(1115, 67);
             this.numComision.Name = "numComision";
             this.numComision.Size = new System.Drawing.Size(80, 20);
