@@ -106,6 +106,12 @@ namespace Primary.WinFormsApp
 
             numVentaPrice.Increment = _trade.Sell.Instrument.IsPesos() ? 1 : 0.01m;
             numCompraPrice.Increment = _trade.Buy.Instrument.IsPesos() ? 1 : 0.01m;
+
+            if (_trade.Sell.Instrument.IsPesos() && _trade.Buy.Instrument.IsPesos())
+            {
+                numDolar.Visible = false;
+                lblDolar.Visible = false;
+            }
         }
 
         public bool SizeAutoUpdate
@@ -338,6 +344,46 @@ namespace Primary.WinFormsApp
         private void numCompraSize_KeyPress(object sender, KeyPressEventArgs e)
         {
             SizeAutoUpdate = false;
+        }
+
+        private void numOwnedVentaSize_Enter(object sender, EventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numCompraSize_MouseClick(object sender, MouseEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numCompraSize_Enter(object sender, EventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numOwnedVentaSize_MouseClick(object sender, MouseEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numVentaPrice_Enter(object sender, EventArgs e)
+        {
+            VentaPriceAutoUpdate = false;
+        }
+
+        private void numVentaPrice_MouseClick(object sender, MouseEventArgs e)
+        {
+            VentaPriceAutoUpdate = false;
+        }
+
+        private void numCompraPrice_MouseClick(object sender, MouseEventArgs e)
+        {
+            CompraPriceAutoUpdate = false;
+        }
+
+        private void numCompraPrice_Enter(object sender, EventArgs e)
+        {
+            CompraPriceAutoUpdate = false;
         }
     }
 }

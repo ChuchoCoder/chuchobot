@@ -52,7 +52,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblHeader = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblDolar = new System.Windows.Forms.Label();
             this.numDolar = new System.Windows.Forms.NumericUpDown();
             this.lblComisionTotal = new System.Windows.Forms.Label();
             this.lblDifVentaCompra = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             this.grpOwnedVenta.Location = new System.Drawing.Point(20, 127);
             this.grpOwnedVenta.Name = "grpOwnedVenta";
             this.grpOwnedVenta.Size = new System.Drawing.Size(584, 195);
-            this.grpOwnedVenta.TabIndex = 1;
+            this.grpOwnedVenta.TabIndex = 4;
             this.grpOwnedVenta.TabStop = false;
             this.grpOwnedVenta.Text = "1. Venta de Bono en Cartera";
             // 
@@ -118,7 +118,7 @@
             this.VentaBidsOffers.Margin = new System.Windows.Forms.Padding(2);
             this.VentaBidsOffers.Name = "VentaBidsOffers";
             this.VentaBidsOffers.Size = new System.Drawing.Size(376, 146);
-            this.VentaBidsOffers.TabIndex = 11;
+            this.VentaBidsOffers.TabIndex = 4;
             // 
             // txtOwnedVenta
             // 
@@ -170,10 +170,12 @@
             0});
             this.numVentaPrice.Name = "numVentaPrice";
             this.numVentaPrice.Size = new System.Drawing.Size(105, 20);
-            this.numVentaPrice.TabIndex = 1;
+            this.numVentaPrice.TabIndex = 3;
             this.numVentaPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numVentaPrice.ValueChanged += new System.EventHandler(this.numOwnedVentaPrice_ValueChanged);
+            this.numVentaPrice.Enter += new System.EventHandler(this.numVentaPrice_Enter);
             this.numVentaPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numOwnedVentaPrice_KeyPress);
+            this.numVentaPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numVentaPrice_MouseClick);
             // 
             // label2
             // 
@@ -181,7 +183,7 @@
             this.label2.Location = new System.Drawing.Point(29, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Precio:";
             // 
             // numOwnedVentaSize
@@ -194,10 +196,12 @@
             0});
             this.numOwnedVentaSize.Name = "numOwnedVentaSize";
             this.numOwnedVentaSize.Size = new System.Drawing.Size(105, 20);
-            this.numOwnedVentaSize.TabIndex = 0;
+            this.numOwnedVentaSize.TabIndex = 1;
             this.numOwnedVentaSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numOwnedVentaSize.ValueChanged += new System.EventHandler(this.numOwnedVentaSize_ValueChanged);
+            this.numOwnedVentaSize.Enter += new System.EventHandler(this.numOwnedVentaSize_Enter);
             this.numOwnedVentaSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numOwnedVentaSize_KeyPress);
+            this.numOwnedVentaSize.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numOwnedVentaSize_MouseClick);
             // 
             // label1
             // 
@@ -205,7 +209,7 @@
             this.label1.Location = new System.Drawing.Point(6, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Cant. Nom.:";
             // 
             // grpArbitrationCompra
@@ -222,7 +226,7 @@
             this.grpArbitrationCompra.Location = new System.Drawing.Point(610, 127);
             this.grpArbitrationCompra.Name = "grpArbitrationCompra";
             this.grpArbitrationCompra.Size = new System.Drawing.Size(573, 195);
-            this.grpArbitrationCompra.TabIndex = 8;
+            this.grpArbitrationCompra.TabIndex = 5;
             this.grpArbitrationCompra.TabStop = false;
             this.grpArbitrationCompra.Text = "2. Compra de Bono a Arbitrar";
             // 
@@ -254,7 +258,7 @@
             this.CompraBidsOffers.Margin = new System.Windows.Forms.Padding(2);
             this.CompraBidsOffers.Name = "CompraBidsOffers";
             this.CompraBidsOffers.Size = new System.Drawing.Size(372, 146);
-            this.CompraBidsOffers.TabIndex = 13;
+            this.CompraBidsOffers.TabIndex = 4;
             // 
             // txtArbitrationCompra
             // 
@@ -297,10 +301,12 @@
             0});
             this.numCompraPrice.Name = "numCompraPrice";
             this.numCompraPrice.Size = new System.Drawing.Size(108, 20);
-            this.numCompraPrice.TabIndex = 1;
+            this.numCompraPrice.TabIndex = 3;
             this.numCompraPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numCompraPrice.ValueChanged += new System.EventHandler(this.numCompraPrice_ValueChanged);
+            this.numCompraPrice.Enter += new System.EventHandler(this.numCompraPrice_Enter);
             this.numCompraPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numArbitrationCompraPrice_KeyPress);
+            this.numCompraPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numCompraPrice_MouseClick);
             // 
             // label6
             // 
@@ -308,7 +314,7 @@
             this.label6.Location = new System.Drawing.Point(26, 46);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 3;
+            this.label6.TabIndex = 2;
             this.label6.Text = "Precio:";
             // 
             // numCompraSize
@@ -321,10 +327,12 @@
             0});
             this.numCompraSize.Name = "numCompraSize";
             this.numCompraSize.Size = new System.Drawing.Size(108, 20);
-            this.numCompraSize.TabIndex = 0;
+            this.numCompraSize.TabIndex = 1;
             this.numCompraSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numCompraSize.ValueChanged += new System.EventHandler(this.numCompraSize_ValueChanged);
+            this.numCompraSize.Enter += new System.EventHandler(this.numCompraSize_Enter);
             this.numCompraSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numCompraSize_KeyPress);
+            this.numCompraSize.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numCompraSize_MouseClick);
             // 
             // label7
             // 
@@ -332,7 +340,7 @@
             this.label7.Location = new System.Drawing.Point(6, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
-            this.label7.TabIndex = 1;
+            this.label7.TabIndex = 0;
             this.label7.Text = "Cant. Nom.:";
             // 
             // timer1
@@ -353,15 +361,15 @@
             this.lblHeader.Text = "Profit: $ / %";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // lblDolar
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.Location = new System.Drawing.Point(389, 60);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 18);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Dolar $:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDolar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDolar.Location = new System.Drawing.Point(389, 60);
+            this.lblDolar.Name = "lblDolar";
+            this.lblDolar.Size = new System.Drawing.Size(59, 18);
+            this.lblDolar.TabIndex = 1;
+            this.lblDolar.Text = "Dolar $:";
+            this.lblDolar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numDolar
             // 
@@ -375,7 +383,7 @@
             0});
             this.numDolar.Name = "numDolar";
             this.numDolar.Size = new System.Drawing.Size(80, 20);
-            this.numDolar.TabIndex = 19;
+            this.numDolar.TabIndex = 2;
             this.numDolar.Value = new decimal(new int[] {
             98,
             0,
@@ -417,7 +425,7 @@
             this.lnkArbitration.Location = new System.Drawing.Point(18, 59);
             this.lnkArbitration.Name = "lnkArbitration";
             this.lnkArbitration.Size = new System.Drawing.Size(365, 19);
-            this.lnkArbitration.TabIndex = 14;
+            this.lnkArbitration.TabIndex = 0;
             this.lnkArbitration.TabStop = true;
             this.lnkArbitration.Text = "Copiar";
             this.lnkArbitration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -502,7 +510,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(580, 165);
-            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Caucion";
             // 
@@ -535,7 +543,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(573, 165);
-            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Profit / Loss";
             // 
@@ -553,7 +561,7 @@
             this.settlementTermSettings1.Location = new System.Drawing.Point(540, 60);
             this.settlementTermSettings1.Name = "settlementTermSettings1";
             this.settlementTermSettings1.Size = new System.Drawing.Size(643, 48);
-            this.settlementTermSettings1.TabIndex = 32;
+            this.settlementTermSettings1.TabIndex = 3;
             // 
             // FrmSettlementTermTrade
             // 
@@ -564,7 +572,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lnkArbitration);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblDolar);
             this.Controls.Add(this.numDolar);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.grpArbitrationCompra);
@@ -607,7 +615,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblHeader;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDolar;
         private System.Windows.Forms.NumericUpDown numDolar;
         private System.Windows.Forms.Label lblComisionTotal;
         private System.Windows.Forms.Label lblDifVentaCompra;
