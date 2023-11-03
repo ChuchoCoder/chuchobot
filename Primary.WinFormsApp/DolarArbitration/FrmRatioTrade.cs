@@ -575,5 +575,25 @@ namespace Primary.WinFormsApp
         {
             SizeAutoUpdate = false;
         }
+
+        private void numOwnedVentaSize_Enter(object sender, EventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numOwnedVentaSize_MouseClick(object sender, MouseEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numArbitrationCompraSize_MouseClick(object sender, MouseEventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
+
+        private void numArbitrationCompraSize_Enter(object sender, EventArgs e)
+        {
+            SizeAutoUpdate = false;
+        }
     }
 }
