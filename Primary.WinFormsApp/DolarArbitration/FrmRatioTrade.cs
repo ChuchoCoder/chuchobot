@@ -595,5 +595,15 @@ namespace Primary.WinFormsApp
         {
             SizeAutoUpdate = false;
         }
+
+        private void numOwnedVentaPrice_Enter(object sender, EventArgs e)
+        {
+            OwnedVentaPriceAutoUpdate = false;
+        }
+
+        private void numArbitrationCompraPrice_Enter(object sender, EventArgs e)
+        {
+            ArbitrationCompraPriceAutoUpdate = false;
+        }
     }
 }
