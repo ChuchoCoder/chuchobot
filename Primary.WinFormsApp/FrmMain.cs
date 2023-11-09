@@ -116,6 +116,7 @@ namespace Primary.WinFormsApp
                     {
                         Telemetry.Log($"Login Failed {login.BaseUrl}", logLevel: LogLevel.Warning);
                         _ = MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
+                        Text = text;
                         return await Login();
                     }
                     else
