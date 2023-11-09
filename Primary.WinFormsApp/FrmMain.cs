@@ -101,50 +101,58 @@ namespace Primary.WinFormsApp
         private async Task<bool> Login()
         {
             var login = new FrmLogin();
-
-            if (login.ShowDialog() == DialogResult.OK)
+            try
             {
-                var text = Text;
-                Text = "Login user...";
-                Refresh();
-                Argentina.Data.Init(login.BaseUrl);
-                LoginSuccessfull = await Argentina.Data.Api.Login(login.UserName, login.Password);
 
-                if (LoginSuccessfull == false)
+                if (login.ShowDialog() == DialogResult.OK)
                 {
-                    Telemetry.Log($"Login Failed {login.BaseUrl}", logLevel: LogLevel.Warning);
-                    _ = MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
-                    return await Login();
-                }
-                else
-                {
-                    Telemetry.Log($"Login Successfull {login.BaseUrl}", logLevel: LogLevel.Information);
-                    Properties.Settings.Default.ApiBaseUrl = login.BaseUrl;
-                    Properties.Settings.Default.UserName = login.UserName;
-                    Properties.Settings.Default.Password = login.Password;
-                    Properties.Settings.Default.Save();
-                    SetConnectionStatus();
-
-                    Text = "Initiliazing Data...";
+                    var text = Text;
+                    Text = "Login user...";
                     Refresh();
-                    await Argentina.Data.Init();
+                    Argentina.Data.Init(login.BaseUrl);
+                    LoginSuccessfull = await Argentina.Data.Api.Login(login.UserName, login.Password);
 
-                    Text = "Initiliazing Watchlist...";
-                    Refresh();
-
-                    foreach (var item in Argentina.Data.AllInstruments.OrderBy(x => x.InstrumentId.SymbolWithoutPrefix()))
+                    if (LoginSuccessfull == false)
                     {
-                        _ = cmbInstruments.Items.Add(item);
+                        Telemetry.Log($"Login Failed {login.BaseUrl}", logLevel: LogLevel.Warning);
+                        _ = MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK);
+                        return await Login();
                     }
+                    else
+                    {
+                        Telemetry.Log($"Login Successfull {login.BaseUrl}", logLevel: LogLevel.Information);
+                        Properties.Settings.Default.ApiBaseUrl = login.BaseUrl;
+                        Properties.Settings.Default.UserName = login.UserName;
+                        Properties.Settings.Default.Password = login.Password;
+                        Properties.Settings.Default.Save();
+                        SetConnectionStatus();
 
-                    WatchInstrumentsWithWebSocket();
-                    //backgroundTasks.AddRange(Argentina.Data.WatchWithRestApi(_watchedInstruments));
-                    tmrConnection.Enabled = true;
-                    AccountsTimer.Start();
+                        Text = "Initiliazing Data...";
+                        Refresh();
+                        await Argentina.Data.Init();
+
+                        Text = "Initiliazing Watchlist...";
+                        Refresh();
+
+                        foreach (var item in Argentina.Data.AllInstruments.OrderBy(x => x.InstrumentId.SymbolWithoutPrefix()))
+                        {
+                            _ = cmbInstruments.Items.Add(item);
+                        }
+
+                        WatchInstrumentsWithWebSocket();
+                        //backgroundTasks.AddRange(Argentina.Data.WatchWithRestApi(_watchedInstruments));
+                        tmrConnection.Enabled = true;
+                        AccountsTimer.Start();
+                    }
+                    Text = text;
+                    return true;
                 }
-                Text = text;
-                return true;
             }
+            catch (Exception ex)
+            {
+                Telemetry.LogError($"Login Error - {login.BaseUrl}", ex);
+            }
+
             return false;
         }
 
