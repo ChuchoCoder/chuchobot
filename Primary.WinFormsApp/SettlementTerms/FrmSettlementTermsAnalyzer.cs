@@ -66,6 +66,7 @@ namespace Primary.WinFormsApp
 
             grdArbitration.Sort(grdArbitration.Columns["ProfitPercentage"], System.ComponentModel.ListSortDirection.Descending);
 
+            timer1.Enabled = true;
         }
 
         private void grdArbitration_DoubleClick(object sender, EventArgs e)
