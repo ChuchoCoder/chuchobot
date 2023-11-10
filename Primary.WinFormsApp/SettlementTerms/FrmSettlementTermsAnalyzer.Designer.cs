@@ -46,10 +46,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermsAnalyzer));
             this.grdArbitration = new System.Windows.Forms.DataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
-            this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
-            this.settlementTermSettings = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
             this.KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +62,10 @@
             this.ArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DolarCompraLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DolarVentaLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
+            this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
+            this.settlementTermSettings = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,39 +114,6 @@
             this.grdArbitration.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArbitration_CellContentClick);
             this.grdArbitration.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdArbitration_CellFormatting);
             this.grdArbitration.DoubleClick += new System.EventHandler(this.grdArbitration_DoubleClick);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // chkOnlyProfitableTrades
-            // 
-            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(12, 38);
-            this.chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
-            this.chkOnlyProfitableTrades.Size = new System.Drawing.Size(208, 19);
-            this.chkOnlyProfitableTrades.TabIndex = 24;
-            this.chkOnlyProfitableTrades.Text = "Ver sólo arbitrajes con profit";
-            this.chkOnlyProfitableTrades.UseVisualStyleBackColor = true;
-            // 
-            // chkOnlyShowTradesWithTickersOwned
-            // 
-            this.chkOnlyShowTradesWithTickersOwned.Checked = true;
-            this.chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(12, 12);
-            this.chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
-            this.chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(298, 19);
-            this.chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
-            this.chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
-            this.chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
-            // 
-            // settlementTermSettings
-            // 
-            this.settlementTermSettings.Location = new System.Drawing.Point(316, 9);
-            this.settlementTermSettings.Name = "settlementTermSettings";
-            this.settlementTermSettings.Size = new System.Drawing.Size(643, 48);
-            this.settlementTermSettings.TabIndex = 26;
             // 
             // KeyOwnedVenta
             // 
@@ -308,6 +275,38 @@
             this.DolarVentaLast.Name = "DolarVentaLast";
             this.DolarVentaLast.ReadOnly = true;
             this.DolarVentaLast.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // chkOnlyProfitableTrades
+            // 
+            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(12, 38);
+            this.chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
+            this.chkOnlyProfitableTrades.Size = new System.Drawing.Size(208, 19);
+            this.chkOnlyProfitableTrades.TabIndex = 24;
+            this.chkOnlyProfitableTrades.Text = "Ver sólo arbitrajes con profit";
+            this.chkOnlyProfitableTrades.UseVisualStyleBackColor = true;
+            // 
+            // chkOnlyShowTradesWithTickersOwned
+            // 
+            this.chkOnlyShowTradesWithTickersOwned.Checked = true;
+            this.chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(12, 12);
+            this.chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
+            this.chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(298, 19);
+            this.chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
+            this.chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
+            this.chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
+            // 
+            // settlementTermSettings
+            // 
+            this.settlementTermSettings.Location = new System.Drawing.Point(316, 9);
+            this.settlementTermSettings.Name = "settlementTermSettings";
+            this.settlementTermSettings.Size = new System.Drawing.Size(643, 48);
+            this.settlementTermSettings.TabIndex = 26;
             // 
             // FrmSettlementTermsAnalyzer
             // 
