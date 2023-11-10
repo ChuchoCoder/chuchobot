@@ -26,6 +26,15 @@ namespace Primary.WinFormsApp
 
         private void FrmArbitrationTrade_Load(object sender, EventArgs e)
         {
+            numArbitrationCompraSize.Maximum =
+                numArbitrationCompraPrice.Maximum =
+                numArbitrationVentaSize.Maximum =
+                numArbitrationVentaPrice.Maximum =
+                numOwnedCompraSize.Maximum =
+                numOwnedCompraPrice.Maximum =
+                numOwnedVentaSize.Maximum =
+                numOwnedVentaPrice.Maximum = decimal.MaxValue;
+
             numDolar.Value = Properties.Settings.Default.USDARS;
             numComision.Value = Properties.Settings.Default.Comision;
 
