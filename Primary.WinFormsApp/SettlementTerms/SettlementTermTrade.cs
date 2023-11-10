@@ -106,7 +106,9 @@ namespace Primary.WinFormsApp
             BuyPriceTarget = SellPrice * ((Caucion.EsColocadora ? 1 : -1) + Caucion.Tasa);
             SellPriceTarget = BuyPrice * ((Caucion.EsColocadora ? 1 : -1) - Caucion.Tasa);
 
-            SpreadTNA = Math.Abs(((SellPrice/ BuyPrice) - 1m) / DiasCaucion * 365m);
+            if (DiasCaucion != 0) {
+                SpreadTNA = Math.Abs(((SellPrice / BuyPrice) - 1m) / DiasCaucion * 365m);
+            }
 
             if (Caucion.EsColocadora)
             {

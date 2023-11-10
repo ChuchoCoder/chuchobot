@@ -274,7 +274,7 @@ namespace Primary.WinFormsApp
 
         public InstrumentDetail GetInstrumentDetailOrNull(string symbol)
         {
-            var instrument = Data.AllInstruments.FirstOrDefault(x => x.InstrumentId.Symbol == symbol);
+            var instrument = Data.AllInstruments.FirstOrDefault(x => x.InstrumentId?.Symbol == symbol);
 
             return instrument;
 
