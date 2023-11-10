@@ -112,6 +112,8 @@ namespace Primary.WinFormsApp
                 numDolar.Visible = false;
                 lblDolar.Visible = false;
             }
+
+            Telemetry.LogInformation(Text + $"Profit: {_trade.ProfitLoss:C2} ({_trade.ProfitLossPercentage:P2})");
         }
 
         public bool SizeAutoUpdate
@@ -263,8 +265,7 @@ namespace Primary.WinFormsApp
 
                 lblProfitPesos.Text = $"Profit: {_trade.ProfitLoss:C2}";
 
-                var percentage = _trade.BuyTotalSinComisiones != 0 ? _trade.ProfitLoss / _trade.BuyTotalSinComisiones : 0;
-                lblHeader.Text = $"Profit: {_trade.ProfitLoss:C2} ({percentage:P2})";
+                lblHeader.Text = $"Profit: {_trade.ProfitLoss:C2} ({_trade.ProfitLossPercentage:P2})";
 
                 if (_trade.ProfitLoss > 0)
                 {
