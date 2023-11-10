@@ -286,8 +286,13 @@ namespace Primary.WinFormsApp
             {
                 Icon = Properties.Resources.red_wifi;
                 statusInformation.Text = $"Ultimo mensaje recibido hace {dif.TotalSeconds:#0} segundos";
-                Telemetry.LogWarning(Text);
+                if (Argentina.IsMarketOpen())
+                {
+                    Telemetry.LogWarning(statusInformation.Text);
+                }
             }
+
+            
         }
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
