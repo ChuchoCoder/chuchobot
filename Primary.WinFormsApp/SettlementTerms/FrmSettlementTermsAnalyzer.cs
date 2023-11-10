@@ -22,22 +22,21 @@ namespace Primary.WinFormsApp
             try
             {
                 timer1.Enabled = false;
-                using (var track = Telemetry.TrackTime("Scanner arbitrajes de plazo"))
+
+                // Deshabilitar si no existen posiciones
+                chkOnlyShowTradesWithTickersOwned.Enabled = Argentina.Data.Positions != null;
+                if (chkOnlyShowTradesWithTickersOwned.Enabled == false)
                 {
-                    // Deshabilitar si no existen posiciones
-                    chkOnlyShowTradesWithTickersOwned.Enabled = Argentina.Data.Positions != null;
-                    if (chkOnlyShowTradesWithTickersOwned.Enabled == false)
-                    {
-                        chkOnlyShowTradesWithTickersOwned.Checked = false;
-                    }
-                    _processor.RefreshData();
-
-                    settlementTermSettings.RefreshValues();
-
-                    var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
-
-                    _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
+                    chkOnlyShowTradesWithTickersOwned.Checked = false;
                 }
+                _processor.RefreshData();
+
+                settlementTermSettings.RefreshValues();
+
+                var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
+
+                _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
+
                 //grdArbitration.DataSource = _dataTable;
             }
             catch (Exception ex)
