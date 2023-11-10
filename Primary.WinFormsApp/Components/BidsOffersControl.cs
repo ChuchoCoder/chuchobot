@@ -36,6 +36,9 @@ namespace Primary.WinFormsApp
 
         public void LoadData(Entries entries)
         {
+            if (entries == null)
+                return;
+
             if (entries.Last != null)
             {
                 var formatted = entries.Last.Price.Value.ToString(CurrencyFormat);
