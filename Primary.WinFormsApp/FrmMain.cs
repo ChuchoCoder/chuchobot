@@ -35,8 +35,9 @@ namespace Primary.WinFormsApp
             AccountsTimer.Elapsed += tmrAccounts_Tick;
             PositionsTimer.Elapsed += tmrPositions_Tick;
 
-            Settings.Default.Upgrade();
-            Settings.Default.Save();
+            // Upgrading settings will reset user settings
+            //Settings.Default.Upgrade();
+            //Settings.Default.Save();
 
             ShowVersion();
 
