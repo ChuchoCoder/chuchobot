@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatioTrade));
             this.grpOwnedVenta = new System.Windows.Forms.GroupBox();
+            this.chkOwnedVenta = new System.Windows.Forms.CheckBox();
             this.OwnedVentaBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
             this.txtOwnedVenta = new System.Windows.Forms.LinkLabel();
             this.lblOwnedVentaImporte = new System.Windows.Forms.Label();
@@ -83,7 +84,6 @@
             this.lblProfitPesos = new System.Windows.Forms.Label();
             this.chkComprarNominales = new System.Windows.Forms.CheckBox();
             this.lnkArbitration = new System.Windows.Forms.LinkLabel();
-            this.chkOwnedVenta = new System.Windows.Forms.CheckBox();
             this.grpOwnedVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOwnedVentaPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOwnedVentaSize)).BeginInit();
@@ -118,6 +118,18 @@
             this.grpOwnedVenta.TabIndex = 1;
             this.grpOwnedVenta.TabStop = false;
             this.grpOwnedVenta.Text = "1. Venta de Instrumento A";
+            // 
+            // chkOwnedVenta
+            // 
+            this.chkOwnedVenta.AutoSize = true;
+            this.chkOwnedVenta.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkOwnedVenta.Location = new System.Drawing.Point(68, 16);
+            this.chkOwnedVenta.Name = "chkOwnedVenta";
+            this.chkOwnedVenta.Size = new System.Drawing.Size(124, 17);
+            this.chkOwnedVenta.TabIndex = 17;
+            this.chkOwnedVenta.Text = "Cantidad Automatica";
+            this.chkOwnedVenta.UseVisualStyleBackColor = true;
+            this.chkOwnedVenta.CheckedChanged += new System.EventHandler(this.chkOwnedVenta_CheckedChanged);
             // 
             // OwnedVentaBidsOffers
             // 
@@ -164,7 +176,6 @@
             // 
             // numOwnedVentaPrice
             // 
-            this.numOwnedVentaPrice.DecimalPlaces = 2;
             this.numOwnedVentaPrice.ForeColor = System.Drawing.Color.Red;
             this.numOwnedVentaPrice.Increment = new decimal(new int[] {
             5,
@@ -296,7 +307,6 @@
             // 
             // numArbitrationCompraPrice
             // 
-            this.numArbitrationCompraPrice.DecimalPlaces = 2;
             this.numArbitrationCompraPrice.ForeColor = System.Drawing.Color.Red;
             this.numArbitrationCompraPrice.Increment = new decimal(new int[] {
             5,
@@ -755,18 +765,6 @@
             this.lnkArbitration.Text = "Vender AL30D => Comprar LetraD => Vender Letra => Comprar AL30";
             this.lnkArbitration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lnkArbitration.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkArbitration_LinkClicked);
-            // 
-            // chkOwnedVenta
-            // 
-            this.chkOwnedVenta.AutoSize = true;
-            this.chkOwnedVenta.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkOwnedVenta.Location = new System.Drawing.Point(68, 16);
-            this.chkOwnedVenta.Name = "chkOwnedVenta";
-            this.chkOwnedVenta.Size = new System.Drawing.Size(124, 17);
-            this.chkOwnedVenta.TabIndex = 17;
-            this.chkOwnedVenta.Text = "Cantidad Automatica";
-            this.chkOwnedVenta.UseVisualStyleBackColor = true;
-            this.chkOwnedVenta.CheckedChanged += new System.EventHandler(this.chkOwnedVenta_CheckedChanged);
             // 
             // FrmRatioTrade
             // 
