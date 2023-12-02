@@ -58,7 +58,7 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("365")]
+        [global::System.Configuration.DefaultSettingValueAttribute("376")]
         public decimal USDARS {
             get {
                 return ((decimal)(this["USDARS"]));
@@ -220,47 +220,44 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
-  <string>AL29</string>
-  <string>AL30</string>
-  <string>AL35</string>
-  <string>AE38</string>
-  <string>AL41</string>
-  <string>GD29</string>
-  <string>GD30</string>
-  <string>GD35</string>
-  <string>GD38</string>
-  <string>GD41</string>
-  <string>GD46</string>
-  <string>GOLD</string>
-  <string>AAPL</string>
-  <string>AMZN</string>
-  <string>AMD</string>
-  <string>BABA</string>
-  <string>BIDU</string>
-  <string>BRKB</string>
-  <string>DISN</string>
-  <string>KO</string>
-  <string>MELI</string>
-  <string>MRK</string>
-  <string>MSFT</string>
-  <string>NVDA</string>
-  <string>PBR</string>
-  <string>TSLA</string>
-  <string>QCOM</string>
-  <string>XOM</string>
-  <string>DIA</string>
-  <string>EEM</string>
-  <string>XLE</string>
-  <string>QQQ</string>
-  <string>X23N3</string>
-  <string>MTR</string>
-  <string>SPY</string>
-  <string>INTC</string>
-  <string>DIA</string>
-  <string>GOOGL</string>
-</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
+            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
+            "tring>AAL</string>\r\n  <string>AAPL</string>\r\n  <string>ABBV</string>\r\n  <string>" +
+            "ABT</string>\r\n  <string>ADBE</string>\r\n  <string>ADGO</string>\r\n  <string>AE38</" +
+            "string>\r\n  <string>AL29</string>\r\n  <string>AL30</string>\r\n  <string>AL35</strin" +
+            "g>\r\n  <string>AL41</string>\r\n  <string>AMD</string>\r\n  <string>AMZN</string>\r\n  " +
+            "<string>ARCO</string>\r\n  <string>ARKK</string>\r\n  <string>AVGO</string>\r\n  <stri" +
+            "ng>AXP</string>\r\n  <string>BA</string>\r\n  <string>BA.C</string>\r\n  <string>BABA<" +
+            "/string>\r\n  <string>BBD</string>\r\n  <string>BBV</string>\r\n  <string>BIDU</string" +
+            ">\r\n  <string>BIDU</string>\r\n  <string>BIOX</string>\r\n  <string>BITF</string>\r\n  " +
+            "<string>BNG</string>\r\n  <string>BRFS</string>\r\n  <string>BRKB</string>\r\n  <strin" +
+            "g>C</string>\r\n  <string>CAT</string>\r\n  <string>COIN</string>\r\n  <string>CRM</st" +
+            "ring>\r\n  <string>CSCO</string>\r\n  <string>CVX</string>\r\n  <string>CX</string>\r\n " +
+            " <string>DE</string>\r\n  <string>DEO</string>\r\n  <string>DESP</string>\r\n  <string" +
+            ">DIA</string>\r\n  <string>DISN</string>\r\n  <string>DOW</string>\r\n  <string>EEM</s" +
+            "tring>\r\n  <string>ETSY</string>\r\n  <string>EWZ</string>\r\n  <string>F</string>\r\n " +
+            " <string>FCX</string>\r\n  <string>GD29</string>\r\n  <string>GD30</string>\r\n  <stri" +
+            "ng>GD35</string>\r\n  <string>GD38</string>\r\n  <string>GD41</string>\r\n  <string>GD" +
+            "46</string>\r\n  <string>GE</string>\r\n  <string>GLOB</string>\r\n  <string>GM</strin" +
+            "g>\r\n  <string>GOLD</string>\r\n  <string>GOOGL</string>\r\n  <string>HMY</string>\r\n " +
+            " <string>HSY</string>\r\n  <string>HUT</string>\r\n  <string>IBM</string>\r\n  <string" +
+            ">INTC</string>\r\n  <string>IWM</string>\r\n  <string>JD</string>\r\n  <string>JMIA</s" +
+            "tring>\r\n  <string>JNJ</string>\r\n  <string>JPM</string>\r\n  <string>KO</string>\r\n " +
+            " <string>MCD</string>\r\n  <string>MELI</string>\r\n  <string>META</string>\r\n  <stri" +
+            "ng>MMM</string>\r\n  <string>MO</string>\r\n  <string>MRK</string>\r\n  <string>MSFT</" +
+            "string>\r\n  <string>MTR</string>\r\n  <string>NFLX</string>\r\n  <string>NIO</string>" +
+            "\r\n  <string>NKE</string>\r\n  <string>NVDA</string>\r\n  <string>OXY</string>\r\n  <st" +
+            "ring>PAAS</string>\r\n  <string>PBR</string>\r\n  <string>PEP</string>\r\n  <string>PF" +
+            "E</string>\r\n  <string>PG</string>\r\n  <string>PYPL</string>\r\n  <string>QCOM</stri" +
+            "ng>\r\n  <string>QCOM</string>\r\n  <string>QQQ</string>\r\n  <string>RIO</string>\r\n  " +
+            "<string>SATL</string>\r\n  <string>SHOP</string>\r\n  <string>SID</string>\r\n  <strin" +
+            "g>SPY</string>\r\n  <string>SQ</string>\r\n  <string>T</string>\r\n  <string>TEN</stri" +
+            "ng>\r\n  <string>TGT</string>\r\n  <string>TSLA</string>\r\n  <string>TSM</string>\r\n  " +
+            "<string>UPST</string>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n  <string>" +
+            "VIST</string>\r\n  <string>VZ</string>\r\n  <string>WBA</string>\r\n  <string>WFC</str" +
+            "ing>\r\n  <string>WMT</string>\r\n  <string>X18E4</string>\r\n  <string>X20F4</string>" +
+            "\r\n  <string>XLE</string>\r\n  <string>XLF</string>\r\n  <string>XOM</string>\r\n  <str" +
+            "ing>ZM</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection ArbitrationTickers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["ArbitrationTickers"]));
@@ -296,7 +293,7 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
         public decimal ArancelCaucionTomadora {
             get {
                 return ((decimal)(this["ArancelCaucionTomadora"]));
@@ -328,7 +325,8 @@ namespace Primary.WinFormsApp.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>X23N3;XN3D;XN3C</string>\r\n</ArrayOfString>")]
+            "tring>X18E4;XE4D;XE4C</string>\r\n  <string>X20F4;XF4D;XF4C</string>\r\n</ArrayOfStr" +
+            "ing>")]
         public global::System.Collections.Specialized.StringCollection TickersDC {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["TickersDC"]));
@@ -339,7 +337,7 @@ namespace Primary.WinFormsApp.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>X23N3</string>\r\n</ArrayOfString>")]
+            "tring>X18E4</string>\r\n  <string>X20F4</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Letras {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));

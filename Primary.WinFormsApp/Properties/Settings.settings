@@ -12,7 +12,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="USDARS" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">365</Value>
+      <Value Profile="(Default)">376</Value>
     </Setting>
     <Setting Name="Comision" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -319,44 +319,122 @@
     <Setting Name="ArbitrationTickers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;AAL&lt;/string&gt;
+  &lt;string&gt;AAPL&lt;/string&gt;
+  &lt;string&gt;ABBV&lt;/string&gt;
+  &lt;string&gt;ABT&lt;/string&gt;
+  &lt;string&gt;ADBE&lt;/string&gt;
+  &lt;string&gt;ADGO&lt;/string&gt;
+  &lt;string&gt;AE38&lt;/string&gt;
   &lt;string&gt;AL29&lt;/string&gt;
   &lt;string&gt;AL30&lt;/string&gt;
   &lt;string&gt;AL35&lt;/string&gt;
-  &lt;string&gt;AE38&lt;/string&gt;
   &lt;string&gt;AL41&lt;/string&gt;
+  &lt;string&gt;AMD&lt;/string&gt;
+  &lt;string&gt;AMZN&lt;/string&gt;
+  &lt;string&gt;ARCO&lt;/string&gt;
+  &lt;string&gt;ARKK&lt;/string&gt;
+  &lt;string&gt;AVGO&lt;/string&gt;
+  &lt;string&gt;AXP&lt;/string&gt;
+  &lt;string&gt;BA&lt;/string&gt;
+  &lt;string&gt;BA.C&lt;/string&gt;
+  &lt;string&gt;BABA&lt;/string&gt;
+  &lt;string&gt;BBD&lt;/string&gt;
+  &lt;string&gt;BBV&lt;/string&gt;
+  &lt;string&gt;BIDU&lt;/string&gt;
+  &lt;string&gt;BIDU&lt;/string&gt;
+  &lt;string&gt;BIOX&lt;/string&gt;
+  &lt;string&gt;BITF&lt;/string&gt;
+  &lt;string&gt;BNG&lt;/string&gt;
+  &lt;string&gt;BRFS&lt;/string&gt;
+  &lt;string&gt;BRKB&lt;/string&gt;
+  &lt;string&gt;C&lt;/string&gt;
+  &lt;string&gt;CAT&lt;/string&gt;
+  &lt;string&gt;COIN&lt;/string&gt;
+  &lt;string&gt;CRM&lt;/string&gt;
+  &lt;string&gt;CSCO&lt;/string&gt;
+  &lt;string&gt;CVX&lt;/string&gt;
+  &lt;string&gt;CX&lt;/string&gt;
+  &lt;string&gt;DE&lt;/string&gt;
+  &lt;string&gt;DEO&lt;/string&gt;
+  &lt;string&gt;DESP&lt;/string&gt;
+  &lt;string&gt;DIA&lt;/string&gt;
+  &lt;string&gt;DISN&lt;/string&gt;
+  &lt;string&gt;DOW&lt;/string&gt;
+  &lt;string&gt;EEM&lt;/string&gt;
+  &lt;string&gt;ETSY&lt;/string&gt;
+  &lt;string&gt;EWZ&lt;/string&gt;
+  &lt;string&gt;F&lt;/string&gt;
+  &lt;string&gt;FCX&lt;/string&gt;
   &lt;string&gt;GD29&lt;/string&gt;
   &lt;string&gt;GD30&lt;/string&gt;
   &lt;string&gt;GD35&lt;/string&gt;
   &lt;string&gt;GD38&lt;/string&gt;
   &lt;string&gt;GD41&lt;/string&gt;
   &lt;string&gt;GD46&lt;/string&gt;
+  &lt;string&gt;GE&lt;/string&gt;
+  &lt;string&gt;GLOB&lt;/string&gt;
+  &lt;string&gt;GM&lt;/string&gt;
   &lt;string&gt;GOLD&lt;/string&gt;
-  &lt;string&gt;AAPL&lt;/string&gt;
-  &lt;string&gt;AMZN&lt;/string&gt;
-  &lt;string&gt;AMD&lt;/string&gt;
-  &lt;string&gt;BABA&lt;/string&gt;
-  &lt;string&gt;BIDU&lt;/string&gt;
-  &lt;string&gt;BRKB&lt;/string&gt;
-  &lt;string&gt;DISN&lt;/string&gt;
+  &lt;string&gt;GOOGL&lt;/string&gt;
+  &lt;string&gt;HMY&lt;/string&gt;
+  &lt;string&gt;HSY&lt;/string&gt;
+  &lt;string&gt;HUT&lt;/string&gt;
+  &lt;string&gt;IBM&lt;/string&gt;
+  &lt;string&gt;INTC&lt;/string&gt;
+  &lt;string&gt;IWM&lt;/string&gt;
+  &lt;string&gt;JD&lt;/string&gt;
+  &lt;string&gt;JMIA&lt;/string&gt;
+  &lt;string&gt;JNJ&lt;/string&gt;
+  &lt;string&gt;JPM&lt;/string&gt;
   &lt;string&gt;KO&lt;/string&gt;
+  &lt;string&gt;MCD&lt;/string&gt;
   &lt;string&gt;MELI&lt;/string&gt;
+  &lt;string&gt;META&lt;/string&gt;
+  &lt;string&gt;MMM&lt;/string&gt;
+  &lt;string&gt;MO&lt;/string&gt;
   &lt;string&gt;MRK&lt;/string&gt;
   &lt;string&gt;MSFT&lt;/string&gt;
-  &lt;string&gt;NVDA&lt;/string&gt;
-  &lt;string&gt;PBR&lt;/string&gt;
-  &lt;string&gt;TSLA&lt;/string&gt;
-  &lt;string&gt;QCOM&lt;/string&gt;
-  &lt;string&gt;XOM&lt;/string&gt;
-  &lt;string&gt;DIA&lt;/string&gt;
-  &lt;string&gt;EEM&lt;/string&gt;
-  &lt;string&gt;XLE&lt;/string&gt;
-  &lt;string&gt;QQQ&lt;/string&gt;
-  &lt;string&gt;X23N3&lt;/string&gt;
   &lt;string&gt;MTR&lt;/string&gt;
+  &lt;string&gt;NFLX&lt;/string&gt;
+  &lt;string&gt;NIO&lt;/string&gt;
+  &lt;string&gt;NKE&lt;/string&gt;
+  &lt;string&gt;NVDA&lt;/string&gt;
+  &lt;string&gt;OXY&lt;/string&gt;
+  &lt;string&gt;PAAS&lt;/string&gt;
+  &lt;string&gt;PBR&lt;/string&gt;
+  &lt;string&gt;PEP&lt;/string&gt;
+  &lt;string&gt;PFE&lt;/string&gt;
+  &lt;string&gt;PG&lt;/string&gt;
+  &lt;string&gt;PYPL&lt;/string&gt;
+  &lt;string&gt;QCOM&lt;/string&gt;
+  &lt;string&gt;QCOM&lt;/string&gt;
+  &lt;string&gt;QQQ&lt;/string&gt;
+  &lt;string&gt;RIO&lt;/string&gt;
+  &lt;string&gt;SATL&lt;/string&gt;
+  &lt;string&gt;SHOP&lt;/string&gt;
+  &lt;string&gt;SID&lt;/string&gt;
   &lt;string&gt;SPY&lt;/string&gt;
-  &lt;string&gt;INTC&lt;/string&gt;
-  &lt;string&gt;DIA&lt;/string&gt;
-  &lt;string&gt;GOOGL&lt;/string&gt;
+  &lt;string&gt;SQ&lt;/string&gt;
+  &lt;string&gt;T&lt;/string&gt;
+  &lt;string&gt;TEN&lt;/string&gt;
+  &lt;string&gt;TGT&lt;/string&gt;
+  &lt;string&gt;TSLA&lt;/string&gt;
+  &lt;string&gt;TSM&lt;/string&gt;
+  &lt;string&gt;UPST&lt;/string&gt;
+  &lt;string&gt;V&lt;/string&gt;
+  &lt;string&gt;VALE&lt;/string&gt;
+  &lt;string&gt;VIST&lt;/string&gt;
+  &lt;string&gt;VZ&lt;/string&gt;
+  &lt;string&gt;WBA&lt;/string&gt;
+  &lt;string&gt;WFC&lt;/string&gt;
+  &lt;string&gt;WMT&lt;/string&gt;
+  &lt;string&gt;X18E4&lt;/string&gt;
+  &lt;string&gt;X20F4&lt;/string&gt;
+  &lt;string&gt;XLE&lt;/string&gt;
+  &lt;string&gt;XLF&lt;/string&gt;
+  &lt;string&gt;XOM&lt;/string&gt;
+  &lt;string&gt;ZM&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
@@ -366,7 +444,7 @@
       <Value Profile="(Default)">1.5</Value>
     </Setting>
     <Setting Name="ArancelCaucionTomadora" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">2.5</Value>
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="DerechoMercadoLetra" Type="System.Decimal" Scope="Application">
       <Value Profile="(Default)">0.001</Value>
@@ -381,13 +459,15 @@
     <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;X23N3;XN3D;XN3C&lt;/string&gt;
+  &lt;string&gt;X18E4;XE4D;XE4C&lt;/string&gt;
+  &lt;string&gt;X20F4;XF4D;XF4C&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Letras" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;X23N3&lt;/string&gt;
+  &lt;string&gt;X18E4&lt;/string&gt;
+  &lt;string&gt;X20F4&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
