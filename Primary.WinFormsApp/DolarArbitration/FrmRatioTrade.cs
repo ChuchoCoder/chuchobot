@@ -494,9 +494,7 @@ namespace Primary.WinFormsApp
             decimal profit;
 
             var esArbitrajeMismaMoneda = _trade.SellThenBuy.Buy.Instrument.IsPesos() == _trade.SellThenBuy.Sell.Instrument.IsPesos();
-            profit = esArbitrajeMismaMoneda
-                ? _arbitrationVentaImporte - _ownedCompraImporte - comisionTotal
-                : ((_arbitrationVentaImporte - _ownedCompraImporte) * numDolar.Value) - comisionTotal;
+            profit = _arbitrationVentaImporte - _ownedCompraImporte - comisionTotal;
 
             lblComisionTotal.Text = "Total Comision: " + comisionTotal.ToCurrency();
             lblTotalProfit.Text = "Total: " + _trade.SellThenBuy.Buy.Instrument.FormatCurrency(_arbitrationVentaImporte - _ownedCompraImporte);
