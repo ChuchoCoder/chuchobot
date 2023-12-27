@@ -55,13 +55,14 @@
             this.arbitrajeRatioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.longGD30ShortAL30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.longAL30ShortGD30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrConnection = new System.Windows.Forms.Timer(this.components);
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.connected = new System.Windows.Forms.ToolStripStatusLabel();
             this.disconnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusInformation = new System.Windows.Forms.ToolStripStatusLabel();
             this.appVersion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caucionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +81,8 @@
             this.refreshDataToolStripMenuItem,
             this.toolStripMenuItem1,
             this.configuraciónToolStripMenuItem,
-            this.arbitrajeRatioToolStripMenuItem});
+            this.arbitrajeRatioToolStripMenuItem,
+            this.caucionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -193,7 +195,6 @@
             // 
             // cmbInstruments
             // 
-            this.cmbInstruments.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbInstruments.Name = "cmbInstruments";
             this.cmbInstruments.Size = new System.Drawing.Size(121, 23);
             this.cmbInstruments.SelectedIndexChanged += new System.EventHandler(this.cmbInstruments_SelectedIndexChanged);
@@ -274,6 +275,13 @@
             this.longAL30ShortGD30ToolStripMenuItem.Text = "Long AL30 / Short GD30";
             this.longAL30ShortGD30ToolStripMenuItem.Click += new System.EventHandler(this.longAL30ShortGD30ToolStripMenuItem_Click);
             // 
+            // seleccionarToolStripMenuItem
+            // 
+            this.seleccionarToolStripMenuItem.Name = "seleccionarToolStripMenuItem";
+            this.seleccionarToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.seleccionarToolStripMenuItem.Text = "Seleccionar Instrumentos y Plazo";
+            this.seleccionarToolStripMenuItem.Click += new System.EventHandler(this.seleccionarToolStripMenuItem_Click);
+            // 
             // tmrConnection
             // 
             this.tmrConnection.Interval = 3000;
@@ -323,12 +331,12 @@
             this.appVersion.Text = "v2023.10.23.0";
             this.appVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // seleccionarToolStripMenuItem
+            // caucionToolStripMenuItem
             // 
-            this.seleccionarToolStripMenuItem.Name = "seleccionarToolStripMenuItem";
-            this.seleccionarToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.seleccionarToolStripMenuItem.Text = "Seleccionar Instrumentos y Plazo";
-            this.seleccionarToolStripMenuItem.Click += new System.EventHandler(this.seleccionarToolStripMenuItem_Click);
+            this.caucionToolStripMenuItem.Name = "caucionToolStripMenuItem";
+            this.caucionToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.caucionToolStripMenuItem.Text = "Caucion";
+            this.caucionToolStripMenuItem.Click += new System.EventHandler(this.caucionToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -387,6 +395,7 @@
         private System.Windows.Forms.ToolStripMenuItem longGD30ShortAL30ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem longAL30ShortGD30ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seleccionarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem caucionToolStripMenuItem;
     }
 }
 

@@ -244,7 +244,7 @@ namespace Primary.WinFormsApp
                 lblSellPriceTarget.Text = "Px Arbitrado: " + _trade.SellPriceTarget.ToCurrency();
 
                 var tipoCaucion = _trade.EsCaucionColocadora ? "Colocadora" : "Tomadora";
-                this.groupBox1.Text = "Caución " + tipoCaucion;
+                this.grpCaucion.Text = "Caución " + tipoCaucion;
                 lblDiasCaucion.Text = "Días Caución: " + _trade.Caucion.Dias.ToString();
 
                 lblMontoCaucion.Text = "Importe a caucionar: " + _trade.Caucion.ImporteBruto.ToCurrency();

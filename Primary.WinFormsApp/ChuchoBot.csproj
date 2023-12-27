@@ -119,6 +119,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettlementTerms\Caucion.cs" />
+    <Compile Include="SettlementTerms\FrmCaucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettlementTerms\FrmCaucion.Designer.cs">
+      <DependentUpon>FrmCaucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettlementTerms\SettlementTermTrade.cs" />
     <Compile Include="SettlementTerms\SettlementTermTradeCalculation.cs" />
     <Compile Include="SettlementTerms\FrmSettlementTermLauncher.cs">
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration\FrmStringCollectionEditor.resx">
       <DependentUpon>FrmStringCollectionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettlementTerms\FrmCaucion.resx">
+      <DependentUpon>FrmCaucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettlementTerms\FrmSettlementTermLauncher.resx">
       <DependentUpon>FrmSettlementTermLauncher.cs</DependentUpon>
