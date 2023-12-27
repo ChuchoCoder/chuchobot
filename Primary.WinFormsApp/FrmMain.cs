@@ -527,5 +527,12 @@ namespace Primary.WinFormsApp
             }
 
         }
+
+        private void caucionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmCaucion = new FrmCaucion();
+            frmCaucion.Show();
+
+        }
     }
 }

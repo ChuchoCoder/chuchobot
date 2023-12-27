@@ -65,7 +65,7 @@
             this.lblGtoGtiaCaucion = new System.Windows.Forms.Label();
             this.lblIva = new System.Windows.Forms.Label();
             this.lblInteresNeto = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpCaucion = new System.Windows.Forms.GroupBox();
             this.lblMontoCaucion = new System.Windows.Forms.Label();
             this.lblGastosCaucion = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -78,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numCompraPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDolar)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.grpCaucion.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -494,25 +494,25 @@
             this.lblInteresNeto.TabIndex = 29;
             this.lblInteresNeto.Text = "Interes Neto";
             // 
-            // groupBox1
+            // grpCaucion
             // 
-            this.groupBox1.Controls.Add(this.lblMontoCaucion);
-            this.groupBox1.Controls.Add(this.lblGastosCaucion);
-            this.groupBox1.Controls.Add(this.lblDiasCaucion);
-            this.groupBox1.Controls.Add(this.lblIva);
-            this.groupBox1.Controls.Add(this.lblInteresNeto);
-            this.groupBox1.Controls.Add(this.lblGtoGtiaCaucion);
-            this.groupBox1.Controls.Add(this.lblInteresCaucion);
-            this.groupBox1.Controls.Add(this.lblDerMerCaucion);
-            this.groupBox1.Controls.Add(this.lblArancelCaucion);
-            this.groupBox1.Location = new System.Drawing.Point(21, 327);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(580, 165);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Caucion";
+            this.grpCaucion.Controls.Add(this.lblMontoCaucion);
+            this.grpCaucion.Controls.Add(this.lblGastosCaucion);
+            this.grpCaucion.Controls.Add(this.lblDiasCaucion);
+            this.grpCaucion.Controls.Add(this.lblIva);
+            this.grpCaucion.Controls.Add(this.lblInteresNeto);
+            this.grpCaucion.Controls.Add(this.lblGtoGtiaCaucion);
+            this.grpCaucion.Controls.Add(this.lblInteresCaucion);
+            this.grpCaucion.Controls.Add(this.lblDerMerCaucion);
+            this.grpCaucion.Controls.Add(this.lblArancelCaucion);
+            this.grpCaucion.Location = new System.Drawing.Point(21, 327);
+            this.grpCaucion.Margin = new System.Windows.Forms.Padding(2);
+            this.grpCaucion.Name = "grpCaucion";
+            this.grpCaucion.Padding = new System.Windows.Forms.Padding(2);
+            this.grpCaucion.Size = new System.Drawing.Size(580, 165);
+            this.grpCaucion.TabIndex = 6;
+            this.grpCaucion.TabStop = false;
+            this.grpCaucion.Text = "Caucion";
             // 
             // lblMontoCaucion
             // 
@@ -570,7 +570,7 @@
             this.ClientSize = new System.Drawing.Size(1191, 503);
             this.Controls.Add(this.settlementTermSettings1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpCaucion);
             this.Controls.Add(this.lnkArbitration);
             this.Controls.Add(this.lblDolar);
             this.Controls.Add(this.numDolar);
@@ -592,7 +592,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numCompraPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDolar)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.grpCaucion.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -633,7 +633,7 @@
         private System.Windows.Forms.Label lblGtoGtiaCaucion;
         private System.Windows.Forms.Label lblIva;
         private System.Windows.Forms.Label lblInteresNeto;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpCaucion;
         private System.Windows.Forms.Label lblGastosCaucion;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblMontoCaucion;
