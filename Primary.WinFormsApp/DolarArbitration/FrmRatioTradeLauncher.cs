@@ -17,11 +17,11 @@ namespace Primary.WinFormsApp.DolarArbitration
             if (instrumentSearchListSell.ValidateSelectedInstrument()
                 && instrumentSearchListBuy.ValidateSelectedInstrument())
             {
-                var buy = instrumentSearchListBuy.SelectedTicker;
-                var sell = instrumentSearchListSell.SelectedTicker;
+                var buy = instrumentSearchListBuy.SelectedInstrument;
+                var sell = instrumentSearchListSell.SelectedInstrument;
 
-                var sellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(sell.ToMervalSymbol48H()));
-                var buyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(buy.ToMervalSymbol48H()));
+                var sellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(sell.AddMervalPrefix()));
+                var buyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(buy.AddMervalPrefix()));
 
                 var sellTrade = new BuySellTrade(sellInstrumentWithData, sellInstrumentWithData);
                 var buyTrade = new BuySellTrade(buyInstrumentWithData, buyInstrumentWithData);
