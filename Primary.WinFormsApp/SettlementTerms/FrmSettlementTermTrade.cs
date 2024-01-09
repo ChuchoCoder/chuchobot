@@ -230,7 +230,7 @@ namespace Primary.WinFormsApp
         {
             if (numCompraPrice.Value > 0)
             {
-                _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value, numCompraPrice.Value + numCupon.Value, Settings.Default.TasaCaucion);
+                _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value - numCupon.Value, numCompraPrice.Value, Settings.Default.TasaCaucion);
 
                 lblVentaImporte.Text = $"Importe: {_trade.SellTotalSinComisiones:C2}";
                 lblVentaComision.Text = $"DM. + Com.: {-_trade.SellComisionDerechos:C2}";
