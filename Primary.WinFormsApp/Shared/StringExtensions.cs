@@ -62,7 +62,12 @@ namespace Primary.WinFormsApp
             return instrumentDetail.Is24H() ? diasLiq24H : diasLiq48H;
         }
 
-        public static string AddDolarSuffix(this string ticker)
+        public static string AddMervalPrefix(this string ticker)
+        {
+            return Instrument.MervalPrefix + ticker;
+        }
+
+            public static string AddDolarSuffix(this string ticker)
         {
             string tickersDC = TickersDC.FirstOrDefault(x => x.Contains(ticker));
             if (tickersDC != null)

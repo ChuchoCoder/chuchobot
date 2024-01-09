@@ -26,7 +26,7 @@ namespace Primary.WinFormsApp.Shared
         }
         public string[] _instruments;
 
-        private string SelectedInstrument => listInstrumentos.SelectedItem as string;
+        public string SelectedInstrument => listInstrumentos.SelectedItem as string;
         public string SelectedTicker => SelectedInstrument.RemoveSettlement();
 
         public InstrumentSearchList()
