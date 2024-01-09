@@ -41,6 +41,8 @@
             this.numOwnedVentaSize = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.grpArbitrationCompra = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numCupon = new System.Windows.Forms.NumericUpDown();
             this.lblBuyPriceTarget = new System.Windows.Forms.Label();
             this.lblCompraComision = new System.Windows.Forms.Label();
             this.CompraBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
@@ -71,18 +73,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblNetoCaucion = new System.Windows.Forms.Label();
             this.settlementTermSettings1 = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
-            this.numCupon = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.grpOwnedVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numVentaPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOwnedVentaSize)).BeginInit();
             this.grpArbitrationCompra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCupon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDolar)).BeginInit();
             this.grpCaucion.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCupon)).BeginInit();
             this.SuspendLayout();
             // 
             // grpOwnedVenta
@@ -234,6 +234,33 @@
             this.grpArbitrationCompra.TabIndex = 5;
             this.grpArbitrationCompra.TabStop = false;
             this.grpArbitrationCompra.Text = "2. Compra de Bono a Arbitrar";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 140);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 19);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Cupón:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // numCupon
+            // 
+            this.numCupon.Location = new System.Drawing.Point(112, 138);
+            this.numCupon.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.numCupon.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.numCupon.Name = "numCupon";
+            this.numCupon.Size = new System.Drawing.Size(80, 20);
+            this.numCupon.TabIndex = 12;
             // 
             // lblBuyPriceTarget
             // 
@@ -568,33 +595,6 @@
             this.settlementTermSettings1.Size = new System.Drawing.Size(643, 48);
             this.settlementTermSettings1.TabIndex = 3;
             // 
-            // numCupon
-            // 
-            this.numCupon.Location = new System.Drawing.Point(112, 145);
-            this.numCupon.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.numCupon.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.numCupon.Name = "numCupon";
-            this.numCupon.Size = new System.Drawing.Size(80, 20);
-            this.numCupon.TabIndex = 12;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 19);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Cupón:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // FrmSettlementTermTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,12 +621,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numOwnedVentaSize)).EndInit();
             this.grpArbitrationCompra.ResumeLayout(false);
             this.grpArbitrationCompra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCupon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCompraSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDolar)).EndInit();
             this.grpCaucion.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numCupon)).EndInit();
             this.ResumeLayout(false);
 
         }
