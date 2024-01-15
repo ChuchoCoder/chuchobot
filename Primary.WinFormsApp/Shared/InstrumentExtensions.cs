@@ -27,7 +27,7 @@ namespace Primary.WinFormsApp
 
         public static decimal GetIncrement(this InstrumentDetail instrumentDetail)
         {
-            return 1m / Convert.ToDecimal("1".PadRight(instrumentDetail.InstrumentPricePrecision + 1, '0'));
+            return instrumentDetail.MinPriceIncrement;
         }
 
         public static bool IsCEDEAR(this InstrumentDetail instrumentDetail)
