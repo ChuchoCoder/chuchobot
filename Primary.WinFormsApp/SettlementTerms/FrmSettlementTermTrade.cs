@@ -104,8 +104,8 @@ namespace Primary.WinFormsApp
             this.Text = $"Venta {_trade.Sell.Instrument.InstrumentId.SymbolWithoutPrefix()} -> Compra {_trade.Buy.Instrument.InstrumentId.SymbolWithoutPrefix()}";
             lnkArbitration.Text = Text;
 
-            numVentaPrice.Increment = _trade.Sell.Instrument.IsPesos() ? 1 : 0.01m;
-            numCompraPrice.Increment = _trade.Buy.Instrument.IsPesos() ? 1 : 0.01m;
+            numVentaPrice.Increment = _trade.Sell.Instrument.MinPriceIncrement;
+            numCompraPrice.Increment = _trade.Buy.Instrument.MinPriceIncrement;
 
             if (_trade.Sell.Instrument.IsPesos() && _trade.Buy.Instrument.IsPesos())
             {
