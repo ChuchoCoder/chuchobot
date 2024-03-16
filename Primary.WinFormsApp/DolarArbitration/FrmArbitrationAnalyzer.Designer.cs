@@ -371,6 +371,7 @@
             0,
             0,
             0});
+            this.numAlert.ValueChanged += new System.EventHandler(this.numAlert_ValueChanged);
             // 
             // label3
             // 

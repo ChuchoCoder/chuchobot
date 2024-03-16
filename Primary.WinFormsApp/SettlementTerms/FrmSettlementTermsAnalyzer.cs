@@ -37,6 +37,13 @@ namespace Primary.WinFormsApp
 
                 _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
 
+                var shouldAlert = trades.Any(x => x.ProfitLossPercentage > numAlert.Value / 100m);
+
+                if (Argentina.IsMarketOpen() && shouldAlert && Form.ActiveForm != this)
+                {
+                    FlashWindow.Flash(this, 3);
+                }
+
                 //grdArbitration.DataSource = _dataTable;
             }
             catch (Exception ex)

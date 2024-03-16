@@ -534,5 +534,16 @@ namespace Primary.WinFormsApp
             frmCaucion.Show();
 
         }
+
+        private void ratiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ValidateUserHasLogin())
+            {
+                var frmRatios = new FrmRatios();
+                //frmSettlementTermsAnalyzer.MdiParent = this;
+                frmRatios.Show();
+            }
+
+        }
     }
 }

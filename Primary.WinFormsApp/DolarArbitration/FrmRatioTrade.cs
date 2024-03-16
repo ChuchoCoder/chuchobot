@@ -192,10 +192,10 @@ namespace Primary.WinFormsApp
             lblCompraBCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
             lblVentaBCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
 
-            numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? 1 : 0.01m;
-            numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? 1 : 0.01m;
-            numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? 1 : 0.01m;
-            numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? 1 : 0.01m;
+            numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.MinPriceIncrement;
+            numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.MinPriceIncrement;
+            numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.MinPriceIncrement;
+            numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.MinPriceIncrement;
 
             numOwnedCompraPrice.DecimalPlaces = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? 0 : 2;
             numOwnedVentaPrice.DecimalPlaces = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? 0 : 2;
