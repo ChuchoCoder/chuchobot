@@ -66,7 +66,10 @@
             this.chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
             this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
             this.settlementTermSettings = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numAlert = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAlert)).BeginInit();
             this.SuspendLayout();
             // 
             // grdArbitration
@@ -308,11 +311,46 @@
             this.settlementTermSettings.Size = new System.Drawing.Size(643, 48);
             this.settlementTermSettings.TabIndex = 26;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(984, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Alert %:";
+            // 
+            // numAlert
+            // 
+            this.numAlert.DecimalPlaces = 2;
+            this.numAlert.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAlert.Location = new System.Drawing.Point(1032, 9);
+            this.numAlert.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numAlert.Name = "numAlert";
+            this.numAlert.Size = new System.Drawing.Size(51, 20);
+            this.numAlert.TabIndex = 27;
+            this.numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numAlert.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            // 
             // FrmSettlementTermsAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1398, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.numAlert);
             this.Controls.Add(this.settlementTermSettings);
             this.Controls.Add(this.chkOnlyShowTradesWithTickersOwned);
             this.Controls.Add(this.chkOnlyProfitableTrades);
@@ -322,7 +360,9 @@
             this.Text = "Arbitrajes de Plazo";
             this.Load += new System.EventHandler(this.FrmArbitrationBestTrades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAlert)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -351,5 +391,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ArbitrationCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn DolarCompraLast;
         private System.Windows.Forms.DataGridViewTextBoxColumn DolarVentaLast;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numAlert;
     }
 }

@@ -215,5 +215,10 @@ namespace Primary.WinFormsApp
             decimal value = (decimal)cell.Value;
             dgv.Rows[e.RowIndex].DefaultCellStyle.ForeColor = value == 0 ? Color.Blue : value < 0 ? Color.Red : Color.Green;
         }
+
+        private void numAlert_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

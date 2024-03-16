@@ -97,6 +97,12 @@
     <Compile Include="Components\BidsOffersControl.Designer.cs">
       <DependentUpon>BidsOffersControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DolarArbitration\FrmRatios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DolarArbitration\FrmRatios.Designer.cs">
+      <DependentUpon>FrmRatios.cs</DependentUpon>
+    </Compile>
     <Compile Include="DolarArbitration\FrmRatioTradeLauncher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     <Compile Include="Telemetry.cs" />
     <EmbeddedResource Include="Components\BidsOffersControl.resx">
       <DependentUpon>BidsOffersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DolarArbitration\FrmRatios.resx">
+      <DependentUpon>FrmRatios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DolarArbitration\FrmRatioTradeLauncher.resx">
       <DependentUpon>FrmRatioTradeLauncher.cs</DependentUpon>

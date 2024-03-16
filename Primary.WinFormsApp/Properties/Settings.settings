@@ -12,7 +12,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="USDARS" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">376</Value>
+      <Value Profile="(Default)">850</Value>
     </Setting>
     <Setting Name="Comision" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -70,6 +70,7 @@
   &lt;string&gt;BA.C&lt;/string&gt;
   &lt;string&gt;BA.CD&lt;/string&gt;
   &lt;string&gt;BABA&lt;/string&gt;
+  &lt;string&gt;BABA&lt;/string&gt;
   &lt;string&gt;BABAC&lt;/string&gt;
   &lt;string&gt;BABAD&lt;/string&gt;
   &lt;string&gt;BAD&lt;/string&gt;
@@ -93,6 +94,7 @@
   &lt;string&gt;BRFS&lt;/string&gt;
   &lt;string&gt;BRKB&lt;/string&gt;
   &lt;string&gt;BSBR&lt;/string&gt;
+  &lt;string&gt;BYMA&lt;/string&gt;
   &lt;string&gt;C&lt;/string&gt;
   &lt;string&gt;C.D&lt;/string&gt;
   &lt;string&gt;CAAP&lt;/string&gt;
@@ -123,6 +125,7 @@
   &lt;string&gt;DOCU&lt;/string&gt;
   &lt;string&gt;EBAY&lt;/string&gt;
   &lt;string&gt;EBAYD&lt;/string&gt;
+  &lt;string&gt;EEM&lt;/string&gt;
   &lt;string&gt;EEMC&lt;/string&gt;
   &lt;string&gt;EEMD&lt;/string&gt;
   &lt;string&gt;EFX&lt;/string&gt;
@@ -130,6 +133,7 @@
   &lt;string&gt;ERJ&lt;/string&gt;
   &lt;string&gt;ERJD&lt;/string&gt;
   &lt;string&gt;ETSY&lt;/string&gt;
+  &lt;string&gt;EWZ&lt;/string&gt;
   &lt;string&gt;FB&lt;/string&gt;
   &lt;string&gt;FBD&lt;/string&gt;
   &lt;string&gt;FCX&lt;/string&gt;
@@ -175,6 +179,7 @@
   &lt;string&gt;INTCD&lt;/string&gt;
   &lt;string&gt;ITUB&lt;/string&gt;
   &lt;string&gt;ITUBD&lt;/string&gt;
+  &lt;string&gt;IWM&lt;/string&gt;
   &lt;string&gt;JD&lt;/string&gt;
   &lt;string&gt;JNJ&lt;/string&gt;
   &lt;string&gt;JNJC&lt;/string&gt;
@@ -224,7 +229,9 @@
   &lt;string&gt;OGZDD&lt;/string&gt;
   &lt;string&gt;ORAN&lt;/string&gt;
   &lt;string&gt;ORCL&lt;/string&gt;
+  &lt;string&gt;OXY&lt;/string&gt;
   &lt;string&gt;PAAS&lt;/string&gt;
+  &lt;string&gt;PAMP&lt;/string&gt;
   &lt;string&gt;PBR&lt;/string&gt;
   &lt;string&gt;PBRD&lt;/string&gt;
   &lt;string&gt;PEP&lt;/string&gt;
@@ -269,10 +276,12 @@
   &lt;string&gt;TD&lt;/string&gt;
   &lt;string&gt;TEN&lt;/string&gt;
   &lt;string&gt;TEND&lt;/string&gt;
+  &lt;string&gt;TGNO4&lt;/string&gt;
   &lt;string&gt;TGT&lt;/string&gt;
   &lt;string&gt;TMD&lt;/string&gt;
   &lt;string&gt;TMO&lt;/string&gt;
   &lt;string&gt;TOT&lt;/string&gt;
+  &lt;string&gt;TRAN&lt;/string&gt;
   &lt;string&gt;TRIP&lt;/string&gt;
   &lt;string&gt;TSLA&lt;/string&gt;
   &lt;string&gt;TSLAC&lt;/string&gt;
@@ -438,7 +447,7 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">108</Value>
+      <Value Profile="(Default)">70</Value>
     </Setting>
     <Setting Name="ArancelCaucionColocadora" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1.5</Value>
