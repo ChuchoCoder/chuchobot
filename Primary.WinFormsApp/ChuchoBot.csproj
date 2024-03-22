@@ -309,9 +309,6 @@
       <DependentUpon>App.config</DependentUpon>
     </None>
   </ItemGroup>
-  <Target Name="SetAppConfig" AfterTargets="AfterBuild">
-    <Copy SourceFiles="$(ProjectDir)\App.$(Configuration).config" DestinationFiles="$(TargetDir)$(TargetFileName).config" OverwriteReadOnlyFiles="true" />
-  </Target>
   <ItemGroup>
     <ProjectReference Include="..\Primary\Primary.csproj">
       <Project>{93f50e83-d1ea-4537-bd12-b9ded3203341}</Project>
