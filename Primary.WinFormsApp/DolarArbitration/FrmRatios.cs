@@ -87,6 +87,8 @@ namespace Primary.WinFormsApp.DolarArbitration
             grdRatios.MultiSelect = false;
             grdRatios.AutoGenerateColumns = false;
             grdRatios.DataSource = dataTable;
+
+            tmr_Tick(this, new EventArgs());
         }
     }
 }

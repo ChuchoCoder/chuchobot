@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatios));
             this.grdRatios = new System.Windows.Forms.DataGridView();
             this.tmr = new System.Windows.Forms.Timer(this.components);
             this.Ratio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RatioLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RatioVariacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RatioYesterday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GDBid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ALOffer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RatioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GDOffer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ALBid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RatioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RatioLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RatioYesterday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RatioVariacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdRatios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,30 +58,30 @@
             // 
             this.grdRatios.AllowUserToAddRows = false;
             this.grdRatios.AllowUserToDeleteRows = false;
-            this.grdRatios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdRatios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.grdRatios.CausesValidation = false;
             this.grdRatios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdRatios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ratio,
+            this.RatioLast,
+            this.RatioVariacion,
+            this.RatioYesterday,
             this.GDBid,
             this.ALOffer,
             this.RatioCompra,
             this.GDOffer,
             this.ALBid,
-            this.RatioVenta,
-            this.RatioLast,
-            this.RatioYesterday,
-            this.RatioVariacion});
-            this.grdRatios.Location = new System.Drawing.Point(12, 12);
+            this.RatioVenta});
+            this.grdRatios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdRatios.Location = new System.Drawing.Point(0, 0);
+            this.grdRatios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grdRatios.Name = "grdRatios";
             this.grdRatios.ReadOnly = true;
             this.grdRatios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdRatios.ShowCellErrors = false;
             this.grdRatios.ShowEditingIcon = false;
             this.grdRatios.ShowRowErrors = false;
-            this.grdRatios.Size = new System.Drawing.Size(1217, 483);
+            this.grdRatios.Size = new System.Drawing.Size(932, 222);
             this.grdRatios.TabIndex = 0;
             // 
             // tmr
@@ -96,95 +96,106 @@
             this.Ratio.HeaderText = "Ratio";
             this.Ratio.Name = "Ratio";
             this.Ratio.ReadOnly = true;
-            // 
-            // GDBid
-            // 
-            this.GDBid.DataPropertyName = "GDBid";
-            dataGridViewCellStyle10.Format = "C2";
-            this.GDBid.DefaultCellStyle = dataGridViewCellStyle10;
-            this.GDBid.HeaderText = "GD Bid";
-            this.GDBid.Name = "GDBid";
-            this.GDBid.ReadOnly = true;
-            // 
-            // ALOffer
-            // 
-            this.ALOffer.DataPropertyName = "ALOffer";
-            dataGridViewCellStyle11.Format = "C2";
-            this.ALOffer.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ALOffer.HeaderText = "AL Offer";
-            this.ALOffer.Name = "ALOffer";
-            this.ALOffer.ReadOnly = true;
-            // 
-            // RatioCompra
-            // 
-            this.RatioCompra.DataPropertyName = "RatioCompra";
-            dataGridViewCellStyle12.Format = "P";
-            this.RatioCompra.DefaultCellStyle = dataGridViewCellStyle12;
-            this.RatioCompra.HeaderText = "Ratio Compra";
-            this.RatioCompra.Name = "RatioCompra";
-            this.RatioCompra.ReadOnly = true;
-            // 
-            // GDOffer
-            // 
-            this.GDOffer.DataPropertyName = "GDOffer";
-            dataGridViewCellStyle13.Format = "C2";
-            this.GDOffer.DefaultCellStyle = dataGridViewCellStyle13;
-            this.GDOffer.HeaderText = "GD Offer";
-            this.GDOffer.Name = "GDOffer";
-            this.GDOffer.ReadOnly = true;
-            // 
-            // ALBid
-            // 
-            this.ALBid.DataPropertyName = "ALBid";
-            dataGridViewCellStyle14.Format = "C2";
-            this.ALBid.DefaultCellStyle = dataGridViewCellStyle14;
-            this.ALBid.HeaderText = "AL Bid";
-            this.ALBid.Name = "ALBid";
-            this.ALBid.ReadOnly = true;
-            // 
-            // RatioVenta
-            // 
-            this.RatioVenta.DataPropertyName = "RatioVenta";
-            dataGridViewCellStyle15.Format = "P";
-            this.RatioVenta.DefaultCellStyle = dataGridViewCellStyle15;
-            this.RatioVenta.HeaderText = "Ratio Venta";
-            this.RatioVenta.Name = "RatioVenta";
-            this.RatioVenta.ReadOnly = true;
+            this.Ratio.Width = 57;
             // 
             // RatioLast
             // 
             this.RatioLast.DataPropertyName = "RatioLast";
-            dataGridViewCellStyle16.Format = "P";
-            this.RatioLast.DefaultCellStyle = dataGridViewCellStyle16;
-            this.RatioLast.HeaderText = "Ratio Last";
+            dataGridViewCellStyle1.Format = "P";
+            this.RatioLast.DefaultCellStyle = dataGridViewCellStyle1;
+            this.RatioLast.HeaderText = "Ult.";
             this.RatioLast.Name = "RatioLast";
             this.RatioLast.ReadOnly = true;
-            // 
-            // RatioYesterday
-            // 
-            this.RatioYesterday.DataPropertyName = "RatioYesterday";
-            dataGridViewCellStyle17.Format = "P";
-            this.RatioYesterday.DefaultCellStyle = dataGridViewCellStyle17;
-            this.RatioYesterday.HeaderText = "Ratio Ayer";
-            this.RatioYesterday.Name = "RatioYesterday";
-            this.RatioYesterday.ReadOnly = true;
+            this.RatioLast.Width = 48;
             // 
             // RatioVariacion
             // 
             this.RatioVariacion.DataPropertyName = "RatioVariacion";
-            dataGridViewCellStyle18.Format = "P";
-            this.RatioVariacion.DefaultCellStyle = dataGridViewCellStyle18;
-            this.RatioVariacion.HeaderText = "RatioVariacion";
+            dataGridViewCellStyle2.Format = "P";
+            this.RatioVariacion.DefaultCellStyle = dataGridViewCellStyle2;
+            this.RatioVariacion.HeaderText = "Variacion";
             this.RatioVariacion.Name = "RatioVariacion";
             this.RatioVariacion.ReadOnly = true;
+            this.RatioVariacion.Width = 76;
+            // 
+            // RatioYesterday
+            // 
+            this.RatioYesterday.DataPropertyName = "RatioYesterday";
+            dataGridViewCellStyle3.Format = "P";
+            this.RatioYesterday.DefaultCellStyle = dataGridViewCellStyle3;
+            this.RatioYesterday.HeaderText = "Cierre";
+            this.RatioYesterday.Name = "RatioYesterday";
+            this.RatioYesterday.ReadOnly = true;
+            this.RatioYesterday.Width = 59;
+            // 
+            // GDBid
+            // 
+            this.GDBid.DataPropertyName = "GDBid";
+            dataGridViewCellStyle4.Format = "C2";
+            this.GDBid.DefaultCellStyle = dataGridViewCellStyle4;
+            this.GDBid.HeaderText = "GD Bid";
+            this.GDBid.Name = "GDBid";
+            this.GDBid.ReadOnly = true;
+            this.GDBid.Width = 66;
+            // 
+            // ALOffer
+            // 
+            this.ALOffer.DataPropertyName = "ALOffer";
+            dataGridViewCellStyle5.Format = "C2";
+            this.ALOffer.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ALOffer.HeaderText = "AL Offer";
+            this.ALOffer.Name = "ALOffer";
+            this.ALOffer.ReadOnly = true;
+            this.ALOffer.Width = 71;
+            // 
+            // RatioCompra
+            // 
+            this.RatioCompra.DataPropertyName = "RatioCompra";
+            dataGridViewCellStyle6.Format = "P";
+            this.RatioCompra.DefaultCellStyle = dataGridViewCellStyle6;
+            this.RatioCompra.HeaderText = "Ratio Compra";
+            this.RatioCompra.Name = "RatioCompra";
+            this.RatioCompra.ReadOnly = true;
+            this.RatioCompra.Width = 96;
+            // 
+            // GDOffer
+            // 
+            this.GDOffer.DataPropertyName = "GDOffer";
+            dataGridViewCellStyle7.Format = "C2";
+            this.GDOffer.DefaultCellStyle = dataGridViewCellStyle7;
+            this.GDOffer.HeaderText = "GD Offer";
+            this.GDOffer.Name = "GDOffer";
+            this.GDOffer.ReadOnly = true;
+            this.GDOffer.Width = 74;
+            // 
+            // ALBid
+            // 
+            this.ALBid.DataPropertyName = "ALBid";
+            dataGridViewCellStyle8.Format = "C2";
+            this.ALBid.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ALBid.HeaderText = "AL Bid";
+            this.ALBid.Name = "ALBid";
+            this.ALBid.ReadOnly = true;
+            this.ALBid.Width = 63;
+            // 
+            // RatioVenta
+            // 
+            this.RatioVenta.DataPropertyName = "RatioVenta";
+            dataGridViewCellStyle9.Format = "P";
+            this.RatioVenta.DefaultCellStyle = dataGridViewCellStyle9;
+            this.RatioVenta.HeaderText = "Ratio Venta";
+            this.RatioVenta.Name = "RatioVenta";
+            this.RatioVenta.ReadOnly = true;
+            this.RatioVenta.Width = 88;
             // 
             // FrmRatios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1241, 507);
+            this.ClientSize = new System.Drawing.Size(932, 222);
             this.Controls.Add(this.grdRatios);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmRatios";
             this.Text = "Ratios";
             this.Load += new System.EventHandler(this.FrmRatios_Load);
@@ -198,14 +209,14 @@
         private System.Windows.Forms.DataGridView grdRatios;
         private System.Windows.Forms.Timer tmr;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ratio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RatioLast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RatioVariacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RatioYesterday;
         private System.Windows.Forms.DataGridViewTextBoxColumn GDBid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ALOffer;
         private System.Windows.Forms.DataGridViewTextBoxColumn RatioCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn GDOffer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ALBid;
         private System.Windows.Forms.DataGridViewTextBoxColumn RatioVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RatioLast;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RatioYesterday;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RatioVariacion;
     }
 }
