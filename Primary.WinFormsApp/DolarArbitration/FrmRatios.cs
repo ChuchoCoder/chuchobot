@@ -30,9 +30,9 @@ namespace Primary.WinFormsApp.DolarArbitration
 
         private void RefreshRatioRow(string gdTicker, string alTicker)
         {
-            var al30 = Argentina.Data.GetLatestOrNull(alTicker.ToMervalSymbol48H());
+            var al = Argentina.Data.GetLatestOrNull(alTicker.ToMervalSymbol48H());
 
-            var gd30 = Argentina.Data.GetLatestOrNull(gdTicker.ToMervalSymbol48H());
+            var gd = Argentina.Data.GetLatestOrNull(gdTicker.ToMervalSymbol48H());
 
             var ratio = gdTicker + "/" + alTicker;
             var existingRow = dataTable.Rows.Find(new[] { ratio });
@@ -47,17 +47,17 @@ namespace Primary.WinFormsApp.DolarArbitration
                 row = dataTable.NewRow();
                 row["Ratio"] = ratio;
             }
-            row["GDBid"] = gd30.GetTopBidPrice();
-            row["GDOffer"] = gd30.GetTopOfferPrice();
-            row["ALBid"] = al30.GetTopOfferPrice();
-            row["ALOffer"] = al30.GetTopOfferPrice();
-            row["RatioVenta"] = al30.GetTopBidPrice() > 0 ? gd30.GetTopOfferPrice() / al30.GetTopBidPrice() - 1 : 0;
-            row["RatioCompra"] = al30.GetTopOfferPrice() > 0 ? gd30.GetTopBidPrice() / al30.GetTopOfferPrice() - 1 : 0;
+            row["GDBid"] = gd.GetTopBidPrice();
+            row["GDOffer"] = gd.GetTopOfferPrice();
+            row["ALBid"] = al.GetTopBidPrice();
+            row["ALOffer"] = al.GetTopOfferPrice();
+            row["RatioVenta"] = al.GetTopBidPrice() > 0 ? gd.GetTopOfferPrice() / al.GetTopBidPrice() - 1 : 0;
+            row["RatioCompra"] = al.GetTopOfferPrice() > 0 ? gd.GetTopBidPrice() / al.GetTopOfferPrice() - 1 : 0;
 
-            var ratioLast = al30.Last.Price > 0 ? gd30.Last.Price / al30.Last.Price - 1 : 0;
+            var ratioLast = al.Last.Price > 0 ? gd.Last.Price / al.Last.Price - 1 : 0;
             row["RatioLast"] = ratioLast;
 
-            var ratioClose = al30.ClosePrice() > 0 ? gd30.ClosePrice() / al30.ClosePrice() - 1 : 0;
+            var ratioClose = al.ClosePrice() > 0 ? gd.ClosePrice() / al.ClosePrice() - 1 : 0;
             row["RatioYesterday"] = ratioClose;
 
             row["RatioVariacion"] = ratioLast - ratioClose;
