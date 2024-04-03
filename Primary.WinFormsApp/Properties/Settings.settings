@@ -202,6 +202,9 @@
   &lt;string&gt;MELI&lt;/string&gt;
   &lt;string&gt;MELIC&lt;/string&gt;
   &lt;string&gt;MELID&lt;/string&gt;
+  &lt;string&gt;META&lt;/string&gt;
+  &lt;string&gt;METAC&lt;/string&gt;
+  &lt;string&gt;METAD&lt;/string&gt;
   &lt;string&gt;MMC&lt;/string&gt;
   &lt;string&gt;MMM&lt;/string&gt;
   &lt;string&gt;MMMD&lt;/string&gt;
@@ -325,6 +328,37 @@
   &lt;string&gt;ZM&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">70</Value>
+    </Setting>
+    <Setting Name="ArancelCaucionColocadora" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1.5</Value>
+    </Setting>
+    <Setting Name="ArancelCaucionTomadora" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="DerechoMercadoLetra" Type="System.Decimal" Scope="Application">
+      <Value Profile="(Default)">0.001</Value>
+    </Setting>
+    <Setting Name="AppInsightsConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;InstrumentationKey=fad780b5-9d86-41bf-9b39-8a0cbe73b9f7;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">InstrumentationKey=fad780b5-9d86-41bf-9b39-8a0cbe73b9f7;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/</Value>
+    </Setting>
+    <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;X20Y4;XY4D;XY4D&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Letras" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;X20Y4&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
     <Setting Name="ArbitrationTickers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
@@ -438,45 +472,11 @@
   &lt;string&gt;WBA&lt;/string&gt;
   &lt;string&gt;WFC&lt;/string&gt;
   &lt;string&gt;WMT&lt;/string&gt;
-  &lt;string&gt;X18E4&lt;/string&gt;
-  &lt;string&gt;X20F4&lt;/string&gt;
+  &lt;string&gt;X20Y4&lt;/string&gt;
   &lt;string&gt;XLE&lt;/string&gt;
   &lt;string&gt;XLF&lt;/string&gt;
   &lt;string&gt;XOM&lt;/string&gt;
   &lt;string&gt;ZM&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="TasaCaucion" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">70</Value>
-    </Setting>
-    <Setting Name="ArancelCaucionColocadora" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">1.5</Value>
-    </Setting>
-    <Setting Name="ArancelCaucionTomadora" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">4</Value>
-    </Setting>
-    <Setting Name="DerechoMercadoLetra" Type="System.Decimal" Scope="Application">
-      <Value Profile="(Default)">0.001</Value>
-    </Setting>
-    <Setting Name="AppInsightsConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString /&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;X18E4;XE4D;XE4C&lt;/string&gt;
-  &lt;string&gt;X20F4;XF4D;XF4C&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="Letras" Type="System.Collections.Specialized.StringCollection" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;X18E4&lt;/string&gt;
-  &lt;string&gt;X20F4&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
