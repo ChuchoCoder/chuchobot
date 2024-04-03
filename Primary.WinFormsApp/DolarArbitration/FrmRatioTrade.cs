@@ -230,25 +230,24 @@ namespace Primary.WinFormsApp
                 }
                 else
                 {
-                    var sellBid = 10000m;
                     var sellTotal = 1m;
+                    var sellBidPrice = 1m;
                     if (_trade.SellThenBuy.Sell.HasBids())
                     {
-                        sellBid = _trade.SellThenBuy.Sell.Data.GetTopBidSize();
-                        var sellPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice() * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor;
-                        sellTotal = sellBid * sellPrice;
+                        var sellBidSize = _trade.SellThenBuy.Sell.Data.GetTopBidSize();
+                        sellBidPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice() * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor;
+                        sellTotal = sellBidSize * sellBidPrice;
                     }
 
-                    var buyBid = 10000m;
                     var buyTotal = 1m;
-                    if (_trade.BuyThenSell.Buy.HasOffers())
+                    if (_trade.BuyThenSell.Sell.HasOffers())
                     {
-                        buyBid = _trade.BuyThenSell.Buy.Data.GetTopOfferSize();
-                        var buyPrice = _trade.BuyThenSell.Buy.Data.GetTopOfferPrice() * _trade.BuyThenSell.Buy.Instrument.PriceConvertionFactor;
-                        buyTotal = buyBid * buyPrice;
+                        var buyOfferSize = _trade.BuyThenSell.Sell.Data.GetTopOfferSize();
+                        var buyOfferPrice = _trade.BuyThenSell.Sell.Data.GetTopOfferPrice() * _trade.BuyThenSell.Sell.Instrument.PriceConvertionFactor;
+                        buyTotal = buyOfferSize * buyOfferPrice;
                     }
 
-                    numOwnedVentaSize.Value = sellTotal > buyTotal ? buyBid : sellBid;
+                    numOwnedVentaSize.Value = Math.Min(sellTotal, buyTotal) / sellBidPrice;
                 }
             }
         }
@@ -299,7 +298,8 @@ namespace Primary.WinFormsApp
 
         private void ArbitrationCompraBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
-            ArbitrationSizeAutoUpdate = e.ClickType == BidsOffersClickType.TopOffer;
+            // ArbitrationSizeAutoUpdate = e.ClickType == BidsOffersClickType.TopOffer;
+            ArbitrationSizeAutoUpdate = false;
             numArbitrationCompraSize.Value = e.Value;
             // Calcular el size en base al BuyThenSell Compra Size
             var amount = numArbitrationCompraPrice.Value * numArbitrationCompraSize.Value * _arbitrationQuantityPerPrice;
