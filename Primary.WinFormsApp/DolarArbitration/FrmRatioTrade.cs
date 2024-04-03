@@ -222,9 +222,9 @@ namespace Primary.WinFormsApp
                 {
                     if (_trade.SellThenBuy.Buy.HasOffers())
                     {
-                        var buyPrice = OwnedVentaPriceAutoUpdate ? _trade.SellThenBuy.Buy.Data.GetTopOfferPrice() : numOwnedVentaPrice.Value;
-                        var compra = numArbitrationCompraSize.Value * numArbitrationCompraPrice.Value;
-                        var venta = compra / buyPrice;
+                        var buyPrice = OwnedVentaPriceAutoUpdate ? _trade.SellThenBuy.Sell.Data.GetTopOfferPrice() : numOwnedVentaPrice.Value;
+                        var compra = numArbitrationCompraSize.Value * (numArbitrationCompraPrice.Value * _trade.BuyThenSell.Buy.Instrument.PriceConvertionFactor);
+                        var venta = compra / (buyPrice * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor);
                         numOwnedVentaSize.Value = venta;
                     }
                 }
@@ -235,7 +235,7 @@ namespace Primary.WinFormsApp
                     if (_trade.SellThenBuy.Sell.HasBids())
                     {
                         sellBid = _trade.SellThenBuy.Sell.Data.GetTopBidSize();
-                        var sellPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice();
+                        var sellPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice() * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor;
                         sellTotal = sellBid * sellPrice;
                     }
 
@@ -244,7 +244,7 @@ namespace Primary.WinFormsApp
                     if (_trade.BuyThenSell.Buy.HasOffers())
                     {
                         buyBid = _trade.BuyThenSell.Buy.Data.GetTopOfferSize();
-                        var buyPrice = _trade.BuyThenSell.Buy.Data.GetTopOfferPrice();
+                        var buyPrice = _trade.BuyThenSell.Buy.Data.GetTopOfferPrice() * _trade.BuyThenSell.Buy.Instrument.PriceConvertionFactor;
                         buyTotal = buyBid * buyPrice;
                     }
 
@@ -320,7 +320,7 @@ namespace Primary.WinFormsApp
 
         private void ArbitrationVentaBidsOffers_ClickSize(object sender, BidOffersEventArgs e)
         {
-            numArbitrationVentaSize.Value = e.Value;
+            numArbitrationCompraSize.Value = e.Value;
             // Calcular el size en base al BuyThenSell Venta usando el precio de BuyThenSell Compra 
             var amount = numArbitrationCompraPrice.Value * numArbitrationVentaSize.Value * _arbitrationQuantityPerPrice;
             UpdateOwnedVentaSizeBasedOnAmount(amount);
