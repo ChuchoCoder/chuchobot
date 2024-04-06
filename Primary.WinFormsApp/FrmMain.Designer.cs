@@ -32,29 +32,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historicDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buscadorDeArbitrajesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buscadorArbitrajesSimplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirScannerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seleccionarInstrumentoYPlazosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dolarPricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compraMEPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ventaMEPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compraCCLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ventaCCLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.marketDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbInstruments = new System.Windows.Forms.ToolStripComboBox();
-            this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instrumentosParaArbitrajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accionesCEDEARsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.letrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tickersDCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historicDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dolarPricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraMEPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventaMEPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraCCLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventaCCLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscadorDeArbitrajesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscadorArbitrajesSimplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirScannerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marketDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbInstruments = new System.Windows.Forms.ToolStripComboBox();
+            this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.arbitrajeRatioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.longGD30ShortAL30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.longAL30ShortGD30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.longGD30ShortAL30 = new System.Windows.Forms.ToolStripMenuItem();
+            this.longAL30ShortGD30 = new System.Windows.Forms.ToolStripMenuItem();
             this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ratiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caucionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +64,10 @@
             this.disconnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusInformation = new System.Windows.Forms.ToolStripStatusLabel();
             this.appVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.longGD35ShortAL35 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -86,8 +90,8 @@
             this.caucionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1161, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1548, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -97,121 +101,6 @@
             this.loginToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
-            // 
-            // connectToolStripMenuItem
-            // 
-            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.connectToolStripMenuItem.Text = "Connect";
-            this.connectToolStripMenuItem.Visible = false;
-            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
-            // 
-            // historicDataToolStripMenuItem
-            // 
-            this.historicDataToolStripMenuItem.Name = "historicDataToolStripMenuItem";
-            this.historicDataToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.historicDataToolStripMenuItem.Text = "Historic Data";
-            this.historicDataToolStripMenuItem.Visible = false;
-            this.historicDataToolStripMenuItem.Click += new System.EventHandler(this.historicDataToolStripMenuItem_Click);
-            // 
-            // buscadorDeArbitrajesToolStripMenuItem
-            // 
-            this.buscadorDeArbitrajesToolStripMenuItem.Name = "buscadorDeArbitrajesToolStripMenuItem";
-            this.buscadorDeArbitrajesToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.buscadorDeArbitrajesToolStripMenuItem.Text = "Arbitrajes Dolar";
-            this.buscadorDeArbitrajesToolStripMenuItem.Click += new System.EventHandler(this.buscadorDeArbitrajesToolStripMenuItem_Click);
-            // 
-            // buscadorArbitrajesSimplesToolStripMenuItem
-            // 
-            this.buscadorArbitrajesSimplesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirScannerToolStripMenuItem,
-            this.seleccionarInstrumentoYPlazosToolStripMenuItem});
-            this.buscadorArbitrajesSimplesToolStripMenuItem.Name = "buscadorArbitrajesSimplesToolStripMenuItem";
-            this.buscadorArbitrajesSimplesToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
-            this.buscadorArbitrajesSimplesToolStripMenuItem.Text = "Arbitrajes de Plazo";
-            this.buscadorArbitrajesSimplesToolStripMenuItem.Click += new System.EventHandler(this.buscadorArbitrajesSimplesToolStripMenuItem_Click);
-            // 
-            // abrirScannerToolStripMenuItem
-            // 
-            this.abrirScannerToolStripMenuItem.Name = "abrirScannerToolStripMenuItem";
-            this.abrirScannerToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.abrirScannerToolStripMenuItem.Text = "Abrir scanner";
-            this.abrirScannerToolStripMenuItem.Click += new System.EventHandler(this.abrirScannerToolStripMenuItem_Click);
-            // 
-            // seleccionarInstrumentoYPlazosToolStripMenuItem
-            // 
-            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Name = "seleccionarInstrumentoYPlazosToolStripMenuItem";
-            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Text = "Seleccionar Instrumento y Plazos";
-            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Click += new System.EventHandler(this.seleccionarInstrumentoYPlazosToolStripMenuItem_Click);
-            // 
-            // dolarPricesToolStripMenuItem
-            // 
-            this.dolarPricesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.compraMEPToolStripMenuItem,
-            this.ventaMEPToolStripMenuItem,
-            this.compraCCLToolStripMenuItem,
-            this.ventaCCLToolStripMenuItem});
-            this.dolarPricesToolStripMenuItem.Name = "dolarPricesToolStripMenuItem";
-            this.dolarPricesToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.dolarPricesToolStripMenuItem.Text = "Dolar Prices";
-            this.dolarPricesToolStripMenuItem.Click += new System.EventHandler(this.dolarPricesToolStripMenuItem_Click);
-            // 
-            // compraMEPToolStripMenuItem
-            // 
-            this.compraMEPToolStripMenuItem.Name = "compraMEPToolStripMenuItem";
-            this.compraMEPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.compraMEPToolStripMenuItem.Text = "Compra MEP";
-            this.compraMEPToolStripMenuItem.Click += new System.EventHandler(this.compraMEPToolStripMenuItem_Click);
-            // 
-            // ventaMEPToolStripMenuItem
-            // 
-            this.ventaMEPToolStripMenuItem.Name = "ventaMEPToolStripMenuItem";
-            this.ventaMEPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ventaMEPToolStripMenuItem.Text = "Venta MEP";
-            this.ventaMEPToolStripMenuItem.Click += new System.EventHandler(this.ventaMEPToolStripMenuItem_Click);
-            // 
-            // compraCCLToolStripMenuItem
-            // 
-            this.compraCCLToolStripMenuItem.Name = "compraCCLToolStripMenuItem";
-            this.compraCCLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.compraCCLToolStripMenuItem.Text = "Compra CCL";
-            this.compraCCLToolStripMenuItem.Click += new System.EventHandler(this.compraCCLToolStripMenuItem_Click);
-            // 
-            // ventaCCLToolStripMenuItem
-            // 
-            this.ventaCCLToolStripMenuItem.Name = "ventaCCLToolStripMenuItem";
-            this.ventaCCLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ventaCCLToolStripMenuItem.Text = "Venta CCL";
-            this.ventaCCLToolStripMenuItem.Click += new System.EventHandler(this.ventaCCLToolStripMenuItem_Click);
-            // 
-            // marketDataToolStripMenuItem
-            // 
-            this.marketDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmbInstruments});
-            this.marketDataToolStripMenuItem.Name = "marketDataToolStripMenuItem";
-            this.marketDataToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.marketDataToolStripMenuItem.Text = "MarketData";
-            this.marketDataToolStripMenuItem.Visible = false;
-            // 
-            // cmbInstruments
-            // 
-            this.cmbInstruments.Name = "cmbInstruments";
-            this.cmbInstruments.Size = new System.Drawing.Size(121, 23);
-            this.cmbInstruments.SelectedIndexChanged += new System.EventHandler(this.cmbInstruments_SelectedIndexChanged);
-            // 
-            // refreshDataToolStripMenuItem
-            // 
-            this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
-            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.refreshDataToolStripMenuItem.Text = "Refresh Data";
-            this.refreshDataToolStripMenuItem.Visible = false;
-            this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
             // configuraciónToolStripMenuItem
             // 
@@ -249,33 +138,152 @@
             // 
             this.tickersDCToolStripMenuItem.Name = "tickersDCToolStripMenuItem";
             this.tickersDCToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
-            this.tickersDCToolStripMenuItem.Text = "Excepciones de instrumentos $,D,C";
+            this.tickersDCToolStripMenuItem.Text = "Excepciones de instrumentos $;D;C";
             this.tickersDCToolStripMenuItem.Click += new System.EventHandler(this.tickersDCToolStripMenuItem_Click);
+            // 
+            // connectToolStripMenuItem
+            // 
+            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.connectToolStripMenuItem.Text = "Connect";
+            this.connectToolStripMenuItem.Visible = false;
+            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
+            // 
+            // historicDataToolStripMenuItem
+            // 
+            this.historicDataToolStripMenuItem.Name = "historicDataToolStripMenuItem";
+            this.historicDataToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.historicDataToolStripMenuItem.Text = "Historic Data";
+            this.historicDataToolStripMenuItem.Visible = false;
+            this.historicDataToolStripMenuItem.Click += new System.EventHandler(this.historicDataToolStripMenuItem_Click);
+            // 
+            // dolarPricesToolStripMenuItem
+            // 
+            this.dolarPricesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compraMEPToolStripMenuItem,
+            this.ventaMEPToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.compraCCLToolStripMenuItem,
+            this.ventaCCLToolStripMenuItem});
+            this.dolarPricesToolStripMenuItem.Name = "dolarPricesToolStripMenuItem";
+            this.dolarPricesToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.dolarPricesToolStripMenuItem.Text = "Precios Dolar MEP/CCL";
+            this.dolarPricesToolStripMenuItem.Click += new System.EventHandler(this.dolarPricesToolStripMenuItem_Click);
+            // 
+            // compraMEPToolStripMenuItem
+            // 
+            this.compraMEPToolStripMenuItem.Name = "compraMEPToolStripMenuItem";
+            this.compraMEPToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.compraMEPToolStripMenuItem.Text = "Ver Precios para Compra MEP";
+            this.compraMEPToolStripMenuItem.Click += new System.EventHandler(this.compraMEPToolStripMenuItem_Click);
+            // 
+            // ventaMEPToolStripMenuItem
+            // 
+            this.ventaMEPToolStripMenuItem.Name = "ventaMEPToolStripMenuItem";
+            this.ventaMEPToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.ventaMEPToolStripMenuItem.Text = "Ver Precios para Venta MEP";
+            this.ventaMEPToolStripMenuItem.Click += new System.EventHandler(this.ventaMEPToolStripMenuItem_Click);
+            // 
+            // compraCCLToolStripMenuItem
+            // 
+            this.compraCCLToolStripMenuItem.Name = "compraCCLToolStripMenuItem";
+            this.compraCCLToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.compraCCLToolStripMenuItem.Text = "Ver Precios para Compra CCL";
+            this.compraCCLToolStripMenuItem.Click += new System.EventHandler(this.compraCCLToolStripMenuItem_Click);
+            // 
+            // ventaCCLToolStripMenuItem
+            // 
+            this.ventaCCLToolStripMenuItem.Name = "ventaCCLToolStripMenuItem";
+            this.ventaCCLToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.ventaCCLToolStripMenuItem.Text = "Ver Precios para Venta CCL";
+            this.ventaCCLToolStripMenuItem.Click += new System.EventHandler(this.ventaCCLToolStripMenuItem_Click);
+            // 
+            // buscadorDeArbitrajesToolStripMenuItem
+            // 
+            this.buscadorDeArbitrajesToolStripMenuItem.Name = "buscadorDeArbitrajesToolStripMenuItem";
+            this.buscadorDeArbitrajesToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.buscadorDeArbitrajesToolStripMenuItem.Text = "Arbitrajes Dolar";
+            this.buscadorDeArbitrajesToolStripMenuItem.Click += new System.EventHandler(this.buscadorDeArbitrajesToolStripMenuItem_Click);
+            // 
+            // buscadorArbitrajesSimplesToolStripMenuItem
+            // 
+            this.buscadorArbitrajesSimplesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirScannerToolStripMenuItem,
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem});
+            this.buscadorArbitrajesSimplesToolStripMenuItem.Name = "buscadorArbitrajesSimplesToolStripMenuItem";
+            this.buscadorArbitrajesSimplesToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.buscadorArbitrajesSimplesToolStripMenuItem.Text = "Arbitrajes de Plazo";
+            this.buscadorArbitrajesSimplesToolStripMenuItem.Click += new System.EventHandler(this.buscadorArbitrajesSimplesToolStripMenuItem_Click);
+            // 
+            // abrirScannerToolStripMenuItem
+            // 
+            this.abrirScannerToolStripMenuItem.Name = "abrirScannerToolStripMenuItem";
+            this.abrirScannerToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.abrirScannerToolStripMenuItem.Text = "Abrir scanner";
+            this.abrirScannerToolStripMenuItem.Click += new System.EventHandler(this.abrirScannerToolStripMenuItem_Click);
+            // 
+            // seleccionarInstrumentoYPlazosToolStripMenuItem
+            // 
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Name = "seleccionarInstrumentoYPlazosToolStripMenuItem";
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Text = "Seleccionar Instrumento y Plazos";
+            this.seleccionarInstrumentoYPlazosToolStripMenuItem.Click += new System.EventHandler(this.seleccionarInstrumentoYPlazosToolStripMenuItem_Click);
+            // 
+            // marketDataToolStripMenuItem
+            // 
+            this.marketDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmbInstruments});
+            this.marketDataToolStripMenuItem.Name = "marketDataToolStripMenuItem";
+            this.marketDataToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.marketDataToolStripMenuItem.Text = "MarketData";
+            this.marketDataToolStripMenuItem.Visible = false;
+            // 
+            // cmbInstruments
+            // 
+            this.cmbInstruments.Name = "cmbInstruments";
+            this.cmbInstruments.Size = new System.Drawing.Size(121, 23);
+            this.cmbInstruments.SelectedIndexChanged += new System.EventHandler(this.cmbInstruments_SelectedIndexChanged);
+            // 
+            // refreshDataToolStripMenuItem
+            // 
+            this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
+            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.refreshDataToolStripMenuItem.Text = "Refresh Data";
+            this.refreshDataToolStripMenuItem.Visible = false;
+            this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
             // arbitrajeRatioToolStripMenuItem
             // 
             this.arbitrajeRatioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.longGD30ShortAL30ToolStripMenuItem,
-            this.longAL30ShortGD30ToolStripMenuItem,
+            this.longGD30ShortAL30,
+            this.longAL30ShortGD30,
+            this.longGD35ShortAL35,
+            this.toolStripSeparator2,
             this.seleccionarToolStripMenuItem,
+            this.toolStripSeparator3,
             this.ratiosToolStripMenuItem});
             this.arbitrajeRatioToolStripMenuItem.Name = "arbitrajeRatioToolStripMenuItem";
-            this.arbitrajeRatioToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.arbitrajeRatioToolStripMenuItem.Text = "Arbitraje Ratio";
+            this.arbitrajeRatioToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.arbitrajeRatioToolStripMenuItem.Text = "Ratio";
             // 
-            // longGD30ShortAL30ToolStripMenuItem
+            // longGD30ShortAL30
             // 
-            this.longGD30ShortAL30ToolStripMenuItem.Name = "longGD30ShortAL30ToolStripMenuItem";
-            this.longGD30ShortAL30ToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.longGD30ShortAL30ToolStripMenuItem.Text = "Long GD30 / Short AL30";
-            this.longGD30ShortAL30ToolStripMenuItem.Click += new System.EventHandler(this.longGD30ShortAL30ToolStripMenuItem_Click);
+            this.longGD30ShortAL30.Name = "longGD30ShortAL30";
+            this.longGD30ShortAL30.Size = new System.Drawing.Size(247, 22);
+            this.longGD30ShortAL30.Text = "Long GD30 / Short AL30";
+            this.longGD30ShortAL30.Click += new System.EventHandler(this.longGD30ShortAL30ToolStripMenuItem_Click);
             // 
-            // longAL30ShortGD30ToolStripMenuItem
+            // longAL30ShortGD30
             // 
-            this.longAL30ShortGD30ToolStripMenuItem.Name = "longAL30ShortGD30ToolStripMenuItem";
-            this.longAL30ShortGD30ToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.longAL30ShortGD30ToolStripMenuItem.Text = "Long AL30 / Short GD30";
-            this.longAL30ShortGD30ToolStripMenuItem.Click += new System.EventHandler(this.longAL30ShortGD30ToolStripMenuItem_Click);
+            this.longAL30ShortGD30.Name = "longAL30ShortGD30";
+            this.longAL30ShortGD30.Size = new System.Drawing.Size(247, 22);
+            this.longAL30ShortGD30.Text = "Long AL30 / Short GD30";
+            this.longAL30ShortGD30.Click += new System.EventHandler(this.longAL30ShortGD30ToolStripMenuItem_Click);
             // 
             // seleccionarToolStripMenuItem
             // 
@@ -288,14 +296,14 @@
             // 
             this.ratiosToolStripMenuItem.Name = "ratiosToolStripMenuItem";
             this.ratiosToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.ratiosToolStripMenuItem.Text = "Ratios";
+            this.ratiosToolStripMenuItem.Text = "Ver Ratios de Bonos";
             this.ratiosToolStripMenuItem.Click += new System.EventHandler(this.ratiosToolStripMenuItem_Click);
             // 
             // caucionToolStripMenuItem
             // 
             this.caucionToolStripMenuItem.Name = "caucionToolStripMenuItem";
-            this.caucionToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.caucionToolStripMenuItem.Text = "Caucion";
+            this.caucionToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
+            this.caucionToolStripMenuItem.Text = "Calculadora Caución";
             this.caucionToolStripMenuItem.Click += new System.EventHandler(this.caucionToolStripMenuItem_Click);
             // 
             // tmrConnection
@@ -311,9 +319,10 @@
             this.disconnected,
             this.statusInformation,
             this.appVersion});
-            this.statusBar.Location = new System.Drawing.Point(0, 428);
+            this.statusBar.Location = new System.Drawing.Point(0, 532);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(1161, 22);
+            this.statusBar.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusBar.Size = new System.Drawing.Size(1548, 22);
             this.statusBar.TabIndex = 3;
             // 
             // connected
@@ -337,7 +346,7 @@
             // statusInformation
             // 
             this.statusInformation.Name = "statusInformation";
-            this.statusInformation.Size = new System.Drawing.Size(1070, 17);
+            this.statusInformation.Size = new System.Drawing.Size(1452, 17);
             this.statusInformation.Spring = true;
             // 
             // appVersion
@@ -347,16 +356,39 @@
             this.appVersion.Text = "v2023.10.23.0";
             this.appVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(227, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(244, 6);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(244, 6);
+            // 
+            // longGD35ShortAL35
+            // 
+            this.longGD35ShortAL35.Name = "longGD35ShortAL35";
+            this.longGD35ShortAL35.Size = new System.Drawing.Size(247, 22);
+            this.longGD35ShortAL35.Text = "Long GD35 / Short AL35";
+            this.longGD35ShortAL35.Click += new System.EventHandler(this.longGD35shortAL35_Click);
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 450);
+            this.ClientSize = new System.Drawing.Size(1548, 554);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMain";
             this.Text = "Chucho Bot ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -401,11 +433,15 @@
         private System.Windows.Forms.ToolStripMenuItem abrirScannerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seleccionarInstrumentoYPlazosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arbitrajeRatioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem longGD30ShortAL30ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem longAL30ShortGD30ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem longGD30ShortAL30;
+        private System.Windows.Forms.ToolStripMenuItem longAL30ShortGD30;
         private System.Windows.Forms.ToolStripMenuItem seleccionarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem caucionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ratiosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem longGD35ShortAL35;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 
