@@ -37,6 +37,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.grpCaucion = new System.Windows.Forms.GroupBox();
+            this.lblImporteNeto = new System.Windows.Forms.Label();
             this.lblMontoCaucion = new System.Windows.Forms.Label();
             this.lblGastosCaucion = new System.Windows.Forms.Label();
             this.lblDiasCaucion = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@ namespace Primary.WinFormsApp.SettlementTerms
             this.numComisionTomadora = new System.Windows.Forms.NumericUpDown();
             this.rdoCaucionColocadora = new System.Windows.Forms.RadioButton();
             this.rdoTomadora = new System.Windows.Forms.RadioButton();
-            this.lblImporteNeto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numTNA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numImporteBruto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDias)).BeginInit();
@@ -72,7 +72,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             0});
             this.numTNA.Name = "numTNA";
             this.numTNA.Size = new System.Drawing.Size(120, 20);
-            this.numTNA.TabIndex = 0;
+            this.numTNA.TabIndex = 1;
             this.numTNA.ThousandsSeparator = true;
             this.numTNA.Value = new decimal(new int[] {
             86,
@@ -91,7 +91,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             0});
             this.numImporteBruto.Name = "numImporteBruto";
             this.numImporteBruto.Size = new System.Drawing.Size(120, 20);
-            this.numImporteBruto.TabIndex = 1;
+            this.numImporteBruto.TabIndex = 0;
             this.numImporteBruto.ThousandsSeparator = true;
             this.numImporteBruto.Value = new decimal(new int[] {
             1000000,
@@ -124,7 +124,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             this.label1.Location = new System.Drawing.Point(8, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 9;
             this.label1.Text = "Monto a caucionar:";
             // 
             // label2
@@ -165,6 +165,15 @@ namespace Primary.WinFormsApp.SettlementTerms
             this.grpCaucion.TabIndex = 7;
             this.grpCaucion.TabStop = false;
             this.grpCaucion.Text = "Caucion";
+            // 
+            // lblImporteNeto
+            // 
+            this.lblImporteNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporteNeto.Location = new System.Drawing.Point(12, 78);
+            this.lblImporteNeto.Name = "lblImporteNeto";
+            this.lblImporteNeto.Size = new System.Drawing.Size(255, 18);
+            this.lblImporteNeto.TabIndex = 32;
+            this.lblImporteNeto.Text = "Importe Neto:";
             // 
             // lblMontoCaucion
             // 
@@ -263,7 +272,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             -2147483648});
             this.numComisionColocadora.Name = "numComisionColocadora";
             this.numComisionColocadora.Size = new System.Drawing.Size(82, 20);
-            this.numComisionColocadora.TabIndex = 39;
+            this.numComisionColocadora.TabIndex = 4;
             this.numComisionColocadora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numComisionColocadora.Value = new decimal(new int[] {
             15,
@@ -306,7 +315,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             -2147483648});
             this.numComisionTomadora.Name = "numComisionTomadora";
             this.numComisionTomadora.Size = new System.Drawing.Size(82, 20);
-            this.numComisionTomadora.TabIndex = 36;
+            this.numComisionTomadora.TabIndex = 3;
             this.numComisionTomadora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numComisionTomadora.Value = new decimal(new int[] {
             25,
@@ -322,7 +331,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             this.rdoCaucionColocadora.Location = new System.Drawing.Point(303, 67);
             this.rdoCaucionColocadora.Name = "rdoCaucionColocadora";
             this.rdoCaucionColocadora.Size = new System.Drawing.Size(79, 17);
-            this.rdoCaucionColocadora.TabIndex = 40;
+            this.rdoCaucionColocadora.TabIndex = 5;
             this.rdoCaucionColocadora.TabStop = true;
             this.rdoCaucionColocadora.Text = "Colocadora";
             this.rdoCaucionColocadora.UseVisualStyleBackColor = true;
@@ -334,19 +343,10 @@ namespace Primary.WinFormsApp.SettlementTerms
             this.rdoTomadora.Location = new System.Drawing.Point(408, 67);
             this.rdoTomadora.Name = "rdoTomadora";
             this.rdoTomadora.Size = new System.Drawing.Size(73, 17);
-            this.rdoTomadora.TabIndex = 41;
+            this.rdoTomadora.TabIndex = 6;
             this.rdoTomadora.Text = "Tomadora";
             this.rdoTomadora.UseVisualStyleBackColor = true;
             this.rdoTomadora.CheckedChanged += new System.EventHandler(this.rdoTomadora_CheckedChanged);
-            // 
-            // lblImporteNeto
-            // 
-            this.lblImporteNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporteNeto.Location = new System.Drawing.Point(12, 78);
-            this.lblImporteNeto.Name = "lblImporteNeto";
-            this.lblImporteNeto.Size = new System.Drawing.Size(255, 18);
-            this.lblImporteNeto.TabIndex = 32;
-            this.lblImporteNeto.Text = "Importe Neto:";
             // 
             // FrmCaucion
             // 
