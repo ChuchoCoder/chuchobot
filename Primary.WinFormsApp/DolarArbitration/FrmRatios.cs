@@ -1,4 +1,5 @@
-﻿using ChuchoBot.WinFormsApp.Shared;
+﻿using ChuchoBot.WinFormsApp.Properties;
+using ChuchoBot.WinFormsApp.Shared;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -15,12 +16,22 @@ public partial class FrmRatios : Form
 
     private void tmr_Tick(object sender, EventArgs e)
     {
-        RefreshRatioRow("GD29", "AL29");
-        RefreshRatioRow("GD30", "AL30");
-        RefreshRatioRow("GD35", "AL35");
-        RefreshRatioRow("GD38", "AE38");
-        RefreshRatioRow("GD41", "AL41");
-
+        foreach (var ratio in Settings.Default.RatioTickers)
+        {
+            var ratioTickers = ratio.Split('/');
+            if (ratioTickers.Length >= 2)
+            {
+                RefreshRatioRow(ratioTickers[0], ratioTickers[1]);
+            }
+            else
+            {
+                ratioTickers = ratio.Split('\\');
+                if (ratioTickers.Length >= 2)
+                {
+                    RefreshRatioRow(ratioTickers[0], ratioTickers[1]);
+                }
+            }
+        }
     }
 
     private void RefreshRatioRow(string gdTicker, string alTicker)
@@ -49,7 +60,9 @@ public partial class FrmRatios : Form
         row["RatioVenta"] = al.GetTopBidPrice() > 0 ? (gd.GetTopOfferPrice() / al.GetTopBidPrice()) - 1 : 0;
         row["RatioCompra"] = al.GetTopOfferPrice() > 0 ? (gd.GetTopBidPrice() / al.GetTopOfferPrice()) - 1 : 0;
 
-        var ratioLast = al.Last.Price > 0 ? (gd.Last.Price / al.Last.Price) - 1 : 0;
+        var ratioLastHasValue = al.Last?.Price > 0 && gd.Last?.Price > 0;
+            
+        var ratioLast = ratioLastHasValue ? (gd.Last.Price / al.Last.Price) - 1 : 0;
         row["RatioLast"] = ratioLast;
 
         var ratioClose = al.ClosePrice() > 0 ? (gd.ClosePrice() / al.ClosePrice()) - 1 : 0;
@@ -60,6 +73,21 @@ public partial class FrmRatios : Form
         if (existingRow == null)
         {
             dataTable.Rows.Add(row);
+        }
+
+        var alertLower = row["AlertLower"] as decimal?;
+
+        if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value)
+        {
+            Alerts.NotifyRatioTradeLowerThan(gdTicker, alTicker, ratioLast.Value);
+        }
+
+        var alertGreater = row["AlertGreater"] as decimal?;
+
+        if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value)
+        {
+            Alerts.NotifyRatioTradeGreaterThan(gdTicker, alTicker, ratioLast.Value);
+
         }
     }
 
@@ -78,11 +106,18 @@ public partial class FrmRatios : Form
         _ = dataTable.Columns.Add("RatioLast", typeof(decimal));
         _ = dataTable.Columns.Add("RatioYesterday", typeof(decimal));
         _ = dataTable.Columns.Add("RatioVariacion", typeof(decimal));
+        _ = dataTable.Columns.Add("AlertLower", typeof(decimal));
+        _ = dataTable.Columns.Add("AlertGreater", typeof(decimal));
 
         grdRatios.MultiSelect = false;
         grdRatios.AutoGenerateColumns = false;
         grdRatios.DataSource = dataTable;
 
         tmr_Tick(this, new EventArgs());
+    }
+
+    private void grdRatios_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+    {
+
     }
 }

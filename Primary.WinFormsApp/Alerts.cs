@@ -8,8 +8,12 @@ namespace ChuchoBot.WinFormsApp;
 
 internal static class Alerts
 {
-    private static TimeSpan _settlementTradeNotificationThreshold = TimeSpan.FromSeconds(60);
+    private static TimeSpan _notificationThreshold = TimeSpan.FromSeconds(60);
     private static Dictionary<string, DateTime> _settlementTradeNotificationDate = new();
+
+
+    private static Dictionary<string, DateTime> _ratioTradeLowerNotificationDate = new();
+    private static Dictionary<string, DateTime> _ratioTradeGreaterNotificationDate = new();
 
     public static void NotifySettlementTrade(SettlementTermTrade trade)
     {
@@ -20,7 +24,7 @@ internal static class Alerts
     {
         var lastDate = _settlementTradeNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
-        if (dif > _settlementTradeNotificationThreshold)
+        if (dif > _notificationThreshold)
         {
             new ToastContentBuilder()
                 .AddArgument("action", "settlementTradeAlert")
@@ -37,6 +41,56 @@ internal static class Alerts
             else
             {
                 _settlementTradeNotificationDate[sellSymbol + buySymbol]=  DateTime.Now;
+            }
+        }
+    }
+
+    public static void NotifyRatioTradeLowerThan(string buySymbol, string sellSymbol, decimal ratio)
+    {
+        var lastDate = _ratioTradeLowerNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
+        var dif = DateTime.Now - lastDate;
+        if (dif > _notificationThreshold)
+        {
+            new ToastContentBuilder()
+                .AddArgument("action", "ratioTradeAlert")
+                .AddArgument("sellSymbol", sellSymbol)
+                .AddArgument("buySymbol", buySymbol)
+                .AddText("Rotación de activo (ratio) detectado")
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}")
+                .Show();
+
+            if (lastDate == default)
+            {
+                _ratioTradeLowerNotificationDate.Add(sellSymbol + buySymbol, DateTime.Now);
+            }
+            else
+            {
+                _ratioTradeLowerNotificationDate[sellSymbol + buySymbol] = DateTime.Now;
+            }
+        }
+    }
+
+    public static void NotifyRatioTradeGreaterThan(string buySymbol, string sellSymbol, decimal ratio)
+    {
+        var lastDate = _ratioTradeGreaterNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
+        var dif = DateTime.Now - lastDate;
+        if (dif > _notificationThreshold)
+        {
+            new ToastContentBuilder()
+                .AddArgument("action", "ratioTradeAlert")
+                .AddArgument("sellSymbol", sellSymbol)
+                .AddArgument("buySymbol", buySymbol)
+                .AddText("Rotación de activo (ratio) detectado")
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}")
+                .Show();
+
+            if (lastDate == default)
+            {
+                _ratioTradeGreaterNotificationDate.Add(sellSymbol + buySymbol, DateTime.Now);
+            }
+            else
+            {
+                _ratioTradeGreaterNotificationDate[sellSymbol + buySymbol] = DateTime.Now;
             }
         }
     }
