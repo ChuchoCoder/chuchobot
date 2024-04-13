@@ -19,7 +19,7 @@ public partial class FrmStringCollectionEditor : Form
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-        var settings = txtSetting.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        var settings = txtSetting.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
 
         if (Validator == null || Validator(settings))
         {
