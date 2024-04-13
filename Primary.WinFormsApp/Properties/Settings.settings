@@ -479,5 +479,15 @@
   &lt;string&gt;ZM&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="RatioTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;GD29/AL29&lt;/string&gt;
+  &lt;string&gt;GD30/AL30&lt;/string&gt;
+  &lt;string&gt;GD35/AL35&lt;/string&gt;
+  &lt;string&gt;GD38/AE38&lt;/string&gt;
+  &lt;string&gt;GD41/AL41&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

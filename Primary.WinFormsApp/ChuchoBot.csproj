@@ -27,6 +27,11 @@
     <Compile Update="Components\BidsOffersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="SettlementTerms\SettlementTermSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,5 +89,11 @@
     <PackageReference Include="System.ServiceModel.NetTcp" Version="8.0.0" />
     <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
     <PackageReference Include="System.ServiceModel.Federation" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>

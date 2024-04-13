@@ -13,7 +13,7 @@ namespace ChuchoBot.WinFormsApp.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
-    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -346,6 +346,22 @@ namespace ChuchoBot.WinFormsApp.Properties {
             }
             set {
                 this["ArbitrationTickers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>GD29/AL29</string>
+  <string>GD30/AL30</string>
+  <string>GD35/AL35</string>
+  <string>GD38/AE38</string>
+  <string>GD41/AL41</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection RatioTickers {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RatioTickers"]));
             }
         }
     }
