@@ -54,7 +54,7 @@ public partial class FrmMain : Form
             switch (args["action"])
             {
                 case "settlementTradeAlert":
-                    
+
                     Invoke(new Action(() =>
                     {
                         var buyInstrument = Argentina.Data.GetInstrumentDetailOrNull(args["buySymbol"]);
@@ -404,7 +404,7 @@ public partial class FrmMain : Form
         {
             foreach (var setting in settings)
             {
-                var tickers = setting.Split(' ', ';');
+                var tickers = setting.Split(' ', ';', '/', '\\');
                 foreach (var ticker in tickers)
                 {
                     if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
@@ -451,7 +451,8 @@ public partial class FrmMain : Form
         var frm = new Configuration.FrmStringCollectionEditor
         {
             Text = accionesCEDEARsToolStripMenuItem.Text,
-            Setting = Properties.Settings.Default.AccionesCEDEARs
+            Setting = Properties.Settings.Default.AccionesCEDEARs,
+            Validator = ValidateInstrument
         };
         _ = frm.ShowDialog();
     }
@@ -586,5 +587,17 @@ public partial class FrmMain : Form
     private void longGD35shortAL35_Click(object sender, EventArgs e)
     {
         LaunchRatioForTicker("GD35", "AL35");
+    }
+
+    private void ratiosToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        var frm = new Configuration.FrmStringCollectionEditor
+        {
+            Text = ratiosToolStripMenuItem1.Text,
+            Setting = Properties.Settings.Default.RatioTickers,
+            Validator = ValidateInstrument
+        };
+        _ = frm.ShowDialog();
+
     }
 }
