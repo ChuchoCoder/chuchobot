@@ -1,6 +1,8 @@
 ﻿using ChuchoBot.WinFormsApp.DolarArbitration;
 using ChuchoBot.WinFormsApp.SettlementTerms;
 using ChuchoBot.WinFormsApp.Shared;
+using Microsoft.AspNetCore.Components;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Primary.Data;
 using System;
 using System.Collections.Generic;
@@ -38,6 +40,49 @@ public partial class FrmMain : Form
         // Upgrading settings will reset user settings
         //Settings.Default.Upgrade();
         //Settings.Default.Save();
+
+
+        // Listen to notification activation
+        ToastNotificationManagerCompat.OnActivated += toastArgs =>
+        {
+            // Obtain the arguments from the notification
+            ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
+
+            // Obtain any user input (text boxes, menu selections) from the notification
+            var userInput = toastArgs.UserInput;
+
+            switch (args["action"])
+            {
+                case "settlementTradeAlert":
+                    
+                    Invoke(new Action(() =>
+                    {
+                        var buyInstrument = Argentina.Data.GetInstrumentDetailOrNull(args["buySymbol"]);
+
+                        if (buyInstrument == null)
+                        {
+                            return;
+                        }
+
+                        var buy = new InstrumentWithData(buyInstrument);
+
+                        var sellInstrument = Argentina.Data.GetInstrumentDetailOrNull(args["sellSymbol"]);
+                        if (sellInstrument == null)
+                        {
+                            return;
+                        }
+                        var sell = new InstrumentWithData(sellInstrument);
+
+                        var trade = new SettlementTermTrade(buy, sell);
+
+                        var frm = new FrmSettlementTermTrade();
+                        frm.Init(trade);
+                        frm.Show();
+                    }
+                    ));
+                    break;
+            }
+        };
 
         ShowVersion();
 

@@ -1,4 +1,6 @@
-﻿namespace ChuchoBot.WinFormsApp.Tests;
+﻿using ChuchoBot.WinFormsApp.SettlementTerms;
+
+namespace ChuchoBot.WinFormsApp.Tests;
 
 public class CaucionTests
 {

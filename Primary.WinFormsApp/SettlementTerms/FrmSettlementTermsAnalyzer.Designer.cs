@@ -28,342 +28,332 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermsAnalyzer));
-            this.grdArbitration = new System.Windows.Forms.DataGridView();
-            this.KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProfitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpreadCaucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TNA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spread = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpreadLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Caucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BuyTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DolarCompraLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DolarVentaLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
-            this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
-            this.settlementTermSettings = new ChuchoBot.WinFormsApp.SettlementTerms.SettlementTermSettings();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numAlert = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAlert)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            var dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermsAnalyzer));
+            grdArbitration = new System.Windows.Forms.DataGridView();
+            KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ProfitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            SpreadCaucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            TNA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Spread = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            SpreadLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Caucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            OwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            SellTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            BuyTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DolarCompraLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DolarVentaLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            timer1 = new System.Windows.Forms.Timer(components);
+            chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
+            chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
+            settlementTermSettings = new SettlementTerms.SettlementTermSettings();
+            label2 = new System.Windows.Forms.Label();
+            numAlert = new System.Windows.Forms.NumericUpDown();
+            chkWindowsToast = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)grdArbitration).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numAlert).BeginInit();
+            SuspendLayout();
             // 
             // grdArbitration
             // 
-            this.grdArbitration.AllowUserToAddRows = false;
-            this.grdArbitration.AllowUserToDeleteRows = false;
-            this.grdArbitration.AllowUserToOrderColumns = true;
-            this.grdArbitration.AllowUserToResizeRows = false;
+            grdArbitration.AllowUserToAddRows = false;
+            grdArbitration.AllowUserToDeleteRows = false;
+            grdArbitration.AllowUserToOrderColumns = true;
+            grdArbitration.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.grdArbitration.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdArbitration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdArbitration.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grdArbitration.CausesValidation = false;
-            this.grdArbitration.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.KeyOwnedVenta,
-            this.KeyArbitrationCompra,
-            this.PL,
-            this.ProfitPercentage,
-            this.SpreadCaucion,
-            this.TNA,
-            this.Spread,
-            this.SpreadLast,
-            this.Caucion,
-            this.Comision,
-            this.OwnedVenta,
-            this.SellTotal,
-            this.BuyTotal,
-            this.ArbitrationCompra,
-            this.DolarCompraLast,
-            this.DolarVentaLast});
-            this.grdArbitration.Location = new System.Drawing.Point(12, 64);
-            this.grdArbitration.Name = "grdArbitration";
-            this.grdArbitration.ReadOnly = true;
-            this.grdArbitration.RowHeadersVisible = false;
-            this.grdArbitration.RowHeadersWidth = 51;
-            this.grdArbitration.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdArbitration.ShowCellErrors = false;
-            this.grdArbitration.ShowEditingIcon = false;
-            this.grdArbitration.ShowRowErrors = false;
-            this.grdArbitration.Size = new System.Drawing.Size(1374, 374);
-            this.grdArbitration.TabIndex = 2;
-            this.grdArbitration.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArbitration_CellContentClick);
-            this.grdArbitration.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdArbitration_CellFormatting);
-            this.grdArbitration.DoubleClick += new System.EventHandler(this.grdArbitration_DoubleClick);
+            grdArbitration.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            grdArbitration.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grdArbitration.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            grdArbitration.CausesValidation = false;
+            grdArbitration.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { KeyOwnedVenta, KeyArbitrationCompra, PL, ProfitPercentage, SpreadCaucion, TNA, Spread, SpreadLast, Caucion, Comision, OwnedVenta, SellTotal, BuyTotal, ArbitrationCompra, DolarCompraLast, DolarVentaLast });
+            grdArbitration.Location = new System.Drawing.Point(14, 74);
+            grdArbitration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grdArbitration.Name = "grdArbitration";
+            grdArbitration.ReadOnly = true;
+            grdArbitration.RowHeadersVisible = false;
+            grdArbitration.RowHeadersWidth = 51;
+            grdArbitration.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            grdArbitration.ShowCellErrors = false;
+            grdArbitration.ShowEditingIcon = false;
+            grdArbitration.ShowRowErrors = false;
+            grdArbitration.Size = new System.Drawing.Size(1603, 432);
+            grdArbitration.TabIndex = 2;
+            grdArbitration.CellContentClick += grdArbitration_CellContentClick;
+            grdArbitration.CellFormatting += grdArbitration_CellFormatting;
+            grdArbitration.DoubleClick += grdArbitration_DoubleClick;
             // 
             // KeyOwnedVenta
             // 
-            this.KeyOwnedVenta.DataPropertyName = "KeyVenta";
-            this.KeyOwnedVenta.HeaderText = "1 Venta";
-            this.KeyOwnedVenta.MinimumWidth = 6;
-            this.KeyOwnedVenta.Name = "KeyOwnedVenta";
-            this.KeyOwnedVenta.ReadOnly = true;
+            KeyOwnedVenta.DataPropertyName = "KeyVenta";
+            KeyOwnedVenta.HeaderText = "1 Venta";
+            KeyOwnedVenta.MinimumWidth = 6;
+            KeyOwnedVenta.Name = "KeyOwnedVenta";
+            KeyOwnedVenta.ReadOnly = true;
             // 
             // KeyArbitrationCompra
             // 
-            this.KeyArbitrationCompra.DataPropertyName = "KeyCompra";
-            this.KeyArbitrationCompra.HeaderText = "2 Compra";
-            this.KeyArbitrationCompra.MinimumWidth = 6;
-            this.KeyArbitrationCompra.Name = "KeyArbitrationCompra";
-            this.KeyArbitrationCompra.ReadOnly = true;
+            KeyArbitrationCompra.DataPropertyName = "KeyCompra";
+            KeyArbitrationCompra.HeaderText = "2 Compra";
+            KeyArbitrationCompra.MinimumWidth = 6;
+            KeyArbitrationCompra.Name = "KeyArbitrationCompra";
+            KeyArbitrationCompra.ReadOnly = true;
             // 
             // PL
             // 
-            this.PL.DataPropertyName = "Profit";
+            PL.DataPropertyName = "Profit";
             dataGridViewCellStyle2.Format = "C0";
             dataGridViewCellStyle2.NullValue = null;
-            this.PL.DefaultCellStyle = dataGridViewCellStyle2;
-            this.PL.HeaderText = "P&L $";
-            this.PL.MinimumWidth = 6;
-            this.PL.Name = "PL";
-            this.PL.ReadOnly = true;
+            PL.DefaultCellStyle = dataGridViewCellStyle2;
+            PL.HeaderText = "P&L $";
+            PL.MinimumWidth = 6;
+            PL.Name = "PL";
+            PL.ReadOnly = true;
             // 
             // ProfitPercentage
             // 
-            this.ProfitPercentage.DataPropertyName = "ProfitPercentage";
+            ProfitPercentage.DataPropertyName = "ProfitPercentage";
             dataGridViewCellStyle3.Format = "P";
-            this.ProfitPercentage.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ProfitPercentage.HeaderText = "P&L %";
-            this.ProfitPercentage.Name = "ProfitPercentage";
-            this.ProfitPercentage.ReadOnly = true;
+            ProfitPercentage.DefaultCellStyle = dataGridViewCellStyle3;
+            ProfitPercentage.HeaderText = "P&L %";
+            ProfitPercentage.Name = "ProfitPercentage";
+            ProfitPercentage.ReadOnly = true;
             // 
             // SpreadCaucion
             // 
-            this.SpreadCaucion.DataPropertyName = "SpreadCaucion";
+            SpreadCaucion.DataPropertyName = "SpreadCaucion";
             dataGridViewCellStyle4.Format = "P";
-            this.SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle4;
-            this.SpreadCaucion.HeaderText = "Spread TNA - Caucion";
-            this.SpreadCaucion.Name = "SpreadCaucion";
-            this.SpreadCaucion.ReadOnly = true;
+            SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle4;
+            SpreadCaucion.HeaderText = "Spread TNA - Caucion";
+            SpreadCaucion.Name = "SpreadCaucion";
+            SpreadCaucion.ReadOnly = true;
             // 
             // TNA
             // 
-            this.TNA.DataPropertyName = "TNA";
+            TNA.DataPropertyName = "TNA";
             dataGridViewCellStyle5.Format = "P";
-            this.TNA.DefaultCellStyle = dataGridViewCellStyle5;
-            this.TNA.HeaderText = "Spread TNA";
-            this.TNA.MinimumWidth = 10;
-            this.TNA.Name = "TNA";
-            this.TNA.ReadOnly = true;
+            TNA.DefaultCellStyle = dataGridViewCellStyle5;
+            TNA.HeaderText = "Spread TNA";
+            TNA.MinimumWidth = 10;
+            TNA.Name = "TNA";
+            TNA.ReadOnly = true;
             // 
             // Spread
             // 
-            this.Spread.DataPropertyName = "Spread";
+            Spread.DataPropertyName = "Spread";
             dataGridViewCellStyle6.Format = "P";
             dataGridViewCellStyle6.NullValue = null;
-            this.Spread.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Spread.HeaderText = "Spread %";
-            this.Spread.MinimumWidth = 6;
-            this.Spread.Name = "Spread";
-            this.Spread.ReadOnly = true;
+            Spread.DefaultCellStyle = dataGridViewCellStyle6;
+            Spread.HeaderText = "Spread %";
+            Spread.MinimumWidth = 6;
+            Spread.Name = "Spread";
+            Spread.ReadOnly = true;
             // 
             // SpreadLast
             // 
-            this.SpreadLast.DataPropertyName = "SpreadLast";
+            SpreadLast.DataPropertyName = "SpreadLast";
             dataGridViewCellStyle7.Format = "P";
-            this.SpreadLast.DefaultCellStyle = dataGridViewCellStyle7;
-            this.SpreadLast.HeaderText = "Spread % Last";
-            this.SpreadLast.MinimumWidth = 6;
-            this.SpreadLast.Name = "SpreadLast";
-            this.SpreadLast.ReadOnly = true;
-            this.SpreadLast.Visible = false;
+            SpreadLast.DefaultCellStyle = dataGridViewCellStyle7;
+            SpreadLast.HeaderText = "Spread % Last";
+            SpreadLast.MinimumWidth = 6;
+            SpreadLast.Name = "SpreadLast";
+            SpreadLast.ReadOnly = true;
+            SpreadLast.Visible = false;
             // 
             // Caucion
             // 
-            this.Caucion.DataPropertyName = "Caucion";
+            Caucion.DataPropertyName = "Caucion";
             dataGridViewCellStyle8.Format = "C0";
-            this.Caucion.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Caucion.HeaderText = "Caucion";
-            this.Caucion.MinimumWidth = 6;
-            this.Caucion.Name = "Caucion";
-            this.Caucion.ReadOnly = true;
+            Caucion.DefaultCellStyle = dataGridViewCellStyle8;
+            Caucion.HeaderText = "Caucion";
+            Caucion.MinimumWidth = 6;
+            Caucion.Name = "Caucion";
+            Caucion.ReadOnly = true;
             // 
             // Comision
             // 
-            this.Comision.DataPropertyName = "Comision";
+            Comision.DataPropertyName = "Comision";
             dataGridViewCellStyle9.Format = "C0";
-            this.Comision.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Comision.HeaderText = "Comision";
-            this.Comision.MinimumWidth = 6;
-            this.Comision.Name = "Comision";
-            this.Comision.ReadOnly = true;
+            Comision.DefaultCellStyle = dataGridViewCellStyle9;
+            Comision.HeaderText = "Comision";
+            Comision.MinimumWidth = 6;
+            Comision.Name = "Comision";
+            Comision.ReadOnly = true;
             // 
             // OwnedVenta
             // 
-            this.OwnedVenta.DataPropertyName = "Venta";
+            OwnedVenta.DataPropertyName = "Venta";
             dataGridViewCellStyle10.Format = "C2";
-            this.OwnedVenta.DefaultCellStyle = dataGridViewCellStyle10;
-            this.OwnedVenta.HeaderText = "Venta";
-            this.OwnedVenta.MinimumWidth = 6;
-            this.OwnedVenta.Name = "OwnedVenta";
-            this.OwnedVenta.ReadOnly = true;
+            OwnedVenta.DefaultCellStyle = dataGridViewCellStyle10;
+            OwnedVenta.HeaderText = "Venta";
+            OwnedVenta.MinimumWidth = 6;
+            OwnedVenta.Name = "OwnedVenta";
+            OwnedVenta.ReadOnly = true;
             // 
             // SellTotal
             // 
-            this.SellTotal.DataPropertyName = "SellTotal";
+            SellTotal.DataPropertyName = "SellTotal";
             dataGridViewCellStyle11.Format = "C0";
-            this.SellTotal.DefaultCellStyle = dataGridViewCellStyle11;
-            this.SellTotal.HeaderText = "Total Venta";
-            this.SellTotal.MinimumWidth = 6;
-            this.SellTotal.Name = "SellTotal";
-            this.SellTotal.ReadOnly = true;
-            this.SellTotal.Visible = false;
+            SellTotal.DefaultCellStyle = dataGridViewCellStyle11;
+            SellTotal.HeaderText = "Total Venta";
+            SellTotal.MinimumWidth = 6;
+            SellTotal.Name = "SellTotal";
+            SellTotal.ReadOnly = true;
+            SellTotal.Visible = false;
             // 
             // BuyTotal
             // 
-            this.BuyTotal.DataPropertyName = "BuyTotal";
+            BuyTotal.DataPropertyName = "BuyTotal";
             dataGridViewCellStyle12.Format = "C0";
-            this.BuyTotal.DefaultCellStyle = dataGridViewCellStyle12;
-            this.BuyTotal.HeaderText = "Total Compra";
-            this.BuyTotal.MinimumWidth = 6;
-            this.BuyTotal.Name = "BuyTotal";
-            this.BuyTotal.ReadOnly = true;
-            this.BuyTotal.Visible = false;
+            BuyTotal.DefaultCellStyle = dataGridViewCellStyle12;
+            BuyTotal.HeaderText = "Total Compra";
+            BuyTotal.MinimumWidth = 6;
+            BuyTotal.Name = "BuyTotal";
+            BuyTotal.ReadOnly = true;
+            BuyTotal.Visible = false;
             // 
             // ArbitrationCompra
             // 
-            this.ArbitrationCompra.DataPropertyName = "Compra";
+            ArbitrationCompra.DataPropertyName = "Compra";
             dataGridViewCellStyle13.Format = "C2";
-            this.ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ArbitrationCompra.HeaderText = "Compra";
-            this.ArbitrationCompra.MinimumWidth = 6;
-            this.ArbitrationCompra.Name = "ArbitrationCompra";
-            this.ArbitrationCompra.ReadOnly = true;
+            ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle13;
+            ArbitrationCompra.HeaderText = "Compra";
+            ArbitrationCompra.MinimumWidth = 6;
+            ArbitrationCompra.Name = "ArbitrationCompra";
+            ArbitrationCompra.ReadOnly = true;
             // 
             // DolarCompraLast
             // 
-            this.DolarCompraLast.DataPropertyName = "CompraLast";
+            DolarCompraLast.DataPropertyName = "CompraLast";
             dataGridViewCellStyle14.Format = "C2";
-            this.DolarCompraLast.DefaultCellStyle = dataGridViewCellStyle14;
-            this.DolarCompraLast.HeaderText = "Compra Last";
-            this.DolarCompraLast.MinimumWidth = 6;
-            this.DolarCompraLast.Name = "DolarCompraLast";
-            this.DolarCompraLast.ReadOnly = true;
-            this.DolarCompraLast.Visible = false;
+            DolarCompraLast.DefaultCellStyle = dataGridViewCellStyle14;
+            DolarCompraLast.HeaderText = "Compra Last";
+            DolarCompraLast.MinimumWidth = 6;
+            DolarCompraLast.Name = "DolarCompraLast";
+            DolarCompraLast.ReadOnly = true;
+            DolarCompraLast.Visible = false;
             // 
             // DolarVentaLast
             // 
-            this.DolarVentaLast.DataPropertyName = "VentaLast";
+            DolarVentaLast.DataPropertyName = "VentaLast";
             dataGridViewCellStyle15.Format = "C2";
-            this.DolarVentaLast.DefaultCellStyle = dataGridViewCellStyle15;
-            this.DolarVentaLast.HeaderText = "Venta Last";
-            this.DolarVentaLast.MinimumWidth = 6;
-            this.DolarVentaLast.Name = "DolarVentaLast";
-            this.DolarVentaLast.ReadOnly = true;
-            this.DolarVentaLast.Visible = false;
+            DolarVentaLast.DefaultCellStyle = dataGridViewCellStyle15;
+            DolarVentaLast.HeaderText = "Venta Last";
+            DolarVentaLast.MinimumWidth = 6;
+            DolarVentaLast.Name = "DolarVentaLast";
+            DolarVentaLast.ReadOnly = true;
+            DolarVentaLast.Visible = false;
             // 
             // timer1
             // 
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            timer1.Interval = 2000;
+            timer1.Tick += timer1_Tick;
             // 
             // chkOnlyProfitableTrades
             // 
-            this.chkOnlyProfitableTrades.Location = new System.Drawing.Point(12, 38);
-            this.chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
-            this.chkOnlyProfitableTrades.Size = new System.Drawing.Size(208, 19);
-            this.chkOnlyProfitableTrades.TabIndex = 24;
-            this.chkOnlyProfitableTrades.Text = "Ver sólo arbitrajes con profit";
-            this.chkOnlyProfitableTrades.UseVisualStyleBackColor = true;
+            chkOnlyProfitableTrades.Location = new System.Drawing.Point(14, 44);
+            chkOnlyProfitableTrades.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
+            chkOnlyProfitableTrades.Size = new System.Drawing.Size(243, 22);
+            chkOnlyProfitableTrades.TabIndex = 24;
+            chkOnlyProfitableTrades.Text = "Ver sólo arbitrajes con profit";
+            chkOnlyProfitableTrades.UseVisualStyleBackColor = true;
             // 
             // chkOnlyShowTradesWithTickersOwned
             // 
-            this.chkOnlyShowTradesWithTickersOwned.Checked = true;
-            this.chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(12, 12);
-            this.chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
-            this.chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(298, 19);
-            this.chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
-            this.chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
-            this.chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
+            chkOnlyShowTradesWithTickersOwned.Checked = true;
+            chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(14, 14);
+            chkOnlyShowTradesWithTickersOwned.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
+            chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(348, 22);
+            chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
+            chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
+            chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
             // 
             // settlementTermSettings
             // 
-            this.settlementTermSettings.Location = new System.Drawing.Point(316, 9);
-            this.settlementTermSettings.Name = "settlementTermSettings";
-            this.settlementTermSettings.Size = new System.Drawing.Size(643, 48);
-            this.settlementTermSettings.TabIndex = 26;
+            settlementTermSettings.Location = new System.Drawing.Point(369, 10);
+            settlementTermSettings.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            settlementTermSettings.Name = "settlementTermSettings";
+            settlementTermSettings.Size = new System.Drawing.Size(750, 55);
+            settlementTermSettings.TabIndex = 26;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(984, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Alert %:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(1148, 13);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(48, 15);
+            label2.TabIndex = 28;
+            label2.Text = "Alert %:";
             // 
             // numAlert
             // 
-            this.numAlert.DecimalPlaces = 2;
-            this.numAlert.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAlert.Location = new System.Drawing.Point(1032, 9);
-            this.numAlert.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numAlert.Name = "numAlert";
-            this.numAlert.Size = new System.Drawing.Size(51, 20);
-            this.numAlert.TabIndex = 27;
-            this.numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numAlert.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
+            numAlert.DecimalPlaces = 2;
+            numAlert.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            numAlert.Location = new System.Drawing.Point(1204, 10);
+            numAlert.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numAlert.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            numAlert.Name = "numAlert";
+            numAlert.Size = new System.Drawing.Size(59, 23);
+            numAlert.TabIndex = 27;
+            numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numAlert.Value = new decimal(new int[] { 15, 0, 0, 131072 });
+            // 
+            // chkWindowsToast
+            // 
+            chkWindowsToast.AutoSize = true;
+            chkWindowsToast.Checked = true;
+            chkWindowsToast.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkWindowsToast.Location = new System.Drawing.Point(1270, 12);
+            chkWindowsToast.Name = "chkWindowsToast";
+            chkWindowsToast.Size = new System.Drawing.Size(133, 19);
+            chkWindowsToast.TabIndex = 29;
+            chkWindowsToast.Text = "Mostrar notificacion";
+            chkWindowsToast.UseVisualStyleBackColor = true;
             // 
             // FrmSettlementTermsAnalyzer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1398, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.numAlert);
-            this.Controls.Add(this.settlementTermSettings);
-            this.Controls.Add(this.chkOnlyShowTradesWithTickersOwned);
-            this.Controls.Add(this.chkOnlyProfitableTrades);
-            this.Controls.Add(this.grdArbitration);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmSettlementTermsAnalyzer";
-            this.Text = "Arbitrajes de Plazo";
-            this.Load += new System.EventHandler(this.FrmArbitrationBestTrades_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAlert)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1631, 519);
+            Controls.Add(chkWindowsToast);
+            Controls.Add(label2);
+            Controls.Add(numAlert);
+            Controls.Add(settlementTermSettings);
+            Controls.Add(chkOnlyShowTradesWithTickersOwned);
+            Controls.Add(chkOnlyProfitableTrades);
+            Controls.Add(grdArbitration);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FrmSettlementTermsAnalyzer";
+            Text = "Arbitrajes de Plazo";
+            Load += FrmArbitrationBestTrades_Load;
+            ((System.ComponentModel.ISupportInitialize)grdArbitration).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numAlert).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -393,5 +383,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DolarVentaLast;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numAlert;
+        private System.Windows.Forms.CheckBox chkWindowsToast;
     }
 }

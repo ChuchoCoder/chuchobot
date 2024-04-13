@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ChuchoBot.WinFormsApp</RootNamespace>
     <PublishUrl>publish\</PublishUrl>
@@ -21,6 +21,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <ApplicationIcon>Resources\Robot.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Components\BidsOffersControl.cs">
@@ -60,6 +61,7 @@
     <Content Include="Resources\activity_productivity_icon-icons.com_51080.ico" />
     <Content Include="Resources\arargentinaflag_111670.ico" />
     <Content Include="Resources\cash_40532.ico" />
+    <Content Include="Resources\Robot.ico" />
     <None Include="Resources\robot_32.ico" />
     <None Include="Resources\robot_64.ico" />
     <None Include="Resources\robot_128.ico" />
@@ -68,6 +70,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="1.3.0" />
