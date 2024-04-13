@@ -69,6 +69,8 @@
             label2 = new System.Windows.Forms.Label();
             numAlert = new System.Windows.Forms.NumericUpDown();
             chkWindowsToast = new System.Windows.Forms.CheckBox();
+            label1 = new System.Windows.Forms.Label();
+            txtExclude = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)grdArbitration).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numAlert).BeginInit();
             SuspendLayout();
@@ -312,7 +314,7 @@
             // 
             numAlert.DecimalPlaces = 2;
             numAlert.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numAlert.Location = new System.Drawing.Point(1204, 10);
+            numAlert.Location = new System.Drawing.Point(1237, 10);
             numAlert.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             numAlert.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
             numAlert.Name = "numAlert";
@@ -326,18 +328,37 @@
             chkWindowsToast.AutoSize = true;
             chkWindowsToast.Checked = true;
             chkWindowsToast.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkWindowsToast.Location = new System.Drawing.Point(1270, 12);
+            chkWindowsToast.Location = new System.Drawing.Point(1303, 12);
             chkWindowsToast.Name = "chkWindowsToast";
             chkWindowsToast.Size = new System.Drawing.Size(133, 19);
             chkWindowsToast.TabIndex = 29;
             chkWindowsToast.Text = "Mostrar notificacion";
             chkWindowsToast.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(1148, 47);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(82, 15);
+            label1.TabIndex = 30;
+            label1.Text = "Excluir tickers:";
+            // 
+            // txtExclude
+            // 
+            txtExclude.Location = new System.Drawing.Point(1237, 42);
+            txtExclude.Name = "txtExclude";
+            txtExclude.Size = new System.Drawing.Size(380, 23);
+            txtExclude.TabIndex = 31;
+            // 
             // FrmSettlementTermsAnalyzer
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1631, 519);
+            Controls.Add(txtExclude);
+            Controls.Add(label1);
             Controls.Add(chkWindowsToast);
             Controls.Add(label2);
             Controls.Add(numAlert);
@@ -384,5 +405,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numAlert;
         private System.Windows.Forms.CheckBox chkWindowsToast;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtExclude;
     }
 }

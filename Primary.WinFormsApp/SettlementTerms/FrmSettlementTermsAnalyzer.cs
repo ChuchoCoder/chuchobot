@@ -36,6 +36,10 @@ public partial class FrmSettlementTermsAnalyzer : Form
 
             var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
 
+            var excludeTickers = txtExclude.Text.ToUpper().Split(" ");
+
+            trades.RemoveAll(x => excludeTickers.Any(y => x.Buy.Instrument.InstrumentId.Symbol.Contains($" {y} ")));
+
             _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
 
             var alertTrades = trades.Where(x => x.ProfitLossPercentage > numAlert.Value / 100m).ToArray();
