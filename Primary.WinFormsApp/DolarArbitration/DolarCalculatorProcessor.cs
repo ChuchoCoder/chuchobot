@@ -1,66 +1,66 @@
-﻿using System.Collections.Generic;
+﻿using ChuchoBot.WinFormsApp.Shared;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Primary.WinFormsApp
+namespace ChuchoBot.WinFormsApp.DolarArbitration;
+
+internal class DolarCalculatorProcessor
 {
-    internal class DolarCalculatorProcessor
+    public List<DolarTradedInstrument> dolarTradedInstruments = [];
+
+    internal void Init()
     {
-        public List<DolarTradedInstrument> dolarTradedInstruments = new List<DolarTradedInstrument>();
-
-        internal void Init()
+        foreach (var arbitrationTicker in Properties.Settings.Default.ArbitrationTickers)
         {
-            foreach (string arbitrationTicker in Properties.Settings.Default.ArbitrationTickers)
+            if (arbitrationTicker.ContainsMultipleTickers())
             {
-                if (arbitrationTicker.ContainsMultipleTickers())
-                {
-                    DolarTradedInstrument arbitration = new DolarTradedInstrument(arbitrationTicker.GetPesosTicker(), arbitrationTicker.GetDolarTicker(), arbitrationTicker.GetCableTicker());
+                var arbitration = new DolarTradedInstrument(arbitrationTicker.GetPesosTicker(), arbitrationTicker.GetDolarTicker(), arbitrationTicker.GetCableTicker());
 
-                    dolarTradedInstruments.Add(arbitration);
-                }
-                else
-                {
-                    DolarTradedInstrument arbitration = new DolarTradedInstrument(arbitrationTicker);
-
-                    dolarTradedInstruments.Add(arbitration);
-                }
-
+                dolarTradedInstruments.Add(arbitration);
             }
-        }
-
-        public void RefreshData()
-        {
-            foreach (DolarTradedInstrument dolarTradedInstrument in dolarTradedInstruments)
+            else
             {
-                dolarTradedInstrument.RefreshData();
-            }
-        }
+                var arbitration = new DolarTradedInstrument(arbitrationTicker);
 
-        public List<BuySellTrade> GetDolarMEPTrades()
-        {
-            List<BuySellTrade> trades = new List<BuySellTrade>();
-
-            foreach (DolarTradedInstrument dolarArbitrationData in dolarTradedInstruments)
-            {
-
-                IEnumerable<BuySellTrade> dolarTrades = dolarArbitrationData.GetDolarMEPTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
-                trades.AddRange(dolarTrades);
-
+                dolarTradedInstruments.Add(arbitration);
             }
 
-            return trades;
         }
+    }
 
-        public List<BuySellTrade> GetDolarCableTrades()
+    public void RefreshData()
+    {
+        foreach (var dolarTradedInstrument in dolarTradedInstruments)
         {
-            List<BuySellTrade> trades = new List<BuySellTrade>();
-
-            foreach (DolarTradedInstrument dolarArbitrationData in dolarTradedInstruments)
-            {
-                IEnumerable<BuySellTrade> dolarTrades = dolarArbitrationData.GetDolarCableTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
-                trades.AddRange(dolarTrades);
-            }
-
-            return trades;
+            dolarTradedInstrument.RefreshData();
         }
+    }
+
+    public List<BuySellTrade> GetDolarMEPTrades()
+    {
+        List<BuySellTrade> trades = [];
+
+        foreach (var dolarArbitrationData in dolarTradedInstruments)
+        {
+
+            var dolarTrades = dolarArbitrationData.GetDolarMEPTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
+            trades.AddRange(dolarTrades);
+
+        }
+
+        return trades;
+    }
+
+    public List<BuySellTrade> GetDolarCableTrades()
+    {
+        List<BuySellTrade> trades = [];
+
+        foreach (var dolarArbitrationData in dolarTradedInstruments)
+        {
+            var dolarTrades = dolarArbitrationData.GetDolarCableTrades().Where(x => x.Last > 0 || x.BuyPrice > 0 || x.SellPrice > 0);
+            trades.AddRange(dolarTrades);
+        }
+
+        return trades;
     }
 }

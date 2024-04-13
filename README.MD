@@ -214,7 +214,7 @@ Para deshabilitar la telemetría de la aplicación:
 
 ```xml
   <connectionStrings>
-    <add name="Primary.WinFormsApp.Properties.Settings.AppInsightsConnectionString"
+    <add name="ChuchoBot.WinFormsApp.Properties.Settings.AppInsightsConnectionString"
       connectionString="..." />
   </connectionStrings>
 ```

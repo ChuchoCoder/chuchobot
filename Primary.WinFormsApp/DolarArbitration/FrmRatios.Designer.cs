@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp.DolarArbitration
+﻿namespace ChuchoBot.WinFormsApp.DolarArbitration
 {
     partial class FrmRatios
     {

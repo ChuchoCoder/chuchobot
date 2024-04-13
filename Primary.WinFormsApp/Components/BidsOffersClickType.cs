@@ -1,11 +1,10 @@
-﻿namespace Primary.WinFormsApp
+﻿namespace ChuchoBot.WinFormsApp.Components;
+
+public enum BidsOffersClickType
 {
-    public enum BidsOffersClickType
-    {
-        Last,
-        TopBid,
-        TopOffer,
-        OtherBid,
-        OtherOffer
-    }
+    Last,
+    TopBid,
+    TopOffer,
+    OtherBid,
+    OtherOffer
 }

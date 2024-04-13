@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp.Configuration
+﻿namespace ChuchoBot.WinFormsApp.Configuration
 {
     partial class FrmStringCollectionEditor
     {

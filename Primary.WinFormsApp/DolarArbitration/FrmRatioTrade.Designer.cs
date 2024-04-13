@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp
+﻿namespace ChuchoBot.WinFormsApp
 {
     partial class FrmRatioTrade
     {
@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatioTrade));
             this.grpOwnedVenta = new System.Windows.Forms.GroupBox();
             this.chkOwnedVenta = new System.Windows.Forms.CheckBox();
-            this.OwnedVentaBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
+            this.OwnedVentaBidsOffers = new ChuchoBot.WinFormsApp.BidsOffersControl();
             this.txtOwnedVenta = new System.Windows.Forms.LinkLabel();
             this.lblOwnedVentaImporte = new System.Windows.Forms.Label();
             this.lblOwnedComision = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.grpArbitrationCompra = new System.Windows.Forms.GroupBox();
             this.chkArbitrationCompra = new System.Windows.Forms.CheckBox();
             this.lblArbirtationCompraComision = new System.Windows.Forms.Label();
-            this.ArbitrationCompraBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
+            this.ArbitrationCompraBidsOffers = new ChuchoBot.WinFormsApp.BidsOffersControl();
             this.txtArbitrationCompra = new System.Windows.Forms.LinkLabel();
             this.lblArbitrationCompraImporte = new System.Windows.Forms.Label();
             this.numArbitrationCompraPrice = new System.Windows.Forms.NumericUpDown();
@@ -52,7 +52,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.grpArbitrationVenta = new System.Windows.Forms.GroupBox();
-            this.ArbitrationVentaBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
+            this.ArbitrationVentaBidsOffers = new ChuchoBot.WinFormsApp.BidsOffersControl();
             this.txtArbitrationVenta = new System.Windows.Forms.LinkLabel();
             this.lblArbitrationVentaImporte = new System.Windows.Forms.Label();
             this.lblArbitrationComision = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.grpOwnedCompra = new System.Windows.Forms.GroupBox();
             this.lblOwnedCompraComision = new System.Windows.Forms.Label();
-            this.OwnedCompraBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
+            this.OwnedCompraBidsOffers = new ChuchoBot.WinFormsApp.BidsOffersControl();
             this.txtOwnedCompra = new System.Windows.Forms.LinkLabel();
             this.lblOwnedCompraImporte = new System.Windows.Forms.Label();
             this.numOwnedCompraPrice = new System.Windows.Forms.NumericUpDown();

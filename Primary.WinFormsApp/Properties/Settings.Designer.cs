@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Primary.WinFormsApp.Properties {
+namespace ChuchoBot.WinFormsApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp.SettlementTerms
+﻿namespace ChuchoBot.WinFormsApp.SettlementTerms
 {
     partial class SettlementTermSettings
     {

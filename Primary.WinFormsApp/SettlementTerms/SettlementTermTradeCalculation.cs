@@ -1,10 +1,7 @@
-﻿using System;
+﻿namespace ChuchoBot.WinFormsApp.SettlementTerms;
 
-namespace Primary.WinFormsApp
+public class SettlementTermTradeCalculation
 {
-    public class SettlementTermTradeCalculation
-    {
-        
-    }
+
 }
 

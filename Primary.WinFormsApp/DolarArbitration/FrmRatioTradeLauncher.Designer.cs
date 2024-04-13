@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp.DolarArbitration
+﻿namespace ChuchoBot.WinFormsApp.DolarArbitration
 {
     partial class FrmRatioTradeLauncher
     {
@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatioTradeLauncher));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.instrumentSearchListSell = new Primary.WinFormsApp.Shared.InstrumentSearchList();
+            this.instrumentSearchListSell = new ChuchoBot.WinFormsApp.Shared.InstrumentSearchList();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.instrumentSearchListBuy = new Primary.WinFormsApp.Shared.InstrumentSearchList();
+            this.instrumentSearchListBuy = new ChuchoBot.WinFormsApp.Shared.InstrumentSearchList();
             this.btnLaunch = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();

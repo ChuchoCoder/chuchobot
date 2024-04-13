@@ -1,5 +1,5 @@
 ﻿
-namespace Primary.WinFormsApp
+namespace ChuchoBot.WinFormsApp
 {
     partial class BidsOffersControl
     {

@@ -1,86 +1,87 @@
-﻿using System.Collections.Generic;
+﻿using ChuchoBot.WinFormsApp.DolarArbitration;
+using ChuchoBot.WinFormsApp.Shared;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Primary.WinFormsApp
+namespace ChuchoBot.WinFormsApp.SettlementTerms;
+
+public class SettlementTermArbitrationProcessor
 {
-    public class SettlementTermArbitrationProcessor
+    public List<DolarTradedInstrument> TradedInstruments = [];
+
+    internal void Init()
     {
-        public List<DolarTradedInstrument> TradedInstruments = new List<DolarTradedInstrument>();
-
-        internal void Init()
+        foreach (var arbitrationTickers in Properties.Settings.Default.ArbitrationTickers)
         {
-            foreach (var arbitrationTickers in Properties.Settings.Default.ArbitrationTickers)
+            if (arbitrationTickers.ContainsMultipleTickers())
             {
-                if (arbitrationTickers.ContainsMultipleTickers())
-                {
-                    var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers.GetPesosTicker(), arbitrationTickers.GetDolarTicker(), arbitrationTickers.GetCableTicker());
-                    TradedInstruments.Add(dolarTradedInstrument);
-                }
-                else
-                {
-                    var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers);
-                    TradedInstruments.Add(dolarTradedInstrument);
-                }
+                var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers.GetPesosTicker(), arbitrationTickers.GetDolarTicker(), arbitrationTickers.GetCableTicker());
+                TradedInstruments.Add(dolarTradedInstrument);
+            }
+            else
+            {
+                var dolarTradedInstrument = new DolarTradedInstrument(arbitrationTickers);
+                TradedInstruments.Add(dolarTradedInstrument);
+            }
+        }
+    }
+
+    public void RefreshData()
+    {
+        foreach (var dolarTradedInstrument in TradedInstruments)
+        {
+            dolarTradedInstrument.RefreshData();
+        }
+    }
+
+    public List<SettlementTermTrade> GetSettlementTermTradesPesos(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+    {
+        var allTrades = new List<SettlementTermTrade>();
+
+        foreach (var tradedInstrument in TradedInstruments)
+        {
+            var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
+            if (trades != null && trades.Count() > 0)
+            {
+                allTrades.AddRange(trades);
             }
         }
 
-        public void RefreshData()
+        return allTrades;
+    }
+
+    public List<SettlementTermTrade> GetSettlementTermTradesDolar(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+    {
+        var allTrades = new List<SettlementTermTrade>();
+
+        foreach (var tradedInstrument in TradedInstruments)
         {
-            foreach (var dolarTradedInstrument in TradedInstruments)
+            var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
+            if (dolarTrades != null && dolarTrades.Count() > 0)
             {
-                dolarTradedInstrument.RefreshData();
+                allTrades.AddRange(dolarTrades);
             }
         }
 
-        public List<SettlementTermTrade> GetSettlementTermTradesPesos(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+        return allTrades;
+    }
+
+
+
+    public List<SettlementTermTrade> GetSettlementTermTradesCable(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+    {
+        var allTrades = new List<SettlementTermTrade>();
+
+        foreach (var tradedInstrument in TradedInstruments)
         {
-            var allTrades = new List<SettlementTermTrade>();
-
-            foreach (var tradedInstrument in TradedInstruments)
+            var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
+            if (cableTrades != null && cableTrades.Count() > 0)
             {
-                var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
-                if (trades != null && trades.Count() > 0)
-                {
-                    allTrades.AddRange(trades);
-                }
+                allTrades.AddRange(cableTrades);
             }
-
-            return allTrades;
         }
 
-        public List<SettlementTermTrade> GetSettlementTermTradesDolar(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
-        {
-            var allTrades = new List<SettlementTermTrade>();
-
-            foreach (var tradedInstrument in TradedInstruments)
-            {
-                var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
-                if (dolarTrades != null && dolarTrades.Count() > 0)
-                {
-                    allTrades.AddRange(dolarTrades);
-                }
-            }
-
-            return allTrades;
-        }
-
-
-
-        public List<SettlementTermTrade> GetSettlementTermTradesCable(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
-        {
-            var allTrades = new List<SettlementTermTrade>();
-
-            foreach (var tradedInstrument in TradedInstruments)
-            {
-                var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
-                if (cableTrades != null && cableTrades.Count() > 0)
-                {
-                    allTrades.AddRange(cableTrades);
-                }
-            }
-
-            return allTrades;
-        }
+        return allTrades;
     }
 }
 

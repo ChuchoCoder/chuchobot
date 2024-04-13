@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp
+﻿namespace ChuchoBot.WinFormsApp
 {
     partial class FrmSettlementTermsAnalyzer
     {
@@ -65,7 +65,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chkOnlyProfitableTrades = new System.Windows.Forms.CheckBox();
             this.chkOnlyShowTradesWithTickersOwned = new System.Windows.Forms.CheckBox();
-            this.settlementTermSettings = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
+            this.settlementTermSettings = new ChuchoBot.WinFormsApp.SettlementTerms.SettlementTermSettings();
             this.label2 = new System.Windows.Forms.Label();
             this.numAlert = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();

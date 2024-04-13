@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp
+﻿namespace ChuchoBot.WinFormsApp
 {
     partial class FrmSettlementTermTrade
     {
@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettlementTermTrade));
             this.grpOwnedVenta = new System.Windows.Forms.GroupBox();
             this.lblSellPriceTarget = new System.Windows.Forms.Label();
-            this.VentaBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
+            this.VentaBidsOffers = new ChuchoBot.WinFormsApp.BidsOffersControl();
             this.txtOwnedVenta = new System.Windows.Forms.LinkLabel();
             this.lblVentaImporte = new System.Windows.Forms.Label();
             this.lblVentaComision = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.numCupon = new System.Windows.Forms.NumericUpDown();
             this.lblBuyPriceTarget = new System.Windows.Forms.Label();
             this.lblCompraComision = new System.Windows.Forms.Label();
-            this.CompraBidsOffers = new Primary.WinFormsApp.BidsOffersControl();
+            this.CompraBidsOffers = new ChuchoBot.WinFormsApp.BidsOffersControl();
             this.txtArbitrationCompra = new System.Windows.Forms.LinkLabel();
             this.lblCompraImporte = new System.Windows.Forms.Label();
             this.numCompraPrice = new System.Windows.Forms.NumericUpDown();
@@ -72,7 +72,7 @@
             this.lblGastosCaucion = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblNetoCaucion = new System.Windows.Forms.Label();
-            this.settlementTermSettings1 = new Primary.WinFormsApp.SettlementTerms.SettlementTermSettings();
+            this.settlementTermSettings1 = new ChuchoBot.WinFormsApp.SettlementTerms.SettlementTermSettings();
             this.grpOwnedVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numVentaPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOwnedVentaSize)).BeginInit();

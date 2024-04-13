@@ -1,60 +1,41 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Primary.WinFormsApp
+namespace ChuchoBot.WinFormsApp;
+
+public partial class FrmLogin : Form
 {
-    public partial class FrmLogin : Form
+    public string Password => txtPassword.Text;
+    public string UserName => txtUserName.Text;
+    public string BaseUrl => txtBaseUrl.Text;
+
+    public FrmLogin()
     {
-        public string Password
-        {
-            get
-            {
-                return txtPassword.Text;
-            }
-        }
-        public string UserName
-        {
-            get
-            {
-                return txtUserName.Text;
-            }
-        }
-        public string BaseUrl
-        {
-            get
-            {
-                return txtBaseUrl.Text;
-            }
-        }
+        InitializeComponent();
+    }
 
-        public FrmLogin()
-        {
-            InitializeComponent();
-        }
+    private void btnLogin_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
+        txtUserName.Text = string.Empty;
+        txtPassword.Text = string.Empty;
+        Close();
+    }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            txtUserName.Text = string.Empty;
-            txtPassword.Text = string.Empty;
-            this.Close();
-        }
+    private void FrmLogin_Load(object sender, EventArgs e)
+    {
+        txtBaseUrl.Text = Properties.Settings.Default.ApiBaseUrl;
+        txtUserName.Text = Properties.Settings.Default.UserName;
+        txtPassword.Text = Properties.Settings.Default.Password;
 
-        private void FrmLogin_Load(object sender, EventArgs e)
+        if (txtUserName.Text.Length > 0)
         {
-            this.txtBaseUrl.Text = Properties.Settings.Default.ApiBaseUrl;
-            this.txtUserName.Text = Properties.Settings.Default.UserName;
-            this.txtPassword.Text = Properties.Settings.Default.Password;
-
-            if (txtUserName.Text.Length > 0)
-            {
-                ActiveControl = txtPassword;
-                txtPassword.Focus();
-            }
+            ActiveControl = txtPassword;
+            _ = txtPassword.Focus();
         }
     }
 }

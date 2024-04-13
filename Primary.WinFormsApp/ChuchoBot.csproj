@@ -1,18 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE05394A-DAE7-4290-8450-3A839AEDA9B1}</ProjectGuid>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Primary.WinFormsApp</RootNamespace>
-    <AssemblyName>ChuchoBot</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <RootNamespace>ChuchoBot.WinFormsApp</RootNamespace>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,280 +18,22 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.21.0.429, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.21.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Components\BidOffersEventArgs.cs" />
-    <Compile Include="Components\BidsOffersClickType.cs" />
-    <Compile Include="Components\BidsOffersControl.cs">
+    <Compile Update="Components\BidsOffersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\BidsOffersControl.Designer.cs">
-      <DependentUpon>BidsOffersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmRatios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmRatios.Designer.cs">
-      <DependentUpon>FrmRatios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmRatioTradeLauncher.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmRatioTradeLauncher.Designer.cs">
-      <DependentUpon>FrmRatioTradeLauncher.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DolarArbitration\RatioTrade.cs" />
-    <Compile Include="DolarArbitration\DolarCalculatorProcessor.cs" />
-    <Compile Include="DolarArbitration\BuySellTrade.cs" />
-    <Compile Include="DolarArbitration\DolarArbitrationProcessor.cs" />
-    <Compile Include="DolarArbitration\DolarArbitrationInstruments.cs" />
-    <Compile Include="DolarArbitration\DolarTradedInstrument.cs" />
-    <Compile Include="Configuration\FrmStringCollectionEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Configuration\FrmStringCollectionEditor.Designer.cs">
-      <DependentUpon>FrmStringCollectionEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettlementTerms\Caucion.cs" />
-    <Compile Include="SettlementTerms\FrmCaucion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettlementTerms\FrmCaucion.Designer.cs">
-      <DependentUpon>FrmCaucion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettlementTerms\SettlementTermTrade.cs" />
-    <Compile Include="SettlementTerms\SettlementTermTradeCalculation.cs" />
-    <Compile Include="SettlementTerms\FrmSettlementTermLauncher.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettlementTerms\FrmSettlementTermLauncher.Designer.cs">
-      <DependentUpon>FrmSettlementTermLauncher.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettlementTerms\SettlementTermSettings.cs">
+    <Compile Update="SettlementTerms\SettlementTermSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettlementTerms\SettlementTermSettings.Designer.cs">
-      <DependentUpon>SettlementTermSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared\FlashWindow.cs" />
-    <Compile Include="Dolar\FrmDolarPrice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dolar\FrmDolarPrice.Designer.cs">
-      <DependentUpon>FrmDolarPrice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettlementTerms\FrmSettlementTermTrade.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettlementTerms\FrmSettlementTermTrade.Designer.cs">
-      <DependentUpon>FrmSettlementTermTrade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettlementTerms\FrmSettlementTermsAnalyzer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettlementTerms\FrmSettlementTermsAnalyzer.Designer.cs">
-      <DependentUpon>FrmSettlementTermsAnalyzer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmArbitrationAnalyzer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmArbitrationAnalyzer.Designer.cs">
-      <DependentUpon>FrmArbitrationAnalyzer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmRatioTrade.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DolarArbitration\FrmRatioTrade.Designer.cs">
-      <DependentUpon>FrmRatioTrade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dolar\FrmDolarPrices.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dolar\FrmDolarPrices.Designer.cs">
-      <DependentUpon>FrmDolarPrices.cs</DependentUpon>
-    </Compile>
-    <Compile Include="History\FrmHistoricData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="History\FrmHistoricData.Designer.cs">
-      <DependentUpon>FrmHistoricData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared\FrmMarketData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Shared\FrmMarketData.Designer.cs">
-      <DependentUpon>FrmMarketData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared\Argentina.cs" />
-    <Compile Include="Shared\InstrumentExtensions.cs" />
-    <Compile Include="Shared\InstrumentSearchList.cs">
+    <Compile Update="Shared\InstrumentSearchList.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared\InstrumentSearchList.Designer.cs">
-      <DependentUpon>InstrumentSearchList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared\InstrumentWithData.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SettlementTerms\Settlement.cs" />
-    <Compile Include="SettlementTerms\SettlementArbitrationDataTable.cs" />
-    <Compile Include="SettlementTerms\SettlementTermArbitrationProcessor.cs" />
-    <Compile Include="Shared\StringExtensions.cs" />
-    <Compile Include="Shared\TradedInstrumentWithSettlementTerms.cs" />
-    <Compile Include="Shared\TradeExtensions.cs" />
-    <Compile Include="Telemetry.cs" />
-    <EmbeddedResource Include="Components\BidsOffersControl.resx">
-      <DependentUpon>BidsOffersControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DolarArbitration\FrmRatios.resx">
-      <DependentUpon>FrmRatios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DolarArbitration\FrmRatioTradeLauncher.resx">
-      <DependentUpon>FrmRatioTradeLauncher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dolar\FrmDolarPrice.resx">
-      <DependentUpon>FrmDolarPrice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Configuration\FrmStringCollectionEditor.resx">
-      <DependentUpon>FrmStringCollectionEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettlementTerms\FrmCaucion.resx">
-      <DependentUpon>FrmCaucion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettlementTerms\FrmSettlementTermLauncher.resx">
-      <DependentUpon>FrmSettlementTermLauncher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettlementTerms\FrmSettlementTermTrade.resx">
-      <DependentUpon>FrmSettlementTermTrade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettlementTerms\FrmSettlementTermsAnalyzer.resx">
-      <DependentUpon>FrmSettlementTermsAnalyzer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DolarArbitration\FrmArbitrationAnalyzer.resx">
-      <DependentUpon>FrmArbitrationAnalyzer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DolarArbitration\FrmRatioTrade.resx">
-      <DependentUpon>FrmRatioTrade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dolar\FrmDolarPrices.resx">
-      <DependentUpon>FrmDolarPrices.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="History\FrmHistoricData.resx">
-      <DependentUpon>FrmHistoricData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettlementTerms\SettlementTermSettings.resx">
-      <DependentUpon>SettlementTermSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared\FrmMarketData.resx">
-      <DependentUpon>FrmMarketData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Shared\InstrumentSearchList.resx">
-      <DependentUpon>InstrumentSearchList.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
@@ -310,16 +42,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Primary\Primary.csproj">
-      <Project>{93f50e83-d1ea-4537-bd12-b9ded3203341}</Project>
-      <Name>Primary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\red-wifi.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\green-wifi.ico" />
+    <ProjectReference Include="..\Primary\Primary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -337,13 +60,26 @@
     <Content Include="Resources\activity_productivity_icon-icons.com_51080.ico" />
     <Content Include="Resources\arargentinaflag_111670.ico" />
     <Content Include="Resources\cash_40532.ico" />
-    <None Include="Resources\icons8-wi-fi-24-green.png" />
-    <None Include="Resources\icons8-wi-fi-24-red.png" />
     <None Include="Resources\robot_32.ico" />
     <None Include="Resources\robot_64.ico" />
     <None Include="Resources\robot_128.ico" />
-    <None Include="Resources\Robot.ico" />
     <Content Include="Resources\security-protection-protect-key-password-login_108554.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="1.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="8.0.0" />
+  </ItemGroup>
 </Project>

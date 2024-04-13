@@ -1,74 +1,68 @@
 ﻿using Primary.Data;
 using System.Diagnostics;
 
-namespace Primary.WinFormsApp
+namespace ChuchoBot.WinFormsApp.Shared;
+
+[DebuggerDisplay("{Instrument.InstrumentId.Market}:{Instrument.InstrumentId.Symbol} {Instrument.Currency}")]
+public class InstrumentWithData
 {
-    [DebuggerDisplay("{Instrument.InstrumentId.Market}:{Instrument.InstrumentId.Symbol} {Instrument.Currency}")]
-    public class InstrumentWithData
+    public InstrumentDetail Instrument { get; set; }
+    public Entries Data { get; set; }
+
+    public void RefreshData()
     {
-        public InstrumentDetail Instrument { get; set; }
-        public Entries Data { get; set; }
-
-        public void RefreshData()
+        if (Instrument == null)
         {
-            if (Instrument == null)
-                return;
-
-            Data = Argentina.Data.GetLatestOrNull(Instrument.InstrumentId.Symbol);
+            return;
         }
 
-        public bool UpdateData(string symbol, Entries data)
-        {
-            if (Instrument.InstrumentId.Symbol == symbol)
-            {
-                Data = data;
-                return true;
-            }
+        Data = Argentina.Data.GetLatestOrNull(Instrument.InstrumentId.Symbol);
+    }
 
-            return false;
-        }
-
-        public InstrumentWithData(InstrumentDetail instrument)
+    public bool UpdateData(string symbol, Entries data)
+    {
+        if (Instrument.InstrumentId.Symbol == symbol)
         {
-            Instrument = instrument;
-        }
-
-        public InstrumentWithData(InstrumentDetail instrument, Entries data)
-        {
-            Instrument = instrument;
             Data = data;
+            return true;
         }
 
-        public override string ToString()
-        {
-            return Instrument.InstrumentId.SymbolWithoutPrefix();
-        }
+        return false;
+    }
 
-        public bool HasBids()
-        {
-            return Data != null && Data.HasBids();
-        }
+    public InstrumentWithData(InstrumentDetail instrument)
+    {
+        Instrument = instrument;
+    }
 
-        public bool HasOffers()
-        {
-            return Data != null && Data.HasOffers();
-        }
+    public InstrumentWithData(InstrumentDetail instrument, Entries data)
+    {
+        Instrument = instrument;
+        Data = data;
+    }
 
-        public decimal? BidPrice() {
-            if (HasBids())
-            {
-                return Data.GetTopBidPrice();
-            }
-            return null;
-        }
+    public override string ToString()
+    {
+        return Instrument.InstrumentId.SymbolWithoutPrefix();
+    }
 
-        public decimal? OfferPrice()
-        {
-            if (HasBids())
-            {
-                return Data.GetTopOfferPrice();
-            }
-            return null;
-        }
+    public bool HasBids()
+    {
+        return Data != null && Data.HasBids();
+    }
+
+    public bool HasOffers()
+    {
+        return Data != null && Data.HasOffers();
+    }
+
+    public decimal? BidPrice()
+    {
+        return HasBids() ? Data.GetTopBidPrice() : null;
+    }
+
+    public decimal? OfferPrice()
+    {
+        return HasBids() ? Data.GetTopOfferPrice() : null;
     }
 }

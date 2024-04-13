@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp.Shared
+﻿namespace ChuchoBot.WinFormsApp.Shared
 {
     partial class InstrumentSearchList
     {

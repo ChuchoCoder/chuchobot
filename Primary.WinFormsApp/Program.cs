@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Primary.WinFormsApp
+namespace ChuchoBot.WinFormsApp;
+
+internal static class Program
 {
-    internal static class Program
+
+
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    private static void Main()
     {
-
-
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
-        }
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new FrmMain());
     }
 }

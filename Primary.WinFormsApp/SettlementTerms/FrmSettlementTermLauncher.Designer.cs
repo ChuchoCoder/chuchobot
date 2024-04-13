@@ -1,4 +1,4 @@
-﻿namespace Primary.WinFormsApp.SettlementTerms
+﻿namespace ChuchoBot.WinFormsApp.SettlementTerms
 {
     partial class FrmSettlementTermLauncher
     {
@@ -38,7 +38,7 @@
             this.rdoSell24H = new System.Windows.Forms.RadioButton();
             this.rdoSellCI = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.instrumentSearchList1 = new Primary.WinFormsApp.Shared.InstrumentSearchList();
+            this.instrumentSearchList1 = new ChuchoBot.WinFormsApp.Shared.InstrumentSearchList();
             this.btnLaunch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();

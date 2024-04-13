@@ -1,95 +1,73 @@
-﻿using Primary.Data;
-using Primary.WinFormsApp.Properties;
+﻿using ChuchoBot.WinFormsApp.Properties;
+using ChuchoBot.WinFormsApp.Shared;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace Primary.WinFormsApp.SettlementTerms
+namespace ChuchoBot.WinFormsApp.SettlementTerms;
+
+public partial class FrmSettlementTermLauncher : Form
 {
-    public partial class FrmSettlementTermLauncher : Form
+    public string[] _instruments;
+
+    public FrmSettlementTermLauncher()
     {
-        public string[] _instruments;
+        InitializeComponent();
+    }
 
-        public FrmSettlementTermLauncher()
+    private void FrmSettlementTermLauncher_Load(object sender, EventArgs e)
+    {
+        instrumentSearchList1.InstrumentDoubleClick += InstrumentSearchList_InstrumentDoubleClick;
+    }
+
+    private void InstrumentSearchList_InstrumentDoubleClick(object sender, EventArgs e)
+    {
+        btnLaunch_Click(sender, e);
+    }
+
+    private void btnLaunch_Click(object sender, EventArgs e)
+    {
+        if (instrumentSearchList1.ValidateSelectedInstrument() == false)
         {
-            InitializeComponent();
+            return;
         }
 
-        private void FrmSettlementTermLauncher_Load(object sender, EventArgs e)
+        var buySymbol = instrumentSearchList1.SelectedTicker;
+
+        if (Settings.Default.ArbitrationTickers.TickerExists(buySymbol) == false)
         {
-            instrumentSearchList1.InstrumentDoubleClick += InstrumentSearchList_InstrumentDoubleClick;
+            _ = MessageBox.Show($"El instrumento '{buySymbol}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
         }
 
-        private void InstrumentSearchList_InstrumentDoubleClick(object sender, EventArgs e)
+        buySymbol = rdoBuyCI.Checked
+            ? buySymbol.ToMervalSymbolCI()
+            : rdoBuy24H.Checked ? buySymbol.ToMervalSymbol24H() : buySymbol.ToMervalSymbol48H();
+        var buyInstrument = Argentina.Data.GetInstrumentDetailOrNull(buySymbol);
+
+        if (buyInstrument == null)
         {
-            btnLaunch_Click(sender, e);
+            _ = MessageBox.Show($"No se encontró el instrumento '{buySymbol}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
         }
 
-        private void btnLaunch_Click(object sender, EventArgs e)
+        var buy = new InstrumentWithData(buyInstrument);
+
+        var sellSymbol = instrumentSearchList1.SelectedTicker;
+        sellSymbol = rdoSellCI.Checked
+            ? sellSymbol.ToMervalSymbolCI()
+            : rdoSell24H.Checked ? sellSymbol.ToMervalSymbol24H() : sellSymbol.ToMervalSymbol48H();
+        var sellInstrument = Argentina.Data.GetInstrumentDetailOrNull(sellSymbol);
+        if (sellInstrument == null)
         {
-            if (instrumentSearchList1.ValidateSelectedInstrument() == false)
-            { 
-                return;
-            }
-
-            string buySymbol = instrumentSearchList1.SelectedTicker;
-
-            if (Settings.Default.ArbitrationTickers.TickerExists(buySymbol) == false)
-            {
-                MessageBox.Show($"El instrumento '{buySymbol}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (rdoBuyCI.Checked)
-            {
-                buySymbol = buySymbol.ToMervalSymbolCI();
-            }
-            else if (rdoBuy24H.Checked)
-            {
-                buySymbol = buySymbol.ToMervalSymbol24H();
-            }
-            else
-            {
-                buySymbol = buySymbol.ToMervalSymbol48H();
-            }
-            var buyInstrument = Argentina.Data.GetInstrumentDetailOrNull(buySymbol);
-
-            if (buyInstrument == null)
-            {
-                MessageBox.Show($"No se encontró el instrumento '{buySymbol}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var buy = new InstrumentWithData(buyInstrument);
-
-            string sellSymbol = instrumentSearchList1.SelectedTicker;
-            if (rdoSellCI.Checked)
-            {
-                sellSymbol = sellSymbol.ToMervalSymbolCI();
-            }
-            else if (rdoSell24H.Checked)
-            {
-                sellSymbol = sellSymbol.ToMervalSymbol24H();
-            }
-            else
-            {
-                sellSymbol = sellSymbol.ToMervalSymbol48H();
-            }
-            var sellInstrument = Argentina.Data.GetInstrumentDetailOrNull(sellSymbol);
-            if (sellInstrument == null)
-            {
-                MessageBox.Show($"No se encontró el instrumento '{sellInstrument}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            var sell = new InstrumentWithData(sellInstrument);
-
-            var trade = new SettlementTermTrade(buy, sell);
-
-            var frm = new FrmSettlementTermTrade();
-            frm.Init(trade);
-            frm.Show();
+            _ = MessageBox.Show($"No se encontró el instrumento '{sellInstrument}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
         }
+        var sell = new InstrumentWithData(sellInstrument);
+
+        var trade = new SettlementTermTrade(buy, sell);
+
+        var frm = new FrmSettlementTermTrade();
+        frm.Init(trade);
+        frm.Show();
     }
 }
