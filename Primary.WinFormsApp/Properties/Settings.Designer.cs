@@ -126,95 +126,125 @@ namespace ChuchoBot.WinFormsApp.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>AAPL</string>\r\n  <string>AAPLC</string>\r\n  <string>AAPLD</string>\r\n  <stri" +
-            "ng>ABBV</string>\r\n  <string>ABEV</string>\r\n  <string>ABT</string>\r\n  <string>ACH" +
-            "D</string>\r\n  <string>ADBE</string>\r\n  <string>ADGO</string>\r\n  <string>ADI</str" +
-            "ing>\r\n  <string>AEM</string>\r\n  <string>AIG</string>\r\n  <string>AMD</string>\r\n  " +
-            "<string>AMDD</string>\r\n  <string>AMGN</string>\r\n  <string>AMX</string>\r\n  <strin" +
-            "g>AMXD</string>\r\n  <string>AMZN</string>\r\n  <string>AMZNC</string>\r\n  <string>AM" +
-            "ZND</string>\r\n  <string>ARCO</string>\r\n  <string>AUY</string>\r\n  <string>AUYD</s" +
-            "tring>\r\n  <string>AVGO</string>\r\n  <string>AVY</string>\r\n  <string>AXP</string>\r" +
-            "\n  <string>AXPD</string>\r\n  <string>AZN</string>\r\n  <string>AZND</string>\r\n  <st" +
-            "ring>BA</string>\r\n  <string>BA.C</string>\r\n  <string>BA.CD</string>\r\n  <string>B" +
-            "ABA</string>\r\n  <string>BABA</string>\r\n  <string>BABAC</string>\r\n  <string>BABAD" +
-            "</string>\r\n  <string>BAD</string>\r\n  <string>BB</string>\r\n  <string>BBD</string>" +
-            "\r\n  <string>BBDC</string>\r\n  <string>BBDD</string>\r\n  <string>BBV</string>\r\n  <s" +
-            "tring>BCS</string>\r\n  <string>BHP</string>\r\n  <string>BIDU</string>\r\n  <string>B" +
-            "IDUD</string>\r\n  <string>BIIB</string>\r\n  <string>BIOX</string>\r\n  <string>BK</s" +
-            "tring>\r\n  <string>BMA</string>\r\n  <string>BMY</string>\r\n  <string>BNG</string>\r\n" +
-            "  <string>BP</string>\r\n  <string>BPD</string>\r\n  <string>BRFS</string>\r\n  <strin" +
-            "g>BRKB</string>\r\n  <string>BSBR</string>\r\n  <string>BYMA</string>\r\n  <string>C</" +
-            "string>\r\n  <string>C.D</string>\r\n  <string>CAAP</string>\r\n  <string>CAH</string>" +
-            "\r\n  <string>CAHD</string>\r\n  <string>CAT</string>\r\n  <string>CATD</string>\r\n  <s" +
-            "tring>CDE</string>\r\n  <string>CHL</string>\r\n  <string>CL</string>\r\n  <string>COS" +
-            "T</string>\r\n  <string>CRM</string>\r\n  <string>CS</string>\r\n  <string>CSCO</strin" +
-            "g>\r\n  <string>CSCOD</string>\r\n  <string>CVX</string>\r\n  <string>CVXD</string>\r\n " +
-            " <string>CX</string>\r\n  <string>DD</string>\r\n  <string>DE</string>\r\n  <string>DE" +
-            "SP</string>\r\n  <string>DESPD</string>\r\n  <string>DIA</string>\r\n  <string>DIAC</s" +
-            "tring>\r\n  <string>DIAD</string>\r\n  <string>DISN</string>\r\n  <string>DISND</strin" +
-            "g>\r\n  <string>DOCU</string>\r\n  <string>EBAY</string>\r\n  <string>EBAYD</string>\r\n" +
-            "  <string>EEM</string>\r\n  <string>EEMC</string>\r\n  <string>EEMD</string>\r\n  <str" +
-            "ing>EFX</string>\r\n  <string>ERIC</string>\r\n  <string>ERJ</string>\r\n  <string>ERJ" +
-            "D</string>\r\n  <string>ETSY</string>\r\n  <string>EWZ</string>\r\n  <string>FB</strin" +
-            "g>\r\n  <string>FBD</string>\r\n  <string>FCX</string>\r\n  <string>FDX</string>\r\n  <s" +
-            "tring>FDXD</string>\r\n  <string>FMX</string>\r\n  <string>FSLR</string>\r\n  <string>" +
-            "GE</string>\r\n  <string>GEC</string>\r\n  <string>GFI</string>\r\n  <string>GGAL</str" +
-            "ing>\r\n  <string>GGB</string>\r\n  <string>GILD</string>\r\n  <string>GILDC</string>\r" +
-            "\n  <string>GILDD</string>\r\n  <string>GLNT</string>\r\n  <string>GLNTD</string>\r\n  " +
-            "<string>GLW</string>\r\n  <string>GOGLD</string>\r\n  <string>GOLD</string>\r\n  <stri" +
-            "ng>GOLDC</string>\r\n  <string>GOLDD</string>\r\n  <string>GOOGL</string>\r\n  <string" +
-            ">GPRK</string>\r\n  <string>GS</string>\r\n  <string>GSD</string>\r\n  <string>GSK</st" +
-            "ring>\r\n  <string>GSKD</string>\r\n  <string>HAL</string>\r\n  <string>HD</string>\r\n " +
-            " <string>HL</string>\r\n  <string>HMC</string>\r\n  <string>HMY</string>\r\n  <string>" +
-            "HMYD</string>\r\n  <string>HON</string>\r\n  <string>HPQ</string>\r\n  <string>HSBC</s" +
-            "tring>\r\n  <string>HSY</string>\r\n  <string>HWM</string>\r\n  <string>IBM</string>\r\n" +
-            "  <string>IBMD</string>\r\n  <string>INTC</string>\r\n  <string>INTCD</string>\r\n  <s" +
-            "tring>ITUB</string>\r\n  <string>ITUBD</string>\r\n  <string>IWM</string>\r\n  <string" +
-            ">JD</string>\r\n  <string>JNJ</string>\r\n  <string>JNJC</string>\r\n  <string>JNJD</s" +
-            "tring>\r\n  <string>JPM</string>\r\n  <string>JPMD</string>\r\n  <string>KMB</string>\r" +
-            "\n  <string>KO</string>\r\n  <string>KOC</string>\r\n  <string>KOD</string>\r\n  <strin" +
-            "g>LLY</string>\r\n  <string>LMT</string>\r\n  <string>LMTD</string>\r\n  <string>LVS</" +
-            "string>\r\n  <string>LYG</string>\r\n  <string>MA</string>\r\n  <string>MCD</string>\r\n" +
+            "tring>AAL</string>\r\n  <string>AAP</string>\r\n  <string>AAPL</string>\r\n  <string>A" +
+            "APLC</string>\r\n  <string>AAPLD</string>\r\n  <string>ABBV</string>\r\n  <string>ABBV" +
+            "D</string>\r\n  <string>ABEV</string>\r\n  <string>ABNB</string>\r\n  <string>ABT</str" +
+            "ing>\r\n  <string>ABTD</string>\r\n  <string>ACHD</string>\r\n  <string>ADBE</string>\r" +
+            "\n  <string>ADGO</string>\r\n  <string>ADI</string>\r\n  <string>AEM</string>\r\n  <str" +
+            "ing>AIG</string>\r\n  <string>AKO.B</string>\r\n  <string>AMAT</string>\r\n  <string>A" +
+            "MD</string>\r\n  <string>AMDD</string>\r\n  <string>AMGN</string>\r\n  <string>AMX</st" +
+            "ring>\r\n  <string>AMXD</string>\r\n  <string>AMZN</string>\r\n  <string>AMZNC</string" +
+            ">\r\n  <string>AMZND</string>\r\n  <string>AOCAD</string>\r\n  <string>ARCO</string>\r\n" +
+            "  <string>ARKK</string>\r\n  <string>ARKKD</string>\r\n  <string>AUY</string>\r\n  <st" +
+            "ring>AUYD</string>\r\n  <string>AVGO</string>\r\n  <string>AVGOD</string>\r\n  <string" +
+            ">AVY</string>\r\n  <string>AXP</string>\r\n  <string>AXPD</string>\r\n  <string>AZN</s" +
+            "tring>\r\n  <string>AZND</string>\r\n  <string>BA</string>\r\n  <string>BA.C</string>\r" +
+            "\n  <string>BA.CD</string>\r\n  <string>BABA</string>\r\n  <string>BABAC</string>\r\n  " +
+            "<string>BABAD</string>\r\n  <string>BAD</string>\r\n  <string>BB</string>\r\n  <string" +
+            ">BBD</string>\r\n  <string>BBDC</string>\r\n  <string>BBDD</string>\r\n  <string>BBV</" +
+            "string>\r\n  <string>BCS</string>\r\n  <string>BHP</string>\r\n  <string>BIDU</string>" +
+            "\r\n  <string>BIDUD</string>\r\n  <string>BIIB</string>\r\n  <string>BIOX</string>\r\n  " +
+            "<string>BIOXD</string>\r\n  <string>BITF</string>\r\n  <string>BK</string>\r\n  <strin" +
+            "g>BMA</string>\r\n  <string>BMY</string>\r\n  <string>BNG</string>\r\n  <string>BP</st" +
+            "ring>\r\n  <string>BPD</string>\r\n  <string>BRFS</string>\r\n  <string>BRKB</string>\r" +
+            "\n  <string>BRKBD</string>\r\n  <string>BSBR</string>\r\n  <string>BYMA</string>\r\n  <" +
+            "string>C</string>\r\n  <string>C.D</string>\r\n  <string>CAAP</string>\r\n  <string>CA" +
+            "H</string>\r\n  <string>CAHD</string>\r\n  <string>CAR</string>\r\n  <string>CAT</stri" +
+            "ng>\r\n  <string>CATD</string>\r\n  <string>CDE</string>\r\n  <string>CHL</string>\r\n  " +
+            "<string>CL</string>\r\n  <string>COIN</string>\r\n  <string>COST</string>\r\n  <string" +
+            ">CRM</string>\r\n  <string>CS</string>\r\n  <string>CSCO</string>\r\n  <string>CSCOD</" +
+            "string>\r\n  <string>CVX</string>\r\n  <string>CVXD</string>\r\n  <string>CX</string>\r" +
+            "\n  <string>DD</string>\r\n  <string>DE</string>\r\n  <string>DEO</string>\r\n  <string" +
+            ">DESP</string>\r\n  <string>DESPD</string>\r\n  <string>DIA</string>\r\n  <string>DIAC" +
+            "</string>\r\n  <string>DIAD</string>\r\n  <string>DISN</string>\r\n  <string>DISND</st" +
+            "ring>\r\n  <string>DOCU</string>\r\n  <string>DOCUD</string>\r\n  <string>DOW</string>" +
+            "\r\n  <string>EA</string>\r\n  <string>EBAY</string>\r\n  <string>EBAYD</string>\r\n  <s" +
+            "tring>EBR</string>\r\n  <string>EEM</string>\r\n  <string>EEMC</string>\r\n  <string>E" +
+            "EMD</string>\r\n  <string>EFX</string>\r\n  <string>EFXD</string>\r\n  <string>ERIC</s" +
+            "tring>\r\n  <string>ERJ</string>\r\n  <string>ERJD</string>\r\n  <string>ETSY</string>" +
+            "\r\n  <string>ETSYD</string>\r\n  <string>EWZ</string>\r\n  <string>EWZD</string>\r\n  <" +
+            "string>F</string>\r\n  <string>FB</string>\r\n  <string>FBD</string>\r\n  <string>FCX<" +
+            "/string>\r\n  <string>FDX</string>\r\n  <string>FDXD</string>\r\n  <string>FMX</string" +
+            ">\r\n  <string>FMXD</string>\r\n  <string>FSLR</string>\r\n  <string>GE</string>\r\n  <s" +
+            "tring>GEC</string>\r\n  <string>GFI</string>\r\n  <string>GGAL</string>\r\n  <string>G" +
+            "GB</string>\r\n  <string>GILD</string>\r\n  <string>GILDC</string>\r\n  <string>GILDD<" +
+            "/string>\r\n  <string>GLNT</string>\r\n  <string>GLNTD</string>\r\n  <string>GLOB</str" +
+            "ing>\r\n  <string>GLOBD</string>\r\n  <string>GLW</string>\r\n  <string>GM</string>\r\n " +
+            " <string>GOGLD</string>\r\n  <string>GOLD</string>\r\n  <string>GOLDC</string>\r\n  <s" +
+            "tring>GOLDD</string>\r\n  <string>GOOGL</string>\r\n  <string>GPRK</string>\r\n  <stri" +
+            "ng>GRMN</string>\r\n  <string>GS</string>\r\n  <string>GSD</string>\r\n  <string>GSK</" +
+            "string>\r\n  <string>GSKC</string>\r\n  <string>GSKD</string>\r\n  <string>HAL</string" +
+            ">\r\n  <string>HD</string>\r\n  <string>HL</string>\r\n  <string>HMC</string>\r\n  <stri" +
+            "ng>HMY</string>\r\n  <string>HMYD</string>\r\n  <string>HOG</string>\r\n  <string>HON<" +
+            "/string>\r\n  <string>HPQ</string>\r\n  <string>HSBC</string>\r\n  <string>HSY</string" +
+            ">\r\n  <string>HUT</string>\r\n  <string>HWM</string>\r\n  <string>HWMD</string>\r\n  <s" +
+            "tring>IBM</string>\r\n  <string>IBMD</string>\r\n  <string>INTC</string>\r\n  <string>" +
+            "INTCD</string>\r\n  <string>IP</string>\r\n  <string>ITUB</string>\r\n  <string>ITUBD<" +
+            "/string>\r\n  <string>IWM</string>\r\n  <string>IWMD</string>\r\n  <string>JD</string>" +
+            "\r\n  <string>JMIA</string>\r\n  <string>JNJ</string>\r\n  <string>JNJC</string>\r\n  <s" +
+            "tring>JNJD</string>\r\n  <string>JPM</string>\r\n  <string>JPMD</string>\r\n  <string>" +
+            "KGC</string>\r\n  <string>KMB</string>\r\n  <string>KMBC</string>\r\n  <string>KO</str" +
+            "ing>\r\n  <string>KOC</string>\r\n  <string>KOD</string>\r\n  <string>LAC</string>\r\n  " +
+            "<string>LACD</string>\r\n  <string>LLY</string>\r\n  <string>LMT</string>\r\n  <string" +
+            ">LMTD</string>\r\n  <string>LRCX</string>\r\n  <string>LVS</string>\r\n  <string>LYG</" +
+            "string>\r\n  <string>MA</string>\r\n  <string>MAD</string>\r\n  <string>MCD</string>\r\n" +
             "  <string>MCDD</string>\r\n  <string>MDT</string>\r\n  <string>MELI</string>\r\n  <str" +
             "ing>MELIC</string>\r\n  <string>MELID</string>\r\n  <string>META</string>\r\n  <string" +
-            ">METAC</string>\r\n  <string>METAD</string>\r\n  <string>MMC</string>\r\n  <string>MMM" +
-            "</string>\r\n  <string>MMMD</string>\r\n  <string>MO</string>\r\n  <string>MOD</string" +
-            ">\r\n  <string>MRK</string>\r\n  <string>MRKD</string>\r\n  <string>MSFT</string>\r\n  <" +
-            "string>MSFTC</string>\r\n  <string>MSFTD</string>\r\n  <string>NEM</string>\r\n  <stri" +
-            "ng>NEMD</string>\r\n  <string>NFLX</string>\r\n  <string>NFLXD</string>\r\n  <string>N" +
-            "GG</string>\r\n  <string>NKE</string>\r\n  <string>NKED</string>\r\n  <string>NOKA</st" +
-            "ring>\r\n  <string>NTES</string>\r\n  <string>NVDA</string>\r\n  <string>NVDAD</string" +
-            ">\r\n  <string>NVS</string>\r\n  <string>NVSD</string>\r\n  <string>OGZD</string>\r\n  <" +
-            "string>OGZDD</string>\r\n  <string>ORAN</string>\r\n  <string>ORCL</string>\r\n  <stri" +
-            "ng>OXY</string>\r\n  <string>PAAS</string>\r\n  <string>PAMP</string>\r\n  <string>PBR" +
-            "</string>\r\n  <string>PBRD</string>\r\n  <string>PEP</string>\r\n  <string>PFE</strin" +
-            "g>\r\n  <string>PFED</string>\r\n  <string>PG</string>\r\n  <string>PGD</string>\r\n  <s" +
-            "tring>PHG</string>\r\n  <string>PKS</string>\r\n  <string>PSX</string>\r\n  <string>PT" +
-            "R</string>\r\n  <string>PYPL</string>\r\n  <string>PYPLD</string>\r\n  <string>QCOM</s" +
-            "tring>\r\n  <string>QCOMC</string>\r\n  <string>QCOMD</string>\r\n  <string>QQQ</strin" +
-            "g>\r\n  <string>QQQC</string>\r\n  <string>QQQD</string>\r\n  <string>RDS</string>\r\n  " +
-            "<string>RIO</string>\r\n  <string>RTX</string>\r\n  <string>SAN</string>\r\n  <string>" +
-            "SAP</string>\r\n  <string>SBS</string>\r\n  <string>SBUX</string>\r\n  <string>SCCO</s" +
-            "tring>\r\n  <string>SHOP</string>\r\n  <string>SID</string>\r\n  <string>SLB</string>\r" +
-            "\n  <string>SLBD</string>\r\n  <string>SNAP</string>\r\n  <string>SNOW</string>\r\n  <s" +
-            "tring>SONY</string>\r\n  <string>SPOT</string>\r\n  <string>SPY</string>\r\n  <string>" +
-            "SPYC</string>\r\n  <string>SPYD</string>\r\n  <string>SQ</string>\r\n  <string>SUZ</st" +
-            "ring>\r\n  <string>T</string>\r\n  <string>TD</string>\r\n  <string>TEN</string>\r\n  <s" +
-            "tring>TEND</string>\r\n  <string>TGNO4</string>\r\n  <string>TGT</string>\r\n  <string" +
-            ">TMD</string>\r\n  <string>TMO</string>\r\n  <string>TOT</string>\r\n  <string>TRAN</s" +
-            "tring>\r\n  <string>TRIP</string>\r\n  <string>TSLA</string>\r\n  <string>TSLAC</strin" +
-            "g>\r\n  <string>TSLAD</string>\r\n  <string>TSM</string>\r\n  <string>TWTR</string>\r\n " +
-            " <string>TWTRD</string>\r\n  <string>TXN</string>\r\n  <string>TXR</string>\r\n  <stri" +
-            "ng>UGP</string>\r\n  <string>UL</string>\r\n  <string>UNH</string>\r\n  <string>UNP</s" +
-            "tring>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n  <string>VALED</string>\r" +
-            "\n  <string>VD</string>\r\n  <string>VIST</string>\r\n  <string>VISTD</string>\r\n  <st" +
-            "ring>VIV</string>\r\n  <string>VOD</string>\r\n  <string>VRSN</string>\r\n  <string>VZ" +
-            "</string>\r\n  <string>VZD</string>\r\n  <string>WBA</string>\r\n  <string>WFC</string" +
-            ">\r\n  <string>WFCC</string>\r\n  <string>WFCD</string>\r\n  <string>WMT</string>\r\n  <" +
-            "string>WMTD</string>\r\n  <string>X</string>\r\n  <string>XD</string>\r\n  <string>XLE" +
-            "C</string>\r\n  <string>XLED</string>\r\n  <string>XOM</string>\r\n  <string>XOMC</str" +
-            "ing>\r\n  <string>XOMD</string>\r\n  <string>XOMD</string>\r\n  <string>XROX</string>\r" +
-            "\n  <string>YELP</string>\r\n  <string>ZM</string>\r\n</ArrayOfString>")]
+            ">METAC</string>\r\n  <string>METAD</string>\r\n  <string>MFG</string>\r\n  <string>MMC" +
+            "</string>\r\n  <string>MMM</string>\r\n  <string>MMMD</string>\r\n  <string>MO</string" +
+            ">\r\n  <string>MOD</string>\r\n  <string>MOS</string>\r\n  <string>MRK</string>\r\n  <st" +
+            "ring>MRKD</string>\r\n  <string>MRVL</string>\r\n  <string>MRVLD</string>\r\n  <string" +
+            ">MSFT</string>\r\n  <string>MSFTC</string>\r\n  <string>MSFTD</string>\r\n  <string>MS" +
+            "I</string>\r\n  <string>MSTR</string>\r\n  <string>MU</string>\r\n  <string>MUX</strin" +
+            "g>\r\n  <string>NEM</string>\r\n  <string>NEMD</string>\r\n  <string>NFLX</string>\r\n  " +
+            "<string>NFLXD</string>\r\n  <string>NG</string>\r\n  <string>NGG</string>\r\n  <string" +
+            ">NIO</string>\r\n  <string>NKE</string>\r\n  <string>NKED</string>\r\n  <string>NOKA</" +
+            "string>\r\n  <string>NTCO</string>\r\n  <string>NTES</string>\r\n  <string>NU</string>" +
+            "\r\n  <string>NUD</string>\r\n  <string>NUE</string>\r\n  <string>NVDA</string>\r\n  <st" +
+            "ring>NVDAD</string>\r\n  <string>NVS</string>\r\n  <string>NVSD</string>\r\n  <string>" +
+            "OGZD</string>\r\n  <string>OGZDD</string>\r\n  <string>ORAN</string>\r\n  <string>ORCL" +
+            "</string>\r\n  <string>OXY</string>\r\n  <string>PAAS</string>\r\n  <string>PAGS</stri" +
+            "ng>\r\n  <string>PAMP</string>\r\n  <string>PANW</string>\r\n  <string>PBI</string>\r\n " +
+            " <string>PBR</string>\r\n  <string>PBRD</string>\r\n  <string>PCAR</string>\r\n  <stri" +
+            "ng>PEP</string>\r\n  <string>PFE</string>\r\n  <string>PFED</string>\r\n  <string>PG</" +
+            "string>\r\n  <string>PGD</string>\r\n  <string>PHG</string>\r\n  <string>PKS</string>\r" +
+            "\n  <string>PLTR</string>\r\n  <string>PLTRD</string>\r\n  <string>PSX</string>\r\n  <s" +
+            "tring>PSXD</string>\r\n  <string>PTR</string>\r\n  <string>PYPL</string>\r\n  <string>" +
+            "PYPLD</string>\r\n  <string>QCOM</string>\r\n  <string>QCOMC</string>\r\n  <string>QCO" +
+            "MD</string>\r\n  <string>QQQ</string>\r\n  <string>QQQC</string>\r\n  <string>QQQD</st" +
+            "ring>\r\n  <string>RBLX</string>\r\n  <string>RDS</string>\r\n  <string>RIO</string>\r\n" +
+            "  <string>RIOD</string>\r\n  <string>ROST</string>\r\n  <string>RTX</string>\r\n  <str" +
+            "ing>SAN</string>\r\n  <string>SAP</string>\r\n  <string>SATL</string>\r\n  <string>SBS" +
+            "</string>\r\n  <string>SBUX</string>\r\n  <string>SCCO</string>\r\n  <string>SDA</stri" +
+            "ng>\r\n  <string>SE</string>\r\n  <string>SHEL</string>\r\n  <string>SHOP</string>\r\n  " +
+            "<string>SHOPD</string>\r\n  <string>SHPW</string>\r\n  <string>SI</string>\r\n  <strin" +
+            "g>SID</string>\r\n  <string>SLB</string>\r\n  <string>SLBD</string>\r\n  <string>SNA</" +
+            "string>\r\n  <string>SNAP</string>\r\n  <string>SNOW</string>\r\n  <string>SNOWD</stri" +
+            "ng>\r\n  <string>SONY</string>\r\n  <string>SPGI</string>\r\n  <string>SPOT</string>\r\n" +
+            "  <string>SPOTD</string>\r\n  <string>SPY</string>\r\n  <string>SPYC</string>\r\n  <st" +
+            "ring>SPYD</string>\r\n  <string>SQ</string>\r\n  <string>SQD</string>\r\n  <string>STN" +
+            "E</string>\r\n  <string>SUZ</string>\r\n  <string>SYY</string>\r\n  <string>T</string>" +
+            "\r\n  <string>TD</string>\r\n  <string>TEFO</string>\r\n  <string>TEN</string>\r\n  <str" +
+            "ing>TEND</string>\r\n  <string>TGNO4</string>\r\n  <string>TGT</string>\r\n  <string>T" +
+            "IMB</string>\r\n  <string>TM</string>\r\n  <string>TMD</string>\r\n  <string>TMO</stri" +
+            "ng>\r\n  <string>TOT</string>\r\n  <string>TRAN</string>\r\n  <string>TRIP</string>\r\n " +
+            " <string>TSLA</string>\r\n  <string>TSLAC</string>\r\n  <string>TSLAD</string>\r\n  <s" +
+            "tring>TSM</string>\r\n  <string>TTE</string>\r\n  <string>TV</string>\r\n  <string>TWL" +
+            "O</string>\r\n  <string>TWTR</string>\r\n  <string>TWTRD</string>\r\n  <string>TXN</st" +
+            "ring>\r\n  <string>TXR</string>\r\n  <string>TXRD</string>\r\n  <string>UAL</string>\r\n" +
+            "  <string>UBER</string>\r\n  <string>UGP</string>\r\n  <string>UL</string>\r\n  <strin" +
+            "g>UNH</string>\r\n  <string>UNHD</string>\r\n  <string>UNP</string>\r\n  <string>UNPD<" +
+            "/string>\r\n  <string>UPST</string>\r\n  <string>USB</string>\r\n  <string>V</string>\r" +
+            "\n  <string>VALE</string>\r\n  <string>VALED</string>\r\n  <string>VD</string>\r\n  <st" +
+            "ring>VIST</string>\r\n  <string>VISTD</string>\r\n  <string>VIV</string>\r\n  <string>" +
+            "VOD</string>\r\n  <string>VRSN</string>\r\n  <string>VZ</string>\r\n  <string>VZD</str" +
+            "ing>\r\n  <string>WBA</string>\r\n  <string>WFC</string>\r\n  <string>WFCC</string>\r\n " +
+            " <string>WFCD</string>\r\n  <string>WMT</string>\r\n  <string>WMTD</string>\r\n  <stri" +
+            "ng>X</string>\r\n  <string>XD</string>\r\n  <string>XLE</string>\r\n  <string>XLEC</st" +
+            "ring>\r\n  <string>XLED</string>\r\n  <string>XLF</string>\r\n  <string>XLFD</string>\r" +
+            "\n  <string>XOM</string>\r\n  <string>XOMC</string>\r\n  <string>XOMD</string>\r\n  <st" +
+            "ring>XP</string>\r\n  <string>XROX</string>\r\n  <string>YELP</string>\r\n  <string>ZM" +
+            "</string>\r\n  <string>ZMD</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection AccionesCEDEARs {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["AccionesCEDEARs"]));
