@@ -49,7 +49,7 @@ public partial class FrmSettlementTermsAnalyzer : Form
             {
                 foreach (var alertTrade in alertTrades)
                 {
-                    Alerts.NotifySettlementTrade(alertTrade);
+                    Alerts.NotifySettlementTrade(alertTrade, null);
                 }
                 _ = FlashWindow.Flash(this, 3);
             }

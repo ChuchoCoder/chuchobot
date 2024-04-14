@@ -256,6 +256,11 @@ public partial class FrmSettlementTermTrade : Form
                 lblHeader.ForeColor = Color.Red;
                 lblProfitPesos.ForeColor = Color.Red;
             }
+
+            if (chkWindowsToast.Checked && _trade.ProfitLossPercentage > numAlert.Value)
+            {
+                Alerts.NotifySettlementTrade(_trade, Handle);
+            }
         }
     }
 
@@ -364,5 +369,10 @@ public partial class FrmSettlementTermTrade : Form
     private void numCompraPrice_Enter(object sender, EventArgs e)
     {
         CompraPriceAutoUpdate = false;
+    }
+
+    private void chkWindowsToast_CheckedChanged(object sender, EventArgs e)
+    {
+        numAlert.Enabled = chkWindowsToast.Checked;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using ChuchoBot.WinFormsApp.DolarArbitration;
 using ChuchoBot.WinFormsApp.SettlementTerms;
 using ChuchoBot.WinFormsApp.Shared;
-using Microsoft.AspNetCore.Components;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Primary.Data;
 using System;
@@ -46,10 +45,23 @@ public partial class FrmMain : Form
         ToastNotificationManagerCompat.OnActivated += toastArgs =>
         {
             // Obtain the arguments from the notification
-            ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
+            var args = ToastArguments.Parse(toastArgs.Argument);
 
             // Obtain any user input (text boxes, menu selections) from the notification
             var userInput = toastArgs.UserInput;
+
+            if (args.Contains("handle"))
+            {
+                var handle = (nint)Convert.ToInt32(args["handle"]);
+
+                var form = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x.Handle == handle);
+
+                if (form != null)
+                {
+                    Invoke(new Action(() => form.Show()));
+                    return;
+                }
+            }
 
             switch (args["action"])
             {

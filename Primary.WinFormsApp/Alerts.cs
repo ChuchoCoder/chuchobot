@@ -15,24 +15,29 @@ internal static class Alerts
     private static Dictionary<string, DateTime> _ratioTradeLowerNotificationDate = new();
     private static Dictionary<string, DateTime> _ratioTradeGreaterNotificationDate = new();
 
-    public static void NotifySettlementTrade(SettlementTermTrade trade)
+    public static void NotifySettlementTrade(SettlementTermTrade trade, nint? handle)
     {
-        NotifySettlementTrade(trade.Sell.Instrument.InstrumentId.Symbol, trade.Buy.Instrument.InstrumentId.Symbol, trade.ProfitLossPercentage, trade.ProfitLoss);
+        NotifySettlementTrade(trade.Sell.Instrument.InstrumentId.Symbol, trade.Buy.Instrument.InstrumentId.Symbol, trade.ProfitLossPercentage, trade.ProfitLoss, handle);
     }
 
-    public static void NotifySettlementTrade(string sellSymbol, string buySymbol, decimal profitPercentage, decimal profit)
+    public static void NotifySettlementTrade(string sellSymbol, string buySymbol, decimal profitPercentage, decimal profit, nint? handle)
     {
         var lastDate = _settlementTradeNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
         if (dif > _notificationThreshold)
         {
-            new ToastContentBuilder()
+            var toastBuilder = new ToastContentBuilder()
                 .AddArgument("action", "settlementTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Arbitraje de plazos detectado")
-                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nProfit: {profit:c2} ({profitPercentage:P2}")
-                .Show();
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nProfit: {profit:c2} ({profitPercentage:P2}");
+
+            if (handle != null) {
+                toastBuilder.AddArgument("handle", handle.Value);
+            }
+
+            toastBuilder.Show();
 
             if (lastDate == default)
             {
@@ -45,19 +50,25 @@ internal static class Alerts
         }
     }
 
-    public static void NotifyRatioTradeLowerThan(string buySymbol, string sellSymbol, decimal ratio)
+    public static void NotifyRatioTradeLowerThan(string buySymbol, string sellSymbol, decimal ratio, nint? handle)
     {
         var lastDate = _ratioTradeLowerNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
         if (dif > _notificationThreshold)
         {
-            new ToastContentBuilder()
+            var toastBuilder = new ToastContentBuilder()
                 .AddArgument("action", "ratioTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (ratio) detectado")
-                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}")
-                .Show();
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}");
+
+            if (handle != null)
+            {
+                toastBuilder.AddArgument("handle", handle.Value);
+            }
+
+            toastBuilder.Show();
 
             if (lastDate == default)
             {
@@ -70,19 +81,25 @@ internal static class Alerts
         }
     }
 
-    public static void NotifyRatioTradeGreaterThan(string buySymbol, string sellSymbol, decimal ratio)
+    public static void NotifyRatioTradeGreaterThan(string buySymbol, string sellSymbol, decimal ratio, nint? handle)
     {
         var lastDate = _ratioTradeGreaterNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
         if (dif > _notificationThreshold)
         {
-            new ToastContentBuilder()
+            var toastBuilder = new ToastContentBuilder()
                 .AddArgument("action", "ratioTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (ratio) detectado")
-                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}")
-                .Show();
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}");
+
+            if (handle != null)
+            {
+                toastBuilder.AddArgument("handle", handle.Value);
+            }
+
+            toastBuilder.Show();
 
             if (lastDate == default)
             {

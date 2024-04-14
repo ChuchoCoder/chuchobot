@@ -306,9 +306,9 @@
             label2.Location = new System.Drawing.Point(1148, 13);
             label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(48, 15);
+            label2.Size = new System.Drawing.Size(54, 15);
             label2.TabIndex = 28;
-            label2.Text = "Alert %:";
+            label2.Text = "Alerta %:";
             // 
             // numAlert
             // 

@@ -79,15 +79,14 @@ public partial class FrmRatios : Form
 
         if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value)
         {
-            Alerts.NotifyRatioTradeLowerThan(gdTicker, alTicker, ratioLast.Value);
+            Alerts.NotifyRatioTradeLowerThan(gdTicker, alTicker, ratioLast.Value, null);
         }
 
         var alertGreater = row["AlertGreater"] as decimal?;
 
         if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value)
         {
-            Alerts.NotifyRatioTradeGreaterThan(gdTicker, alTicker, ratioLast.Value);
-
+            Alerts.NotifyRatioTradeGreaterThan(gdTicker, alTicker, ratioLast.Value, null);
         }
     }
 
