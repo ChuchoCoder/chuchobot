@@ -400,3 +400,4 @@ FodyWeavers.xsd
 # Ignore Application Configuration files with sensitive data
 App.Debug.config
 App.Release.config
+InstrumentsWithDetails.json
