@@ -31,7 +31,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Arbitraje de plazos detectado")
-                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nProfit: {profit:c2} ({profitPercentage:P2}");
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nProfit: {profit:c2} ({profitPercentage:P2})");
 
             if (handle != null) {
                 toastBuilder.AddArgument("handle", handle.Value);
@@ -61,7 +61,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (ratio) detectado")
-                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}");
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:P2}");
 
             if (handle != null)
             {
@@ -92,7 +92,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (ratio) detectado")
-                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:N2}");
+                .AddText($"Comprar {buySymbol} => Vender {sellSymbol}\r\nRatio: {ratio:P2}");
 
             if (handle != null)
             {

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ChuchoBot.WinFormsApp.Properties;
+using Newtonsoft.Json;
 using Primary.Data;
 using Primary.WebSockets;
 using System;
@@ -93,8 +94,8 @@ public class Argentina
     public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
     {
         // convert everything to TimeSpan
-        var start = new TimeSpan(10, 0, 0);
-        var end = excludeAuctionPeriod ? new TimeSpan(17, 0, 0) : new TimeSpan(17, 57, 0);
+        var start = Settings.Default.MarketOpenTime;
+        var end = excludeAuctionPeriod ? Settings.Default.MarketCloseTime : Settings.Default.MarketCloseTime - Settings.Default.MarketAuctionTimePeriod;
         var now = Now.TimeOfDay;
 
         // see if start comes before end
@@ -109,8 +110,8 @@ public class Argentina
     public static bool IsCIOpen(bool excludeAuctionPeriod = true)
     {
         // convert everything to TimeSpan
-        var start = new TimeSpan(10, 0, 0);
-        var end = excludeAuctionPeriod ? new TimeSpan(16, 30, 0) : new TimeSpan(16, 27, 0);
+        var start = Settings.Default.MarketOpenTime;
+        var end = excludeAuctionPeriod ? Settings.Default.MarketCloseCITime : Settings.Default.MarketCloseCITime - Settings.Default.MarketAuctionTimePeriod;
         var now = Now.TimeOfDay;
 
         // see if start comes before end

@@ -75,18 +75,21 @@ public partial class FrmRatios : Form
             dataTable.Rows.Add(row);
         }
 
-        var alertLower = row["AlertLower"] as decimal?;
-
-        if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value)
+        if (Argentina.IsMarketOpen())
         {
-            Alerts.NotifyRatioTradeLowerThan(gdTicker, alTicker, ratioLast.Value, null);
-        }
+            var alertLower = row["AlertLower"] as decimal?;
 
-        var alertGreater = row["AlertGreater"] as decimal?;
+            if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value / 100m)
+            {
+                Alerts.NotifyRatioTradeLowerThan(gdTicker, alTicker, ratioLast.Value, null);
+            }
 
-        if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value)
-        {
-            Alerts.NotifyRatioTradeGreaterThan(gdTicker, alTicker, ratioLast.Value, null);
+            var alertGreater = row["AlertGreater"] as decimal?;
+
+            if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value / 100m)
+            {
+                Alerts.NotifyRatioTradeGreaterThan(gdTicker, alTicker, ratioLast.Value, null);
+            }
         }
     }
 

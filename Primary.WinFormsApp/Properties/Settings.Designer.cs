@@ -394,5 +394,41 @@ namespace ChuchoBot.WinFormsApp.Properties {
                 return ((global::System.Collections.Specialized.StringCollection)(this["RatioTickers"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11:00:00")]
+        public global::System.TimeSpan MarketOpenTime {
+            get {
+                return ((global::System.TimeSpan)(this["MarketOpenTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17:00:00")]
+        public global::System.TimeSpan MarketCloseTime {
+            get {
+                return ((global::System.TimeSpan)(this["MarketCloseTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16:30:00")]
+        public global::System.TimeSpan MarketCloseCITime {
+            get {
+                return ((global::System.TimeSpan)(this["MarketCloseCITime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:03:00")]
+        public global::System.TimeSpan MarketAuctionTimePeriod {
+            get {
+                return ((global::System.TimeSpan)(this["MarketAuctionTimePeriod"]));
+            }
+        }
     }
 }
