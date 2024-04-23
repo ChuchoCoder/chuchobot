@@ -16,6 +16,9 @@ public partial class FrmRatios : Form
 
     private void tmr_Tick(object sender, EventArgs e)
     {
+        if (grdRatios.IsCurrentCellInEditMode == true)
+            return;
+
         foreach (var ratio in Settings.Default.RatioTickers)
         {
             var ratioTickers = ratio.Split('/');
