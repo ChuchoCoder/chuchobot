@@ -91,7 +91,7 @@ public partial class FrmRatios : Form
 
             if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value / 100m)
             {
-                Alerts.NotifyRatioTradeGreaterThan(gdTicker, alTicker, ratioLast.Value, null);
+                Alerts.NotifyRatioTradeGreaterThan(alTicker, gdTicker, ratioLast.Value, null);
             }
         }
     }
