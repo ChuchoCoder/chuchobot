@@ -37,13 +37,13 @@ public partial class FrmRatios : Form
         }
     }
 
-    private void RefreshRatioRow(string gdTicker, string alTicker)
+    private void RefreshRatioRow(string tickerA, string tickerB)
     {
-        var al = Argentina.Data.GetLatestOrNull(alTicker.ToMervalSymbol48H());
+        var instrumentB = Argentina.Data.GetLatestOrNull(tickerB.ToMervalSymbol48H());
 
-        var gd = Argentina.Data.GetLatestOrNull(gdTicker.ToMervalSymbol48H());
+        var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol48H());
 
-        var ratio = gdTicker + "/" + alTicker;
+        var ratio = tickerA + "/" + tickerB;
         var existingRow = dataTable.Rows.Find(new[] { ratio });
         DataRow row;
 
@@ -56,19 +56,21 @@ public partial class FrmRatios : Form
             row = dataTable.NewRow();
             row["Ratio"] = ratio;
         }
-        row["GDBid"] = gd.GetTopBidPrice();
-        row["GDOffer"] = gd.GetTopOfferPrice();
-        row["ALBid"] = al.GetTopBidPrice();
-        row["ALOffer"] = al.GetTopOfferPrice();
-        row["RatioVenta"] = al.GetTopBidPrice() > 0 ? (gd.GetTopOfferPrice() / al.GetTopBidPrice()) - 1 : 0;
-        row["RatioCompra"] = al.GetTopOfferPrice() > 0 ? (gd.GetTopBidPrice() / al.GetTopOfferPrice()) - 1 : 0;
+        row["ABid"] = instrumentA.GetTopBidPrice();
+        row["AOffer"] = instrumentA.GetTopOfferPrice();
+        row["BBid"] = instrumentB.GetTopBidPrice();
+        row["BOffer"] = instrumentB.GetTopOfferPrice();
+        // Sell A - Buy B
+        row["ShortRatio"] = instrumentB.GetTopOfferPrice() > 0 ? (instrumentA.GetTopBidPrice() / instrumentB.GetTopOfferPrice()) - 1 : 0; 
+        // Buy A - Sell B
+        row["LongRatio"] = instrumentB.GetTopBidPrice() > 0 ? (instrumentA.GetTopOfferPrice() / instrumentB.GetTopBidPrice()) - 1 : 0;
 
-        var ratioLastHasValue = al.Last?.Price > 0 && gd.Last?.Price > 0;
+        var ratioLastHasValue = instrumentB.Last?.Price > 0 && instrumentA.Last?.Price > 0;
             
-        var ratioLast = ratioLastHasValue ? (gd.Last.Price / al.Last.Price) - 1 : 0;
+        var ratioLast = ratioLastHasValue ? (instrumentA.Last.Price / instrumentB.Last.Price) - 1 : 0;
         row["RatioLast"] = ratioLast;
 
-        var ratioClose = al.ClosePrice() > 0 ? (gd.ClosePrice() / al.ClosePrice()) - 1 : 0;
+        var ratioClose = instrumentB.ClosePrice() > 0 ? (instrumentA.ClosePrice() / instrumentB.ClosePrice()) - 1 : 0;
         row["RatioYesterday"] = ratioClose;
 
         row["RatioVariacion"] = ratioLast - ratioClose;
@@ -84,14 +86,14 @@ public partial class FrmRatios : Form
 
             if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value / 100m)
             {
-                Alerts.NotifyRatioTradeLowerThan(gdTicker, alTicker, ratioLast.Value, null);
+                Alerts.NotifyRatioTradeLowerThan(tickerA, tickerB, ratioLast.Value, null);
             }
 
             var alertGreater = row["AlertGreater"] as decimal?;
 
             if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value / 100m)
             {
-                Alerts.NotifyRatioTradeGreaterThan(alTicker, gdTicker, ratioLast.Value, null);
+                Alerts.NotifyRatioTradeGreaterThan(tickerB, tickerA, ratioLast.Value, null);
             }
         }
     }
@@ -102,12 +104,12 @@ public partial class FrmRatios : Form
 
         dataTable.PrimaryKey = new DataColumn[] { ratioTickerColumn };
 
-        _ = dataTable.Columns.Add("GDBid", typeof(decimal));
-        _ = dataTable.Columns.Add("GDOffer", typeof(decimal));
-        _ = dataTable.Columns.Add("ALBid", typeof(decimal));
-        _ = dataTable.Columns.Add("ALOffer", typeof(decimal));
-        _ = dataTable.Columns.Add("RatioCompra", typeof(decimal));
-        _ = dataTable.Columns.Add("RatioVenta", typeof(decimal));
+        _ = dataTable.Columns.Add("ABid", typeof(decimal));
+        _ = dataTable.Columns.Add("AOffer", typeof(decimal));
+        _ = dataTable.Columns.Add("BBid", typeof(decimal));
+        _ = dataTable.Columns.Add("BOffer", typeof(decimal));
+        _ = dataTable.Columns.Add("LongRatio", typeof(decimal));
+        _ = dataTable.Columns.Add("ShortRatio", typeof(decimal));
         _ = dataTable.Columns.Add("RatioLast", typeof(decimal));
         _ = dataTable.Columns.Add("RatioYesterday", typeof(decimal));
         _ = dataTable.Columns.Add("RatioVariacion", typeof(decimal));

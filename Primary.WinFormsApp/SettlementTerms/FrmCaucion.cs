@@ -63,8 +63,21 @@ public partial class FrmCaucion : Form
     private void FrmCaucion_Load(object sender, EventArgs e)
     {
 
+        var diasLiq24H = Settlement.GetDiasLiquidacion24H();
         numComisionColocadora.Value = Properties.Settings.Default.ArancelCaucionColocadora;
         numComisionTomadora.Value = Properties.Settings.Default.ArancelCaucionTomadora;
+
+        var caucion24HTicker = Settlement.GetCaucionPesosTicker(diasLiq24H);
+        var caucion24HInstrument = Argentina.Data.GetInstrumentDetailOrNull(caucion24HTicker);
+
+        if (caucion24HInstrument != null)
+        {
+            var entries = Argentina.Data.GetLatestOrNull(caucion24HTicker);
+            if (entries != null && entries.HasLastPrice())
+            {
+                numTNA.Value = entries.Last.Price.Value;
+            }
+        }
     }
 
     private void numComisionTomadora_ValueChanged(object sender, EventArgs e)

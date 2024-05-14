@@ -48,13 +48,13 @@
   &lt;string&gt;ABNB&lt;/string&gt;
   &lt;string&gt;ABT&lt;/string&gt;
   &lt;string&gt;ABTD&lt;/string&gt;
-  &lt;string&gt;ACHD&lt;/string&gt;
   &lt;string&gt;ADBE&lt;/string&gt;
   &lt;string&gt;ADGO&lt;/string&gt;
   &lt;string&gt;ADI&lt;/string&gt;
   &lt;string&gt;AEM&lt;/string&gt;
   &lt;string&gt;AIG&lt;/string&gt;
   &lt;string&gt;AKO.B&lt;/string&gt;
+  &lt;string&gt;ALUA&lt;/string&gt;
   &lt;string&gt;AMAT&lt;/string&gt;
   &lt;string&gt;AMD&lt;/string&gt;
   &lt;string&gt;AMDD&lt;/string&gt;
@@ -85,6 +85,7 @@
   &lt;string&gt;BABAD&lt;/string&gt;
   &lt;string&gt;BAD&lt;/string&gt;
   &lt;string&gt;BB&lt;/string&gt;
+  &lt;string&gt;BBAR&lt;/string&gt;
   &lt;string&gt;BBD&lt;/string&gt;
   &lt;string&gt;BBDC&lt;/string&gt;
   &lt;string&gt;BBDD&lt;/string&gt;
@@ -117,14 +118,18 @@
   &lt;string&gt;CAT&lt;/string&gt;
   &lt;string&gt;CATD&lt;/string&gt;
   &lt;string&gt;CDE&lt;/string&gt;
+  &lt;string&gt;CEPU&lt;/string&gt;
   &lt;string&gt;CHL&lt;/string&gt;
   &lt;string&gt;CL&lt;/string&gt;
   &lt;string&gt;COIN&lt;/string&gt;
+  &lt;string&gt;COME&lt;/string&gt;
   &lt;string&gt;COST&lt;/string&gt;
+  &lt;string&gt;CRES&lt;/string&gt;
   &lt;string&gt;CRM&lt;/string&gt;
   &lt;string&gt;CS&lt;/string&gt;
   &lt;string&gt;CSCO&lt;/string&gt;
   &lt;string&gt;CSCOD&lt;/string&gt;
+  &lt;string&gt;CVH&lt;/string&gt;
   &lt;string&gt;CVX&lt;/string&gt;
   &lt;string&gt;CVXD&lt;/string&gt;
   &lt;string&gt;CX&lt;/string&gt;
@@ -145,6 +150,7 @@
   &lt;string&gt;EBAY&lt;/string&gt;
   &lt;string&gt;EBAYD&lt;/string&gt;
   &lt;string&gt;EBR&lt;/string&gt;
+  &lt;string&gt;EDN&lt;/string&gt;
   &lt;string&gt;EEM&lt;/string&gt;
   &lt;string&gt;EEMC&lt;/string&gt;
   &lt;string&gt;EEMD&lt;/string&gt;
@@ -158,8 +164,6 @@
   &lt;string&gt;EWZ&lt;/string&gt;
   &lt;string&gt;EWZD&lt;/string&gt;
   &lt;string&gt;F&lt;/string&gt;
-  &lt;string&gt;FB&lt;/string&gt;
-  &lt;string&gt;FBD&lt;/string&gt;
   &lt;string&gt;FCX&lt;/string&gt;
   &lt;string&gt;FDX&lt;/string&gt;
   &lt;string&gt;FDXD&lt;/string&gt;
@@ -174,8 +178,6 @@
   &lt;string&gt;GILD&lt;/string&gt;
   &lt;string&gt;GILDC&lt;/string&gt;
   &lt;string&gt;GILDD&lt;/string&gt;
-  &lt;string&gt;GLNT&lt;/string&gt;
-  &lt;string&gt;GLNTD&lt;/string&gt;
   &lt;string&gt;GLOB&lt;/string&gt;
   &lt;string&gt;GLOBD&lt;/string&gt;
   &lt;string&gt;GLW&lt;/string&gt;
@@ -193,6 +195,7 @@
   &lt;string&gt;GSKC&lt;/string&gt;
   &lt;string&gt;GSKD&lt;/string&gt;
   &lt;string&gt;HAL&lt;/string&gt;
+  &lt;string&gt;HARG&lt;/string&gt;
   &lt;string&gt;HD&lt;/string&gt;
   &lt;string&gt;HL&lt;/string&gt;
   &lt;string&gt;HMC&lt;/string&gt;
@@ -233,6 +236,7 @@
   &lt;string&gt;LLY&lt;/string&gt;
   &lt;string&gt;LMT&lt;/string&gt;
   &lt;string&gt;LMTD&lt;/string&gt;
+  &lt;string&gt;LOMA&lt;/string&gt;
   &lt;string&gt;LRCX&lt;/string&gt;
   &lt;string&gt;LVS&lt;/string&gt;
   &lt;string&gt;LYG&lt;/string&gt;
@@ -248,6 +252,7 @@
   &lt;string&gt;METAC&lt;/string&gt;
   &lt;string&gt;METAD&lt;/string&gt;
   &lt;string&gt;MFG&lt;/string&gt;
+  &lt;string&gt;MIRG&lt;/string&gt;
   &lt;string&gt;MMC&lt;/string&gt;
   &lt;string&gt;MMM&lt;/string&gt;
   &lt;string&gt;MMMD&lt;/string&gt;
@@ -318,7 +323,6 @@
   &lt;string&gt;QQQC&lt;/string&gt;
   &lt;string&gt;QQQD&lt;/string&gt;
   &lt;string&gt;RBLX&lt;/string&gt;
-  &lt;string&gt;RDS&lt;/string&gt;
   &lt;string&gt;RIO&lt;/string&gt;
   &lt;string&gt;RIOD&lt;/string&gt;
   &lt;string&gt;ROST&lt;/string&gt;
@@ -353,20 +357,22 @@
   &lt;string&gt;SQ&lt;/string&gt;
   &lt;string&gt;SQD&lt;/string&gt;
   &lt;string&gt;STNE&lt;/string&gt;
+  &lt;string&gt;SUPV&lt;/string&gt;
   &lt;string&gt;SUZ&lt;/string&gt;
   &lt;string&gt;SYY&lt;/string&gt;
   &lt;string&gt;T&lt;/string&gt;
   &lt;string&gt;TD&lt;/string&gt;
+  &lt;string&gt;TECO2&lt;/string&gt;
   &lt;string&gt;TEFO&lt;/string&gt;
   &lt;string&gt;TEN&lt;/string&gt;
   &lt;string&gt;TEND&lt;/string&gt;
   &lt;string&gt;TGNO4&lt;/string&gt;
+  &lt;string&gt;TGSU2&lt;/string&gt;
   &lt;string&gt;TGT&lt;/string&gt;
   &lt;string&gt;TIMB&lt;/string&gt;
   &lt;string&gt;TM&lt;/string&gt;
   &lt;string&gt;TMD&lt;/string&gt;
   &lt;string&gt;TMO&lt;/string&gt;
-  &lt;string&gt;TOT&lt;/string&gt;
   &lt;string&gt;TRAN&lt;/string&gt;
   &lt;string&gt;TRIP&lt;/string&gt;
   &lt;string&gt;TSLA&lt;/string&gt;
@@ -378,6 +384,7 @@
   &lt;string&gt;TWLO&lt;/string&gt;
   &lt;string&gt;TWTR&lt;/string&gt;
   &lt;string&gt;TWTRD&lt;/string&gt;
+  &lt;string&gt;TXAR&lt;/string&gt;
   &lt;string&gt;TXN&lt;/string&gt;
   &lt;string&gt;TXR&lt;/string&gt;
   &lt;string&gt;TXRD&lt;/string&gt;
@@ -394,6 +401,7 @@
   &lt;string&gt;V&lt;/string&gt;
   &lt;string&gt;VALE&lt;/string&gt;
   &lt;string&gt;VALED&lt;/string&gt;
+  &lt;string&gt;VALO&lt;/string&gt;
   &lt;string&gt;VD&lt;/string&gt;
   &lt;string&gt;VIST&lt;/string&gt;
   &lt;string&gt;VISTD&lt;/string&gt;
@@ -404,7 +412,6 @@
   &lt;string&gt;VZD&lt;/string&gt;
   &lt;string&gt;WBA&lt;/string&gt;
   &lt;string&gt;WFC&lt;/string&gt;
-  &lt;string&gt;WFCC&lt;/string&gt;
   &lt;string&gt;WFCD&lt;/string&gt;
   &lt;string&gt;WMT&lt;/string&gt;
   &lt;string&gt;WMTD&lt;/string&gt;
@@ -421,6 +428,7 @@
   &lt;string&gt;XP&lt;/string&gt;
   &lt;string&gt;XROX&lt;/string&gt;
   &lt;string&gt;YELP&lt;/string&gt;
+  &lt;string&gt;YPFD&lt;/string&gt;
   &lt;string&gt;ZM&lt;/string&gt;
   &lt;string&gt;ZMD&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
@@ -576,7 +584,7 @@
   &lt;string&gt;ZM&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="RatioTickers" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+    <Setting Name="RatioTickers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
   &lt;string&gt;GD29/AL29&lt;/string&gt;
@@ -584,6 +592,8 @@
   &lt;string&gt;GD35/AL35&lt;/string&gt;
   &lt;string&gt;GD38/AE38&lt;/string&gt;
   &lt;string&gt;GD41/AL41&lt;/string&gt;
+  &lt;string&gt;AL30/GD35&lt;/string&gt;
+  &lt;string&gt;GD30/GD35&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="MarketOpenTime" Type="System.TimeSpan" Scope="Application">
