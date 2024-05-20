@@ -85,7 +85,7 @@ public static class TradeExtensions
 
     public static decimal Variation(this Entries entries)
     {
-        return entries.Close != null && entries.Close.Price.HasValue && entries.Last != null && entries.Last.Price.HasValue
+        return entries.Close != null && entries.Close.Price.HasValue && entries.Last != null && entries.Last.Price.HasValue && entries.Close.Price.Value > 0
             ? (entries.Last.Price.Value / entries.Close.Price.Value) - 1m
             : default;
     }
