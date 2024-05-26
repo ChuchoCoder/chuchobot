@@ -52,7 +52,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             }
             else
             {
-                buySymbol = buySymbol.ToMervalSymbol48H();
+                buySymbol = buySymbol.ToMervalSymbol24H();
             }
             var buyInstrument = Argentina.Data.GetInstrumentDetailOrNull(buySymbol);
 
@@ -75,7 +75,7 @@ namespace Primary.WinFormsApp.SettlementTerms
             }
             else
             {
-                sellSymbol = sellSymbol.ToMervalSymbol48H();
+                sellSymbol = sellSymbol.ToMervalSymbol24H();
             }
             var sellInstrument = Argentina.Data.GetInstrumentDetailOrNull(sellSymbol);
             if (sellInstrument == null)

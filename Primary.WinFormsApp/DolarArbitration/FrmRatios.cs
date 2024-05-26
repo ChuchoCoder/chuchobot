@@ -30,9 +30,9 @@ namespace Primary.WinFormsApp.DolarArbitration
 
         private void RefreshRatioRow(string gdTicker, string alTicker)
         {
-            var al = Argentina.Data.GetLatestOrNull(alTicker.ToMervalSymbol48H());
+            var al = Argentina.Data.GetLatestOrNull(alTicker.ToMervalSymbol24H());
 
-            var gd = Argentina.Data.GetLatestOrNull(gdTicker.ToMervalSymbol48H());
+            var gd = Argentina.Data.GetLatestOrNull(gdTicker.ToMervalSymbol24H());
 
             var ratio = gdTicker + "/" + alTicker;
             var existingRow = dataTable.Rows.Find(new[] { ratio });

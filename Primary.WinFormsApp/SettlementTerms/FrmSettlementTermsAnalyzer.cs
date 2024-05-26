@@ -33,9 +33,9 @@ namespace Primary.WinFormsApp
 
                 settlementTermSettings.RefreshValues();
 
-                var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, chkOnlyShowTradesWithTickersOwned.Checked);
+                var trades = _processor.GetSettlementTermTradesPesos(settlementTermSettings.CaucionTNA, settlementTermSettings.DiasLiq24H, chkOnlyShowTradesWithTickersOwned.Checked);
 
-                _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.DiasLiq48H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
+                _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
 
                 var shouldAlert = trades.Any(x => x.ProfitLossPercentage > numAlert.Value / 100m);
 

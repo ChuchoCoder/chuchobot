@@ -7,7 +7,6 @@ namespace Primary.WinFormsApp
     public class SettlementTermTrade
     {
         public static int DiasLiq24H { get; private set; } = 1;
-        public static int DiasLiq48H { get; private set; } = 2;
         public decimal BuyPrice { get; private set; }
         public decimal BuyTotalSinComisiones { get; private set; }
         public decimal BuyComisionDerechos { get; private set; }
@@ -54,13 +53,12 @@ namespace Primary.WinFormsApp
 
         public void Calculate(decimal nominales, decimal sellPrice, decimal buyPrice, decimal tasaCaucion)
         {
-            Calculate(nominales, sellPrice, buyPrice, tasaCaucion, DiasLiq24H, DiasLiq48H);
+            Calculate(nominales, sellPrice, buyPrice, tasaCaucion, DiasLiq24H);
         }
 
-        public void Calculate(decimal nominales, decimal tasaCaucion, int diasLiq24H, int diasLiq48H)
+        public void Calculate(decimal nominales, decimal tasaCaucion, int diasLiq24H)
         {
             DiasLiq24H = diasLiq24H;
-            DiasLiq48H = diasLiq48H;
 
             if (HasData() && Sell.Data.HasBids() && Buy.Data.HasOffers())
             {
@@ -73,15 +71,14 @@ namespace Primary.WinFormsApp
                     nominales = Math.Min(SellSize, BuySize);
                 }
 
-                Calculate(nominales, Sell.Data.GetTopBidPrice(), Buy.Data.GetTopOfferPrice(), tasaCaucion, diasLiq24H, diasLiq48H);
+                Calculate(nominales, Sell.Data.GetTopBidPrice(), Buy.Data.GetTopOfferPrice(), tasaCaucion, diasLiq24H);
 
             }
         }
 
-        public void Calculate(decimal nominales, decimal sellPrice, decimal buyPrice, decimal tasaCaucion, int diasLiq24H, int diasLiq48H)
+        public void Calculate(decimal nominales, decimal sellPrice, decimal buyPrice, decimal tasaCaucion, int diasLiq24H)
         {
             DiasLiq24H = diasLiq24H;
-            DiasLiq48H = diasLiq48H;
 
             SellSize = nominales;
             BuySize = nominales;
@@ -98,7 +95,7 @@ namespace Primary.WinFormsApp
             BuyComisionDerechos = Buy.Instrument.CalculateComisionDerechosMercado(BuyTotalSinComisiones);
             BuyTotalNeto = BuyTotalSinComisiones + BuyComisionDerechos;
 
-            DiasCaucion = Sell.Instrument.CalculateSettlementDays(Buy.Instrument, diasLiq24H, diasLiq48H);
+            DiasCaucion = Sell.Instrument.CalculateSettlementDays(Buy.Instrument, diasLiq24H);
             EsCaucionColocadora = DiasCaucion < 0;
 
             TotalACaucionar = EsCaucionColocadora ? SellTotalNeto : BuyTotalNeto;

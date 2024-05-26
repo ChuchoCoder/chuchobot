@@ -104,10 +104,10 @@ namespace Primary.WinFormsApp
             return value.ToString(format);
         }
 
-        public static int CalculateSettlementDays(this InstrumentDetail buy, InstrumentDetail sell, int diasLiq24H, int diasLiq48H)
+        public static int CalculateSettlementDays(this InstrumentDetail buy, InstrumentDetail sell, int diasLiq24H)
         {
-            int buyDiasLiq = buy.GetSettlementDays(diasLiq24H, diasLiq48H);
-            int sellDiasLiq = sell.GetSettlementDays(diasLiq24H, diasLiq48H);
+            int buyDiasLiq = buy.GetSettlementDays(diasLiq24H);
+            int sellDiasLiq = sell.GetSettlementDays(diasLiq24H);
 
             var days = buyDiasLiq - sellDiasLiq;
 

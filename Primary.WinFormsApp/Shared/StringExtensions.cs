@@ -9,11 +9,10 @@ namespace Primary.WinFormsApp
     {
         public const string DolarSuffix = "D";
         public const string CableSuffix = "C";
-        public const string Settlement48H = "48hs";
         public const string Settlement24H = "24hs";
         public const string SettlementCI = "CI";
 
-        public static string[] AllSettlements = new[] { Settlement48H, Settlement24H, SettlementCI };
+        public static string[] AllSettlements = new[] { Settlement24H, SettlementCI };
         public static IEnumerable<string> TickersDC = Properties.Settings.Default.TickersDC.Cast<string>();
 
         public static bool IsCI(this string ticker)
@@ -28,11 +27,6 @@ namespace Primary.WinFormsApp
         public static bool Is24H(this InstrumentDetail instrumentDetail)
         {
             return instrumentDetail.InstrumentId.Symbol.EndsWith($" - {Settlement24H}");
-        }
-
-        public static bool Is48H(this InstrumentDetail instrumentDetail)
-        {
-            return instrumentDetail.InstrumentId.Symbol.EndsWith($" - {Settlement48H}");
         }
 
         public static string RemoveSettlement(this string symbol)
@@ -52,14 +46,14 @@ namespace Primary.WinFormsApp
             return split[split.Length - 2];
         }
 
-        public static int GetSettlementDays(this InstrumentDetail instrumentDetail, int diasLiq24H, int diasLiq48H)
+        public static int GetSettlementDays(this InstrumentDetail instrumentDetail, int diasLiq24H)
         {
             if (instrumentDetail.IsCI())
             {
                 return 0;
             }
 
-            return instrumentDetail.Is24H() ? diasLiq24H : diasLiq48H;
+            return diasLiq24H;
         }
 
         public static string AddMervalPrefix(this string ticker)
@@ -92,10 +86,6 @@ namespace Primary.WinFormsApp
             return $"{ticker}C";
         }
 
-        public static string ToMervalSymbol48H(this string ticker)
-        {
-            return ticker.ToMervalSymbol(Settlement48H);
-        }
         public static string ToMervalSymbol24H(this string ticker)
         {
             return ticker.ToMervalSymbol(Settlement24H);
@@ -116,13 +106,10 @@ namespace Primary.WinFormsApp
             string tickerC = ticker.AddCableSuffix();
 
             return new[] {
-                ticker.ToMervalSymbol48H(),
                 ticker.ToMervalSymbol24H(),
                 ticker.ToMervalSymbolCI(),
-                tickerD.ToMervalSymbol48H(),
                 tickerD.ToMervalSymbol24H(),
                 tickerD.ToMervalSymbolCI(),
-                tickerC.ToMervalSymbol48H(),
                 tickerC.ToMervalSymbol24H(),
                 tickerC.ToMervalSymbolCI()
             };
@@ -131,7 +118,6 @@ namespace Primary.WinFormsApp
         public static string[] GetAllSettlements(this string ticker)
         {
             return new[] {
-                ticker.ToMervalSymbol48H(),
                 ticker.ToMervalSymbol24H(),
                 ticker.ToMervalSymbolCI()
             };
