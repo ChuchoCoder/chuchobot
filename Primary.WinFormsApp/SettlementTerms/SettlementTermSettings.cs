@@ -12,7 +12,6 @@ public partial class SettlementTermSettings : UserControl
     }
 
     public int DiasLiq24H => (int)numDiasLiq24H.Value;
-    public int DiasLiq48H => (int)numDiasLiq48H.Value;
     public decimal CaucionTNA => numTasa.Value;
     public decimal Comision => numComision.Value;
     public decimal ArancelCaucionTomadora => numComisionTomadora.Value;
@@ -20,17 +19,9 @@ public partial class SettlementTermSettings : UserControl
 
     private void numDiasLiq24H_ValueChanged(object sender, EventArgs e)
     {
-        numDiasLiq48H.Minimum = numDiasLiq24H.Value;
-
-        if (numDiasLiq48H.Value < numDiasLiq24H.Value)
-        {
-            numDiasLiq48H.Value = numDiasLiq24H.Value;
-        }
+            
     }
 
-    private void numDiasLiq48H_ValueChanged(object sender, EventArgs e)
-    {
-    }
 
     private void numTasa_ValueChanged(object sender, EventArgs e)
     {
@@ -74,7 +65,6 @@ public partial class SettlementTermSettings : UserControl
 
         var diasLiq24H = Settlement.GetDiasLiquidacion24H();
         numDiasLiq24H.Value = diasLiq24H;
-        numDiasLiq48H.Value = Settlement.GetDiasLiquidacion48H(diasLiq24H);
 
     }
 

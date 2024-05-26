@@ -41,7 +41,7 @@ public partial class FrmSettlementTermLauncher : Form
 
         buySymbol = rdoBuyCI.Checked
             ? buySymbol.ToMervalSymbolCI()
-            : rdoBuy24H.Checked ? buySymbol.ToMervalSymbol24H() : buySymbol.ToMervalSymbol48H();
+            : buySymbol.ToMervalSymbol24H();
         var buyInstrument = Argentina.Data.GetInstrumentDetailOrNull(buySymbol);
 
         if (buyInstrument == null)
@@ -55,7 +55,7 @@ public partial class FrmSettlementTermLauncher : Form
         var sellSymbol = instrumentSearchList1.SelectedTicker;
         sellSymbol = rdoSellCI.Checked
             ? sellSymbol.ToMervalSymbolCI()
-            : rdoSell24H.Checked ? sellSymbol.ToMervalSymbol24H() : sellSymbol.ToMervalSymbol48H();
+            : sellSymbol.ToMervalSymbol24H();
         var sellInstrument = Argentina.Data.GetInstrumentDetailOrNull(sellSymbol);
         if (sellInstrument == null)
         {

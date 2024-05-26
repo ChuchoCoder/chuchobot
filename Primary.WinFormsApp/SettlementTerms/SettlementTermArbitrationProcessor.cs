@@ -34,13 +34,13 @@ public class SettlementTermArbitrationProcessor
         }
     }
 
-    public List<SettlementTermTrade> GetSettlementTermTradesPesos(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+        public List<SettlementTermTrade> GetSettlementTermTradesPesos(decimal tasaCaucion, int diasLiq24H, bool onlyShowTradesWithTickersOwned)
     {
         var allTrades = new List<SettlementTermTrade>();
 
         foreach (var tradedInstrument in TradedInstruments)
         {
-            var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
+                var trades = tradedInstrument.GetSettlementTermTrades(tasaCaucion, diasLiq24H, onlyShowTradesWithTickersOwned);
             if (trades != null && trades.Count() > 0)
             {
                 allTrades.AddRange(trades);
@@ -50,13 +50,13 @@ public class SettlementTermArbitrationProcessor
         return allTrades;
     }
 
-    public List<SettlementTermTrade> GetSettlementTermTradesDolar(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+        public List<SettlementTermTrade> GetSettlementTermTradesDolar(decimal tasaCaucion, int diasLiq24H, bool onlyShowTradesWithTickersOwned)
     {
         var allTrades = new List<SettlementTermTrade>();
 
         foreach (var tradedInstrument in TradedInstruments)
         {
-            var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
+                var dolarTrades = tradedInstrument.Dolar.GetSettlementTermTrades(tasaCaucion, diasLiq24H, onlyShowTradesWithTickersOwned);
             if (dolarTrades != null && dolarTrades.Count() > 0)
             {
                 allTrades.AddRange(dolarTrades);
@@ -68,13 +68,13 @@ public class SettlementTermArbitrationProcessor
 
 
 
-    public List<SettlementTermTrade> GetSettlementTermTradesCable(decimal tasaCaucion, int diasLiq24H, int diasLiq48H, bool onlyShowTradesWithTickersOwned)
+        public List<SettlementTermTrade> GetSettlementTermTradesCable(decimal tasaCaucion, int diasLiq24H, bool onlyShowTradesWithTickersOwned)
     {
         var allTrades = new List<SettlementTermTrade>();
 
         foreach (var tradedInstrument in TradedInstruments)
         {
-            var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, diasLiq48H, onlyShowTradesWithTickersOwned);
+                var cableTrades = tradedInstrument.Cable.GetSettlementTermTrades(tasaCaucion, diasLiq24H, onlyShowTradesWithTickersOwned);
             if (cableTrades != null && cableTrades.Count() > 0)
             {
                 allTrades.AddRange(cableTrades);

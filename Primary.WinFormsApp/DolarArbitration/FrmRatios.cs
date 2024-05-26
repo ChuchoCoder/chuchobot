@@ -39,9 +39,9 @@ public partial class FrmRatios : Form
 
     private void RefreshRatioRow(string tickerA, string tickerB)
     {
-        var instrumentB = Argentina.Data.GetLatestOrNull(tickerB.ToMervalSymbol48H());
+            var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol24H());
 
-        var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol48H());
+            var instrumentB = Argentina.Data.GetLatestOrNull(tickerB.ToMervalSymbol24H());
 
         var ratio = tickerA + "/" + tickerB;
         var existingRow = dataTable.Rows.Find(new[] { ratio });
