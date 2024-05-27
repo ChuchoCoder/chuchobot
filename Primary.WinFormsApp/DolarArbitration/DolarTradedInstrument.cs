@@ -27,13 +27,10 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
 
     public IEnumerable<InstrumentWithData> GetAll()
     {
-        yield return T48;
         yield return T24;
         yield return TCI;
-        yield return Dolar.T48;
         yield return Dolar.T24;
         yield return Dolar.TCI;
-        yield return Cable.T48;
         yield return Cable.T24;
         yield return Cable.TCI;
     }
@@ -41,13 +38,10 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
     public bool ContainsSymbol(string symbol)
     {
         var isMatch =
-            T48.Instrument.InstrumentId.Symbol == symbol ||
             T24.Instrument.InstrumentId.Symbol == symbol ||
             TCI.Instrument.InstrumentId.Symbol == symbol ||
-            Dolar.T48.Instrument.InstrumentId.Symbol == symbol ||
             Dolar.T24.Instrument.InstrumentId.Symbol == symbol ||
             Dolar.TCI.Instrument.InstrumentId.Symbol == symbol ||
-            Cable.T48.Instrument.InstrumentId.Symbol == symbol ||
             Cable.T24.Instrument.InstrumentId.Symbol == symbol ||
             Cable.TCI.Instrument.InstrumentId.Symbol == symbol;
 
@@ -71,13 +65,10 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
     public bool UpdateData(string symbol, Entries data)
     {
         return
-            T48.UpdateData(symbol, data) ||
             T24.UpdateData(symbol, data) ||
             TCI.UpdateData(symbol, data) ||
-            Dolar.T48.UpdateData(symbol, data) ||
             Dolar.T24.UpdateData(symbol, data) ||
             Dolar.TCI.UpdateData(symbol, data) ||
-            Cable.T48.UpdateData(symbol, data) ||
             Cable.T24.UpdateData(symbol, data) ||
             Cable.TCI.UpdateData(symbol, data);
     }
@@ -89,11 +80,8 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
         {
             yield return new BuySellTrade(TCI, Cable.TCI);
             yield return new BuySellTrade(T24, Cable.TCI);
-            yield return new BuySellTrade(T48, Cable.TCI);
         }
         yield return new BuySellTrade(T24, Cable.T24);
-        yield return new BuySellTrade(T48, Cable.T24);
-        yield return new BuySellTrade(T48, Cable.T48);
     }
 
     public IEnumerable<BuySellTrade> GetDolarMEPTrades()
@@ -102,18 +90,13 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
         {
             yield return new BuySellTrade(TCI, Dolar.TCI);
             yield return new BuySellTrade(TCI, Dolar.T24);
-            yield return new BuySellTrade(TCI, Dolar.T48);
 
             yield return new BuySellTrade(T24, Dolar.TCI);
 
-            yield return new BuySellTrade(T48, Dolar.TCI);
         }
         yield return new BuySellTrade(T24, Dolar.T24);
-        yield return new BuySellTrade(T24, Dolar.T48);
 
 
-        yield return new BuySellTrade(T48, Dolar.T24);
-        yield return new BuySellTrade(T48, Dolar.T48);
     }
 
     public IEnumerable<BuySellTrade> GetDolarMEPCableTrades()
@@ -122,11 +105,8 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
         {
             yield return new BuySellTrade(Dolar.TCI, Cable.TCI);
             yield return new BuySellTrade(Dolar.T24, Cable.TCI);
-            yield return new BuySellTrade(Dolar.T48, Cable.TCI);
         }
         yield return new BuySellTrade(Dolar.T24, Cable.T24);
-        yield return new BuySellTrade(Dolar.T48, Cable.T24);
-        yield return new BuySellTrade(Dolar.T48, Cable.T48);
     }
 
     public IEnumerable<BuySellTrade> GetDolarCableMEPTrades()
@@ -135,11 +115,8 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
         {
             yield return new BuySellTrade(Cable.TCI, Dolar.TCI);
             yield return new BuySellTrade(Cable.T24, Dolar.TCI);
-            yield return new BuySellTrade(Cable.T48, Dolar.TCI);
         }
         yield return new BuySellTrade(Cable.T24, Dolar.T24);
-        yield return new BuySellTrade(Cable.T48, Dolar.T24);
-        yield return new BuySellTrade(Cable.T48, Dolar.T48);
     }
 
 }

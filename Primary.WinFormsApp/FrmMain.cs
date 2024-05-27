@@ -543,6 +543,8 @@ public partial class FrmMain : Form
     private void longGD30ShortAL30ToolStripMenuItem_Click(object sender, EventArgs e)
     {
         LaunchRatioForTicker("GD30", "AL30");
+        var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol24H()));
+        var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol24H()));
     }
 
     private void longAL30ShortGD30ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -554,8 +556,8 @@ public partial class FrmMain : Form
     {
         if (ValidateUserHasLogin())
         {
-            var longInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(longTicker.ToMervalSymbol48H()));
-            var shortInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(shortTicker.ToMervalSymbol48H()));
+            var longInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(longTicker.ToMervalSymbol24H()));
+            var shortInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(shortTicker.ToMervalSymbol24H()));
 
             var longTrade = new BuySellTrade(longInstrumentWithData, longInstrumentWithData);
             var shortTrade = new BuySellTrade(shortInstrumentWithData, shortInstrumentWithData);
@@ -611,5 +613,23 @@ public partial class FrmMain : Form
         };
         _ = frm.ShowDialog();
 
+    }
+
+    private void shortGD35LongAL35ToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+        LaunchRatioForTicker("AL35", "GD35");
+    }
+
+    private void longAL30ShortGD35ToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+        LaunchRatioForTicker("AL30", "GD35");
+    }
+
+    private void longGD35ShortAL30ToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+        LaunchRatioForTicker("GD35", "AL30");
     }
 }

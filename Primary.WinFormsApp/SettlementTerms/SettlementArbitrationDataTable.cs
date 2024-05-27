@@ -43,14 +43,14 @@ public class SettlementArbitrationDataTable
         _ = DataTable.Columns.Add("TNA", typeof(decimal));
     }
 
-    public void Refresh(List<SettlementTermTrade> trades, int diasLiq24H, int diasLiq48H, decimal tasaCaucion, bool onlyProfitableTrades)
+        public void Refresh(List<SettlementTermTrade> trades, int diasLiq24H, decimal tasaCaucion, bool onlyProfitableTrades)
     {
         var processedRows = new List<DataRow>();
 
         foreach (var trade in trades)
         {
             DataRow row;
-            trade.Calculate(0, tasaCaucion, diasLiq24H, diasLiq48H);
+                trade.Calculate(0, tasaCaucion, diasLiq24H);
 
             if (onlyProfitableTrades && trade.ProfitLoss < 0)
             {

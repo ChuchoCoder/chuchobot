@@ -19,7 +19,7 @@ public class Aranceles
     [Fact]
     public void Letras_Calcular_DerechosMercado()
     {
-        var cedears = new string[] { "X23N3" };
+        var cedears = new string[] { "X20Y4" };
 
         foreach (var cedear in cedears)
         {
