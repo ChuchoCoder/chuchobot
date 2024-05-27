@@ -1,6 +1,4 @@
 ﻿using Primary.Data;
-using Primary.WinFormsApp.Properties;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -26,21 +24,17 @@ namespace Primary.WinFormsApp
             return Owned.UpdateData(instrument, data) || Arbitration.UpdateData(instrument, data);
         }
 
-        
+
 
         public IEnumerable<RatioTrade> GetTradesBasedOnSettlementTerm(
             BuySellTrade owned_SellCI_BuyCI,
             BuySellTrade owned_SellCI_Buy24,
-            BuySellTrade owned_SellCI_Buy48,
+
             BuySellTrade owned_Sell24_Buy24,
-            BuySellTrade owned_Sell24_Buy48,
-            BuySellTrade owned_Sell48_Buy48,
             BuySellTrade arbitration_BuyCI_SellCI,
             BuySellTrade arbitration_BuyCI_Sell24,
-            BuySellTrade arbitration_BuyCI_Sell48,
-            BuySellTrade arbitration_Buy24_Sell24,
-            BuySellTrade arbitration_Buy24_Sell48,
-            BuySellTrade arbitration_Buy48_Sell48)
+            BuySellTrade arbitration_Buy24_Sell24
+            )
         {
             /*
             Op  1	Op 4	Op 2	Op 3	
@@ -48,50 +42,26 @@ namespace Primary.WinFormsApp
             AL30D	AL30	GD30D	GD30	
             CI		CI		CI		CI		
             CI		24		CI		CI		
-            CI		48		CI		CI		
             CI		24		CI		24		
-            CI		48		CI		24		
-            CI		48		CI		48		
             CI		24		24		24		
-            CI		48		24		24		
-            CI		48		24		48		
-            CI		48		48		48		
             24		24		24		24		
-            24		48		24		24		
-            24		48		24		48		
-            24		48		48		48		
-            48		48		48		48		
             */
 
             if (Argentina.IsCIOpen())
             {
                 yield return new RatioTrade(owned_SellCI_BuyCI, arbitration_BuyCI_SellCI);
-                if (Settings.Default.Enabled24Hours)
-                    yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_SellCI);
-                yield return new RatioTrade(owned_SellCI_Buy48, arbitration_BuyCI_SellCI);
-                if (Settings.Default.Enabled24Hours)
-                {
-                    yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_Sell24);
-                    yield return new RatioTrade(owned_SellCI_Buy48, arbitration_BuyCI_Sell24);
-                }
-                yield return new RatioTrade(owned_SellCI_Buy48, arbitration_BuyCI_Sell48);
-                if (Settings.Default.Enabled24Hours)
-                {
-                    yield return new RatioTrade(owned_SellCI_Buy24, arbitration_Buy24_Sell24);
-                    yield return new RatioTrade(owned_SellCI_Buy48, arbitration_Buy24_Sell24);
-                    yield return new RatioTrade(owned_SellCI_Buy48, arbitration_Buy24_Sell48);
-                }
-                yield return new RatioTrade(owned_SellCI_Buy48, arbitration_Buy48_Sell48);
+
+                yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_SellCI);
+
+                yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_Sell24);
+
+
+                yield return new RatioTrade(owned_SellCI_Buy24, arbitration_Buy24_Sell24);
+
             }
 
-            if (Settings.Default.Enabled24Hours)
-            {
-                yield return new RatioTrade(owned_Sell24_Buy24, arbitration_Buy24_Sell24);
-                yield return new RatioTrade(owned_Sell24_Buy48, arbitration_Buy24_Sell24);
-                yield return new RatioTrade(owned_Sell24_Buy48, arbitration_Buy24_Sell48);
-                yield return new RatioTrade(owned_Sell24_Buy48, arbitration_Buy48_Sell48);
-            }
-            yield return new RatioTrade(owned_Sell48_Buy48, arbitration_Buy48_Sell48);
+            yield return new RatioTrade(owned_Sell24_Buy24, arbitration_Buy24_Sell24);
+
         }
 
         /// <summary>
@@ -102,32 +72,20 @@ namespace Primary.WinFormsApp
         {
             var owned_SellCI_BuyCI = new BuySellTrade(Owned.Cable.TCI, Owned.Dolar.TCI);
             var owned_SellCI_Buy24 = new BuySellTrade(Owned.Cable.T24, Owned.Dolar.TCI);
-            var owned_SellCI_Buy48 = new BuySellTrade(Owned.Cable.T48, Owned.Dolar.TCI);
             var owned_Sell24_Buy24 = new BuySellTrade(Owned.Cable.T24, Owned.Dolar.T24);
-            var owned_Sell24_Buy48 = new BuySellTrade(Owned.Cable.T48, Owned.Dolar.T24);
-            var owned_Sell48_Buy48 = new BuySellTrade(Owned.Cable.T48, Owned.Dolar.T48);
 
             var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.TCI);
             var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.TCI);
-            var arbitrarion_BuyCI_Sell48 = new BuySellTrade(Arbitration.Cable.T48, Arbitration.Dolar.TCI);
             var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.T24);
-            var arbitrarion_Buy24_Sell48 = new BuySellTrade(Arbitration.Cable.T48, Arbitration.Dolar.T24);
-            var arbitrarion_Buy48_Sell48 = new BuySellTrade(Arbitration.Cable.T48, Arbitration.Dolar.T48);
 
 
             return GetTradesBasedOnSettlementTerm(
                 owned_SellCI_BuyCI,
                 owned_SellCI_Buy24,
-                owned_SellCI_Buy48,
                 owned_Sell24_Buy24,
-                owned_Sell24_Buy48,
-                owned_Sell48_Buy48,
                 arbitrarion_BuyCI_SellCI,
                 arbitrarion_BuyCI_Sell24,
-                arbitrarion_BuyCI_Sell48,
-                arbitrarion_Buy24_Sell24,
-                arbitrarion_Buy24_Sell48,
-                arbitrarion_Buy48_Sell48
+                arbitrarion_Buy24_Sell24
                 );
         }
 
@@ -139,31 +97,19 @@ namespace Primary.WinFormsApp
         {
             var owned_SellCI_BuyCI = new BuySellTrade(Owned.Dolar.TCI, Owned.Cable.TCI);
             var owned_SellCI_Buy24 = new BuySellTrade(Owned.Dolar.T24, Owned.Cable.TCI);
-            var owned_SellCI_Buy48 = new BuySellTrade(Owned.Dolar.T48, Owned.Cable.TCI);
             var owned_Sell24_Buy24 = new BuySellTrade(Owned.Dolar.T24, Owned.Cable.T24);
-            var owned_Sell24_Buy48 = new BuySellTrade(Owned.Dolar.T48, Owned.Cable.T24);
-            var owned_Sell48_Buy48 = new BuySellTrade(Owned.Dolar.T48, Owned.Cable.T48);
 
             var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Dolar.TCI, Arbitration.Cable.TCI);
             var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Dolar.T24, Arbitration.Cable.TCI);
-            var arbitrarion_BuyCI_Sell48 = new BuySellTrade(Arbitration.Dolar.T48, Arbitration.Cable.TCI);
             var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Dolar.T24, Arbitration.Cable.T24);
-            var arbitrarion_Buy24_Sell48 = new BuySellTrade(Arbitration.Dolar.T48, Arbitration.Cable.T24);
-            var arbitrarion_Buy48_Sell48 = new BuySellTrade(Arbitration.Dolar.T48, Arbitration.Cable.T48);
 
             return GetTradesBasedOnSettlementTerm(
                 owned_SellCI_BuyCI,
                 owned_SellCI_Buy24,
-                owned_SellCI_Buy48,
                 owned_Sell24_Buy24,
-                owned_Sell24_Buy48,
-                owned_Sell48_Buy48,
                 arbitrarion_BuyCI_SellCI,
                 arbitrarion_BuyCI_Sell24,
-                arbitrarion_BuyCI_Sell48,
-                arbitrarion_Buy24_Sell24,
-                arbitrarion_Buy24_Sell48,
-                arbitrarion_Buy48_Sell48
+                arbitrarion_Buy24_Sell24
                 );
         }
 
@@ -175,31 +121,21 @@ namespace Primary.WinFormsApp
         {
             var owned_SellCI_BuyCI = new BuySellTrade(Owned.TCI, Owned.Cable.TCI);
             var owned_SellCI_Buy24 = new BuySellTrade(Owned.T24, Owned.Cable.TCI);
-            var owned_SellCI_Buy48 = new BuySellTrade(Owned.T48, Owned.Cable.TCI);
+
             var owned_Sell24_Buy24 = new BuySellTrade(Owned.T24, Owned.Cable.T24);
-            var owned_Sell24_Buy48 = new BuySellTrade(Owned.T48, Owned.Cable.T24);
-            var owned_Sell48_Buy48 = new BuySellTrade(Owned.T48, Owned.Cable.T48);
 
             var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.TCI, Arbitration.Cable.TCI);
             var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Cable.TCI);
-            var arbitrarion_BuyCI_Sell48 = new BuySellTrade(Arbitration.T48, Arbitration.Cable.TCI);
+
             var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Cable.T24);
-            var arbitrarion_Buy24_Sell48 = new BuySellTrade(Arbitration.T48, Arbitration.Cable.T24);
-            var arbitrarion_Buy48_Sell48 = new BuySellTrade(Arbitration.T48, Arbitration.Cable.T48);
 
             return GetTradesBasedOnSettlementTerm(
                 owned_SellCI_BuyCI,
                 owned_SellCI_Buy24,
-                owned_SellCI_Buy48,
                 owned_Sell24_Buy24,
-                owned_Sell24_Buy48,
-                owned_Sell48_Buy48,
                 arbitrarion_BuyCI_SellCI,
                 arbitrarion_BuyCI_Sell24,
-                arbitrarion_BuyCI_Sell48,
-                arbitrarion_Buy24_Sell24,
-                arbitrarion_Buy24_Sell48,
-                arbitrarion_Buy48_Sell48
+                arbitrarion_Buy24_Sell24
                 );
         }
 
@@ -211,31 +147,19 @@ namespace Primary.WinFormsApp
         {
             var owned_SellCI_BuyCI = new BuySellTrade(Owned.TCI, Owned.Dolar.TCI);
             var owned_SellCI_Buy24 = new BuySellTrade(Owned.T24, Owned.Dolar.TCI);
-            var owned_SellCI_Buy48 = new BuySellTrade(Owned.T48, Owned.Dolar.TCI);
             var owned_Sell24_Buy24 = new BuySellTrade(Owned.T24, Owned.Dolar.T24);
-            var owned_Sell24_Buy48 = new BuySellTrade(Owned.T48, Owned.Dolar.T24);
-            var owned_Sell48_Buy48 = new BuySellTrade(Owned.T48, Owned.Dolar.T48);
 
             var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.TCI, Arbitration.Dolar.TCI);
             var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Dolar.TCI);
-            var arbitrarion_BuyCI_Sell48 = new BuySellTrade(Arbitration.T48, Arbitration.Dolar.TCI);
             var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Dolar.T24);
-            var arbitrarion_Buy24_Sell48 = new BuySellTrade(Arbitration.T48, Arbitration.Dolar.T24);
-            var arbitrarion_Buy48_Sell48 = new BuySellTrade(Arbitration.T48, Arbitration.Dolar.T48);
 
             return GetTradesBasedOnSettlementTerm(
                  owned_SellCI_BuyCI,
                  owned_SellCI_Buy24,
-                 owned_SellCI_Buy48,
                  owned_Sell24_Buy24,
-                 owned_Sell24_Buy48,
-                 owned_Sell48_Buy48,
                  arbitrarion_BuyCI_SellCI,
                  arbitrarion_BuyCI_Sell24,
-                 arbitrarion_BuyCI_Sell48,
-                 arbitrarion_Buy24_Sell24,
-                 arbitrarion_Buy24_Sell48,
-                 arbitrarion_Buy48_Sell48
+                 arbitrarion_Buy24_Sell24
                  );
         }
 

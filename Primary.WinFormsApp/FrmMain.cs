@@ -486,8 +486,8 @@ namespace Primary.WinFormsApp
         {
             if (ValidateUserHasLogin())
             {
-                var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
-                var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
+                var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol24H()));
+                var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol24H()));
 
                 var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
                 var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
@@ -503,8 +503,8 @@ namespace Primary.WinFormsApp
         {
             if (ValidateUserHasLogin())
             {
-                var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol48H()));
-                var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol48H()));
+                var al30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("AL30".ToMervalSymbol24H()));
+                var gd30InstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("GD30".ToMervalSymbol24H()));
 
                 var al30Trade = new BuySellTrade(al30InstrumentWithData, al30InstrumentWithData);
                 var gd30Trade = new BuySellTrade(gd30InstrumentWithData, gd30InstrumentWithData);
