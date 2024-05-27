@@ -315,9 +315,18 @@ namespace ChuchoBot.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>X20Y4</string>\r\n  <string>S14J4</string>\r\n</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>S01L4</string>
+  <string>S14J4</string>
+  <string>S14O4</string>
+  <string>S26L4</string>
+  <string>S28F5</string>
+  <string>S29N4</string>
+  <string>S30G4</string>
+  <string>S31E5</string>
+  <string>S31M5</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Letras {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));

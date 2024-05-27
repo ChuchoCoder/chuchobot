@@ -19,9 +19,9 @@ internal class Telemetry
 
     public static bool AppInsightsEnabled { get; private set; }
 
-
-    public static readonly string AppName = Assembly.GetExecutingAssembly().GetName().Name;
-    public static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+    public static readonly AssemblyName AssemblyName = Assembly.GetExecutingAssembly().GetName();
+    public static readonly string AppName = AssemblyName.Name;
+    public static readonly string Version = AssemblyName.Version.ToString();
     public static readonly string SessionId = Guid.NewGuid().ToString();
 
     /// <summary>
