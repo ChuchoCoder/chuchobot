@@ -39,9 +39,13 @@ public partial class FrmRatios : Form
 
     private void RefreshRatioRow(string tickerA, string tickerB)
     {
-            var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol24H());
+        var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol24H());
+        if (instrumentA == null)
+            return;
 
-            var instrumentB = Argentina.Data.GetLatestOrNull(tickerB.ToMervalSymbol24H());
+        var instrumentB = Argentina.Data.GetLatestOrNull(tickerB.ToMervalSymbol24H());
+        if (instrumentB == null)
+            return;
 
         var ratio = tickerA + "/" + tickerB;
         var existingRow = dataTable.Rows.Find(new[] { ratio });
@@ -61,12 +65,12 @@ public partial class FrmRatios : Form
         row["BBid"] = instrumentB.GetTopBidPrice();
         row["BOffer"] = instrumentB.GetTopOfferPrice();
         // Sell A - Buy B
-        row["ShortRatio"] = instrumentB.GetTopOfferPrice() > 0 ? (instrumentA.GetTopBidPrice() / instrumentB.GetTopOfferPrice()) - 1 : 0; 
+        row["ShortRatio"] = instrumentB.GetTopOfferPrice() > 0 ? (instrumentA.GetTopBidPrice() / instrumentB.GetTopOfferPrice()) - 1 : 0;
         // Buy A - Sell B
         row["LongRatio"] = instrumentB.GetTopBidPrice() > 0 ? (instrumentA.GetTopOfferPrice() / instrumentB.GetTopBidPrice()) - 1 : 0;
 
         var ratioLastHasValue = instrumentB.Last?.Price > 0 && instrumentA.Last?.Price > 0;
-            
+
         var ratioLast = ratioLastHasValue ? (instrumentA.Last.Price / instrumentB.Last.Price) - 1 : 0;
         row["RatioLast"] = ratioLast;
 
@@ -86,14 +90,16 @@ public partial class FrmRatios : Form
 
             if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value / 100m)
             {
-                Alerts.NotifyRatioTradeLowerThan(tickerA, tickerB, ratioLast.Value, null);
+                // Long Ratio
+                Alerts.NotifyLongRatioTrade(tickerA, instrumentA.GetTopBidPrice(), tickerB, instrumentB.GetTopOfferPrice(), ratioLast.Value, null);
             }
 
             var alertGreater = row["AlertGreater"] as decimal?;
 
             if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value / 100m)
             {
-                Alerts.NotifyRatioTradeGreaterThan(tickerB, tickerA, ratioLast.Value, null);
+                // Short Ratio
+                Alerts.NotifyShortRatioTrade(tickerB, instrumentA.GetTopOfferPrice(), tickerA, instrumentB.GetTopBidPrice(), ratioLast.Value, null);
             }
         }
     }

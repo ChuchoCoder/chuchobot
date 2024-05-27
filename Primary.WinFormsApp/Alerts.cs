@@ -17,10 +17,10 @@ internal static class Alerts
 
     public static void NotifySettlementTrade(SettlementTermTrade trade, nint? handle)
     {
-        NotifySettlementTrade(trade.Sell.Instrument.InstrumentId.Symbol, trade.Buy.Instrument.InstrumentId.Symbol, trade.ProfitLossPercentage, trade.ProfitLoss, handle);
+        NotifySettlementTrade(trade.Sell.Instrument.InstrumentId.Symbol, trade.SellSize, trade.SellPrice, trade.Buy.Instrument.InstrumentId.Symbol, trade.BuySize, trade.BuyPrice, trade.ProfitLossPercentage, trade.ProfitLoss, handle);
     }
 
-    public static void NotifySettlementTrade(string sellSymbol, string buySymbol, decimal profitPercentage, decimal profit, nint? handle)
+    public static void NotifySettlementTrade(string sellSymbol, decimal sellSize, decimal sellPrice, string buySymbol, decimal buySize, decimal buyPrice, decimal profitPercentage, decimal profit, nint? handle)
     {
         var lastDate = _settlementTradeNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
@@ -31,7 +31,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Arbitraje de plazos detectado")
-                .AddText($"Comprar {buySymbol}\r\nVender {sellSymbol}\r\nProfit: {profit:c2} ({profitPercentage:P2})");
+                .AddText($"Comprar {buySize} {buySymbol} {buyPrice:C2}\r\nVender {sellSize} {sellSymbol} {sellPrice:C2}\r\nProfit: {profit:c2} ({profitPercentage:P2})");
 
             if (handle != null) {
                 toastBuilder.AddArgument("handle", handle.Value);
@@ -50,7 +50,7 @@ internal static class Alerts
         }
     }
 
-    public static void NotifyRatioTradeLowerThan(string buySymbol, string sellSymbol, decimal ratio, nint? handle)
+    public static void NotifyLongRatioTrade(string buySymbol, decimal buyPrice, string sellSymbol, decimal sellPrice, decimal ratio, nint? handle)
     {
         var lastDate = _ratioTradeLowerNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
@@ -60,8 +60,8 @@ internal static class Alerts
                 .AddArgument("action", "ratioTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
-                .AddText("Rotación de activo (ratio) detectado")
-                .AddText($"Comprar {buySymbol}\r\nVender {sellSymbol}\r\nRatio: {ratio:P2}");
+                .AddText("Rotación de activo (long ratio)")
+                .AddText($"Comprar {buySymbol} {buyPrice:C2}\r\nVender {sellSymbol} {sellPrice:C2}\r\nRatio: {ratio:P2}");
 
             if (handle != null)
             {
@@ -81,7 +81,7 @@ internal static class Alerts
         }
     }
 
-    public static void NotifyRatioTradeGreaterThan(string buySymbol, string sellSymbol, decimal ratio, nint? handle)
+    public static void NotifyShortRatioTrade(string buySymbol, decimal buyPrice, string sellSymbol, decimal sellPrice, decimal ratio, nint? handle)
     {
         var lastDate = _ratioTradeGreaterNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
@@ -91,8 +91,8 @@ internal static class Alerts
                 .AddArgument("action", "ratioTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
-                .AddText("Rotación de activo (ratio) detectado")
-                .AddText($"Comprar {buySymbol}\r\nVender {sellSymbol}\r\nRatio: {ratio:P2}");
+                .AddText("Rotación de activo (short ratio)")
+                .AddText($"Comprar {buySymbol} {buyPrice:C2}\r\nVender {sellSymbol} {sellPrice:C2}\r\nRatio: {ratio:P2}");
 
             if (handle != null)
             {
