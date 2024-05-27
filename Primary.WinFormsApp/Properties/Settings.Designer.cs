@@ -185,27 +185,28 @@ namespace Primary.WinFormsApp.Properties {
             "tring>\r\n  <string>QCOMC</string>\r\n  <string>QCOMD</string>\r\n  <string>QQQ</strin" +
             "g>\r\n  <string>QQQC</string>\r\n  <string>QQQD</string>\r\n  <string>RDS</string>\r\n  " +
             "<string>RIO</string>\r\n  <string>RTX</string>\r\n  <string>SAN</string>\r\n  <string>" +
-            "SAP</string>\r\n  <string>SBS</string>\r\n  <string>SBUX</string>\r\n  <string>SCCO</s" +
-            "tring>\r\n  <string>SHOP</string>\r\n  <string>SID</string>\r\n  <string>SLB</string>\r" +
-            "\n  <string>SLBD</string>\r\n  <string>SNAP</string>\r\n  <string>SNOW</string>\r\n  <s" +
-            "tring>SONY</string>\r\n  <string>SPOT</string>\r\n  <string>SPY</string>\r\n  <string>" +
-            "SPYC</string>\r\n  <string>SPYD</string>\r\n  <string>SQ</string>\r\n  <string>SUZ</st" +
-            "ring>\r\n  <string>T</string>\r\n  <string>TD</string>\r\n  <string>TEN</string>\r\n  <s" +
-            "tring>TEND</string>\r\n  <string>TGNO4</string>\r\n  <string>TGT</string>\r\n  <string" +
-            ">TMD</string>\r\n  <string>TMO</string>\r\n  <string>TOT</string>\r\n  <string>TRAN</s" +
-            "tring>\r\n  <string>TRIP</string>\r\n  <string>TSLA</string>\r\n  <string>TSLAC</strin" +
-            "g>\r\n  <string>TSLAD</string>\r\n  <string>TSM</string>\r\n  <string>TWTR</string>\r\n " +
-            " <string>TWTRD</string>\r\n  <string>TXN</string>\r\n  <string>TXR</string>\r\n  <stri" +
-            "ng>UGP</string>\r\n  <string>UL</string>\r\n  <string>UNH</string>\r\n  <string>UNP</s" +
-            "tring>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n  <string>VALED</string>\r" +
-            "\n  <string>VD</string>\r\n  <string>VIST</string>\r\n  <string>VISTD</string>\r\n  <st" +
-            "ring>VIV</string>\r\n  <string>VOD</string>\r\n  <string>VRSN</string>\r\n  <string>VZ" +
-            "</string>\r\n  <string>VZD</string>\r\n  <string>WBA</string>\r\n  <string>WFC</string" +
-            ">\r\n  <string>WFCC</string>\r\n  <string>WFCD</string>\r\n  <string>WMT</string>\r\n  <" +
-            "string>WMTD</string>\r\n  <string>X</string>\r\n  <string>XD</string>\r\n  <string>XLE" +
-            "C</string>\r\n  <string>XLED</string>\r\n  <string>XOM</string>\r\n  <string>XOMC</str" +
-            "ing>\r\n  <string>XOMD</string>\r\n  <string>XOMD</string>\r\n  <string>XROX</string>\r" +
-            "\n  <string>YELP</string>\r\n  <string>ZM</string>\r\n</ArrayOfString>")]
+            "SATL</string>\r\n  <string>SAP</string>\r\n  <string>SBS</string>\r\n  <string>SBUX</s" +
+            "tring>\r\n  <string>SCCO</string>\r\n  <string>SHOP</string>\r\n  <string>SID</string>" +
+            "\r\n  <string>SLB</string>\r\n  <string>SLBD</string>\r\n  <string>SNAP</string>\r\n  <s" +
+            "tring>SNOW</string>\r\n  <string>SONY</string>\r\n  <string>SPOT</string>\r\n  <string" +
+            ">SPY</string>\r\n  <string>SPYC</string>\r\n  <string>SPYD</string>\r\n  <string>SQ</s" +
+            "tring>\r\n  <string>SUZ</string>\r\n  <string>T</string>\r\n  <string>TD</string>\r\n  <" +
+            "string>TEN</string>\r\n  <string>TEND</string>\r\n  <string>TGNO4</string>\r\n  <strin" +
+            "g>TGT</string>\r\n  <string>TMD</string>\r\n  <string>TMO</string>\r\n  <string>TOT</s" +
+            "tring>\r\n  <string>TRAN</string>\r\n  <string>TRIP</string>\r\n  <string>TSLA</string" +
+            ">\r\n  <string>TSLAC</string>\r\n  <string>TSLAD</string>\r\n  <string>TSM</string>\r\n " +
+            " <string>TWTR</string>\r\n  <string>TWTRD</string>\r\n  <string>TXN</string>\r\n  <str" +
+            "ing>TXR</string>\r\n  <string>UGP</string>\r\n  <string>UL</string>\r\n  <string>UNH</" +
+            "string>\r\n  <string>UNP</string>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n" +
+            "  <string>VALED</string>\r\n  <string>VD</string>\r\n  <string>VIST</string>\r\n  <str" +
+            "ing>VISTD</string>\r\n  <string>VIV</string>\r\n  <string>VOD</string>\r\n  <string>VR" +
+            "SN</string>\r\n  <string>VZ</string>\r\n  <string>VZD</string>\r\n  <string>WBA</strin" +
+            "g>\r\n  <string>WFC</string>\r\n  <string>WFCC</string>\r\n  <string>WFCD</string>\r\n  " +
+            "<string>WMT</string>\r\n  <string>WMTD</string>\r\n  <string>X</string>\r\n  <string>X" +
+            "D</string>\r\n  <string>XLEC</string>\r\n  <string>XLED</string>\r\n  <string>XOM</str" +
+            "ing>\r\n  <string>XOMC</string>\r\n  <string>XOMD</string>\r\n  <string>XOMD</string>\r" +
+            "\n  <string>XROX</string>\r\n  <string>YELP</string>\r\n  <string>ZM</string>\r\n</Arra" +
+            "yOfString>")]
         public global::System.Collections.Specialized.StringCollection AccionesCEDEARs {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["AccionesCEDEARs"]));
@@ -282,9 +283,18 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>X20Y4</string>\r\n</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>S01L4</string>
+  <string>S14J4</string>
+  <string>S14O4</string>
+  <string>S26L4</string>
+  <string>S28F5</string>
+  <string>S29N4</string>
+  <string>S30G4</string>
+  <string>S31E5</string>
+  <string>S31M5</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Letras {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));

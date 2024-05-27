@@ -255,6 +255,7 @@
   &lt;string&gt;RIO&lt;/string&gt;
   &lt;string&gt;RTX&lt;/string&gt;
   &lt;string&gt;SAN&lt;/string&gt;
+  &lt;string&gt;SATL&lt;/string&gt;
   &lt;string&gt;SAP&lt;/string&gt;
   &lt;string&gt;SBS&lt;/string&gt;
   &lt;string&gt;SBUX&lt;/string&gt;
@@ -353,7 +354,15 @@
     <Setting Name="Letras" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;X20Y4&lt;/string&gt;
+  &lt;string&gt;S01L4&lt;/string&gt;
+  &lt;string&gt;S14J4&lt;/string&gt;
+  &lt;string&gt;S14O4&lt;/string&gt;
+  &lt;string&gt;S26L4&lt;/string&gt;
+  &lt;string&gt;S28F5&lt;/string&gt;
+  &lt;string&gt;S29N4&lt;/string&gt;
+  &lt;string&gt;S30G4&lt;/string&gt;
+  &lt;string&gt;S31E5&lt;/string&gt;
+  &lt;string&gt;S31M5&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="ArbitrationTickers" Type="System.Collections.Specialized.StringCollection" Scope="User">
