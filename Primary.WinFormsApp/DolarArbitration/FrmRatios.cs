@@ -91,7 +91,7 @@ public partial class FrmRatios : Form
             if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value / 100m)
             {
                 // Long Ratio
-                Alerts.NotifyLongRatioTrade(tickerA, instrumentA.GetTopBidPrice(), tickerB, instrumentB.GetTopOfferPrice(), ratioLast.Value, null);
+                Alerts.NotifyLongRatioTrade(tickerA, instrumentA.GetTopOfferPrice(), tickerB, instrumentB.GetTopBidPrice(), ratioLast.Value, null);
             }
 
             var alertGreater = row["AlertGreater"] as decimal?;
@@ -99,7 +99,7 @@ public partial class FrmRatios : Form
             if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value / 100m)
             {
                 // Short Ratio
-                Alerts.NotifyShortRatioTrade(tickerB, instrumentA.GetTopOfferPrice(), tickerA, instrumentB.GetTopBidPrice(), ratioLast.Value, null);
+                Alerts.NotifyShortRatioTrade(tickerB, instrumentB.GetTopOfferPrice(), tickerA, instrumentA.GetTopBidPrice(), ratioLast.Value, null);
             }
         }
     }

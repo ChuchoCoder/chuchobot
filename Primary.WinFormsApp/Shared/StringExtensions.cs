@@ -45,6 +45,11 @@ public static class StringExtensions
         return instrumentDetail.IsCI() ? 0 : diasLiq24H;
     }
 
+    public static string RemoveMervalPrefix(this string ticker)
+    {
+        return ticker.Replace(Instrument.MervalPrefix, string.Empty);
+    }
+
     public static string AddMervalPrefix(this string ticker)
     {
         return Instrument.MervalPrefix + ticker;

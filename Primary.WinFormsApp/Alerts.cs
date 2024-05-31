@@ -1,4 +1,5 @@
 ﻿using ChuchoBot.WinFormsApp.SettlementTerms;
+using ChuchoBot.WinFormsApp.Shared;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Arbitraje de plazos detectado")
-                .AddText($"Comprar {buySize} {buySymbol} {buyPrice:C2}\r\nVender {sellSize} {sellSymbol} {sellPrice:C2}\r\nProfit: {profit:c2} ({profitPercentage:P2})");
+                .AddText($"Comprar {buySize} {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSize} {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nProfit: {profit:c2} ({profitPercentage:P2})");
 
             if (handle != null) {
                 toastBuilder.AddArgument("handle", handle.Value);
@@ -61,7 +62,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (long ratio)")
-                .AddText($"Comprar {buySymbol} {buyPrice:C2}\r\nVender {sellSymbol} {sellPrice:C2}\r\nRatio: {ratio:P2}");
+                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratio:P2}");
 
             if (handle != null)
             {
@@ -92,7 +93,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (short ratio)")
-                .AddText($"Comprar {buySymbol} {buyPrice:C2}\r\nVender {sellSymbol} {sellPrice:C2}\r\nRatio: {ratio:P2}");
+                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratio:P2}");
 
             if (handle != null)
             {
