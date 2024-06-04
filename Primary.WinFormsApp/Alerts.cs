@@ -57,12 +57,14 @@ internal static class Alerts
         var dif = DateTime.Now - lastDate;
         if (dif > _notificationThreshold)
         {
+            var ratioCurrent = (buyPrice / sellPrice) - 1;
+
             var toastBuilder = new ToastContentBuilder()
                 .AddArgument("action", "ratioTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (long ratio)")
-                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratio:P2}");
+                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratioCurrent:P2} (Ult. {ratio:P2})");
 
             if (handle != null)
             {
@@ -88,12 +90,14 @@ internal static class Alerts
         var dif = DateTime.Now - lastDate;
         if (dif > _notificationThreshold)
         {
+            var ratioCurrent = (sellPrice / buyPrice) - 1;
+
             var toastBuilder = new ToastContentBuilder()
                 .AddArgument("action", "ratioTradeAlert")
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (short ratio)")
-                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratio:P2}");
+                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratioCurrent:P2} (Ult. {ratio:P2})");
 
             if (handle != null)
             {
