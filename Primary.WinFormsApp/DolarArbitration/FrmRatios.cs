@@ -21,23 +21,38 @@ public partial class FrmRatios : Form
 
         foreach (var ratio in Settings.Default.RatioTickers)
         {
-            var ratioTickers = ratio.Split('/');
-            if (ratioTickers.Length >= 2)
-            {
-                RefreshRatioRow(ratioTickers[0], ratioTickers[1]);
-            }
-            else
-            {
-                ratioTickers = ratio.Split('\\');
-                if (ratioTickers.Length >= 2)
-                {
-                    RefreshRatioRow(ratioTickers[0], ratioTickers[1]);
-                }
-            }
+            _ = InitRatio(ratio, '/', ' ') || InitRatio(ratio, '\\', ' ');
         }
     }
 
-    private void RefreshRatioRow(string tickerA, string tickerB)
+    private bool InitRatio(string ratioConfigLine, char ratioSeparator, char alertSeparator)
+    {
+        var ratioTickers = ratioConfigLine.Split(ratioSeparator);
+        if (ratioTickers.Length >= 2)
+        {
+            var configRatio = ratioTickers[1].Split(alertSeparator);
+
+            decimal? alertMin = null;
+            decimal? alertMax = null;
+
+            if (configRatio.Length >= 2)
+            {
+                alertMin = decimal.TryParse(configRatio[1], out var outMinValue) ? outMinValue : null;
+                if (configRatio.Length >= 3)
+                {
+                    alertMax = decimal.TryParse(configRatio[2], out var outMaxValue) ? outMaxValue : null;
+                }
+            }
+
+            RefreshRatioRow(ratioTickers[0], configRatio[0], alertMin, alertMax);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void RefreshRatioRow(string tickerA, string tickerB, decimal? alertMin, decimal? alertMax)
     {
         var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol24H());
         if (instrumentA == null)
@@ -78,6 +93,9 @@ public partial class FrmRatios : Form
         row["RatioYesterday"] = ratioClose;
 
         row["RatioVariacion"] = ratioLast - ratioClose;
+
+        row["AlertLower"] = alertMin.HasValue ? alertMin.Value : System.DBNull.Value;
+        row["AlertGreater"] = alertMax.HasValue ? alertMax.Value : System.DBNull.Value;
 
         if (existingRow == null)
         {
@@ -131,6 +149,21 @@ public partial class FrmRatios : Form
 
     private void grdRatios_CellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
+        if (e.RowIndex >= 0 && dataTable.Rows.Count > e.RowIndex)
+        {
+            var ratio = dataTable.Rows[e.RowIndex]["Ratio"].ToString();
+            var alertLower = dataTable.Rows[e.RowIndex]["AlertLower"];
+            var alertGreater = dataTable.Rows[e.RowIndex]["AlertGreater"];
 
+            for (int i = 0; i < Settings.Default.RatioTickers.Count; i++)
+            {
+                if (Settings.Default.RatioTickers[i].StartsWith(ratio))
+                {
+                    Settings.Default.RatioTickers[i] = $"{ratio} {alertLower} {alertGreater}";
+                    break;
+                }
+            }
+            Settings.Default.Save();
+        }
     }
 }

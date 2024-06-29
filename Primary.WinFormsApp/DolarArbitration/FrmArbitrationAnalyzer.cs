@@ -45,10 +45,10 @@ public partial class FrmArbitrationAnalyzer : Form
             {
                 trades = trades.Where(x =>
                     filteredTickers.Any(
-                        y => x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
-                            x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
-                            x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) ||
-                            x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y)
+                        y => x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) ||
+                            x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) ||
+                            x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) ||
+                            x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase)
                         )
                     ).ToList();
             }
@@ -56,11 +56,11 @@ public partial class FrmArbitrationAnalyzer : Form
             if (excludedTickers != null)
             {
                 trades = trades.Where(x =>
-                    excludedTickers.Any(
-                        y => !x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
-                            !x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
-                            !x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y) &&
-                            !x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y)
+                    !excludedTickers.Any(
+                        y => x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) &&
+                            x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) &&
+                            x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) &&
+                            x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase)
                         )
                     ).ToList();
 

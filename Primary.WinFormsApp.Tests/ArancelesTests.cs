@@ -5,6 +5,11 @@ namespace ChuchoBot.WinFormsApp.Tests;
 
 public class Aranceles
 {
+    public Aranceles()
+    {
+        InstrumentTests.Initialize();
+    }
+
     [Fact]
     public void CEDEARs_Calcular_DerechosMercado()
     {
@@ -12,7 +17,8 @@ public class Aranceles
 
         foreach (var cedear in cedears)
         {
-            _ = cedear.GetDerechosDeMercado().Should().Be(0.0968m / 100m, cedear);
+            var instrument = Argentina.Data.GetInstrumentDetail(cedear);
+            _ = instrument.GetDerechosDeMercado().Should().Be(0.0968m / 100m, cedear);
         }
     }
 
@@ -23,7 +29,8 @@ public class Aranceles
 
         foreach (var cedear in cedears)
         {
-            _ = cedear.GetDerechosDeMercado().Should().Be(0.001m / 100m, cedear);
+            var instrument = Argentina.Data.GetInstrumentDetail(cedear);
+            _ = instrument.GetDerechosDeMercado().Should().Be(0.001m / 100m, cedear);
         }
     }
 
@@ -34,7 +41,8 @@ public class Aranceles
 
         foreach (var cedear in cedears)
         {
-            _ = cedear.GetDerechosDeMercado().Should().Be(0.01m / 100m, cedear);
+            var instrument = Argentina.Data.GetInstrumentDetail(cedear);
+            _ = instrument.GetDerechosDeMercado().Should().Be(0.01m / 100m, cedear);
         }
     }
 }

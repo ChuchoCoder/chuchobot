@@ -28,408 +28,379 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArbitrationAnalyzer));
-            this.grdArbitration = new System.Windows.Forms.DataGridView();
-            this.KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KeyArbitrationVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KeyOwnedCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProfitLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArbitrationVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OwnedCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DolarCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DolarVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DolarCompraLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DolarVentaLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.numMinProfit = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkMEP = new System.Windows.Forms.CheckBox();
-            this.chkCCL = new System.Windows.Forms.CheckBox();
-            this.chkDolarDC = new System.Windows.Forms.CheckBox();
-            this.chkDolarCD = new System.Windows.Forms.CheckBox();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numAlert = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtExclude = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMinProfit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAlert)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            var dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            var dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArbitrationAnalyzer));
+            grdArbitration = new System.Windows.Forms.DataGridView();
+            KeyOwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            KeyArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            KeyArbitrationVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            KeyOwnedCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ProfitLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            OwnedVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ArbitrationCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ArbitrationVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            OwnedCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DolarCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DolarVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DolarCompraLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            DolarVentaLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            timer1 = new System.Windows.Forms.Timer(components);
+            numMinProfit = new System.Windows.Forms.NumericUpDown();
+            label1 = new System.Windows.Forms.Label();
+            chkMEP = new System.Windows.Forms.CheckBox();
+            chkCCL = new System.Windows.Forms.CheckBox();
+            chkDolarDC = new System.Windows.Forms.CheckBox();
+            chkDolarCD = new System.Windows.Forms.CheckBox();
+            txtFilter = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            numAlert = new System.Windows.Forms.NumericUpDown();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            txtExclude = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)grdArbitration).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numMinProfit).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numAlert).BeginInit();
+            SuspendLayout();
             // 
             // grdArbitration
             // 
-            this.grdArbitration.AllowUserToAddRows = false;
-            this.grdArbitration.AllowUserToDeleteRows = false;
-            this.grdArbitration.AllowUserToOrderColumns = true;
-            this.grdArbitration.AllowUserToResizeRows = false;
-            this.grdArbitration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdArbitration.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grdArbitration.CausesValidation = false;
-            this.grdArbitration.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.KeyOwnedVenta,
-            this.KeyArbitrationCompra,
-            this.KeyArbitrationVenta,
-            this.KeyOwnedCompra,
-            this.Profit,
-            this.ProfitLast,
-            this.OwnedVenta,
-            this.ArbitrationCompra,
-            this.ArbitrationVenta,
-            this.OwnedCompra,
-            this.DolarCompra,
-            this.DolarVenta,
-            this.DolarCompraLast,
-            this.DolarVentaLast});
-            this.grdArbitration.Location = new System.Drawing.Point(3, 28);
-            this.grdArbitration.Name = "grdArbitration";
-            this.grdArbitration.ReadOnly = true;
-            this.grdArbitration.RowHeadersVisible = false;
-            this.grdArbitration.RowHeadersWidth = 51;
-            this.grdArbitration.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdArbitration.ShowCellErrors = false;
-            this.grdArbitration.ShowEditingIcon = false;
-            this.grdArbitration.ShowRowErrors = false;
-            this.grdArbitration.Size = new System.Drawing.Size(1310, 422);
-            this.grdArbitration.TabIndex = 2;
-            this.grdArbitration.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdArbitration_CellFormatting);
-            this.grdArbitration.DoubleClick += new System.EventHandler(this.grdArbitration_DoubleClick);
+            grdArbitration.AllowUserToAddRows = false;
+            grdArbitration.AllowUserToDeleteRows = false;
+            grdArbitration.AllowUserToOrderColumns = true;
+            grdArbitration.AllowUserToResizeRows = false;
+            grdArbitration.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grdArbitration.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            grdArbitration.CausesValidation = false;
+            grdArbitration.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { KeyOwnedVenta, KeyArbitrationCompra, KeyArbitrationVenta, KeyOwnedCompra, Profit, ProfitLast, OwnedVenta, ArbitrationCompra, ArbitrationVenta, OwnedCompra, DolarCompra, DolarVenta, DolarCompraLast, DolarVentaLast });
+            grdArbitration.Location = new System.Drawing.Point(4, 32);
+            grdArbitration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grdArbitration.Name = "grdArbitration";
+            grdArbitration.ReadOnly = true;
+            grdArbitration.RowHeadersVisible = false;
+            grdArbitration.RowHeadersWidth = 51;
+            grdArbitration.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            grdArbitration.ShowCellErrors = false;
+            grdArbitration.ShowEditingIcon = false;
+            grdArbitration.ShowRowErrors = false;
+            grdArbitration.Size = new System.Drawing.Size(1528, 487);
+            grdArbitration.TabIndex = 2;
+            grdArbitration.CellFormatting += grdArbitration_CellFormatting;
+            grdArbitration.DoubleClick += grdArbitration_DoubleClick;
             // 
             // KeyOwnedVenta
             // 
-            this.KeyOwnedVenta.DataPropertyName = "KeyOwnedVenta";
-            this.KeyOwnedVenta.HeaderText = "1 Venta";
-            this.KeyOwnedVenta.MinimumWidth = 6;
-            this.KeyOwnedVenta.Name = "KeyOwnedVenta";
-            this.KeyOwnedVenta.ReadOnly = true;
+            KeyOwnedVenta.DataPropertyName = "KeyOwnedVenta";
+            KeyOwnedVenta.HeaderText = "1 Venta";
+            KeyOwnedVenta.MinimumWidth = 6;
+            KeyOwnedVenta.Name = "KeyOwnedVenta";
+            KeyOwnedVenta.ReadOnly = true;
             // 
             // KeyArbitrationCompra
             // 
-            this.KeyArbitrationCompra.DataPropertyName = "KeyArbitrationCompra";
-            this.KeyArbitrationCompra.HeaderText = "2 Compra";
-            this.KeyArbitrationCompra.MinimumWidth = 6;
-            this.KeyArbitrationCompra.Name = "KeyArbitrationCompra";
-            this.KeyArbitrationCompra.ReadOnly = true;
+            KeyArbitrationCompra.DataPropertyName = "KeyArbitrationCompra";
+            KeyArbitrationCompra.HeaderText = "2 Compra";
+            KeyArbitrationCompra.MinimumWidth = 6;
+            KeyArbitrationCompra.Name = "KeyArbitrationCompra";
+            KeyArbitrationCompra.ReadOnly = true;
             // 
             // KeyArbitrationVenta
             // 
-            this.KeyArbitrationVenta.DataPropertyName = "KeyArbitrationVenta";
-            this.KeyArbitrationVenta.HeaderText = "3 Venta";
-            this.KeyArbitrationVenta.MinimumWidth = 6;
-            this.KeyArbitrationVenta.Name = "KeyArbitrationVenta";
-            this.KeyArbitrationVenta.ReadOnly = true;
+            KeyArbitrationVenta.DataPropertyName = "KeyArbitrationVenta";
+            KeyArbitrationVenta.HeaderText = "3 Venta";
+            KeyArbitrationVenta.MinimumWidth = 6;
+            KeyArbitrationVenta.Name = "KeyArbitrationVenta";
+            KeyArbitrationVenta.ReadOnly = true;
             // 
             // KeyOwnedCompra
             // 
-            this.KeyOwnedCompra.DataPropertyName = "KeyOwnedCompra";
-            this.KeyOwnedCompra.HeaderText = "4 Compra";
-            this.KeyOwnedCompra.MinimumWidth = 6;
-            this.KeyOwnedCompra.Name = "KeyOwnedCompra";
-            this.KeyOwnedCompra.ReadOnly = true;
+            KeyOwnedCompra.DataPropertyName = "KeyOwnedCompra";
+            KeyOwnedCompra.HeaderText = "4 Compra";
+            KeyOwnedCompra.MinimumWidth = 6;
+            KeyOwnedCompra.Name = "KeyOwnedCompra";
+            KeyOwnedCompra.ReadOnly = true;
             // 
             // Profit
             // 
-            this.Profit.DataPropertyName = "Profit";
+            Profit.DataPropertyName = "Profit";
             dataGridViewCellStyle1.Format = "P";
             dataGridViewCellStyle1.NullValue = null;
-            this.Profit.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Profit.HeaderText = "Profit";
-            this.Profit.MinimumWidth = 6;
-            this.Profit.Name = "Profit";
-            this.Profit.ReadOnly = true;
+            Profit.DefaultCellStyle = dataGridViewCellStyle1;
+            Profit.HeaderText = "Profit";
+            Profit.MinimumWidth = 6;
+            Profit.Name = "Profit";
+            Profit.ReadOnly = true;
             // 
             // ProfitLast
             // 
-            this.ProfitLast.DataPropertyName = "ProfitLast";
+            ProfitLast.DataPropertyName = "ProfitLast";
             dataGridViewCellStyle2.Format = "P";
-            this.ProfitLast.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ProfitLast.HeaderText = "Profit Last";
-            this.ProfitLast.MinimumWidth = 6;
-            this.ProfitLast.Name = "ProfitLast";
-            this.ProfitLast.ReadOnly = true;
+            ProfitLast.DefaultCellStyle = dataGridViewCellStyle2;
+            ProfitLast.HeaderText = "Profit Last";
+            ProfitLast.MinimumWidth = 6;
+            ProfitLast.Name = "ProfitLast";
+            ProfitLast.ReadOnly = true;
             // 
             // OwnedVenta
             // 
-            this.OwnedVenta.DataPropertyName = "OwnedVenta";
+            OwnedVenta.DataPropertyName = "OwnedVenta";
             dataGridViewCellStyle3.Format = "C2";
-            this.OwnedVenta.DefaultCellStyle = dataGridViewCellStyle3;
-            this.OwnedVenta.HeaderText = "SellThenBuy Venta";
-            this.OwnedVenta.MinimumWidth = 6;
-            this.OwnedVenta.Name = "OwnedVenta";
-            this.OwnedVenta.ReadOnly = true;
+            OwnedVenta.DefaultCellStyle = dataGridViewCellStyle3;
+            OwnedVenta.HeaderText = "SellThenBuy Venta";
+            OwnedVenta.MinimumWidth = 6;
+            OwnedVenta.Name = "OwnedVenta";
+            OwnedVenta.ReadOnly = true;
             // 
             // ArbitrationCompra
             // 
-            this.ArbitrationCompra.DataPropertyName = "ArbitrationCompra";
+            ArbitrationCompra.DataPropertyName = "ArbitrationCompra";
             dataGridViewCellStyle4.Format = "C2";
-            this.ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ArbitrationCompra.HeaderText = "BuyThenSell Compra";
-            this.ArbitrationCompra.MinimumWidth = 6;
-            this.ArbitrationCompra.Name = "ArbitrationCompra";
-            this.ArbitrationCompra.ReadOnly = true;
+            ArbitrationCompra.DefaultCellStyle = dataGridViewCellStyle4;
+            ArbitrationCompra.HeaderText = "BuyThenSell Compra";
+            ArbitrationCompra.MinimumWidth = 6;
+            ArbitrationCompra.Name = "ArbitrationCompra";
+            ArbitrationCompra.ReadOnly = true;
             // 
             // ArbitrationVenta
             // 
-            this.ArbitrationVenta.DataPropertyName = "ArbitrationVenta";
+            ArbitrationVenta.DataPropertyName = "ArbitrationVenta";
             dataGridViewCellStyle5.Format = "C2";
             dataGridViewCellStyle5.NullValue = null;
-            this.ArbitrationVenta.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ArbitrationVenta.HeaderText = "BuyThenSell Venta";
-            this.ArbitrationVenta.MinimumWidth = 6;
-            this.ArbitrationVenta.Name = "ArbitrationVenta";
-            this.ArbitrationVenta.ReadOnly = true;
+            ArbitrationVenta.DefaultCellStyle = dataGridViewCellStyle5;
+            ArbitrationVenta.HeaderText = "BuyThenSell Venta";
+            ArbitrationVenta.MinimumWidth = 6;
+            ArbitrationVenta.Name = "ArbitrationVenta";
+            ArbitrationVenta.ReadOnly = true;
             // 
             // OwnedCompra
             // 
-            this.OwnedCompra.DataPropertyName = "OwnedCompra";
+            OwnedCompra.DataPropertyName = "OwnedCompra";
             dataGridViewCellStyle6.Format = "C2";
-            this.OwnedCompra.DefaultCellStyle = dataGridViewCellStyle6;
-            this.OwnedCompra.HeaderText = "SellThenBuy Compra";
-            this.OwnedCompra.MinimumWidth = 6;
-            this.OwnedCompra.Name = "OwnedCompra";
-            this.OwnedCompra.ReadOnly = true;
+            OwnedCompra.DefaultCellStyle = dataGridViewCellStyle6;
+            OwnedCompra.HeaderText = "SellThenBuy Compra";
+            OwnedCompra.MinimumWidth = 6;
+            OwnedCompra.Name = "OwnedCompra";
+            OwnedCompra.ReadOnly = true;
             // 
             // DolarCompra
             // 
-            this.DolarCompra.DataPropertyName = "DolarCompra";
+            DolarCompra.DataPropertyName = "DolarCompra";
             dataGridViewCellStyle7.Format = "C2";
-            this.DolarCompra.DefaultCellStyle = dataGridViewCellStyle7;
-            this.DolarCompra.HeaderText = "Compra";
-            this.DolarCompra.MinimumWidth = 6;
-            this.DolarCompra.Name = "DolarCompra";
-            this.DolarCompra.ReadOnly = true;
+            DolarCompra.DefaultCellStyle = dataGridViewCellStyle7;
+            DolarCompra.HeaderText = "Compra";
+            DolarCompra.MinimumWidth = 6;
+            DolarCompra.Name = "DolarCompra";
+            DolarCompra.ReadOnly = true;
             // 
             // DolarVenta
             // 
-            this.DolarVenta.DataPropertyName = "DolarVenta";
+            DolarVenta.DataPropertyName = "DolarVenta";
             dataGridViewCellStyle8.Format = "C2";
             dataGridViewCellStyle8.NullValue = null;
-            this.DolarVenta.DefaultCellStyle = dataGridViewCellStyle8;
-            this.DolarVenta.HeaderText = "Venta";
-            this.DolarVenta.MinimumWidth = 6;
-            this.DolarVenta.Name = "DolarVenta";
-            this.DolarVenta.ReadOnly = true;
+            DolarVenta.DefaultCellStyle = dataGridViewCellStyle8;
+            DolarVenta.HeaderText = "Venta";
+            DolarVenta.MinimumWidth = 6;
+            DolarVenta.Name = "DolarVenta";
+            DolarVenta.ReadOnly = true;
             // 
             // DolarCompraLast
             // 
-            this.DolarCompraLast.DataPropertyName = "DolarCompraLast";
+            DolarCompraLast.DataPropertyName = "DolarCompraLast";
             dataGridViewCellStyle9.Format = "C2";
-            this.DolarCompraLast.DefaultCellStyle = dataGridViewCellStyle9;
-            this.DolarCompraLast.HeaderText = "Compra Last";
-            this.DolarCompraLast.MinimumWidth = 6;
-            this.DolarCompraLast.Name = "DolarCompraLast";
-            this.DolarCompraLast.ReadOnly = true;
+            DolarCompraLast.DefaultCellStyle = dataGridViewCellStyle9;
+            DolarCompraLast.HeaderText = "Compra Last";
+            DolarCompraLast.MinimumWidth = 6;
+            DolarCompraLast.Name = "DolarCompraLast";
+            DolarCompraLast.ReadOnly = true;
             // 
             // DolarVentaLast
             // 
-            this.DolarVentaLast.DataPropertyName = "DolarVentaLast";
+            DolarVentaLast.DataPropertyName = "DolarVentaLast";
             dataGridViewCellStyle10.Format = "C2";
-            this.DolarVentaLast.DefaultCellStyle = dataGridViewCellStyle10;
-            this.DolarVentaLast.HeaderText = "Venta Last";
-            this.DolarVentaLast.MinimumWidth = 6;
-            this.DolarVentaLast.Name = "DolarVentaLast";
-            this.DolarVentaLast.ReadOnly = true;
+            DolarVentaLast.DefaultCellStyle = dataGridViewCellStyle10;
+            DolarVentaLast.HeaderText = "Venta Last";
+            DolarVentaLast.MinimumWidth = 6;
+            DolarVentaLast.Name = "DolarVentaLast";
+            DolarVentaLast.ReadOnly = true;
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            timer1.Enabled = true;
+            timer1.Interval = 2000;
+            timer1.Tick += timer1_Tick;
             // 
             // numMinProfit
             // 
-            this.numMinProfit.DecimalPlaces = 2;
-            this.numMinProfit.Location = new System.Drawing.Point(99, 4);
-            this.numMinProfit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numMinProfit.Name = "numMinProfit";
-            this.numMinProfit.Size = new System.Drawing.Size(56, 20);
-            this.numMinProfit.TabIndex = 3;
-            this.numMinProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numMinProfit.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
+            numMinProfit.DecimalPlaces = 2;
+            numMinProfit.Location = new System.Drawing.Point(115, 5);
+            numMinProfit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numMinProfit.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            numMinProfit.Name = "numMinProfit";
+            numMinProfit.Size = new System.Drawing.Size(65, 23);
+            numMinProfit.TabIndex = 3;
+            numMinProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numMinProfit.Value = new decimal(new int[] { 5, 0, 0, 65536 });
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Min Profit %:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(12, 7);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(76, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Min Profit %:";
             // 
             // chkMEP
             // 
-            this.chkMEP.AutoSize = true;
-            this.chkMEP.Checked = true;
-            this.chkMEP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMEP.Location = new System.Drawing.Point(172, 4);
-            this.chkMEP.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chkMEP.Name = "chkMEP";
-            this.chkMEP.Size = new System.Drawing.Size(129, 17);
-            this.chkMEP.TabIndex = 5;
-            this.chkMEP.Text = "Arbitrajes MEP ($ / D)";
-            this.chkMEP.UseVisualStyleBackColor = true;
+            chkMEP.AutoSize = true;
+            chkMEP.Checked = true;
+            chkMEP.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkMEP.Location = new System.Drawing.Point(201, 5);
+            chkMEP.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            chkMEP.Name = "chkMEP";
+            chkMEP.Size = new System.Drawing.Size(139, 19);
+            chkMEP.TabIndex = 5;
+            chkMEP.Text = "Arbitrajes MEP ($ / D)";
+            chkMEP.UseVisualStyleBackColor = true;
             // 
             // chkCCL
             // 
-            this.chkCCL.AutoSize = true;
-            this.chkCCL.Location = new System.Drawing.Point(302, 4);
-            this.chkCCL.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chkCCL.Name = "chkCCL";
-            this.chkCCL.Size = new System.Drawing.Size(125, 17);
-            this.chkCCL.TabIndex = 6;
-            this.chkCCL.Text = "Arbitrajes CCL (C / $)";
-            this.chkCCL.UseVisualStyleBackColor = true;
+            chkCCL.AutoSize = true;
+            chkCCL.Location = new System.Drawing.Point(352, 5);
+            chkCCL.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            chkCCL.Name = "chkCCL";
+            chkCCL.Size = new System.Drawing.Size(137, 19);
+            chkCCL.TabIndex = 6;
+            chkCCL.Text = "Arbitrajes CCL (C / $)";
+            chkCCL.UseVisualStyleBackColor = true;
             // 
             // chkDolarDC
             // 
-            this.chkDolarDC.AutoSize = true;
-            this.chkDolarDC.Location = new System.Drawing.Point(428, 4);
-            this.chkDolarDC.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chkDolarDC.Name = "chkDolarDC";
-            this.chkDolarDC.Size = new System.Drawing.Size(98, 17);
-            this.chkDolarDC.TabIndex = 7;
-            this.chkDolarDC.Text = "Arbitrajes D / C";
-            this.chkDolarDC.UseVisualStyleBackColor = true;
+            chkDolarDC.AutoSize = true;
+            chkDolarDC.Location = new System.Drawing.Point(499, 5);
+            chkDolarDC.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            chkDolarDC.Name = "chkDolarDC";
+            chkDolarDC.Size = new System.Drawing.Size(106, 19);
+            chkDolarDC.TabIndex = 7;
+            chkDolarDC.Text = "Arbitrajes D / C";
+            chkDolarDC.UseVisualStyleBackColor = true;
             // 
             // chkDolarCD
             // 
-            this.chkDolarCD.AutoSize = true;
-            this.chkDolarCD.Location = new System.Drawing.Point(526, 4);
-            this.chkDolarCD.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chkDolarCD.Name = "chkDolarCD";
-            this.chkDolarCD.Size = new System.Drawing.Size(98, 17);
-            this.chkDolarCD.TabIndex = 8;
-            this.chkDolarCD.Text = "Arbitrajes C / D";
-            this.chkDolarCD.UseVisualStyleBackColor = true;
+            chkDolarCD.AutoSize = true;
+            chkDolarCD.Location = new System.Drawing.Point(614, 5);
+            chkDolarCD.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            chkDolarCD.Name = "chkDolarCD";
+            chkDolarCD.Size = new System.Drawing.Size(106, 19);
+            chkDolarCD.TabIndex = 8;
+            chkDolarCD.Text = "Arbitrajes C / D";
+            chkDolarCD.UseVisualStyleBackColor = true;
             // 
             // txtFilter
             // 
-            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFilter.Location = new System.Drawing.Point(1136, 4);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(169, 20);
-            this.txtFilter.TabIndex = 9;
-            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            txtFilter.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            txtFilter.Location = new System.Drawing.Point(1325, 5);
+            txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            txtFilter.Name = "txtFilter";
+            txtFilter.Size = new System.Drawing.Size(196, 23);
+            txtFilter.TabIndex = 9;
+            txtFilter.TextChanged += txtFilter_TextChanged;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(676, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Alert %:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(789, 7);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(54, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Alerta %:";
             // 
             // numAlert
             // 
-            this.numAlert.DecimalPlaces = 2;
-            this.numAlert.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAlert.Location = new System.Drawing.Point(736, 5);
-            this.numAlert.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numAlert.Name = "numAlert";
-            this.numAlert.Size = new System.Drawing.Size(51, 20);
-            this.numAlert.TabIndex = 10;
-            this.numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numAlert.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAlert.ValueChanged += new System.EventHandler(this.numAlert_ValueChanged);
+            numAlert.DecimalPlaces = 2;
+            numAlert.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            numAlert.Location = new System.Drawing.Point(859, 6);
+            numAlert.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numAlert.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            numAlert.Name = "numAlert";
+            numAlert.Size = new System.Drawing.Size(59, 23);
+            numAlert.TabIndex = 10;
+            numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numAlert.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numAlert.ValueChanged += numAlert_ValueChanged;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1090, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Filter:";
+            label3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(1272, 7);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(40, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Filtrar:";
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(914, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Exclude:";
+            label4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(1066, 7);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(45, 15);
+            label4.TabIndex = 14;
+            label4.Text = "Excluir:";
             // 
             // txtExclude
             // 
-            this.txtExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtExclude.Location = new System.Drawing.Point(976, 4);
-            this.txtExclude.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtExclude.Name = "txtExclude";
-            this.txtExclude.Size = new System.Drawing.Size(110, 20);
-            this.txtExclude.TabIndex = 13;
+            txtExclude.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            txtExclude.Location = new System.Drawing.Point(1139, 5);
+            txtExclude.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            txtExclude.Name = "txtExclude";
+            txtExclude.Size = new System.Drawing.Size(128, 23);
+            txtExclude.TabIndex = 13;
             // 
             // FrmArbitrationAnalyzer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1313, 450);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtExclude);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.numAlert);
-            this.Controls.Add(this.txtFilter);
-            this.Controls.Add(this.chkDolarCD);
-            this.Controls.Add(this.chkDolarDC);
-            this.Controls.Add(this.chkCCL);
-            this.Controls.Add(this.chkMEP);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numMinProfit);
-            this.Controls.Add(this.grdArbitration);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmArbitrationAnalyzer";
-            this.Text = "Scanner de arbitrajes";
-            this.Load += new System.EventHandler(this.FrmArbitrationBestTrades_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdArbitration)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMinProfit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAlert)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1532, 519);
+            Controls.Add(label4);
+            Controls.Add(txtExclude);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(numAlert);
+            Controls.Add(txtFilter);
+            Controls.Add(chkDolarCD);
+            Controls.Add(chkDolarDC);
+            Controls.Add(chkCCL);
+            Controls.Add(chkMEP);
+            Controls.Add(label1);
+            Controls.Add(numMinProfit);
+            Controls.Add(grdArbitration);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FrmArbitrationAnalyzer";
+            Text = "Scanner de arbitrajes";
+            Load += FrmArbitrationBestTrades_Load;
+            ((System.ComponentModel.ISupportInitialize)grdArbitration).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numMinProfit).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numAlert).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

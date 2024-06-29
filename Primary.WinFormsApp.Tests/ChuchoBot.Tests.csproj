@@ -13,6 +13,12 @@
 		<FileVersion>1.0.0.0</FileVersion>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="InstrumentsWithDetails.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="InstrumentsWithDetails.json" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\Primary.WinFormsApp\ChuchoBot.csproj" />
 		<ProjectReference Include="..\Primary\Primary.csproj" />
 	</ItemGroup>

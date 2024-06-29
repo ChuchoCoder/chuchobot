@@ -8,6 +8,20 @@ namespace ChuchoBot.WinFormsApp.Shared;
 
 public static class InstrumentExtensions
 {
+    public const string CfiCodeFuturos = "FXXXSX";
+    public const string CfiCodePases = "FXXXXX";
+    public const string CfiCodePutsMatbaRofex = "OPAFXS";
+    public const string CfiCodeCallsMatbaRofex = "OCAFXS";
+    public const string CfiCodeIndices = "MRIXXX";
+    public const string CfiCodeCalls = "OCASPS";
+    public const string CfiCodePuts = "OPASPS";
+    public const string CfiCodeBonos = "DBXXXX";
+    public const string CfiCodeCedears = "EMXXXX";
+    public const string CfiCodeONs = "DBXXFR";
+    public const string CfiCodeAcciones = "ESXXXX";
+    public const string CfiCodeLetras = "DYXTXR";
+    public const string CfiCodeCauciones = "RPXXXX";
+
     public static IEnumerable<Instrument> FilterByTicker(this IEnumerable<Instrument> instruments, string ticker)
     {
         var tickerSymbols = ticker.GetAllMervalSymbols();
@@ -31,37 +45,19 @@ public static class InstrumentExtensions
 
     public static bool IsCEDEAR(this InstrumentDetail instrumentDetail)
     {
-        return instrumentDetail.InstrumentId.Ticker().IsCEDEAR();
-    }
-
-    public static bool IsCEDEAR(this string ticker)
-    {
-        var exists = Properties.Settings.Default.AccionesCEDEARs.Cast<string>().Any(x => string.Equals(x, ticker, StringComparison.OrdinalIgnoreCase));
-        return exists;
+        return instrumentDetail.CfiCode == CfiCodeCedears;
     }
 
     public static bool IsLetra(this InstrumentDetail instrumentDetail)
     {
-        var exists = instrumentDetail.InstrumentId.Ticker().IsLetra();
-        return exists;
-    }
-
-    public static bool IsLetra(this string ticker)
-    {
-        var exists = Properties.Settings.Default.Letras.Cast<string>().Any(x => string.Equals(x, ticker, StringComparison.OrdinalIgnoreCase));
+        var exists = instrumentDetail.CfiCode == CfiCodeLetras;
         return exists;
     }
 
     public static decimal GetDerechosDeMercado(this InstrumentDetail instrumentDetail)
     {
-        var ticker = instrumentDetail.InstrumentId.Ticker();
-        return ticker.GetDerechosDeMercado();
-    }
-
-    public static decimal GetDerechosDeMercado(this string ticker)
-    {
         // https://www.byma.com.ar/que-es-byma/derechos-membresias-2/
-        if (ticker.IsCEDEAR())
+        if (instrumentDetail.IsCEDEAR())
         {
             var comision = Properties.Settings.Default.Comision / 100m;
             var derMer = Properties.Settings.Default.DerechoMercadoAccionCEDEAR / 100m;
@@ -70,7 +66,7 @@ public static class InstrumentExtensions
         }
         else
         {
-            return ticker.IsLetra()
+            return instrumentDetail.IsLetra()
                 ? (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoLetra) / 100m
                 : (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercado) / 100m;
         }
@@ -95,10 +91,10 @@ public static class InstrumentExtensions
         return value.ToString(format);
     }
 
-        public static int CalculateSettlementDays(this InstrumentDetail buy, InstrumentDetail sell, int diasLiq24H)
+    public static int CalculateSettlementDays(this InstrumentDetail buy, InstrumentDetail sell, int diasLiq24H)
     {
-            int buyDiasLiq = buy.GetSettlementDays(diasLiq24H);
-            int sellDiasLiq = sell.GetSettlementDays(diasLiq24H);
+        int buyDiasLiq = buy.GetSettlementDays(diasLiq24H);
+        int sellDiasLiq = sell.GetSettlementDays(diasLiq24H);
 
         var days = buyDiasLiq - sellDiasLiq;
 

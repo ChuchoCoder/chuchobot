@@ -433,7 +433,7 @@ public partial class FrmMain : Form
 
     private void instrumentosParaArbitrajeToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var frm = new Configuration.FrmStringCollectionEditor
+        var frm = new Configuration.FrmInstrumentsCheckList
         {
             Text = instrumentosParaArbitrajeToolStripMenuItem.Text,
             Setting = Properties.Settings.Default.ArbitrationTickers,
@@ -452,29 +452,6 @@ public partial class FrmMain : Form
         {
             Text = tickersDCToolStripMenuItem.Text,
             Setting = Properties.Settings.Default.TickersDC,
-            Validator = ValidateInstrument
-        };
-        _ = frm.ShowDialog();
-
-    }
-
-    private void accionesCEDEARsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        var frm = new Configuration.FrmStringCollectionEditor
-        {
-            Text = accionesCEDEARsToolStripMenuItem.Text,
-            Setting = Properties.Settings.Default.AccionesCEDEARs,
-            Validator = ValidateInstrument
-        };
-        _ = frm.ShowDialog();
-    }
-
-    private void letrasToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        var frm = new Configuration.FrmStringCollectionEditor
-        {
-            Text = letrasToolStripMenuItem.Text,
-            Setting = Properties.Settings.Default.Letras,
             Validator = ValidateInstrument
         };
         _ = frm.ShowDialog();

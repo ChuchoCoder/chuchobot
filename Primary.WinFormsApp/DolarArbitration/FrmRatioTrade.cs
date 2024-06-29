@@ -201,11 +201,6 @@ public partial class FrmRatioTrade : Form
         numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.MinPriceIncrement;
         numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.MinPriceIncrement;
 
-        numOwnedCompraPrice.DecimalPlaces = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? 0 : 2;
-        numOwnedVentaPrice.DecimalPlaces = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? 0 : 2;
-        numArbitrationCompraPrice.DecimalPlaces = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? 0 : 2;
-        numArbitrationVentaPrice.DecimalPlaces = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? 0 : 2;
-
         if (lblCompraACurrency.Text == lblVentaACurrency.Text)
         {
             lblDolar.Visible = false;
