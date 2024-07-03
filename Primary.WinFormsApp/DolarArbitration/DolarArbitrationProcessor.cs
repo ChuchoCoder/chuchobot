@@ -13,13 +13,14 @@ public class DolarArbitrationProcessor
 
     internal void Init()
     {
-        foreach (var ownedTicker in Properties.Settings.Default.OwnedTickers)
+        foreach (var ownedTicker in Argentina.Data.Positions)
         {
-            var owned = new DolarTradedInstrument(ownedTicker);
+            var ticker = ownedTicker.Instrument.SymbolReference.GetTicker();
+            var owned = new DolarTradedInstrument(ticker);
 
-            foreach (var arbitrationTicker in Properties.Settings.Default.ArbitrationTickers)
+            foreach (var arbitrationTicker in Properties.Settings.Default.TickersToMonitor)
             {
-                if (ownedTicker != arbitrationTicker)
+                if (ticker != arbitrationTicker)
                 {
                     if (arbitrationTicker.ContainsMultipleTickers())
                     {

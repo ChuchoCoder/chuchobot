@@ -241,13 +241,13 @@ public partial class FrmMain : Form
     private void InitWatchList()
     {
         //var bonds = new[] { "AL29", "AL30", "AL35", "AE38", "AL41", "GD29", "GD30", "GD35", "GD38", "GD41", "GD46" };
-        var owned = Properties.Settings.Default.OwnedTickers.Cast<string>().ToList();
-        var arbitration = Properties.Settings.Default.ArbitrationTickers.Cast<string>().ToList();
+        //var owned = Properties.Settings.Default.OwnedTickers.Cast<string>().ToList();
+        var tickersToMonitor = Properties.Settings.Default.TickersToMonitor.Cast<string>().ToList();
 
-        var bonds = arbitration.Concat(owned).Distinct();
+        var tickers = tickersToMonitor.Distinct();
 
         watchList = [];
-        foreach (var item in bonds)
+        foreach (var item in tickers)
         {
             if (item.ContainsMultipleTickers())
             {
@@ -419,7 +419,11 @@ public partial class FrmMain : Form
                 var tickers = setting.Split(' ', ';', '/', '\\');
                 foreach (var ticker in tickers)
                 {
-                    if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
+                    if (decimal.TryParse(ticker, out var numValue))
+                    {
+                        // Ignore validating numbers (e.g. Ratio Alerts)
+                    }
+                    else if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
                     {
                         _ = MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Telemetry.LogWarning($"El instrumento {ticker} no existe.");
@@ -436,7 +440,7 @@ public partial class FrmMain : Form
         var frm = new Configuration.FrmInstrumentsCheckList
         {
             Text = instrumentosParaArbitrajeToolStripMenuItem.Text,
-            Setting = Properties.Settings.Default.ArbitrationTickers,
+            Setting = Properties.Settings.Default.TickersToMonitor,
             Validator = ValidateInstrument
         };
 
@@ -608,5 +612,16 @@ public partial class FrmMain : Form
     {
 
         LaunchRatioForTicker("GD35", "AL30");
+    }
+
+    private void longAL30ShortAL35ToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        LaunchRatioForTicker("AL30", "AL35");
+    }
+
+    private void shortAL30LongAL35ToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+        LaunchRatioForTicker("AL35", "AL30");
     }
 }

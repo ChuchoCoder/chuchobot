@@ -1,14 +1,18 @@
 ﻿using ChuchoBot.WinFormsApp.Properties;
 using ChuchoBot.WinFormsApp.Shared;
 using System;
+using System.Collections.Specialized;
 using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ChuchoBot.WinFormsApp.DolarArbitration;
 
 public partial class FrmRatios : Form
 {
+
     private readonly DataTable dataTable = new();
+
     public FrmRatios()
     {
         InitializeComponent();
@@ -19,10 +23,12 @@ public partial class FrmRatios : Form
         if (grdRatios.IsCurrentCellInEditMode == true)
             return;
 
+        tmr.Stop();
         foreach (var ratio in Settings.Default.RatioTickers)
         {
             _ = InitRatio(ratio, '/', ' ') || InitRatio(ratio, '\\', ' ');
         }
+        tmr.Start();
     }
 
     private bool InitRatio(string ratioConfigLine, char ratioSeparator, char alertSeparator)
@@ -97,6 +103,8 @@ public partial class FrmRatios : Form
         row["AlertLower"] = alertMin.HasValue ? alertMin.Value : System.DBNull.Value;
         row["AlertGreater"] = alertMax.HasValue ? alertMax.Value : System.DBNull.Value;
 
+        Debug.WriteLine($"Updating {ratio} {alertMin} {alertMax}");
+
         if (existingRow == null)
         {
             dataTable.Rows.Add(row);
@@ -149,17 +157,18 @@ public partial class FrmRatios : Form
 
     private void grdRatios_CellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.RowIndex >= 0 && dataTable.Rows.Count > e.RowIndex)
+        if (e.RowIndex >= 0 && grdRatios.Rows.Count > e.RowIndex)
         {
-            var ratio = dataTable.Rows[e.RowIndex]["Ratio"].ToString();
-            var alertLower = dataTable.Rows[e.RowIndex]["AlertLower"];
-            var alertGreater = dataTable.Rows[e.RowIndex]["AlertGreater"];
+            var ratio = grdRatios.Rows[e.RowIndex].Cells["Ratio"].Value.ToString();
+            var alertLower = grdRatios.Rows[e.RowIndex].Cells["AlertLower"].Value.ToString();
+            var alertGreater = grdRatios.Rows[e.RowIndex].Cells["AlertGreater"].Value.ToString();
 
             for (int i = 0; i < Settings.Default.RatioTickers.Count; i++)
             {
                 if (Settings.Default.RatioTickers[i].StartsWith(ratio))
                 {
-                    Settings.Default.RatioTickers[i] = $"{ratio} {alertLower} {alertGreater}";
+                    var ratioConfig = $"{ratio} {alertLower} {alertGreater}";
+                    Settings.Default.RatioTickers[i] = ratioConfig;
                     break;
                 }
             }

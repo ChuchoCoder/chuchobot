@@ -33,7 +33,7 @@ public partial class FrmSettlementTermLauncher : Form
 
         var buySymbol = instrumentSearchList1.SelectedTicker;
 
-        if (Settings.Default.ArbitrationTickers.TickerExists(buySymbol) == false)
+        if (Settings.Default.TickersToMonitor.TickerExists(buySymbol) == false)
         {
             _ = MessageBox.Show($"El instrumento '{buySymbol}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;

@@ -10,7 +10,7 @@ internal class DolarCalculatorProcessor
 
     internal void Init()
     {
-        foreach (var arbitrationTicker in Properties.Settings.Default.ArbitrationTickers)
+        foreach (var arbitrationTicker in Properties.Settings.Default.TickersToMonitor)
         {
             if (arbitrationTicker.ContainsMultipleTickers())
             {

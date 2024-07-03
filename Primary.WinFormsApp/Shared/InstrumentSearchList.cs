@@ -104,7 +104,7 @@ public partial class InstrumentSearchList : UserControl
             return false;
         }
 
-        if (Settings.Default.ArbitrationTickers.TickerExists(SelectedTicker) == false)
+        if (Settings.Default.TickersToMonitor.TickerExists(SelectedTicker) == false)
         {
             _ = MessageBox.Show($"El instrumento '{SelectedTicker}' no se encuentra en la lista de instrumentos monitoreados. Agregar dicho instrumento en la Configuracion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;

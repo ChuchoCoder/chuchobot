@@ -11,7 +11,7 @@ public class SettlementTermArbitrationProcessor
 
     internal void Init()
     {
-        foreach (var arbitrationTickers in Properties.Settings.Default.ArbitrationTickers)
+        foreach (var arbitrationTickers in Properties.Settings.Default.TickersToMonitor)
         {
             if (arbitrationTickers.ContainsMultipleTickers())
             {

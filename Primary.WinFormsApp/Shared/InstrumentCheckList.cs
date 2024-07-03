@@ -22,7 +22,7 @@ public partial class InstrumentCheckList : UserControl
 
     public string[] _instruments;
 
-    public string[] SelectedItems => lstSelected.SelectedItems.Cast<string>().ToArray();
+    public string[] SelectedItems => lstSelected.Items.Cast<string>().ToArray();
 
     public Dictionary<string, string> CfiCodesDictionary = new Dictionary<string, string>()
         {
@@ -62,8 +62,8 @@ public partial class InstrumentCheckList : UserControl
             }
 
             cmbCfiCodes.DataSource = new BindingSource(CfiCodesDictionary, null);
-            cmbCfiCodes.DisplayMember = "Key";
-            cmbCfiCodes.ValueMember = "Value";
+            cmbCfiCodes.DisplayMember = "Value";
+            cmbCfiCodes.ValueMember = "Key";
         }
     }
 
@@ -78,7 +78,7 @@ public partial class InstrumentCheckList : UserControl
             {
                 if (!selectedInstruments.Contains(item))
                 {
-                    _ = lstInstrumentos.Items.Add(item);
+                    _ = lstAvailable.Items.Add(item);
                 }
             }
 
@@ -96,11 +96,11 @@ public partial class InstrumentCheckList : UserControl
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
-        var selected = lstInstrumentos.SelectedItems.Cast<string>().ToArray();
+        var selected = lstAvailable.SelectedItems.Cast<string>().ToArray();
         lstSelected.Items.AddRange(selected);
         foreach (var item in selected)
         {
-            lstInstrumentos.Items.Remove(item);
+            lstAvailable.Items.Remove(item);
         }
 
     }
@@ -109,18 +109,49 @@ public partial class InstrumentCheckList : UserControl
     {
         string selectedCfiCode = cmbCfiCodes.SelectedValue != string.Empty ? cmbCfiCodes.SelectedValue.ToString() : null;
 
-        _instruments = Argentina.Data.AllInstruments.Where(x => x.IsPesos() 
+        _instruments = Argentina.Data.AllInstruments.Where(x => x.IsPesos()
             && (selectedCfiCode == null || string.Equals(x.CfiCode, selectedCfiCode, StringComparison.InvariantCultureIgnoreCase))
         ).Select(selector).Distinct().OrderBy(x => x).ToArray();
 
-        lstInstrumentos.Items.Clear();
+        lstAvailable.Items.Clear();
 
         foreach (var item in _instruments)
         {
             if (!lstSelected.Items.Contains(item))
             {
-                _ = lstInstrumentos.Items.Add(item);
+                _ = lstAvailable.Items.Add(item);
             }
+        }
+    }
+
+    private void btnAddAll_Click(object sender, EventArgs e)
+    {
+        var selected = lstAvailable.Items.Cast<string>().ToArray();
+        lstSelected.Items.AddRange(selected);
+        foreach (var item in selected)
+        {
+            lstAvailable.Items.Remove(item);
+        }
+
+    }
+
+    private void btnRemoveAll_Click(object sender, EventArgs e)
+    {
+        var selected = lstSelected.Items.Cast<string>().ToArray();
+        lstAvailable.Items.AddRange(selected);
+        foreach (var item in selected)
+        {
+            lstSelected.Items.Remove(item);
+        }
+    }
+
+    private void btnRemove_Click(object sender, EventArgs e)
+    {
+        var selected = lstSelected.Items.Cast<string>().ToArray();
+        lstAvailable.Items.AddRange(selected);
+        foreach (var item in selected)
+        {
+            lstSelected.Items.Remove(item);
         }
     }
 }
