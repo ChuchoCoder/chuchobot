@@ -42,7 +42,7 @@ public partial class FrmSettlementTermsAnalyzer : Form
 
                 _arbitrationDataTable.Refresh(trades, settlementTermSettings.DiasLiq24H, settlementTermSettings.CaucionTNA, chkOnlyProfitableTrades.Checked);
 
-            var alertTrades = trades.Where(x => x.ProfitLossPercentage > numAlert.Value / 100m).ToArray();
+            var alertTrades = trades.Where(x => x.ProfitLossPercentage > numAlert.Value / 100m && x.ProfitLoss >= numMinPL.Value).ToArray();
             var shouldAlert = alertTrades.Length > 0;
 
             if (Argentina.IsMarketOpen() && shouldAlert && Form.ActiveForm != this)

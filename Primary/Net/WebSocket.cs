@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -102,10 +103,12 @@ namespace Primary.Net
                 catch (OperationCanceledException) { }
                 catch (WebSocketException wsEx)
                 {
+                    Debug.WriteLine(wsEx);
                     throw wsEx;
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex);
                     throw ex;
                 }
 

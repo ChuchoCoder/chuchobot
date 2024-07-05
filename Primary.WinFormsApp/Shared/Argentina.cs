@@ -5,6 +5,7 @@ using Primary.WebSockets;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -222,15 +223,18 @@ public class Argentina
             }
             catch (OperationCanceledException ex)
             {
+                Debug.WriteLine(ex);
                 Telemetry.LogWarning(nameof(PullMarketData), ex);
                 return;
             }
             catch (WebException ex)
             {
+                Debug.WriteLine(ex);
                 Telemetry.LogWarning(nameof(PullMarketData), ex);
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex);
                 Telemetry.LogError(nameof(PullMarketData), ex);
                 throw;
             }

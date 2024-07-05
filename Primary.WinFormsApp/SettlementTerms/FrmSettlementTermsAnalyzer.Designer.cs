@@ -71,8 +71,11 @@
             chkWindowsToast = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();
             txtExclude = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            numMinPL = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)grdArbitration).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numAlert).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numMinPL).BeginInit();
             SuspendLayout();
             // 
             // grdArbitration
@@ -88,8 +91,8 @@
             grdArbitration.CausesValidation = false;
             grdArbitration.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdArbitration.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { KeyOwnedVenta, KeyArbitrationCompra, PL, ProfitPercentage, SpreadCaucion, TNA, Spread, SpreadLast, Caucion, Comision, OwnedVenta, SellTotal, BuyTotal, ArbitrationCompra, DolarCompraLast, DolarVentaLast });
-            grdArbitration.Location = new System.Drawing.Point(14, 74);
-            grdArbitration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grdArbitration.Location = new System.Drawing.Point(16, 99);
+            grdArbitration.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             grdArbitration.Name = "grdArbitration";
             grdArbitration.ReadOnly = true;
             grdArbitration.RowHeadersVisible = false;
@@ -98,7 +101,7 @@
             grdArbitration.ShowCellErrors = false;
             grdArbitration.ShowEditingIcon = false;
             grdArbitration.ShowRowErrors = false;
-            grdArbitration.Size = new System.Drawing.Size(1603, 432);
+            grdArbitration.Size = new System.Drawing.Size(1832, 576);
             grdArbitration.TabIndex = 2;
             grdArbitration.CellContentClick += grdArbitration_CellContentClick;
             grdArbitration.CellFormatting += grdArbitration_CellFormatting;
@@ -137,6 +140,7 @@
             dataGridViewCellStyle3.Format = "P";
             ProfitPercentage.DefaultCellStyle = dataGridViewCellStyle3;
             ProfitPercentage.HeaderText = "P&L %";
+            ProfitPercentage.MinimumWidth = 6;
             ProfitPercentage.Name = "ProfitPercentage";
             ProfitPercentage.ReadOnly = true;
             // 
@@ -146,6 +150,7 @@
             dataGridViewCellStyle4.Format = "P";
             SpreadCaucion.DefaultCellStyle = dataGridViewCellStyle4;
             SpreadCaucion.HeaderText = "Spread TNA - Caucion";
+            SpreadCaucion.MinimumWidth = 6;
             SpreadCaucion.Name = "SpreadCaucion";
             SpreadCaucion.ReadOnly = true;
             // 
@@ -272,10 +277,10 @@
             // 
             // chkOnlyProfitableTrades
             // 
-            chkOnlyProfitableTrades.Location = new System.Drawing.Point(14, 44);
-            chkOnlyProfitableTrades.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkOnlyProfitableTrades.Location = new System.Drawing.Point(16, 59);
+            chkOnlyProfitableTrades.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             chkOnlyProfitableTrades.Name = "chkOnlyProfitableTrades";
-            chkOnlyProfitableTrades.Size = new System.Drawing.Size(243, 22);
+            chkOnlyProfitableTrades.Size = new System.Drawing.Size(278, 29);
             chkOnlyProfitableTrades.TabIndex = 24;
             chkOnlyProfitableTrades.Text = "Ver sólo arbitrajes con profit";
             chkOnlyProfitableTrades.UseVisualStyleBackColor = true;
@@ -284,29 +289,29 @@
             // 
             chkOnlyShowTradesWithTickersOwned.Checked = true;
             chkOnlyShowTradesWithTickersOwned.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(14, 14);
-            chkOnlyShowTradesWithTickersOwned.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkOnlyShowTradesWithTickersOwned.Location = new System.Drawing.Point(16, 19);
+            chkOnlyShowTradesWithTickersOwned.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             chkOnlyShowTradesWithTickersOwned.Name = "chkOnlyShowTradesWithTickersOwned";
-            chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(348, 22);
+            chkOnlyShowTradesWithTickersOwned.Size = new System.Drawing.Size(398, 29);
             chkOnlyShowTradesWithTickersOwned.TabIndex = 25;
             chkOnlyShowTradesWithTickersOwned.Text = "Ver sólo arbitrajes según instrumentos en cartera";
             chkOnlyShowTradesWithTickersOwned.UseVisualStyleBackColor = true;
             // 
             // settlementTermSettings
             // 
-            settlementTermSettings.Location = new System.Drawing.Point(369, 10);
-            settlementTermSettings.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            settlementTermSettings.Location = new System.Drawing.Point(422, 13);
+            settlementTermSettings.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             settlementTermSettings.Name = "settlementTermSettings";
-            settlementTermSettings.Size = new System.Drawing.Size(750, 55);
+            settlementTermSettings.Size = new System.Drawing.Size(857, 73);
             settlementTermSettings.TabIndex = 26;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(1148, 13);
-            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Location = new System.Drawing.Point(1312, 17);
+            label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(54, 15);
+            label2.Size = new System.Drawing.Size(68, 20);
             label2.TabIndex = 28;
             label2.Text = "Alerta %:";
             // 
@@ -314,11 +319,11 @@
             // 
             numAlert.DecimalPlaces = 2;
             numAlert.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numAlert.Location = new System.Drawing.Point(1237, 10);
-            numAlert.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numAlert.Location = new System.Drawing.Point(1414, 13);
+            numAlert.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numAlert.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
             numAlert.Name = "numAlert";
-            numAlert.Size = new System.Drawing.Size(59, 23);
+            numAlert.Size = new System.Drawing.Size(67, 27);
             numAlert.TabIndex = 27;
             numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             numAlert.Value = new decimal(new int[] { 15, 0, 0, 131072 });
@@ -328,9 +333,10 @@
             chkWindowsToast.AutoSize = true;
             chkWindowsToast.Checked = true;
             chkWindowsToast.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkWindowsToast.Location = new System.Drawing.Point(1303, 12);
+            chkWindowsToast.Location = new System.Drawing.Point(1688, 14);
+            chkWindowsToast.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             chkWindowsToast.Name = "chkWindowsToast";
-            chkWindowsToast.Size = new System.Drawing.Size(133, 19);
+            chkWindowsToast.Size = new System.Drawing.Size(164, 24);
             chkWindowsToast.TabIndex = 29;
             chkWindowsToast.Text = "Mostrar notificacion";
             chkWindowsToast.UseVisualStyleBackColor = true;
@@ -338,25 +344,51 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(1148, 47);
-            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Location = new System.Drawing.Point(1312, 63);
+            label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(82, 15);
+            label1.Size = new System.Drawing.Size(101, 20);
             label1.TabIndex = 30;
             label1.Text = "Excluir tickers:";
             // 
             // txtExclude
             // 
-            txtExclude.Location = new System.Drawing.Point(1237, 42);
+            txtExclude.Location = new System.Drawing.Point(1414, 56);
+            txtExclude.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtExclude.Name = "txtExclude";
-            txtExclude.Size = new System.Drawing.Size(380, 23);
+            txtExclude.Size = new System.Drawing.Size(434, 27);
             txtExclude.TabIndex = 31;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(1491, 17);
+            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(68, 20);
+            label3.TabIndex = 33;
+            label3.Text = "Min P&L $:";
+            // 
+            // numMinPL
+            // 
+            numMinPL.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            numMinPL.Location = new System.Drawing.Point(1569, 13);
+            numMinPL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            numMinPL.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
+            numMinPL.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            numMinPL.Name = "numMinPL";
+            numMinPL.Size = new System.Drawing.Size(107, 27);
+            numMinPL.TabIndex = 32;
+            numMinPL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numMinPL.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
             // FrmSettlementTermsAnalyzer
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1631, 519);
+            ClientSize = new System.Drawing.Size(1864, 692);
+            Controls.Add(label3);
+            Controls.Add(numMinPL);
             Controls.Add(txtExclude);
             Controls.Add(label1);
             Controls.Add(chkWindowsToast);
@@ -367,12 +399,13 @@
             Controls.Add(chkOnlyProfitableTrades);
             Controls.Add(grdArbitration);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             Name = "FrmSettlementTermsAnalyzer";
             Text = "Arbitrajes de Plazo";
             Load += FrmArbitrationBestTrades_Load;
             ((System.ComponentModel.ISupportInitialize)grdArbitration).EndInit();
             ((System.ComponentModel.ISupportInitialize)numAlert).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numMinPL).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -407,5 +440,7 @@
         private System.Windows.Forms.CheckBox chkWindowsToast;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtExclude;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numMinPL;
     }
 }
