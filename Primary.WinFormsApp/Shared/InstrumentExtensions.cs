@@ -48,6 +48,11 @@ public static class InstrumentExtensions
         return instrumentDetail.CfiCode == CfiCodeCedears;
     }
 
+    public static bool IsAccion(this InstrumentDetail instrumentDetail)
+    {
+        return instrumentDetail.CfiCode == CfiCodeAcciones;
+    }
+
     public static bool IsLetra(this InstrumentDetail instrumentDetail)
     {
         var exists = instrumentDetail.CfiCode == CfiCodeLetras;
@@ -57,7 +62,7 @@ public static class InstrumentExtensions
     public static decimal GetDerechosDeMercado(this InstrumentDetail instrumentDetail)
     {
         // https://www.byma.com.ar/que-es-byma/derechos-membresias-2/
-        if (instrumentDetail.IsCEDEAR())
+        if (instrumentDetail.IsCEDEAR() || instrumentDetail.IsAccion())
         {
             var comision = Properties.Settings.Default.Comision / 100m;
             var derMer = Properties.Settings.Default.DerechoMercadoAccionCEDEAR / 100m;
