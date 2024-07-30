@@ -88,25 +88,23 @@ Haciendo doble clic en cualquier de las filas de la grilla se accede una ventana
 
 ### Operatoria cuando el plazo de la Venta es menor al de Compra (requiere títulos en cartera)
 
-Cuando el plazo de liquidación de la `1 Venta` es menor al de `2 Compra` es necesario contar con los títulos en cartera (Ejemplo: `1 Venta NVDA - CI` / `2 Compra NVDA - 48hs`).
+Cuando el plazo de liquidación de la `1 Venta` es menor al de `2 Compra` es necesario contar con los títulos en cartera (Ejemplo: `1 Venta NVDA - CI` / `2 Compra NVDA - 24hs`).
 
 La operación consiste en realizar las siguientes operaciones:
 
-1. **Vender** el título en el plazo visualizado `CI` o `24hs`
-2. **Comprar** el título en el plazo visualizado `24hs` o `48hs`
+1. **Vender** el título en el plazo visualizado `CI`
+2. **Comprar** el título en el plazo visualizado `24hs`
 3. **Colocar** en caución el resultado de la venta del paso **1**
-   - Nota APB 🤦‍♂️: Si la venta del paso 1 se realizó en `24hs` se coloca el dinero en caución al siguiente día
 
 ### Operatoria cuando el plazo de la Venta es mayor al de Compra
 
-Cuando el plazo de liquidación de la `1 Venta` es mayor al de `2 Compra` será necesario contar con el dinero o poder tomar caución para cubrir el descubierto de lo comprado (Ejemplo: `1 Venta SPY - 48hs` / `2 Compra SPY - CI`).
+Cuando el plazo de liquidación de la `1 Venta` es mayor al de `2 Compra` será necesario contar con el dinero o poder tomar caución para cubrir el descubierto de lo comprado (Ejemplo: `1 Venta SPY - 24hs` / `2 Compra SPY - CI`).
 
 La operación consiste en realizar las siguientes operaciones:
 
-1. **Comprar** el título en el plazo visualizado `CI` o `24hs`
-2. **Vender** el título en el plazo visualizado `24hs` o `48hs`
+1. **Comprar** el título en el plazo visualizado `CI`
+2. **Vender** el título en el plazo visualizado `24hs`
 3. **Tomar** caución por el total de la compra del paso **1**
-   - Nota APB 🤦‍♂️: Si la compra del paso 1 se realizó en `24hs` se deberá tomar el dinero en caución al siguiente día
 
 ### ¿Cómo puedo abrir la ventana de arbitraje de plazos de liquidación para un instrumento determinado?
 
