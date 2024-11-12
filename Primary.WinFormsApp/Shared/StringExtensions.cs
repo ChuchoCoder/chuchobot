@@ -37,7 +37,7 @@ public static class StringExtensions
     public static string GetTicker(this string symbol)
     {
         var split = symbol.Split('-');
-        return split[^2];
+        return split[^2].Trim();
     }
 
         public static int GetSettlementDays(this InstrumentDetail instrumentDetail, int diasLiq24H)

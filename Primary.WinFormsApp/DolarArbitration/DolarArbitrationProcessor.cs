@@ -15,7 +15,7 @@ public class DolarArbitrationProcessor
     {
         foreach (var ownedTicker in Argentina.Data.Positions)
         {
-            var ticker = ownedTicker.Instrument.SymbolReference.GetTicker();
+            var ticker = ownedTicker.Symbol.GetTicker();
             var owned = new DolarTradedInstrument(ticker);
 
             foreach (var arbitrationTicker in Properties.Settings.Default.TickersToMonitor)
@@ -24,7 +24,10 @@ public class DolarArbitrationProcessor
                 {
                     if (arbitrationTicker.ContainsMultipleTickers())
                     {
-                        var arbitration = new DolarTradedInstrument(arbitrationTicker.GetPesosTicker(), arbitrationTicker.GetDolarTicker(), arbitrationTicker.GetCableTicker());
+                        var tickerPesos = arbitrationTicker.GetPesosTicker();
+                        var tickerDolar = arbitrationTicker.GetDolarTicker();
+                        var tickerCable = arbitrationTicker.GetCableTicker();
+                        var arbitration = new DolarTradedInstrument(tickerPesos, tickerDolar, tickerCable);
 
                         dolarArbitrationPairCollection.Add(new DolarArbitrationInstruments(owned, arbitration));
                     }

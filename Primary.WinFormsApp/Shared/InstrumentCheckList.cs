@@ -147,11 +147,30 @@ public partial class InstrumentCheckList : UserControl
 
     private void btnRemove_Click(object sender, EventArgs e)
     {
-        var selected = lstSelected.Items.Cast<string>().ToArray();
+        var selected = lstSelected.SelectedItems.Cast<string>().ToArray();
         lstAvailable.Items.AddRange(selected);
         foreach (var item in selected)
         {
             lstSelected.Items.Remove(item);
+        }
+    }
+
+    private void txtSearch_TextChanged(object sender, EventArgs e)
+    {
+        string instrumentSearch = string.IsNullOrWhiteSpace(txtSearch.Text) ? null : txtSearch.Text;
+
+        _instruments = Argentina.Data.AllInstruments.Where(x => x.IsPesos()
+            && (instrumentSearch == null || x.InstrumentId.Symbol.Contains(instrumentSearch, StringComparison.InvariantCultureIgnoreCase))
+        ).Select(selector).Distinct().OrderBy(x => x).ToArray();
+
+        lstAvailable.Items.Clear();
+
+        foreach (var item in _instruments)
+        {
+            if (!lstSelected.Items.Contains(item))
+            {
+                _ = lstAvailable.Items.Add(item);
+            }
         }
     }
 }

@@ -57,9 +57,9 @@ public partial class FrmArbitrationAnalyzer : Form
             {
                 trades = trades.Where(x =>
                     !excludedTickers.Any(
-                        y => x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) &&
-                            x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) &&
-                            x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) &&
+                        y => x.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) ||
+                            x.SellThenBuy.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) ||
+                            x.BuyThenSell.Buy.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase) ||
                             x.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix().Contains(y, StringComparison.InvariantCultureIgnoreCase)
                         )
                     ).ToList();
