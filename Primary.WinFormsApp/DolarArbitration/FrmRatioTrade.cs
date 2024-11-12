@@ -180,13 +180,13 @@ public partial class FrmRatioTrade : Form
 
         numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.GetIncrement();
         numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.GetIncrement();
-        numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Buy.Instrument.GetIncrement();
-        numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Sell.Instrument.GetIncrement();
+        numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.GetIncrement();
+        numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.GetIncrement();
 
         numOwnedVentaPrice.DecimalPlaces = _trade.SellThenBuy.Sell.Instrument.InstrumentPricePrecision;
         numOwnedCompraPrice.DecimalPlaces = _trade.SellThenBuy.Buy.Instrument.InstrumentPricePrecision;
-        numArbitrationVentaPrice.DecimalPlaces = _trade.BuyThenSell.Buy.Instrument.InstrumentPricePrecision;
-        numArbitrationCompraPrice.DecimalPlaces = _trade.BuyThenSell.Sell.Instrument.InstrumentPricePrecision;
+        numArbitrationVentaPrice.DecimalPlaces = _trade.BuyThenSell.Sell.Instrument.InstrumentPricePrecision;
+        numArbitrationCompraPrice.DecimalPlaces = _trade.BuyThenSell.Buy.Instrument.InstrumentPricePrecision;
 
         lblRatioSell.Text = $"{_trade.SellThenBuy.Sell.Instrument.InstrumentId.Ticker()}";
         lblDolarBuy.Text = $"{_trade.BuyThenSell.Sell.Instrument.InstrumentId.Ticker()}";
