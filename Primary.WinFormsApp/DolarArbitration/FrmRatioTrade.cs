@@ -448,8 +448,8 @@ public partial class FrmRatioTrade : Form
         _arbitrationCompraImporte = numArbitrationCompraPrice.Value * numArbitrationCompraSize.Value * _arbitrationQuantityPerPrice;
 
         _arbitrationCompraComision = _trade.BuyThenSell.Sell.Instrument.IsPesos()
-            ? _trade.BuyThenSell.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte)
-            : _trade.BuyThenSell.Buy.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte * numDolar.Value);
+            ? _trade.BuyThenSell.Sell.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte)
+            : _trade.BuyThenSell.Sell.Instrument.CalculateComisionDerechosMercado(_arbitrationCompraImporte * numDolar.Value);
 
         lblArbirtationCompraComision.Text = "Comisión: " + _arbitrationCompraComision.ToCurrency();
         lblArbitrationCompraImporte.Text = "Importe: " + _trade.BuyThenSell.Sell.Instrument.FormatCurrency(_arbitrationCompraImporte);
@@ -485,7 +485,7 @@ public partial class FrmRatioTrade : Form
             : _trade.SellThenBuy.Buy.Instrument.CalculateComisionDerechosMercado(_ownedCompraImporte * numDolar.Value);
 
         lblOwnedCompraImporte.Text = "Importe: " + _trade.SellThenBuy.Buy.Instrument.FormatCurrency(_ownedCompraImporte);
-        lblOwnedCompraComision.Text = "Comisión: " + _arbitrationVentaComision.ToCurrency();
+        lblOwnedCompraComision.Text = "Comisión: " + _ownedCompraComision.ToCurrency();
 
         var comisionTotal = _ownedVentaComision + _arbitrationVentaComision + _arbitrationCompraComision + _ownedCompraComision;
 
