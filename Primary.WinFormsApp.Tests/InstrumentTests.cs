@@ -16,7 +16,8 @@ internal class InstrumentTests
     public static void Initialize()
     {
         Assembly assembly = Assembly.GetExecutingAssembly();
-        StreamReader reader = new StreamReader(assembly.GetManifestResourceStream("InstrumentsWithDetails.json"));
+        var instrumentsStream = assembly.GetManifestResourceStream("ChuchoBot.WinFormsApp.Tests.InstrumentsWithDetails.json");
+        StreamReader reader = new StreamReader(instrumentsStream);
         var instruments = reader.ReadToEnd();
 
         Argentina.Data.AllInstruments = Newtonsoft.Json.JsonConvert.DeserializeObject<InstrumentDetail[]>(instruments);
