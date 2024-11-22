@@ -1,5 +1,4 @@
-﻿using ChuchoBot.WinFormsApp.Properties;
-using ChuchoBot.WinFormsApp.Shared;
+﻿using ChuchoBot.WinFormsApp.Shared;
 using Primary.Data;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,7 +49,7 @@ public class DolarArbitrationInstruments
 
         */
 
-        if (Argentina.IsCIOpen())
+        if (Argentina.IsCIOpen(false))
         {
             yield return new RatioTrade(owned_SellCI_BuyCI, arbitration_BuyCI_SellCI);
 
@@ -59,14 +58,14 @@ public class DolarArbitrationInstruments
             }
 
 
-                yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_Sell24);
+            yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_Sell24);
 
 
-                yield return new RatioTrade(owned_SellCI_Buy24, arbitration_Buy24_Sell24);
+            yield return new RatioTrade(owned_SellCI_Buy24, arbitration_Buy24_Sell24);
 
         }
 
-            yield return new RatioTrade(owned_Sell24_Buy24, arbitration_Buy24_Sell24);
+        yield return new RatioTrade(owned_Sell24_Buy24, arbitration_Buy24_Sell24);
 
     }
 

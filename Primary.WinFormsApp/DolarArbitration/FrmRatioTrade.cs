@@ -191,17 +191,17 @@ public partial class FrmRatioTrade : Form
         lblRatioSell.Text = $"{_trade.SellThenBuy.Sell.Instrument.InstrumentId.Ticker()}";
         lblDolarBuy.Text = $"{_trade.BuyThenSell.Sell.Instrument.InstrumentId.Ticker()}";
 
-        lblCompraACurrency.Text = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
-        lblVentaACurrency.Text = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
-        lblCompraBCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
-        lblVentaBCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblOwnedVentaCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblOwnedCompraCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblArbitrationVentaCurrency.Text = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblArbitrationCompraCurrency.Text = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
 
         numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.MinPriceIncrement;
         numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.MinPriceIncrement;
         numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.MinPriceIncrement;
         numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.MinPriceIncrement;
 
-        if (lblCompraACurrency.Text == lblVentaACurrency.Text)
+        if (lblArbitrationCompraCurrency.Text == lblArbitrationVentaCurrency.Text)
         {
             lblDolar.Visible = false;
             numDolar.Visible = false;

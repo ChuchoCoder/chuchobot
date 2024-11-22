@@ -38,30 +38,21 @@ public class TradedInstrumentWithSettlementTerms
         TCI.RefreshData();
     }
 
-        public IEnumerable<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, bool onlyShowTradesWithTickersOwned)
+    public IEnumerable<SettlementTermTrade> GetSettlementTermTrades(decimal tasaCaucion, int diasLiq24H, bool onlyShowTradesWithTickersOwned)
     {
-            {
-        }
-
-        {
-        }
-        if (Argentina.IsCIOpen())
+        if (Argentina.IsCIOpen(false))
         {
             if (onlyShowTradesWithTickersOwned == false ||
                 (TCI?.Instrument?.InstrumentId != null && Argentina.Data.CanTickerBeSelledInCI(TCI.Instrument.InstrumentId.Symbol.GetTicker())))
             {
-                {
-                }
-                    var t24_CI = GetSettlementTermTrade(T24, TCI, tasaCaucion, diasLiq24H);
+                var t24_CI = GetSettlementTermTrade(T24, TCI, tasaCaucion, diasLiq24H);
                 if (t24_CI != null)
                 {
                     yield return t24_CI;
                 }
             }
 
-            {
-            }
-                var tCI_24 = GetSettlementTermTrade(TCI, T24, tasaCaucion, diasLiq24H);
+            var tCI_24 = GetSettlementTermTrade(TCI, T24, tasaCaucion, diasLiq24H);
             if (tCI_24 != null)
             {
                 yield return tCI_24;
@@ -69,7 +60,7 @@ public class TradedInstrumentWithSettlementTerms
         }
     }
 
-        public static SettlementTermTrade GetSettlementTermTrade(InstrumentWithData buy, InstrumentWithData sell, decimal tasaCaucion, int diasLiq24H)
+    public static SettlementTermTrade GetSettlementTermTrade(InstrumentWithData buy, InstrumentWithData sell, decimal tasaCaucion, int diasLiq24H)
     {
         if (sell.HasBids() && buy.HasOffers())
         {
@@ -85,10 +76,10 @@ public class TradedInstrumentWithSettlementTerms
                 return null;
             }
 
-                var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, diasLiq24H);
+            var days = buy.Instrument.CalculateSettlementDays(sell.Instrument, diasLiq24H);
 
             var caucion = tasaCaucion / 365m * days / 100m;
-            var targetSellPrice = buyOfferPrice * (1m - caucion * 1.1m);
+            var targetSellPrice = buyOfferPrice * (1m - (caucion * 1.1m));
 
             if (sellBidPrice >= targetSellPrice)
             {

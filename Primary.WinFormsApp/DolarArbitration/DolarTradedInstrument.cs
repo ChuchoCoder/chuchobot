@@ -76,7 +76,7 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
 
     public IEnumerable<BuySellTrade> GetDolarCableTrades()
     {
-        if (Argentina.IsCIOpen())
+        if (Argentina.IsCIOpen(false))
         {
             yield return new BuySellTrade(TCI, Cable.TCI);
             yield return new BuySellTrade(T24, Cable.TCI);
@@ -86,7 +86,7 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
 
     public IEnumerable<BuySellTrade> GetDolarMEPTrades()
     {
-        if (Argentina.IsCIOpen())
+        if (Argentina.IsCIOpen(false))
         {
             yield return new BuySellTrade(TCI, Dolar.TCI);
             yield return new BuySellTrade(TCI, Dolar.T24);
@@ -101,7 +101,7 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
 
     public IEnumerable<BuySellTrade> GetDolarMEPCableTrades()
     {
-        if (Argentina.IsCIOpen())
+        if (Argentina.IsCIOpen(false))
         {
             yield return new BuySellTrade(Dolar.TCI, Cable.TCI);
             yield return new BuySellTrade(Dolar.T24, Cable.TCI);
@@ -111,7 +111,7 @@ public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
 
     public IEnumerable<BuySellTrade> GetDolarCableMEPTrades()
     {
-        if (Argentina.IsCIOpen())
+        if (Argentina.IsCIOpen(false))
         {
             yield return new BuySellTrade(Cable.TCI, Dolar.TCI);
             yield return new BuySellTrade(Cable.T24, Dolar.TCI);
