@@ -28,82 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatioTradeLauncher));
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.instrumentSearchListSell = new ChuchoBot.WinFormsApp.Shared.InstrumentSearchList();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.instrumentSearchListBuy = new ChuchoBot.WinFormsApp.Shared.InstrumentSearchList();
-            this.btnLaunch = new System.Windows.Forms.Button();
-            this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatioTradeLauncher));
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            instrumentSearchListSell = new Shared.InstrumentSearchList();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            instrumentSearchListBuy = new Shared.InstrumentSearchList();
+            btnLaunch = new System.Windows.Forms.Button();
+            btnArbitrajeDolar = new System.Windows.Forms.Button();
+            groupBox3.SuspendLayout();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.instrumentSearchListSell);
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(326, 458);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Seleccionar Instrumento a vender";
+            groupBox3.Controls.Add(instrumentSearchListSell);
+            groupBox3.Location = new System.Drawing.Point(0, 0);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            groupBox3.Size = new System.Drawing.Size(435, 705);
+            groupBox3.TabIndex = 8;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Seleccionar Instrumento a vender (compra MEP Barato)";
             // 
             // instrumentSearchListSell
             // 
-            this.instrumentSearchListSell.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.instrumentSearchListSell.Location = new System.Drawing.Point(3, 16);
-            this.instrumentSearchListSell.Name = "instrumentSearchListSell";
-            this.instrumentSearchListSell.Size = new System.Drawing.Size(320, 439);
-            this.instrumentSearchListSell.TabIndex = 0;
+            instrumentSearchListSell.Dock = System.Windows.Forms.DockStyle.Fill;
+            instrumentSearchListSell.Location = new System.Drawing.Point(4, 25);
+            instrumentSearchListSell.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            instrumentSearchListSell.Name = "instrumentSearchListSell";
+            instrumentSearchListSell.SettlementsVisible = false;
+            instrumentSearchListSell.Size = new System.Drawing.Size(427, 675);
+            instrumentSearchListSell.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.instrumentSearchListBuy);
-            this.groupBox1.Location = new System.Drawing.Point(332, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(323, 458);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Seleccionar Instrumento a comprar";
+            groupBox1.Controls.Add(instrumentSearchListBuy);
+            groupBox1.Location = new System.Drawing.Point(443, 0);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            groupBox1.Size = new System.Drawing.Size(431, 705);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Seleccionar Instrumento a comprar (venta MEP Caro)";
             // 
             // instrumentSearchListBuy
             // 
-            this.instrumentSearchListBuy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.instrumentSearchListBuy.Location = new System.Drawing.Point(3, 16);
-            this.instrumentSearchListBuy.Name = "instrumentSearchListBuy";
-            this.instrumentSearchListBuy.Size = new System.Drawing.Size(317, 439);
-            this.instrumentSearchListBuy.TabIndex = 1;
+            instrumentSearchListBuy.Dock = System.Windows.Forms.DockStyle.Fill;
+            instrumentSearchListBuy.Location = new System.Drawing.Point(4, 25);
+            instrumentSearchListBuy.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            instrumentSearchListBuy.Name = "instrumentSearchListBuy";
+            instrumentSearchListBuy.SettlementsVisible = false;
+            instrumentSearchListBuy.Size = new System.Drawing.Size(423, 675);
+            instrumentSearchListBuy.TabIndex = 1;
             // 
             // btnLaunch
             // 
-            this.btnLaunch.Location = new System.Drawing.Point(3, 471);
-            this.btnLaunch.Margin = new System.Windows.Forms.Padding(10);
-            this.btnLaunch.Name = "btnLaunch";
-            this.btnLaunch.Size = new System.Drawing.Size(649, 40);
-            this.btnLaunch.TabIndex = 10;
-            this.btnLaunch.Text = "Abrir trade de ratio";
-            this.btnLaunch.UseVisualStyleBackColor = true;
-            this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
+            btnLaunch.Location = new System.Drawing.Point(4, 711);
+            btnLaunch.Margin = new System.Windows.Forms.Padding(13, 15, 13, 15);
+            btnLaunch.Name = "btnLaunch";
+            btnLaunch.Size = new System.Drawing.Size(866, 39);
+            btnLaunch.TabIndex = 10;
+            btnLaunch.Text = "Abrir trade de ratio";
+            btnLaunch.UseVisualStyleBackColor = true;
+            btnLaunch.Click += btnLaunch_Click;
+            // 
+            // btnArbitrajeDolar
+            // 
+            btnArbitrajeDolar.Location = new System.Drawing.Point(4, 751);
+            btnArbitrajeDolar.Margin = new System.Windows.Forms.Padding(13, 15, 13, 15);
+            btnArbitrajeDolar.Name = "btnArbitrajeDolar";
+            btnArbitrajeDolar.Size = new System.Drawing.Size(866, 39);
+            btnArbitrajeDolar.TabIndex = 11;
+            btnArbitrajeDolar.Text = "Abrir trade de arbitraje dolar";
+            btnArbitrajeDolar.UseVisualStyleBackColor = true;
+            btnArbitrajeDolar.Click += btnArbitrajeDolar_Click;
             // 
             // FrmRatioTradeLauncher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 515);
-            this.Controls.Add(this.btnLaunch);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "FrmRatioTradeLauncher";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Abrir trade de ratio";
-            this.Load += new System.EventHandler(this.FrmRatioTradeLauncher_Load);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(876, 792);
+            Controls.Add(btnArbitrajeDolar);
+            Controls.Add(btnLaunch);
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox3);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            MaximizeBox = false;
+            Name = "FrmRatioTradeLauncher";
+            SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            Text = "Abrir trade de ratio";
+            Load += FrmRatioTradeLauncher_Load;
+            groupBox3.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -112,5 +133,6 @@
         private Shared.InstrumentSearchList instrumentSearchListSell;
         private Shared.InstrumentSearchList instrumentSearchListBuy;
         private System.Windows.Forms.Button btnLaunch;
+        private System.Windows.Forms.Button btnArbitrajeDolar;
     }
 }

@@ -24,24 +24,6 @@ public partial class InstrumentCheckList : UserControl
 
     public string[] SelectedItems => lstSelected.Items.Cast<string>().ToArray();
 
-    public Dictionary<string, string> CfiCodesDictionary = new Dictionary<string, string>()
-        {
-            { "", "Todos"},
-            { "FXXXSX", "Futuros"},
-            { "FXXXXX", "Pases"},
-            { "OPAFXS", "Puts - Opciones Matba/Rofex"},
-            { "OCAFXS", "Calls - Opciones Matba/Rofex"},
-            { "MRIXXX", "Indices"},
-            { "OCASPS", "Calls - Opciones"},
-            { "OPASPS", "Puts - Opciones"},
-            { "DBXXXX", "Renta Fija"},
-            { "EMXXXX", "CEDEARs"},
-            { "DBXXFR", "Obligaciones Negociables"},
-            { "ESXXXX", "Acciones"},
-            { "DYXTXR", "Letras"},
-            { "RPXXXX", "Cauciones"}
-        };
-
     public InstrumentCheckList()
     {
         InitializeComponent();
@@ -55,13 +37,13 @@ public partial class InstrumentCheckList : UserControl
 
             foreach (var cfiCode in cfiCodes)
             {
-                if (!CfiCodesDictionary.ContainsKey(cfiCode))
+                if (!CfiCodes.AllCfiCodes.ContainsKey(cfiCode))
                 {
-                    CfiCodesDictionary.Add(cfiCode, cfiCode);
+                    CfiCodes.AllCfiCodes.Add(cfiCode, cfiCode);
                 }
             }
 
-            cmbCfiCodes.DataSource = new BindingSource(CfiCodesDictionary, null);
+            cmbCfiCodes.DataSource = new BindingSource(CfiCodes.AllCfiCodes, null);
             cmbCfiCodes.DisplayMember = "Value";
             cmbCfiCodes.ValueMember = "Key";
         }

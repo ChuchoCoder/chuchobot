@@ -473,6 +473,28 @@ public partial class FrmMain : Form
             {
                 statusInformation.Text = $"No se encontraron posiciones para ninguna de las cuentas asociadas";
             }
+            else
+            {
+                var itemsToWatch = new List<string>();
+                foreach (var position in Argentina.Data.Positions)
+                {
+                    if (Argentina.Data.WatchedInstruments.Any(x => x.Symbol == position.Symbol) == false)
+                    {
+                        var instrument = Argentina.Data.AllInstruments.FirstOrDefault(x => x.InstrumentId.Symbol == position.Symbol);
+
+                        if (instrument != null && CfiCodes.IsOption(instrument.CfiCode) == false)
+                        {
+                            itemsToWatch.Add(position.Symbol);
+                        }
+                    }
+                }
+
+                if (itemsToWatch.Count > 0)
+                {
+                    Properties.Settings.Default.TickersToMonitor.AddRange(itemsToWatch.ToArray());
+                    Properties.Settings.Default.Save();
+                }
+            }
 
             PositionsTimer.Interval = Convert.ToInt32(TimeSpan.FromMinutes(1).TotalMilliseconds);
             PositionsTimer.Start();
@@ -490,6 +512,7 @@ public partial class FrmMain : Form
         {
             AccountsTimer.Stop();
             Argentina.Data.RefreshAccounts();
+
             AccountsTimer.Interval = Convert.ToInt32(TimeSpan.FromMinutes(30).TotalMilliseconds);
             AccountsTimer.Start();
             PositionsTimer.Start();
