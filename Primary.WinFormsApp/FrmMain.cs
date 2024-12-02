@@ -484,7 +484,7 @@ public partial class FrmMain : Form
 
                         if (instrument != null && CfiCodes.IsOption(instrument.CfiCode) == false)
                         {
-                            itemsToWatch.Add(position.Symbol);
+                            itemsToWatch.Add(position.Symbol.GetTicker());
                         }
                     }
                 }
