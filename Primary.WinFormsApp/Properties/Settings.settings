@@ -45,7 +45,9 @@
     <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;S14J4;SJ4D;SJ4C&lt;/string&gt;
+  &lt;string&gt;S17E5;S2E5D;S2E5C&lt;/string&gt;
+  &lt;string&gt;S31E5;SE5D;SE5C&lt;/string&gt;
+  &lt;string&gt;S14F5;SF5D;SF5C&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="MarketOpenTime" Type="System.TimeSpan" Scope="Application">

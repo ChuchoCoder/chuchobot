@@ -46,6 +46,7 @@ public partial class FrmInstrumentsCheckList : Form
 
     private void FrmInstrumentsCheckList_Load(object sender, EventArgs e)
     {
-        instrumentCheckList1.LoadInstruments(Setting.Cast<string>());
+        var instruments = Setting.Cast<string>().OrderBy(x => x);
+        instrumentCheckList1.LoadInstruments(instruments);
     }
 }

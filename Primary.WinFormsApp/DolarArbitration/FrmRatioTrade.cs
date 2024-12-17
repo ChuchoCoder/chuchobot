@@ -180,26 +180,21 @@ public partial class FrmRatioTrade : Form
 
         numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.GetIncrement();
         numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.GetIncrement();
-        numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.GetIncrement();
-        numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.GetIncrement();
+        numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Buy.Instrument.GetIncrement();
+        numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Sell.Instrument.GetIncrement();
 
         numOwnedVentaPrice.DecimalPlaces = _trade.SellThenBuy.Sell.Instrument.InstrumentPricePrecision;
         numOwnedCompraPrice.DecimalPlaces = _trade.SellThenBuy.Buy.Instrument.InstrumentPricePrecision;
-        numArbitrationVentaPrice.DecimalPlaces = _trade.BuyThenSell.Sell.Instrument.InstrumentPricePrecision;
-        numArbitrationCompraPrice.DecimalPlaces = _trade.BuyThenSell.Buy.Instrument.InstrumentPricePrecision;
+        numArbitrationVentaPrice.DecimalPlaces = _trade.BuyThenSell.Buy.Instrument.InstrumentPricePrecision;
+        numArbitrationCompraPrice.DecimalPlaces = _trade.BuyThenSell.Sell.Instrument.InstrumentPricePrecision;
 
         lblRatioSell.Text = $"{_trade.SellThenBuy.Sell.Instrument.InstrumentId.Ticker()}";
         lblDolarBuy.Text = $"{_trade.BuyThenSell.Sell.Instrument.InstrumentId.Ticker()}";
 
-        lblOwnedVentaCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
-        lblOwnedCompraCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
-        lblArbitrationVentaCurrency.Text = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
-        lblArbitrationCompraCurrency.Text = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
-
-        numOwnedCompraPrice.Increment = _trade.SellThenBuy.Buy.Instrument.MinPriceIncrement;
-        numOwnedVentaPrice.Increment = _trade.SellThenBuy.Sell.Instrument.MinPriceIncrement;
-        numArbitrationCompraPrice.Increment = _trade.BuyThenSell.Buy.Instrument.MinPriceIncrement;
-        numArbitrationVentaPrice.Increment = _trade.BuyThenSell.Sell.Instrument.MinPriceIncrement;
+        lblOwnedVentaCurrency.Text = _trade.SellThenBuy.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblOwnedCompraCurrency.Text = _trade.SellThenBuy.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblArbitrationVentaCurrency.Text = _trade.BuyThenSell.Buy.Instrument.IsPesos() ? "a $:" : "a USD:";
+        lblArbitrationCompraCurrency.Text = _trade.BuyThenSell.Sell.Instrument.IsPesos() ? "a $:" : "a USD:";
 
         if (lblArbitrationCompraCurrency.Text == lblArbitrationVentaCurrency.Text)
         {
