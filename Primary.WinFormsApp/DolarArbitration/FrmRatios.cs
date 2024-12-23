@@ -60,14 +60,19 @@ public partial class FrmRatios : Form
 
     private void RefreshRatioRow(string tickerA, string tickerB, decimal? alertMin, decimal? alertMax)
     {
-        var instrumentA = Argentina.Data.GetLatestOrNull(tickerA.ToMervalSymbol24H());
-        if (instrumentA == null)
+        var symbolA = tickerA.ToMervalSymbol24H();
+        var instrumentA = Argentina.Data.GetInstrumentDetail(symbolA);
+        var instrumentAEntries = Argentina.Data.GetLatestOrNull(symbolA);
+        if (instrumentAEntries == null)
             return;
 
-        var instrumentB = Argentina.Data.GetLatestOrNull(tickerB.ToMervalSymbol24H());
-        if (instrumentB == null)
+        var symbolB = tickerB.ToMervalSymbol24H();
+        var instrumentB = Argentina.Data.GetInstrumentDetail(symbolB);
+        var instrumentBEntries = Argentina.Data.GetLatestOrNull(symbolB);
+        if (instrumentBEntries == null)
             return;
 
+        var isSameCurrency = instrumentA.Currency == instrumentB.Currency;
         var ratio = tickerA + "/" + tickerB;
         var existingRow = dataTable.Rows.Find(new[] { ratio });
         DataRow row;
@@ -81,24 +86,35 @@ public partial class FrmRatios : Form
             row = dataTable.NewRow();
             row["Ratio"] = ratio;
         }
-        row["ABid"] = instrumentA.GetTopBidPrice();
-        row["AOffer"] = instrumentA.GetTopOfferPrice();
-        row["BBid"] = instrumentB.GetTopBidPrice();
-        row["BOffer"] = instrumentB.GetTopOfferPrice();
+
+        var format = (bool isSameCurrency, decimal value) => isSameCurrency ? value.ToString("P") : value.ToString("c2");
+
+        row["ABid"] = instrumentAEntries.GetTopBidPrice();
+        row["AOffer"] = instrumentAEntries.GetTopOfferPrice();
+        row["BBid"] = instrumentBEntries.GetTopBidPrice();
+        row["BOffer"] = instrumentBEntries.GetTopOfferPrice();
+
         // Sell A - Buy B
-        row["ShortRatio"] = instrumentB.GetTopOfferPrice() > 0 ? (instrumentA.GetTopBidPrice() / instrumentB.GetTopOfferPrice()) - 1 : 0;
+        var shortRatioValue = instrumentBEntries.GetTopOfferPrice() > 0 ? (instrumentAEntries.GetTopBidPrice() / instrumentBEntries.GetTopOfferPrice()) - 1 : 0;
+        row["ShortRatio"] = format(isSameCurrency, shortRatioValue);
+
         // Buy A - Sell B
-        row["LongRatio"] = instrumentB.GetTopBidPrice() > 0 ? (instrumentA.GetTopOfferPrice() / instrumentB.GetTopBidPrice()) - 1 : 0;
+        var longRatioValue = instrumentBEntries.GetTopBidPrice() > 0 ? (instrumentAEntries.GetTopOfferPrice() / instrumentBEntries.GetTopBidPrice()) - 1 : 0;
+        row["LongRatio"] = format(isSameCurrency, longRatioValue);
 
-        var ratioLastHasValue = instrumentB.Last?.Price > 0 && instrumentA.Last?.Price > 0;
+        var ratioLastHasValue = instrumentBEntries.Last?.Price > 0 && instrumentAEntries.Last?.Price > 0;
 
-        var ratioLast = ratioLastHasValue ? (instrumentA.Last.Price / instrumentB.Last.Price) - 1 : 0;
-        row["RatioLast"] = ratioLast;
+        var ratioLast = ratioLastHasValue ? (instrumentAEntries.Last.Price / instrumentBEntries.Last.Price) - 1 : 0;
+        if (ratioLast != null)
+        {
+            row["RatioLast"] = format(isSameCurrency, ratioLast.Value);
+        }
 
-        var ratioClose = instrumentB.ClosePrice() > 0 ? (instrumentA.ClosePrice() / instrumentB.ClosePrice()) - 1 : 0;
-        row["RatioYesterday"] = ratioClose;
+        var ratioClose = instrumentBEntries.ClosePrice() > 0 ? (instrumentAEntries.ClosePrice() / instrumentBEntries.ClosePrice()) - 1 : 0;
+        row["RatioYesterday"] = format(isSameCurrency, ratioClose);
 
-        row["RatioVariacion"] = ratioLast - ratioClose;
+        var ratioVar = isSameCurrency ? ratioLast - ratioClose : ratioLast / ratioClose - 1;
+        row["RatioVariacion"] = ratioVar;
 
         row["AlertLower"] = alertMin.HasValue ? alertMin.Value : System.DBNull.Value;
         row["AlertGreater"] = alertMax.HasValue ? alertMax.Value : System.DBNull.Value;
@@ -113,19 +129,27 @@ public partial class FrmRatios : Form
         if (Argentina.IsMarketOpen())
         {
             var alertLower = row["AlertLower"] as decimal?;
-
-            if (alertLower.HasValue && ratioLastHasValue && ratioLast.Value <= alertLower.Value / 100m)
+            
+            if (alertLower.HasValue)
             {
-                // Long Ratio
-                Alerts.NotifyLongRatioTrade(tickerA, instrumentA.GetTopOfferPrice(), tickerB, instrumentB.GetTopBidPrice(), ratioLast.Value, null);
+                var alertLowerValue = isSameCurrency ? alertLower.Value / 100m : alertLower.Value;
+                if (ratioLastHasValue && ratioLast.Value <= alertLowerValue)
+                {
+                    // Long Ratio
+                    Alerts.NotifyLongRatioTrade(tickerA, instrumentAEntries.GetTopOfferPrice(), tickerB, instrumentBEntries.GetTopBidPrice(), ratioLast.Value, null);
+                }
             }
 
             var alertGreater = row["AlertGreater"] as decimal?;
 
-            if (alertGreater.HasValue && ratioLastHasValue && ratioLast.Value >= alertGreater.Value / 100m)
+            if (alertGreater.HasValue)
             {
-                // Short Ratio
-                Alerts.NotifyShortRatioTrade(tickerB, instrumentB.GetTopOfferPrice(), tickerA, instrumentA.GetTopBidPrice(), ratioLast.Value, null);
+                var alertGreaterValue = isSameCurrency ? alertGreater.Value / 100m : alertGreater.Value;
+                if (ratioLastHasValue && ratioLast.Value >= alertGreaterValue)
+                {
+                    // Short Ratio
+                    Alerts.NotifyShortRatioTrade(tickerB, instrumentBEntries.GetTopOfferPrice(), tickerA, instrumentAEntries.GetTopBidPrice(), ratioLast.Value, null);
+                }
             }
         }
     }
@@ -140,10 +164,10 @@ public partial class FrmRatios : Form
         _ = dataTable.Columns.Add("AOffer", typeof(decimal));
         _ = dataTable.Columns.Add("BBid", typeof(decimal));
         _ = dataTable.Columns.Add("BOffer", typeof(decimal));
-        _ = dataTable.Columns.Add("LongRatio", typeof(decimal));
-        _ = dataTable.Columns.Add("ShortRatio", typeof(decimal));
-        _ = dataTable.Columns.Add("RatioLast", typeof(decimal));
-        _ = dataTable.Columns.Add("RatioYesterday", typeof(decimal));
+        _ = dataTable.Columns.Add("LongRatio", typeof(string));
+        _ = dataTable.Columns.Add("ShortRatio", typeof(string));
+        _ = dataTable.Columns.Add("RatioLast", typeof(string));
+        _ = dataTable.Columns.Add("RatioYesterday", typeof(string));
         _ = dataTable.Columns.Add("RatioVariacion", typeof(decimal));
         _ = dataTable.Columns.Add("AlertLower", typeof(decimal));
         _ = dataTable.Columns.Add("AlertGreater", typeof(decimal));

@@ -35,9 +35,6 @@
             var dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             var dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             var dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            var dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            var dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            var dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             var resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatios));
             grdRatios = new System.Windows.Forms.DataGridView();
             tmr = new System.Windows.Forms.Timer(components);
@@ -66,12 +63,13 @@
             grdRatios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Ratio, RatioLast, RatioVariacion, RatioYesterday, AlertLower, AlertGreater, AOffer, BBid, LongRatio, ABid, BOffer, ShortRatio });
             grdRatios.Dock = System.Windows.Forms.DockStyle.Fill;
             grdRatios.Location = new System.Drawing.Point(0, 0);
-            grdRatios.Margin = new System.Windows.Forms.Padding(2);
+            grdRatios.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             grdRatios.Name = "grdRatios";
+            grdRatios.RowHeadersWidth = 51;
             grdRatios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             grdRatios.ShowCellErrors = false;
             grdRatios.ShowRowErrors = false;
-            grdRatios.Size = new System.Drawing.Size(910, 256);
+            grdRatios.Size = new System.Drawing.Size(1040, 341);
             grdRatios.TabIndex = 0;
             grdRatios.CellValueChanged += grdRatios_CellValueChanged;
             // 
@@ -85,19 +83,21 @@
             // 
             Ratio.DataPropertyName = "Ratio";
             Ratio.HeaderText = "Ratio (A/B)";
+            Ratio.MinimumWidth = 6;
             Ratio.Name = "Ratio";
             Ratio.ReadOnly = true;
-            Ratio.Width = 90;
+            Ratio.Width = 112;
             // 
             // RatioLast
             // 
             RatioLast.DataPropertyName = "RatioLast";
-            dataGridViewCellStyle1.Format = "P";
+            dataGridViewCellStyle1.NullValue = null;
             RatioLast.DefaultCellStyle = dataGridViewCellStyle1;
             RatioLast.HeaderText = "Ult.";
+            RatioLast.MinimumWidth = 6;
             RatioLast.Name = "RatioLast";
             RatioLast.ReadOnly = true;
-            RatioLast.Width = 50;
+            RatioLast.Width = 60;
             // 
             // RatioVariacion
             // 
@@ -105,104 +105,108 @@
             dataGridViewCellStyle2.Format = "P";
             RatioVariacion.DefaultCellStyle = dataGridViewCellStyle2;
             RatioVariacion.HeaderText = "Var.";
+            RatioVariacion.MinimumWidth = 6;
             RatioVariacion.Name = "RatioVariacion";
             RatioVariacion.ReadOnly = true;
-            RatioVariacion.Width = 51;
+            RatioVariacion.Width = 62;
             // 
             // RatioYesterday
             // 
             RatioYesterday.DataPropertyName = "RatioYesterday";
-            dataGridViewCellStyle3.Format = "P";
-            RatioYesterday.DefaultCellStyle = dataGridViewCellStyle3;
             RatioYesterday.HeaderText = "Cierre";
+            RatioYesterday.MinimumWidth = 6;
             RatioYesterday.Name = "RatioYesterday";
             RatioYesterday.ReadOnly = true;
-            RatioYesterday.Width = 63;
+            RatioYesterday.Width = 77;
             // 
             // AlertLower
             // 
             AlertLower.DataPropertyName = "AlertLower";
             AlertLower.HeaderText = "Alert <=";
+            AlertLower.MinimumWidth = 6;
             AlertLower.Name = "AlertLower";
-            AlertLower.Width = 76;
+            AlertLower.Width = 94;
             // 
             // AlertGreater
             // 
             AlertGreater.DataPropertyName = "AlertGreater";
             AlertGreater.HeaderText = "Alert >=";
+            AlertGreater.MinimumWidth = 6;
             AlertGreater.Name = "AlertGreater";
-            AlertGreater.Width = 76;
+            AlertGreater.Width = 94;
             // 
             // AOffer
             // 
             AOffer.DataPropertyName = "AOffer";
-            dataGridViewCellStyle4.Format = "C2";
-            AOffer.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Format = "C2";
+            AOffer.DefaultCellStyle = dataGridViewCellStyle3;
             AOffer.HeaderText = "A Offer";
+            AOffer.MinimumWidth = 6;
             AOffer.Name = "AOffer";
             AOffer.ReadOnly = true;
-            AOffer.Width = 70;
+            AOffer.Width = 86;
             // 
             // BBid
             // 
             BBid.DataPropertyName = "BBid";
-            dataGridViewCellStyle5.Format = "C2";
-            BBid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Format = "C2";
+            BBid.DefaultCellStyle = dataGridViewCellStyle4;
             BBid.HeaderText = "B Bid";
+            BBid.MinimumWidth = 6;
             BBid.Name = "BBid";
             BBid.ReadOnly = true;
-            BBid.Width = 59;
+            BBid.Width = 73;
             // 
             // LongRatio
             // 
             LongRatio.DataPropertyName = "LongRatio";
-            dataGridViewCellStyle6.Format = "P";
-            LongRatio.DefaultCellStyle = dataGridViewCellStyle6;
             LongRatio.HeaderText = "Long Ratio";
+            LongRatio.MinimumWidth = 6;
             LongRatio.Name = "LongRatio";
             LongRatio.ReadOnly = true;
             LongRatio.ToolTipText = "Comprar A / Vender B";
-            LongRatio.Width = 89;
+            LongRatio.Width = 110;
             // 
             // ABid
             // 
             ABid.DataPropertyName = "ABid";
-            dataGridViewCellStyle7.Format = "C2";
-            ABid.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Format = "C2";
+            ABid.DefaultCellStyle = dataGridViewCellStyle5;
             ABid.HeaderText = "A Bid";
+            ABid.MinimumWidth = 6;
             ABid.Name = "ABid";
             ABid.ReadOnly = true;
-            ABid.Width = 60;
+            ABid.Width = 74;
             // 
             // BOffer
             // 
             BOffer.DataPropertyName = "BOffer";
-            dataGridViewCellStyle8.Format = "C2";
-            BOffer.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Format = "C2";
+            BOffer.DefaultCellStyle = dataGridViewCellStyle6;
             BOffer.HeaderText = "B Offer";
+            BOffer.MinimumWidth = 6;
             BOffer.Name = "BOffer";
             BOffer.ReadOnly = true;
-            BOffer.Width = 69;
+            BOffer.Width = 85;
             // 
             // ShortRatio
             // 
             ShortRatio.DataPropertyName = "ShortRatio";
-            dataGridViewCellStyle9.Format = "P";
-            ShortRatio.DefaultCellStyle = dataGridViewCellStyle9;
             ShortRatio.HeaderText = "Short Ratio";
+            ShortRatio.MinimumWidth = 6;
             ShortRatio.Name = "ShortRatio";
             ShortRatio.ReadOnly = true;
             ShortRatio.ToolTipText = "Vender A / Comprar B";
-            ShortRatio.Width = 90;
+            ShortRatio.Width = 112;
             // 
             // FrmRatios
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(910, 256);
+            ClientSize = new System.Drawing.Size(1040, 341);
             Controls.Add(grdRatios);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            Margin = new System.Windows.Forms.Padding(2);
+            Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Name = "FrmRatios";
             Text = "Ratios";
             Load += FrmRatios_Load;

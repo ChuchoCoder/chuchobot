@@ -10,7 +10,8 @@ namespace Primary.Data
     {
         CI,
         T24H,
-        T48H
+        T48H,
+        Otro
     }
 
     [JsonConverter(typeof(EntryJsonSerializer))]
@@ -80,6 +81,7 @@ namespace Primary.Data
                 "0" => SettlementType.CI,
                 "1" => SettlementType.T24H,
                 "2" => SettlementType.T24H,
+                "3" => SettlementType.Otro,
                 _ => throw new InvalidEnumStringException(value),
             };
         }
