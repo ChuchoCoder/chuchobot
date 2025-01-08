@@ -87,8 +87,8 @@ public partial class FrmRatios : Form
             row["Ratio"] = ratio;
         }
 
-        var format = (bool isSameCurrency, decimal value) => isSameCurrency ? value.ToString("P") : value.ToString("c2");
-
+        var format = isSameCurrency ? "P" : "C2";
+        
         row["ABid"] = instrumentAEntries.GetTopBidPrice();
         row["AOffer"] = instrumentAEntries.GetTopOfferPrice();
         row["BBid"] = instrumentBEntries.GetTopBidPrice();
@@ -96,22 +96,22 @@ public partial class FrmRatios : Form
 
         // Sell A - Buy B
         var shortRatioValue = instrumentBEntries.GetTopOfferPrice() > 0 ? (instrumentAEntries.GetTopBidPrice() / instrumentBEntries.GetTopOfferPrice()) - 1 : 0;
-        row["ShortRatio"] = format(isSameCurrency, shortRatioValue);
+        row["ShortRatio"] = shortRatioValue.ToString(format);
 
         // Buy A - Sell B
         var longRatioValue = instrumentBEntries.GetTopBidPrice() > 0 ? (instrumentAEntries.GetTopOfferPrice() / instrumentBEntries.GetTopBidPrice()) - 1 : 0;
-        row["LongRatio"] = format(isSameCurrency, longRatioValue);
+        row["LongRatio"] = longRatioValue.ToString(format);
 
         var ratioLastHasValue = instrumentBEntries.Last?.Price > 0 && instrumentAEntries.Last?.Price > 0;
 
         var ratioLast = ratioLastHasValue ? (instrumentAEntries.Last.Price / instrumentBEntries.Last.Price) - 1 : 0;
         if (ratioLast != null)
         {
-            row["RatioLast"] = format(isSameCurrency, ratioLast.Value);
+            row["RatioLast"] = ratioLast.Value.ToString(format);
         }
 
         var ratioClose = instrumentBEntries.ClosePrice() > 0 ? (instrumentAEntries.ClosePrice() / instrumentBEntries.ClosePrice()) - 1 : 0;
-        row["RatioYesterday"] = format(isSameCurrency, ratioClose);
+        row["RatioYesterday"] = ratioClose.ToString(format);
 
         var ratioVar = isSameCurrency ? ratioLast - ratioClose : ratioLast / ratioClose - 1;
         row["RatioVariacion"] = ratioVar;
@@ -136,7 +136,7 @@ public partial class FrmRatios : Form
                 if (ratioLastHasValue && ratioLast.Value <= alertLowerValue)
                 {
                     // Long Ratio
-                    Alerts.NotifyLongRatioTrade(tickerA, instrumentAEntries.GetTopOfferPrice(), tickerB, instrumentBEntries.GetTopBidPrice(), ratioLast.Value, null);
+                    Alerts.NotifyLongRatioTrade(format, tickerA, instrumentAEntries.GetTopOfferPrice(), tickerB, instrumentBEntries.GetTopBidPrice(), ratioLast.Value, null);
                 }
             }
 
@@ -148,7 +148,7 @@ public partial class FrmRatios : Form
                 if (ratioLastHasValue && ratioLast.Value >= alertGreaterValue)
                 {
                     // Short Ratio
-                    Alerts.NotifyShortRatioTrade(tickerB, instrumentBEntries.GetTopOfferPrice(), tickerA, instrumentAEntries.GetTopBidPrice(), ratioLast.Value, null);
+                    Alerts.NotifyShortRatioTrade(format, tickerB, instrumentBEntries.GetTopOfferPrice(), tickerA, instrumentAEntries.GetTopBidPrice(), ratioLast.Value, null);
                 }
             }
         }

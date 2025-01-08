@@ -209,7 +209,13 @@ public partial class FrmSettlementTermTrade : Form
     {
         if (numCompraPrice.Value > 0)
         {
-            _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value - numCupon.Value, numCompraPrice.Value, Settings.Default.TasaCaucion);
+            var  cupon = numCupon.Value;
+            if (chkCuponUSD.Checked)
+            {
+                var dolarMep = Argentina.GetDolarMEPVenta();
+                cupon *= dolarMep;
+            }
+            _trade.Calculate(numOwnedVentaSize.Value, numVentaPrice.Value - cupon, numCompraPrice.Value, Settings.Default.TasaCaucion);
 
             lblVentaImporte.Text = $"Importe: {_trade.SellTotalSinComisiones:C2}";
             lblVentaComision.Text = $"DM. + Com.: {-_trade.SellComisionDerechos:C2}";

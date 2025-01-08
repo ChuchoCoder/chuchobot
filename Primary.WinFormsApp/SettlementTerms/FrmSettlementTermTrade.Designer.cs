@@ -41,6 +41,7 @@
             numOwnedVentaSize = new System.Windows.Forms.NumericUpDown();
             label1 = new System.Windows.Forms.Label();
             grpArbitrationCompra = new System.Windows.Forms.GroupBox();
+            chkCuponUSD = new System.Windows.Forms.CheckBox();
             label3 = new System.Windows.Forms.Label();
             numCupon = new System.Windows.Forms.NumericUpDown();
             lblBuyPriceTarget = new System.Windows.Forms.Label();
@@ -100,11 +101,11 @@
             grpOwnedVenta.Controls.Add(label2);
             grpOwnedVenta.Controls.Add(numOwnedVentaSize);
             grpOwnedVenta.Controls.Add(label1);
-            grpOwnedVenta.Location = new System.Drawing.Point(23, 147);
-            grpOwnedVenta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpOwnedVenta.Location = new System.Drawing.Point(26, 196);
+            grpOwnedVenta.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             grpOwnedVenta.Name = "grpOwnedVenta";
-            grpOwnedVenta.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            grpOwnedVenta.Size = new System.Drawing.Size(681, 225);
+            grpOwnedVenta.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            grpOwnedVenta.Size = new System.Drawing.Size(778, 300);
             grpOwnedVenta.TabIndex = 4;
             grpOwnedVenta.TabStop = false;
             grpOwnedVenta.Text = "1. Venta de Bono en Cartera";
@@ -112,10 +113,10 @@
             // lblSellPriceTarget
             // 
             lblSellPriceTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblSellPriceTarget.Location = new System.Drawing.Point(30, 134);
-            lblSellPriceTarget.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblSellPriceTarget.Location = new System.Drawing.Point(34, 168);
+            lblSellPriceTarget.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblSellPriceTarget.Name = "lblSellPriceTarget";
-            lblSellPriceTarget.Size = new System.Drawing.Size(194, 22);
+            lblSellPriceTarget.Size = new System.Drawing.Size(222, 29);
             lblSellPriceTarget.TabIndex = 30;
             lblSellPriceTarget.Text = "Precio Arbitrado:";
             lblSellPriceTarget.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -124,19 +125,19 @@
             // 
             VentaBidsOffers.BackColor = System.Drawing.Color.Azure;
             VentaBidsOffers.InstrumentDetail = null;
-            VentaBidsOffers.Location = new System.Drawing.Point(230, 18);
-            VentaBidsOffers.Margin = new System.Windows.Forms.Padding(2);
+            VentaBidsOffers.Location = new System.Drawing.Point(263, 24);
+            VentaBidsOffers.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             VentaBidsOffers.Name = "VentaBidsOffers";
-            VentaBidsOffers.Size = new System.Drawing.Size(439, 168);
+            VentaBidsOffers.Size = new System.Drawing.Size(502, 224);
             VentaBidsOffers.TabIndex = 4;
             // 
             // txtOwnedVenta
             // 
             txtOwnedVenta.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtOwnedVenta.Location = new System.Drawing.Point(7, 194);
-            txtOwnedVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            txtOwnedVenta.Location = new System.Drawing.Point(8, 259);
+            txtOwnedVenta.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             txtOwnedVenta.Name = "txtOwnedVenta";
-            txtOwnedVenta.Size = new System.Drawing.Size(663, 28);
+            txtOwnedVenta.Size = new System.Drawing.Size(758, 37);
             txtOwnedVenta.TabIndex = 10;
             txtOwnedVenta.TabStop = true;
             txtOwnedVenta.Text = "Copiar";
@@ -146,10 +147,10 @@
             // lblVentaImporte
             // 
             lblVentaImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblVentaImporte.Location = new System.Drawing.Point(9, 92);
-            lblVentaImporte.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblVentaImporte.Location = new System.Drawing.Point(10, 112);
+            lblVentaImporte.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblVentaImporte.Name = "lblVentaImporte";
-            lblVentaImporte.Size = new System.Drawing.Size(215, 21);
+            lblVentaImporte.Size = new System.Drawing.Size(246, 28);
             lblVentaImporte.TabIndex = 6;
             lblVentaImporte.Text = "Importe";
             lblVentaImporte.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -157,10 +158,10 @@
             // lblVentaComision
             // 
             lblVentaComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblVentaComision.Location = new System.Drawing.Point(9, 113);
-            lblVentaComision.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblVentaComision.Location = new System.Drawing.Point(10, 140);
+            lblVentaComision.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblVentaComision.Name = "lblVentaComision";
-            lblVentaComision.Size = new System.Drawing.Size(215, 21);
+            lblVentaComision.Size = new System.Drawing.Size(246, 28);
             lblVentaComision.TabIndex = 5;
             lblVentaComision.Text = "Der.Mer./Comisión";
             lblVentaComision.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -170,11 +171,11 @@
             numVentaPrice.DecimalPlaces = 2;
             numVentaPrice.ForeColor = System.Drawing.Color.Red;
             numVentaPrice.Increment = new decimal(new int[] { 5, 0, 0, 131072 });
-            numVentaPrice.Location = new System.Drawing.Point(102, 52);
-            numVentaPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numVentaPrice.Location = new System.Drawing.Point(117, 69);
+            numVentaPrice.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numVentaPrice.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             numVentaPrice.Name = "numVentaPrice";
-            numVentaPrice.Size = new System.Drawing.Size(122, 23);
+            numVentaPrice.Size = new System.Drawing.Size(139, 27);
             numVentaPrice.TabIndex = 3;
             numVentaPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             numVentaPrice.ValueChanged += numOwnedVentaPrice_ValueChanged;
@@ -185,20 +186,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(34, 52);
-            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Location = new System.Drawing.Point(39, 69);
+            label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(43, 15);
+            label2.Size = new System.Drawing.Size(53, 20);
             label2.TabIndex = 2;
             label2.Text = "Precio:";
             // 
             // numOwnedVentaSize
             // 
-            numOwnedVentaSize.Location = new System.Drawing.Point(102, 22);
-            numOwnedVentaSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numOwnedVentaSize.Location = new System.Drawing.Point(117, 29);
+            numOwnedVentaSize.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numOwnedVentaSize.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             numOwnedVentaSize.Name = "numOwnedVentaSize";
-            numOwnedVentaSize.Size = new System.Drawing.Size(122, 23);
+            numOwnedVentaSize.Size = new System.Drawing.Size(139, 27);
             numOwnedVentaSize.TabIndex = 1;
             numOwnedVentaSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             numOwnedVentaSize.ValueChanged += numOwnedVentaSize_ValueChanged;
@@ -209,15 +210,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(7, 24);
-            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Location = new System.Drawing.Point(8, 32);
+            label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(71, 15);
+            label1.Size = new System.Drawing.Size(85, 20);
             label1.TabIndex = 0;
             label1.Text = "Cant. Nom.:";
             // 
             // grpArbitrationCompra
             // 
+            grpArbitrationCompra.Controls.Add(chkCuponUSD);
             grpArbitrationCompra.Controls.Add(label3);
             grpArbitrationCompra.Controls.Add(numCupon);
             grpArbitrationCompra.Controls.Add(lblBuyPriceTarget);
@@ -229,43 +231,54 @@
             grpArbitrationCompra.Controls.Add(label6);
             grpArbitrationCompra.Controls.Add(numCompraSize);
             grpArbitrationCompra.Controls.Add(label7);
-            grpArbitrationCompra.Location = new System.Drawing.Point(712, 147);
-            grpArbitrationCompra.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpArbitrationCompra.Location = new System.Drawing.Point(814, 196);
+            grpArbitrationCompra.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             grpArbitrationCompra.Name = "grpArbitrationCompra";
-            grpArbitrationCompra.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            grpArbitrationCompra.Size = new System.Drawing.Size(668, 225);
+            grpArbitrationCompra.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            grpArbitrationCompra.Size = new System.Drawing.Size(763, 300);
             grpArbitrationCompra.TabIndex = 5;
             grpArbitrationCompra.TabStop = false;
             grpArbitrationCompra.Text = "2. Compra de Bono a Arbitrar";
             // 
+            // chkCuponUSD
+            // 
+            chkCuponUSD.AutoSize = true;
+            chkCuponUSD.Location = new System.Drawing.Point(150, 232);
+            chkCuponUSD.Name = "chkCuponUSD";
+            chkCuponUSD.Size = new System.Drawing.Size(85, 24);
+            chkCuponUSD.TabIndex = 33;
+            chkCuponUSD.Text = "Es USD?";
+            chkCuponUSD.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(20, 162);
-            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Location = new System.Drawing.Point(21, 205);
+            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(104, 22);
+            label3.Size = new System.Drawing.Size(119, 29);
             label3.TabIndex = 32;
             label3.Text = "Cupón:";
             label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // numCupon
             // 
-            numCupon.Location = new System.Drawing.Point(131, 159);
-            numCupon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numCupon.DecimalPlaces = 2;
+            numCupon.Location = new System.Drawing.Point(150, 201);
+            numCupon.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numCupon.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
             numCupon.Minimum = new decimal(new int[] { 10000000, 0, 0, int.MinValue });
             numCupon.Name = "numCupon";
-            numCupon.Size = new System.Drawing.Size(93, 23);
+            numCupon.Size = new System.Drawing.Size(106, 27);
             numCupon.TabIndex = 12;
             // 
             // lblBuyPriceTarget
             // 
             lblBuyPriceTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblBuyPriceTarget.Location = new System.Drawing.Point(30, 134);
-            lblBuyPriceTarget.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblBuyPriceTarget.Location = new System.Drawing.Point(34, 168);
+            lblBuyPriceTarget.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblBuyPriceTarget.Name = "lblBuyPriceTarget";
-            lblBuyPriceTarget.Size = new System.Drawing.Size(194, 22);
+            lblBuyPriceTarget.Size = new System.Drawing.Size(222, 29);
             lblBuyPriceTarget.TabIndex = 31;
             lblBuyPriceTarget.Text = "Precio Arbitrado:";
             lblBuyPriceTarget.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -273,10 +286,10 @@
             // lblCompraComision
             // 
             lblCompraComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblCompraComision.Location = new System.Drawing.Point(9, 113);
-            lblCompraComision.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblCompraComision.Location = new System.Drawing.Point(10, 140);
+            lblCompraComision.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblCompraComision.Name = "lblCompraComision";
-            lblCompraComision.Size = new System.Drawing.Size(215, 21);
+            lblCompraComision.Size = new System.Drawing.Size(246, 28);
             lblCompraComision.TabIndex = 14;
             lblCompraComision.Text = "Der.Mer./Comisión";
             lblCompraComision.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -285,19 +298,19 @@
             // 
             CompraBidsOffers.BackColor = System.Drawing.Color.Azure;
             CompraBidsOffers.InstrumentDetail = null;
-            CompraBidsOffers.Location = new System.Drawing.Point(230, 18);
-            CompraBidsOffers.Margin = new System.Windows.Forms.Padding(2);
+            CompraBidsOffers.Location = new System.Drawing.Point(263, 24);
+            CompraBidsOffers.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             CompraBidsOffers.Name = "CompraBidsOffers";
-            CompraBidsOffers.Size = new System.Drawing.Size(434, 168);
+            CompraBidsOffers.Size = new System.Drawing.Size(496, 224);
             CompraBidsOffers.TabIndex = 4;
             // 
             // txtArbitrationCompra
             // 
             txtArbitrationCompra.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtArbitrationCompra.Location = new System.Drawing.Point(7, 194);
-            txtArbitrationCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            txtArbitrationCompra.Location = new System.Drawing.Point(8, 259);
+            txtArbitrationCompra.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             txtArbitrationCompra.Name = "txtArbitrationCompra";
-            txtArbitrationCompra.Size = new System.Drawing.Size(656, 28);
+            txtArbitrationCompra.Size = new System.Drawing.Size(750, 37);
             txtArbitrationCompra.TabIndex = 12;
             txtArbitrationCompra.TabStop = true;
             txtArbitrationCompra.Text = "Copiar";
@@ -308,10 +321,10 @@
             // 
             lblCompraImporte.Anchor = System.Windows.Forms.AnchorStyles.Top;
             lblCompraImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblCompraImporte.Location = new System.Drawing.Point(16, 92);
-            lblCompraImporte.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblCompraImporte.Location = new System.Drawing.Point(18, 112);
+            lblCompraImporte.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblCompraImporte.Name = "lblCompraImporte";
-            lblCompraImporte.Size = new System.Drawing.Size(208, 21);
+            lblCompraImporte.Size = new System.Drawing.Size(238, 28);
             lblCompraImporte.TabIndex = 6;
             lblCompraImporte.Text = "Importe";
             lblCompraImporte.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -321,11 +334,11 @@
             numCompraPrice.DecimalPlaces = 2;
             numCompraPrice.ForeColor = System.Drawing.Color.Red;
             numCompraPrice.Increment = new decimal(new int[] { 5, 0, 0, 131072 });
-            numCompraPrice.Location = new System.Drawing.Point(98, 52);
-            numCompraPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numCompraPrice.Location = new System.Drawing.Point(112, 69);
+            numCompraPrice.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numCompraPrice.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             numCompraPrice.Name = "numCompraPrice";
-            numCompraPrice.Size = new System.Drawing.Size(126, 23);
+            numCompraPrice.Size = new System.Drawing.Size(144, 27);
             numCompraPrice.TabIndex = 3;
             numCompraPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             numCompraPrice.ValueChanged += numCompraPrice_ValueChanged;
@@ -336,20 +349,20 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(30, 53);
-            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Location = new System.Drawing.Point(34, 71);
+            label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(43, 15);
+            label6.Size = new System.Drawing.Size(53, 20);
             label6.TabIndex = 2;
             label6.Text = "Precio:";
             // 
             // numCompraSize
             // 
-            numCompraSize.Location = new System.Drawing.Point(98, 22);
-            numCompraSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numCompraSize.Location = new System.Drawing.Point(112, 29);
+            numCompraSize.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numCompraSize.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             numCompraSize.Name = "numCompraSize";
-            numCompraSize.Size = new System.Drawing.Size(126, 23);
+            numCompraSize.Size = new System.Drawing.Size(144, 27);
             numCompraSize.TabIndex = 1;
             numCompraSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             numCompraSize.ValueChanged += numCompraSize_ValueChanged;
@@ -360,10 +373,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(7, 24);
-            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Location = new System.Drawing.Point(8, 32);
+            label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(71, 15);
+            label7.Size = new System.Drawing.Size(85, 20);
             label7.TabIndex = 0;
             label7.Text = "Cant. Nom.:";
             // 
@@ -379,9 +392,9 @@
             lblHeader.Dock = System.Windows.Forms.DockStyle.Top;
             lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             lblHeader.Location = new System.Drawing.Point(0, 0);
-            lblHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblHeader.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new System.Drawing.Size(1390, 50);
+            lblHeader.Size = new System.Drawing.Size(1589, 67);
             lblHeader.TabIndex = 11;
             lblHeader.Text = "Profit: $ / %";
             lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -389,10 +402,10 @@
             // lblDolar
             // 
             lblDolar.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            lblDolar.Location = new System.Drawing.Point(454, 69);
-            lblDolar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDolar.Location = new System.Drawing.Point(519, 92);
+            lblDolar.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblDolar.Name = "lblDolar";
-            lblDolar.Size = new System.Drawing.Size(69, 21);
+            lblDolar.Size = new System.Drawing.Size(79, 28);
             lblDolar.TabIndex = 1;
             lblDolar.Text = "Dolar $:";
             lblDolar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -401,11 +414,11 @@
             // 
             numDolar.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             numDolar.DecimalPlaces = 2;
-            numDolar.Location = new System.Drawing.Point(530, 69);
-            numDolar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numDolar.Location = new System.Drawing.Point(606, 92);
+            numDolar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numDolar.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numDolar.Name = "numDolar";
-            numDolar.Size = new System.Drawing.Size(93, 23);
+            numDolar.Size = new System.Drawing.Size(106, 27);
             numDolar.TabIndex = 2;
             numDolar.Value = new decimal(new int[] { 98, 0, 0, 0 });
             numDolar.ValueChanged += numDolar_ValueChanged;
@@ -413,40 +426,40 @@
             // lblComisionTotal
             // 
             lblComisionTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblComisionTotal.Location = new System.Drawing.Point(9, 25);
-            lblComisionTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblComisionTotal.Location = new System.Drawing.Point(10, 33);
+            lblComisionTotal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblComisionTotal.Name = "lblComisionTotal";
-            lblComisionTotal.Size = new System.Drawing.Size(460, 21);
+            lblComisionTotal.Size = new System.Drawing.Size(526, 28);
             lblComisionTotal.TabIndex = 12;
             lblComisionTotal.Text = "Total Comisión:";
             // 
             // lblDifVentaCompra
             // 
             lblDifVentaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblDifVentaCompra.Location = new System.Drawing.Point(10, 90);
-            lblDifVentaCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDifVentaCompra.Location = new System.Drawing.Point(11, 120);
+            lblDifVentaCompra.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblDifVentaCompra.Name = "lblDifVentaCompra";
-            lblDifVentaCompra.Size = new System.Drawing.Size(449, 21);
+            lblDifVentaCompra.Size = new System.Drawing.Size(513, 28);
             lblDifVentaCompra.TabIndex = 21;
             lblDifVentaCompra.Text = "Dif. Venta/Compra:";
             // 
             // lblProfitPesos
             // 
             lblProfitPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblProfitPesos.Location = new System.Drawing.Point(10, 119);
-            lblProfitPesos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblProfitPesos.Location = new System.Drawing.Point(11, 159);
+            lblProfitPesos.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblProfitPesos.Name = "lblProfitPesos";
-            lblProfitPesos.Size = new System.Drawing.Size(449, 21);
+            lblProfitPesos.Size = new System.Drawing.Size(513, 28);
             lblProfitPesos.TabIndex = 22;
             lblProfitPesos.Text = "Profit:";
             // 
             // lnkArbitration
             // 
             lnkArbitration.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lnkArbitration.Location = new System.Drawing.Point(21, 68);
-            lnkArbitration.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lnkArbitration.Location = new System.Drawing.Point(24, 91);
+            lnkArbitration.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lnkArbitration.Name = "lnkArbitration";
-            lnkArbitration.Size = new System.Drawing.Size(426, 22);
+            lnkArbitration.Size = new System.Drawing.Size(487, 29);
             lnkArbitration.TabIndex = 0;
             lnkArbitration.TabStop = true;
             lnkArbitration.Text = "Copiar";
@@ -456,70 +469,70 @@
             // lblDiasCaucion
             // 
             lblDiasCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblDiasCaucion.Location = new System.Drawing.Point(14, 25);
-            lblDiasCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDiasCaucion.Location = new System.Drawing.Point(16, 33);
+            lblDiasCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblDiasCaucion.Name = "lblDiasCaucion";
-            lblDiasCaucion.Size = new System.Drawing.Size(298, 21);
+            lblDiasCaucion.Size = new System.Drawing.Size(341, 28);
             lblDiasCaucion.TabIndex = 23;
             lblDiasCaucion.Text = "Dias Caucion:";
             // 
             // lblInteresCaucion
             // 
             lblInteresCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblInteresCaucion.Location = new System.Drawing.Point(14, 90);
-            lblInteresCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblInteresCaucion.Location = new System.Drawing.Point(16, 120);
+            lblInteresCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblInteresCaucion.Name = "lblInteresCaucion";
-            lblInteresCaucion.Size = new System.Drawing.Size(298, 21);
+            lblInteresCaucion.Size = new System.Drawing.Size(341, 28);
             lblInteresCaucion.TabIndex = 24;
             lblInteresCaucion.Text = "Interes Caucion:";
             // 
             // lblArancelCaucion
             // 
             lblArancelCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblArancelCaucion.Location = new System.Drawing.Point(337, 25);
-            lblArancelCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblArancelCaucion.Location = new System.Drawing.Point(385, 33);
+            lblArancelCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblArancelCaucion.Name = "lblArancelCaucion";
-            lblArancelCaucion.Size = new System.Drawing.Size(328, 21);
+            lblArancelCaucion.Size = new System.Drawing.Size(375, 28);
             lblArancelCaucion.TabIndex = 25;
             lblArancelCaucion.Text = "Arancel";
             // 
             // lblDerMerCaucion
             // 
             lblDerMerCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblDerMerCaucion.Location = new System.Drawing.Point(337, 58);
-            lblDerMerCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDerMerCaucion.Location = new System.Drawing.Point(385, 77);
+            lblDerMerCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblDerMerCaucion.Name = "lblDerMerCaucion";
-            lblDerMerCaucion.Size = new System.Drawing.Size(328, 21);
+            lblDerMerCaucion.Size = new System.Drawing.Size(375, 28);
             lblDerMerCaucion.TabIndex = 26;
             lblDerMerCaucion.Text = "Der Mer";
             // 
             // lblGtoGtiaCaucion
             // 
             lblGtoGtiaCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblGtoGtiaCaucion.Location = new System.Drawing.Point(337, 90);
-            lblGtoGtiaCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblGtoGtiaCaucion.Location = new System.Drawing.Point(385, 120);
+            lblGtoGtiaCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblGtoGtiaCaucion.Name = "lblGtoGtiaCaucion";
-            lblGtoGtiaCaucion.Size = new System.Drawing.Size(328, 21);
+            lblGtoGtiaCaucion.Size = new System.Drawing.Size(375, 28);
             lblGtoGtiaCaucion.TabIndex = 27;
             lblGtoGtiaCaucion.Text = "Gto Gtia";
             // 
             // lblIva
             // 
             lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblIva.Location = new System.Drawing.Point(337, 119);
-            lblIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblIva.Location = new System.Drawing.Point(385, 159);
+            lblIva.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblIva.Name = "lblIva";
-            lblIva.Size = new System.Drawing.Size(328, 21);
+            lblIva.Size = new System.Drawing.Size(375, 28);
             lblIva.TabIndex = 28;
             lblIva.Text = "Iva";
             // 
             // lblInteresNeto
             // 
             lblInteresNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblInteresNeto.Location = new System.Drawing.Point(14, 119);
-            lblInteresNeto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblInteresNeto.Location = new System.Drawing.Point(16, 159);
+            lblInteresNeto.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblInteresNeto.Name = "lblInteresNeto";
-            lblInteresNeto.Size = new System.Drawing.Size(298, 21);
+            lblInteresNeto.Size = new System.Drawing.Size(341, 28);
             lblInteresNeto.TabIndex = 29;
             lblInteresNeto.Text = "Interes Neto";
             // 
@@ -534,11 +547,11 @@
             grpCaucion.Controls.Add(lblInteresCaucion);
             grpCaucion.Controls.Add(lblDerMerCaucion);
             grpCaucion.Controls.Add(lblArancelCaucion);
-            grpCaucion.Location = new System.Drawing.Point(24, 377);
-            grpCaucion.Margin = new System.Windows.Forms.Padding(2);
+            grpCaucion.Location = new System.Drawing.Point(27, 503);
+            grpCaucion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             grpCaucion.Name = "grpCaucion";
-            grpCaucion.Padding = new System.Windows.Forms.Padding(2);
-            grpCaucion.Size = new System.Drawing.Size(677, 190);
+            grpCaucion.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            grpCaucion.Size = new System.Drawing.Size(774, 253);
             grpCaucion.TabIndex = 6;
             grpCaucion.TabStop = false;
             grpCaucion.Text = "Caucion";
@@ -546,20 +559,20 @@
             // lblMontoCaucion
             // 
             lblMontoCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblMontoCaucion.Location = new System.Drawing.Point(14, 58);
-            lblMontoCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblMontoCaucion.Location = new System.Drawing.Point(16, 77);
+            lblMontoCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblMontoCaucion.Name = "lblMontoCaucion";
-            lblMontoCaucion.Size = new System.Drawing.Size(298, 21);
+            lblMontoCaucion.Size = new System.Drawing.Size(341, 28);
             lblMontoCaucion.TabIndex = 31;
             lblMontoCaucion.Text = "Importe a Caucionar:";
             // 
             // lblGastosCaucion
             // 
             lblGastosCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblGastosCaucion.Location = new System.Drawing.Point(337, 148);
-            lblGastosCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblGastosCaucion.Location = new System.Drawing.Point(385, 197);
+            lblGastosCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblGastosCaucion.Name = "lblGastosCaucion";
-            lblGastosCaucion.Size = new System.Drawing.Size(324, 21);
+            lblGastosCaucion.Size = new System.Drawing.Size(370, 28);
             lblGastosCaucion.TabIndex = 30;
             lblGastosCaucion.Text = "Total Gastos";
             // 
@@ -569,11 +582,11 @@
             groupBox2.Controls.Add(lblComisionTotal);
             groupBox2.Controls.Add(lblDifVentaCompra);
             groupBox2.Controls.Add(lblProfitPesos);
-            groupBox2.Location = new System.Drawing.Point(712, 377);
-            groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            groupBox2.Location = new System.Drawing.Point(814, 503);
+            groupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            groupBox2.Size = new System.Drawing.Size(668, 190);
+            groupBox2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            groupBox2.Size = new System.Drawing.Size(763, 253);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Profit / Loss";
@@ -581,19 +594,19 @@
             // lblNetoCaucion
             // 
             lblNetoCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblNetoCaucion.Location = new System.Drawing.Point(10, 58);
-            lblNetoCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblNetoCaucion.Location = new System.Drawing.Point(11, 77);
+            lblNetoCaucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             lblNetoCaucion.Name = "lblNetoCaucion";
-            lblNetoCaucion.Size = new System.Drawing.Size(449, 21);
+            lblNetoCaucion.Size = new System.Drawing.Size(513, 28);
             lblNetoCaucion.TabIndex = 23;
             lblNetoCaucion.Text = "Caución:";
             // 
             // settlementTermSettings1
             // 
-            settlementTermSettings1.Location = new System.Drawing.Point(630, 69);
-            settlementTermSettings1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            settlementTermSettings1.Location = new System.Drawing.Point(720, 92);
+            settlementTermSettings1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             settlementTermSettings1.Name = "settlementTermSettings1";
-            settlementTermSettings1.Size = new System.Drawing.Size(750, 55);
+            settlementTermSettings1.Size = new System.Drawing.Size(857, 73);
             settlementTermSettings1.TabIndex = 3;
             // 
             // chkWindowsToast
@@ -601,9 +614,10 @@
             chkWindowsToast.AutoSize = true;
             chkWindowsToast.Checked = true;
             chkWindowsToast.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkWindowsToast.Location = new System.Drawing.Point(169, 101);
+            chkWindowsToast.Location = new System.Drawing.Point(193, 135);
+            chkWindowsToast.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             chkWindowsToast.Name = "chkWindowsToast";
-            chkWindowsToast.Size = new System.Drawing.Size(133, 19);
+            chkWindowsToast.Size = new System.Drawing.Size(164, 24);
             chkWindowsToast.TabIndex = 31;
             chkWindowsToast.Text = "Mostrar notificacion";
             chkWindowsToast.UseVisualStyleBackColor = true;
@@ -613,11 +627,11 @@
             // 
             numAlert.DecimalPlaces = 2;
             numAlert.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numAlert.Location = new System.Drawing.Point(103, 100);
-            numAlert.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numAlert.Location = new System.Drawing.Point(118, 133);
+            numAlert.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             numAlert.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
             numAlert.Name = "numAlert";
-            numAlert.Size = new System.Drawing.Size(59, 23);
+            numAlert.Size = new System.Drawing.Size(67, 27);
             numAlert.TabIndex = 30;
             numAlert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             numAlert.Value = new decimal(new int[] { 15, 0, 0, 131072 });
@@ -625,18 +639,18 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(21, 102);
-            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Location = new System.Drawing.Point(24, 136);
+            label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(54, 15);
+            label4.Size = new System.Drawing.Size(68, 20);
             label4.TabIndex = 32;
             label4.Text = "Alerta %:";
             // 
             // FrmSettlementTermTrade
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1390, 580);
+            ClientSize = new System.Drawing.Size(1589, 773);
             Controls.Add(label4);
             Controls.Add(chkWindowsToast);
             Controls.Add(numAlert);
@@ -651,7 +665,7 @@
             Controls.Add(grpOwnedVenta);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             MaximizeBox = false;
             Name = "FrmSettlementTermTrade";
             Text = "Operación de Arbitraje";
@@ -721,5 +735,6 @@
         private System.Windows.Forms.CheckBox chkWindowsToast;
         private System.Windows.Forms.NumericUpDown numAlert;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkCuponUSD;
     }
 }

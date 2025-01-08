@@ -51,7 +51,7 @@ internal static class Alerts
         }
     }
 
-    public static void NotifyLongRatioTrade(string buySymbol, decimal buyPrice, string sellSymbol, decimal sellPrice, decimal ratio, nint? handle)
+    public static void NotifyLongRatioTrade(string ratioFormat, string buySymbol, decimal buyPrice, string sellSymbol, decimal sellPrice, decimal ratio, nint? handle)
     {
         var lastDate = _ratioTradeLowerNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
@@ -64,7 +64,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (long ratio)")
-                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratioCurrent:P2} (Ult. {ratio:P2})");
+                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratioCurrent.ToString(ratioFormat)} (Ult. {ratio.ToString(ratioFormat)})");
 
             if (handle != null)
             {
@@ -84,7 +84,7 @@ internal static class Alerts
         }
     }
 
-    public static void NotifyShortRatioTrade(string buySymbol, decimal buyPrice, string sellSymbol, decimal sellPrice, decimal ratio, nint? handle)
+    public static void NotifyShortRatioTrade(string ratioFormat, string buySymbol, decimal buyPrice, string sellSymbol, decimal sellPrice, decimal ratio, nint? handle)
     {
         var lastDate = _ratioTradeGreaterNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
         var dif = DateTime.Now - lastDate;
@@ -97,7 +97,7 @@ internal static class Alerts
                 .AddArgument("sellSymbol", sellSymbol)
                 .AddArgument("buySymbol", buySymbol)
                 .AddText("Rotación de activo (short ratio)")
-                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratioCurrent:P2} (Ult. {ratio:P2})");
+                .AddText($"Comprar {buySymbol.RemoveMervalPrefix()} {buyPrice:C2}\r\nVender {sellSymbol.RemoveMervalPrefix()} {sellPrice:C2}\r\nRatio: {ratioCurrent.ToString(ratioFormat)} (Ult. {ratio.ToString(ratioFormat)})");
 
             if (handle != null)
             {

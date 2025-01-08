@@ -124,6 +124,35 @@ public class Argentina
         return !(end < now && now < start);
     }
 
+    public static decimal GetDolarMEPCompra()
+    {
+        var instrumentDataPesos = Argentina.Data.GetLatestOrNull("AL30".ToMervalSymbol24H());
+        var instrumentDataDolar = Argentina.Data.GetLatestOrNull("AL30D".ToMervalSymbol24H());
+
+        if (instrumentDataPesos.HasOffers() && instrumentDataDolar.HasBids())
+        {
+            var precioPesos = instrumentDataPesos.GetTopOfferPrice();
+            var precioDolar = instrumentDataDolar.GetTopBidPrice();
+            return precioPesos / precioDolar;
+        }
+
+        return 0;
+    }
+
+    public static decimal GetDolarMEPVenta()
+    {
+        var instrumentDataPesos = Argentina.Data.GetLatestOrNull("AL30".ToMervalSymbol24H());
+        var instrumentDataDolar = Argentina.Data.GetLatestOrNull("AL30D".ToMervalSymbol24H());
+
+        if (instrumentDataPesos.HasBids() && instrumentDataDolar.HasOffers())
+        {
+            var precioPesos = instrumentDataPesos.GetTopBidPrice();
+            var precioDolar = instrumentDataDolar.GetTopOfferPrice();
+            return precioPesos / precioDolar;
+        }
+
+        return 0;
+    }
 
     public async Task Init()
     {
