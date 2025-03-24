@@ -59,7 +59,7 @@ public class RatioTrade
         SellThenBuy.RefreshData();
     }
 
-    public RatioTradeOperation CalculateTrade(decimal currencyRate) {
+    public RatioTradeOperation CalculateTrade() {
 
         // Calcular minima cantidad de nominales que tengo que operar
         var ownedTradeSize = SellThenBuy.GetMinSellOfferOrBuyBidSize();
@@ -69,6 +69,14 @@ public class RatioTrade
         if (ownedTradeSize == 0 || arbitrationTradeSize == 0)
         {
             return null;
+        }
+
+        var currencyRate = 1m;
+
+        if (SellThenBuy.IsSameCurrency() == false)
+        {
+            // Obtengo el tipo de cambio más bajo para calcular menor profit
+            currencyRate = Math.Min(SellThenBuyRatio, BuyThenSellRatio);
         }
 
         // Uso operacion en pesos

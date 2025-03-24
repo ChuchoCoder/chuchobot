@@ -29,7 +29,7 @@ public class RatioTradeTests : InstrumentTests
 
         ratioTrade.RefreshData();
 
-        var operation = ratioTrade.CalculateTrade(1285);
+        var operation = ratioTrade.CalculateTrade();
 
         operation.RatioTrade.BuyThenSellRatio.Should().BeApproximately(1295.64m, 0.01m);
         operation.RatioTrade.SellThenBuyRatio.Should().BeApproximately(1285.71m, 0.01m);
@@ -56,15 +56,15 @@ public class RatioTradeTests : InstrumentTests
         operation.ArbitrationSell.NetTotal.Should().BeApproximately(1711069.18m, 0.01m);
 
         // Neto en Pesos
-        operation.OwnedSell.NetTotalInPesos.Should().BeApproximately(1707395.64m, 0.01m);
+        operation.OwnedSell.NetTotalInPesos.Should().BeApproximately(1708344.72m, 0.01m);
         operation.OwnedBuy.NetTotalInPesos.Should().BeApproximately(1711655.28m, 0.01m);
 
-        operation.ArbitrationBuy.NetTotalInPesos.Should().BeApproximately(1697351.84m, 0.01m);
+        operation.ArbitrationBuy.NetTotalInPesos.Should().BeApproximately(1698295.34m, 0.01m);
         operation.ArbitrationSell.NetTotalInPesos.Should().BeApproximately(1711069.18m, 0.01m);
 
-        operation.ProfitTotalInPesos.Should().BeApproximately(9457.69m, 0.01m);
+        operation.ProfitTotalInPesos.Should().BeApproximately(9463.27m, 0.01m);
         operation.ProfitPercentage.Should().BeApproximately(0.0055m, 0.0001m);
-        operation.ComisionTotalInPesos.Should().BeApproximately(3650.48m, 0.01m);
+        operation.ComisionTotalInPesos.Should().BeApproximately(3651.49m, 0.01m);
 
     }
 }

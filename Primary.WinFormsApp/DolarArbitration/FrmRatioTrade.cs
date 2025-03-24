@@ -694,7 +694,7 @@ public partial class FrmRatioTrade : Form
         if (_autoTradeOperation == null)
         {
             _trade.RefreshData();
-            var autoTrade = _trade.CalculateTrade(numDolar.Value);
+            var autoTrade = _trade.CalculateTrade();
 
             if (autoTrade == null || autoTrade.ProfitPercentage <= numAutoTradePercentage.Value / 100m)
             {
