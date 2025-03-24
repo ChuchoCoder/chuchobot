@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace ChuchoBot.WinFormsApp.Tests;
 
-internal class InstrumentTests
+public class InstrumentTests
 {
 
-    public static void Initialize()
+    static InstrumentTests()
     {
         Assembly assembly = Assembly.GetExecutingAssembly();
         var instrumentsStream = assembly.GetManifestResourceStream("ChuchoBot.WinFormsApp.Tests.InstrumentsWithDetails.json");

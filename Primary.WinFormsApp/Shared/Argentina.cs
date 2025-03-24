@@ -1,5 +1,6 @@
 ﻿using ChuchoBot.WinFormsApp.Properties;
 using Newtonsoft.Json;
+using Primary;
 using Primary.Data;
 using Primary.WebSockets;
 using System;
@@ -22,13 +23,16 @@ public class Argentina
     public Primary.Api Api;
     public IEnumerable<InstrumentDetail> AllInstruments;
     private MarketDataWebSocket marketDataSocket;
+    private OrderDataWebSocket ordersDataSocket;
     public delegate void MarketDataEventHandler(Instrument instrument, Entries data);
     public event MarketDataEventHandler OnMarketData;
     public ConcurrentDictionary<string, Entries> LatestMarketData = new();
+    public ConcurrentDictionary<string, Primary.Data.Orders.OrderStatus> Orders = new();
 
     public Instrument[] WatchedInstruments { get; private set; }
 
     private CancellationTokenSource cancellationTokenSource;
+    private CancellationTokenSource ordersCancellationTokenSource;
     private static readonly TimeZoneInfo ArgentinaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Argentina Standard Time");
     private static DateTimeOffset Now => TimeZoneInfo.ConvertTime(DateTime.Now, ArgentinaTimeZone);
 
@@ -66,11 +70,13 @@ public class Argentina
     }
 
     public Primary.Api.Account[] Accounts { get; set; }
+    public string PrimaryAccount { get; set; }
 
     public void RefreshAccounts()
     {
         using var track = Telemetry.TrackTime(nameof(RefreshAccounts));
         Accounts = Api.GetAccounts().Result;
+        PrimaryAccount = Accounts.FirstOrDefault()?.Name;
     }
 
     public bool CanTickerBeSelledInCI(string ticker)
@@ -183,6 +189,43 @@ public class Argentina
                                                TaskScheduler.Default);
 
             yield return task.Unwrap();
+        }
+    }
+
+    public Task WatchOrdersWithWebSocket()
+    {
+
+        try
+        {
+            if (ordersCancellationTokenSource != null)
+            {
+                ordersCancellationTokenSource.Cancel();
+                ordersDataSocket.Dispose();
+            }
+        }
+        catch (Exception ex)
+        {
+            Telemetry.LogWarning(nameof(WatchWithWebSocket), ex);
+        }
+        ordersCancellationTokenSource = new CancellationTokenSource();
+        var accounts = new[] { PrimaryAccount };
+        // Subscribe to all entries of Primary Account
+        ordersDataSocket = Api.CreateOrderDataSocket(accounts, ordersCancellationTokenSource.Token);
+
+        ordersDataSocket.OnData = OnReceiveOrdersData;
+        return marketDataSocket.Start().Unwrap();
+    }
+
+    private void OnReceiveOrdersData(Api api, OrderData data)
+    {
+        try
+        {
+            Orders.AddOrUpdate(data.OrderReport.Id, data.OrderReport, (key, value) => data.OrderReport);
+        }
+        catch (Exception ex)
+        {
+            Telemetry.LogError(nameof(OnReceiveOrdersData), ex);
+            throw;
         }
     }
 

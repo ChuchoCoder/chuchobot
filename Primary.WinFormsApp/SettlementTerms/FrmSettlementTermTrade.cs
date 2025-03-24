@@ -263,7 +263,7 @@ public partial class FrmSettlementTermTrade : Form
                 lblProfitPesos.ForeColor = Color.Red;
             }
 
-            if (chkWindowsToast.Checked && _trade.ProfitLossPercentage > numAlert.Value)
+            if (chkWindowsToast.Checked && _trade.ProfitLossPercentage * 100 > numAlert.Value)
             {
                 Alerts.NotifySettlementTrade(_trade, Handle);
             }

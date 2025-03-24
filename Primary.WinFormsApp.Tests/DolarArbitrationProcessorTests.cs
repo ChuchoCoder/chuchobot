@@ -12,10 +12,6 @@ namespace ChuchoBot.WinFormsApp.Tests;
 
 public class DolarArbitrationProcessorTests
 {
-    public DolarArbitrationProcessorTests()
-    {
-        InstrumentTests.Initialize();
-    }
 
     [Fact]
     public void Arbitrar_Dolar_MEP_BABA_AL30()

@@ -59,8 +59,15 @@ public static class InstrumentExtensions
         return exists;
     }
 
+    /// <summary>
+    /// Letras y Bonos no pagan IVA sobre Derechos de Mercado
+    /// </summary>
+    /// <param name="instrumentDetail"></param>
+    /// <returns></returns>
     public static decimal GetDerechosDeMercado(this InstrumentDetail instrumentDetail)
     {
+        decimal ddm = Properties.Settings.Default.DerechoMercado;
+
         // https://www.byma.com.ar/que-es-byma/derechos-membresias-2/
         if (instrumentDetail.IsCEDEAR() || instrumentDetail.IsAccion())
         {
@@ -71,6 +78,7 @@ public static class InstrumentExtensions
         }
         else
         {
+            // Letras y Bonos no pagan IVA sobre Derechos de Mercado
             return instrumentDetail.IsLetra()
                 ? (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercadoLetra) / 100m
                 : (Properties.Settings.Default.Comision + Properties.Settings.Default.DerechoMercado) / 100m;

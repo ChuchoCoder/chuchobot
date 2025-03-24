@@ -3,13 +3,8 @@
 namespace ChuchoBot.WinFormsApp.Tests;
 
 
-public class Aranceles
+public class ArancelesTests : InstrumentTests
 {
-    public Aranceles()
-    {
-        InstrumentTests.Initialize();
-    }
-
     [Fact]
     public void CEDEARs_Calcular_DerechosMercado()
     {

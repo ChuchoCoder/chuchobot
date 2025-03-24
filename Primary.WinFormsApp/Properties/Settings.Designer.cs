@@ -49,7 +49,7 @@ namespace ChuchoBot.WinFormsApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("900")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1070")]
         public decimal USDARS {
             get {
                 return ((decimal)(this["USDARS"]));
@@ -160,12 +160,8 @@ namespace ChuchoBot.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
-  <string>S17E5;S2E5D;S2E5C</string>
-  <string>S31E5;SE5D;SE5C</string>
-  <string>S14F5;SF5D;SF5C</string>
-</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
+            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection TickersDC {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["TickersDC"]));

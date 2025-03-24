@@ -75,7 +75,7 @@ public partial class FrmDolarPrice : Form
 
         foreach (var trade in trades)
         {
-            var tradeKey = trade.Trade;
+            var tradeKey = trade.TradeText;
 
             DataRow row;
             var existingRow = dataTable.Rows.Find(new[] { tradeKey });

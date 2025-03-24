@@ -1,4 +1,5 @@
-﻿using ChuchoBot.WinFormsApp.SettlementTerms;
+﻿using ChuchoBot.WinFormsApp.DolarArbitration;
+using ChuchoBot.WinFormsApp.SettlementTerms;
 using ChuchoBot.WinFormsApp.Shared;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System;
@@ -15,6 +16,7 @@ internal static class Alerts
 
     private static Dictionary<string, DateTime> _ratioTradeLowerNotificationDate = new();
     private static Dictionary<string, DateTime> _ratioTradeGreaterNotificationDate = new();
+    private static Dictionary<string, DateTime> _ratioTradeLossNotificationDate = new();
 
     public static void NotifySettlementTrade(SettlementTermTrade trade, nint? handle)
     {
@@ -113,6 +115,49 @@ internal static class Alerts
             else
             {
                 _ratioTradeGreaterNotificationDate[sellSymbol + buySymbol] = DateTime.Now;
+            }
+        }
+    }
+
+    public static void NotifyRatioTradeLoss(RatioTrade trade, decimal profit, nint handle)
+    {
+
+        var sellSymbol = trade.SellThenBuy.Buy.Instrument.InstrumentId.SymbolWithoutPrefix();
+        var buySymbol = trade.BuyThenSell.Sell.Instrument.InstrumentId.SymbolWithoutPrefix();
+        var lastDate = _ratioTradeLossNotificationDate.GetValueOrDefault(sellSymbol + buySymbol);
+
+        var dif = DateTime.Now - lastDate;
+        if (dif > _notificationThreshold)
+        {
+            var sellPrice = trade.SellThenBuy.SellPrice;
+            var buyPrice = trade.BuyThenSell.BuyPrice;
+            var ratioCurrent = (sellPrice / buyPrice) - 1;
+
+            var isSameCurrency = trade.SellThenBuy.Buy.Instrument.Currency == trade.SellThenBuy.Sell.Instrument.Currency;
+
+            var ratioFormat = isSameCurrency ? "P" : "C2";
+
+            var toastBuilder = new ToastContentBuilder()
+                .AddArgument("action", "ratioTradeAlert")
+                .AddArgument("sellSymbol", sellSymbol)
+                .AddArgument("buySymbol", buySymbol)
+                .AddText("Pérdida en ratio")
+                .AddText($"Compra {buySymbol} {buyPrice:C2}\r\nVender {sellSymbol} {sellPrice:C2}\r\nPérdida: {profit:C2}");
+
+            if (handle != null)
+            {
+                toastBuilder.AddArgument("handle", handle);
+            }
+
+            toastBuilder.Show();
+
+            if (lastDate == default)
+            {
+                _ratioTradeLossNotificationDate.Add(sellSymbol + buySymbol, DateTime.Now);
+            }
+            else
+            {
+                _ratioTradeLossNotificationDate[sellSymbol + buySymbol] = DateTime.Now;
             }
         }
     }

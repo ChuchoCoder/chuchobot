@@ -29,7 +29,7 @@ public partial class FrmInstrumentsCheckList : Form
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-        var settings = instrumentCheckList1.SelectedItems.Cast<string>().ToArray();
+        var settings = instrumentCheckList1.SelectedItems.Distinct().Cast<string>().ToArray();
 
         if (Validator == null || Validator(settings))
         {

@@ -17,7 +17,8 @@ public partial class FrmMain : Form
     private List<string> watchList;
     private Instrument[] _watchedInstruments;
     private DateTime _lastUpdate;
-    private Task primaryWebSocket;
+    private Task primaryMarketDataWebSocket;
+    private Task primaryOrdersWebSocket;
     private readonly System.Timers.Timer AccountsTimer = new(1000);
     private readonly System.Timers.Timer PositionsTimer = new(1000);
     private bool LoginSuccessfull;
@@ -224,7 +225,8 @@ public partial class FrmMain : Form
 
             Argentina.Data.OnMarketData += Data_OnMarketData;
 
-            primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
+            primaryMarketDataWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
+            primaryOrdersWebSocket = Argentina.Data.WatchOrdersWithWebSocket();
         }
     }
 
@@ -355,7 +357,8 @@ public partial class FrmMain : Form
 
     private void connectToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        primaryWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
+        primaryMarketDataWebSocket = Argentina.Data.WatchWithWebSocket(_watchedInstruments);
+        primaryOrdersWebSocket = Argentina.Data.WatchOrdersWithWebSocket();
     }
 
     private void compraMEPToolStripMenuItem_Click(object sender, EventArgs e)

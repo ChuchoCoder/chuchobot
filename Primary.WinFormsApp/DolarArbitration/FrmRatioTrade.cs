@@ -1,9 +1,14 @@
 ﻿using ChuchoBot.WinFormsApp.Components;
 using ChuchoBot.WinFormsApp.DolarArbitration;
 using ChuchoBot.WinFormsApp.Shared;
+using Primary.Data;
+using Primary.Data.Orders;
 using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ChuchoBot.WinFormsApp;
 
@@ -515,6 +520,10 @@ public partial class FrmRatioTrade : Form
 
         lblHeader.ForeColor = profit < 0 ? Color.Red : Color.DarkGreen;
 
+        if (profit < 0)
+        {
+            Alerts.NotifyRatioTradeLoss(_trade, profit, Handle);
+        }
 
         CompleteOwnedCompra();
     }
@@ -671,5 +680,41 @@ public partial class FrmRatioTrade : Form
     private void chkArbitrationCompra_CheckedChanged(object sender, EventArgs e)
     {
         ArbitrationSizeAutoUpdate = chkArbitrationCompra.Checked;
+    }
+
+    private void chkAutoTrade_CheckedChanged(object sender, EventArgs e)
+    {
+        timerAutoTrade.Enabled = chkAutoTrade.Checked;
+    }
+
+    private RatioTradeOperation _autoTradeOperation;
+
+    private async void timerAutoTrade_Tick(object sender, EventArgs e)
+    {
+        if (_autoTradeOperation == null)
+        {
+            _trade.RefreshData();
+            var autoTrade = _trade.CalculateTrade(numDolar.Value);
+
+            if (autoTrade == null || autoTrade.ProfitPercentage <= numAutoTradePercentage.Value / 100m)
+            {
+                return;
+            }
+
+            txtAutoTrade.Text += $"Profit: {autoTrade.ProfitTotalInPesos:c} ({autoTrade.ProfitPercentage:P}) ";
+            _autoTradeOperation = autoTrade;
+            // Trade con profit, empezamos a auto operar
+            chkAutoTrade.Enabled = false;
+            timerAutoTrade.Enabled = false;
+            await _autoTradeOperation.Operate();
+            timerAutoTradeOperation.Enabled = true;
+            txtAutoTrade.Text += _autoTradeOperation.OperationLog;
+        }
+
+    }
+
+    private async void timerAutoTradeOperation_Tick(object sender, EventArgs e)
+    {
+        _autoTradeOperation.Operate();
     }
 }
