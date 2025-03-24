@@ -131,7 +131,7 @@ internal static class Alerts
         {
             var sellPrice = trade.SellThenBuy.SellPrice;
             var buyPrice = trade.BuyThenSell.BuyPrice;
-            var ratioCurrent = (sellPrice / buyPrice) - 1;
+            var ratioCurrent = buyPrice > 0 ? (sellPrice / buyPrice) - 1 : 0;
 
             var isSameCurrency = trade.SellThenBuy.Buy.Instrument.Currency == trade.SellThenBuy.Sell.Instrument.Currency;
 

@@ -1,6 +1,7 @@
 ﻿using Primary.Data;
 using System.Diagnostics;
 using Primary.Data.Orders;
+using System;
 
 namespace ChuchoBot.WinFormsApp.Shared;
 
@@ -67,23 +68,43 @@ public class InstrumentWithData
         return HasBids() ? Data.GetTopOfferPrice() : null;
     }
 
-    public InstrumentOperation SellOperation(decimal size, decimal currencyRate)
+    public decimal CalculateOfferSize(decimal total)
+    {
+        var offerPrice = OfferPrice();
+        if (offerPrice.HasValue == false)
+            return decimal.Zero;
+
+        var size = Math.Truncate(total / offerPrice.Value / Instrument.PriceConvertionFactor);
+        return size;
+    }
+
+    public decimal CalculateBidSize(decimal total)
+    {
+        var bidPrice = BidPrice();
+        if (bidPrice.HasValue == false)
+            return decimal.Zero;
+
+        var size = Math.Truncate(total / bidPrice.Value / Instrument.PriceConvertionFactor);
+        return size;
+    }
+
+    public InstrumentOperation SellOperation(decimal size)
     {
         var price = BidPrice();
 
         if (price == null)
-            return null;
+            price = decimal.MinValue;
 
-        return new InstrumentOperation(Side.Sell, size, price.Value, currencyRate, Instrument);
+        return new InstrumentOperation(Side.Sell, size, price.Value, Instrument);
     }
 
-    public InstrumentOperation BuyOperation(decimal size, decimal currencyRate)
+    public InstrumentOperation BuyOperation(decimal size)
     {
         var price = OfferPrice();
 
         if (price == null)
-            return null;
+            price = decimal.MaxValue;
 
-        return new InstrumentOperation(Side.Buy, size, price.Value, currencyRate, Instrument);
+        return new InstrumentOperation(Side.Buy, size, price.Value, Instrument);
     }
 }

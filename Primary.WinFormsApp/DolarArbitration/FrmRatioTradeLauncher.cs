@@ -46,26 +46,27 @@ public partial class FrmRatioTradeLauncher : Form
         if (instrumentSearchListSell.ValidateSelectedInstrument()
            && instrumentSearchListBuy.ValidateSelectedInstrument())
         {
-            var sell = instrumentSearchListSell.SelectedInstrument;
+            var owned = instrumentSearchListSell.SelectedInstrument;
 
-            var sellSymbol = sell.AddMervalPrefix();
-            var sellMep = sell.Replace(" -", "D -");
-            var sellMepSymbol = sellMep.AddMervalPrefix();
+            var ownedBuySymbol = owned.AddMervalPrefix();
+            var ownedSellDolar = owned.Replace(" -", "D -");
+            var ownedSellSymbol = ownedSellDolar.AddMervalPrefix();
 
-            var sellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(sellSymbol));
-            var sellMepInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(sellMepSymbol));
+            var ownedBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedBuySymbol));
+            var ownedSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedSellSymbol));
 
-            var buy = instrumentSearchListBuy.SelectedInstrument;
+            var arbitration = instrumentSearchListBuy.SelectedInstrument;
 
-            var buySymbol = buy.AddMervalPrefix();
-            var buyMep = buy.Replace(" -", "D -");
-            var buyMepSymbol = buyMep.AddMervalPrefix();
-            var buyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(buySymbol));
-            var buyMepInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(buyMepSymbol));
+            var arbitrationSellSymbol = arbitration.AddMervalPrefix();
+            var arbitrationBuyDolar = arbitration.Replace(" -", "D -");
+            var arbitrationBuySymbol = arbitrationBuyDolar.AddMervalPrefix();
 
-            var sellTrade = new BuySellTrade(sellInstrumentWithData, sellMepInstrumentWithData);
-            var buyTrade = new BuySellTrade(buyInstrumentWithData, buyMepInstrumentWithData);
-            var ratioTrade = new RatioTrade(sellTrade, buyTrade);
+            var arbitrationBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationBuySymbol));
+            var arbitrationSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationSellSymbol));
+
+            var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
+            var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
+            var ratioTrade = new RatioTrade(sellThenBuyTrade, buyThenSellTrade);
 
             var frmRatioTrade = new FrmRatioTrade();
             frmRatioTrade.Init(ratioTrade);

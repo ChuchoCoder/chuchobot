@@ -53,6 +53,22 @@ public class RatioTrade
         return Math.Min(sellThenBuyMinSize, buyThenSellMinSize);
     }
 
+    public decimal CurrencyRate
+    {
+        get
+        {
+            var currencyRate = 1m;
+
+            if (SellThenBuy.IsSameCurrency() == false)
+            {
+                // Obtengo el tipo de cambio más bajo para calcular menor profit
+                currencyRate = Math.Min(SellThenBuyRatio, BuyThenSellRatio);
+            }
+
+            return currencyRate;
+        }
+    }
+
     internal void RefreshData()
     {
         BuyThenSell.RefreshData();
@@ -66,48 +82,39 @@ public class RatioTrade
 
         var arbitrationTradeSize = BuyThenSell.GetMinBuyOfferOrSellBidSize();
 
-        if (ownedTradeSize == 0 || arbitrationTradeSize == 0)
-        {
-            return null;
-        }
-
-        var currencyRate = 1m;
-
-        if (SellThenBuy.IsSameCurrency() == false)
-        {
-            // Obtengo el tipo de cambio más bajo para calcular menor profit
-            currencyRate = Math.Min(SellThenBuyRatio, BuyThenSellRatio);
-        }
+        //if (ownedTradeSize == 0 || arbitrationTradeSize == 0)
+        //{
+        //    return null;
+        //}
 
         // Uso operacion en pesos
-        var ownedBuyOperation = SellThenBuy.Buy.BuyOperation(ownedTradeSize, currencyRate);
-        var arbitrationSellOperation = BuyThenSell.Sell.SellOperation(arbitrationTradeSize, currencyRate);
+        var ownedBuyOperation = SellThenBuy.Buy.BuyOperation(ownedTradeSize);
+        var arbitrationSellOperation = BuyThenSell.Sell.SellOperation(arbitrationTradeSize);
 
         if (ownedBuyOperation.NetTotalInPesos > arbitrationSellOperation.NetTotalInPesos)
         {
-            arbitrationTradeSize = Math.Truncate(ownedBuyOperation.NetTotalInPesos / BuyThenSell.Sell.BidPrice().Value / BuyThenSell.Sell.Instrument.PriceConvertionFactor);
-            arbitrationSellOperation = BuyThenSell.Sell.SellOperation(arbitrationTradeSize, currencyRate);
+            arbitrationTradeSize = BuyThenSell.Sell.CalculateBidSize(ownedBuyOperation.NetTotalInPesos);
+            arbitrationSellOperation = BuyThenSell.Sell.SellOperation(arbitrationTradeSize);
         }
         else
         {
-            ownedTradeSize = Math.Truncate(arbitrationSellOperation.NetTotalInPesos / SellThenBuy.Buy.OfferPrice().Value / BuyThenSell.Buy.Instrument.PriceConvertionFactor);
-            ownedBuyOperation = SellThenBuy.Buy.BuyOperation(ownedTradeSize, currencyRate);
+            ownedTradeSize = BuyThenSell.Buy.CalculateOfferSize(arbitrationSellOperation.NetTotalInPesos);
+            ownedBuyOperation = SellThenBuy.Buy.BuyOperation(ownedTradeSize);
         }
 
-        if (ownedTradeSize == 0m && arbitrationTradeSize == 0m)
-        {
-            // El minimo de nominales de alguno de los lados no cubre el total de la operación
-            return null;
-        }
+        //if (ownedTradeSize == 0m && arbitrationTradeSize == 0m)
+        //{
+        //    // El minimo de nominales de alguno de los lados no cubre el total de la operación
+        //    return null;
+        //}
 
         // Dolar
-        var ownedSellOperation = SellThenBuy.Sell.SellOperation(ownedTradeSize, currencyRate);
-        var arbitrationBuyOperation = BuyThenSell.Buy.BuyOperation(arbitrationTradeSize, currencyRate);
+        var ownedSellOperation = SellThenBuy.Sell.SellOperation(ownedTradeSize);
+        var arbitrationBuyOperation = BuyThenSell.Buy.BuyOperation(arbitrationTradeSize);
 
         var ratioTrade = new RatioTradeOperation
         {
             RatioTrade = this,
-            CurrencyRate = currencyRate,
             OwnedSell = ownedSellOperation,
             OwnedBuy = ownedBuyOperation,
             ArbitrationBuy = arbitrationBuyOperation,

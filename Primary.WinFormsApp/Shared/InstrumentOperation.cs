@@ -1,7 +1,9 @@
 ﻿using Primary.Data;
 using Primary.Data.Orders;
+using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO.Pipelines;
 using System.Threading.Tasks;
 
 namespace ChuchoBot.WinFormsApp.Shared;
@@ -10,20 +12,12 @@ namespace ChuchoBot.WinFormsApp.Shared;
 public class InstrumentOperation
 {
 
-    public InstrumentOperation(Side side, decimal size, decimal price, decimal currencyRate, InstrumentDetail instrumentDetail)
+    public InstrumentOperation(Side side, decimal size, decimal price, InstrumentDetail instrumentDetail)
     {
         Side = side;
         Size = size;
         Price = price;
-        // Si es Pesos usar 1 como currency rate para que no haya conversion
-        CurrencyRate = instrumentDetail.IsPesos() ? 1 : currencyRate;
         InstrumentDetail = instrumentDetail;
-
-        // PriceConvertionFactor: Bonos 100, Acciones/Cedears 1
-        var priceConvertionFactor = instrumentDetail.PriceConvertionFactor;
-
-        Total = size * price * priceConvertionFactor;
-        Comision = instrumentDetail.CalculateComisionDerechosMercado(Total);
 
     }
 
@@ -32,7 +26,13 @@ public class InstrumentOperation
     public Side Side { get; }
 
     // Precio del dolar MEP/CCL o 1 cuando es todo en pesos
-    public decimal CurrencyRate { get; }
+    public decimal CurrencyRate
+    {
+        get
+        {
+            return InstrumentDetail.IsPesos() ? 1 : CurrencyRateMepAL30Venta.Instance.Value;
+        }
+    }
 
     public InstrumentDetail InstrumentDetail { get; }
 
@@ -40,11 +40,12 @@ public class InstrumentOperation
     public decimal Price { get; set; }
 
     // Owned Sell es Dolar cuando es arbitraje de MEP/CCL
-    public decimal Total { get; }
-    public decimal Comision { get; }
+    public decimal Total => Size * Price * InstrumentDetail.PriceConvertionFactor;
+    public decimal Comision => InstrumentDetail.CalculateComisionDerechosMercado(Total);
     public decimal NetTotal => Side == Side.Buy ? Total + Comision : Total - Comision;
 
     public decimal ComisionInPesos => Comision * CurrencyRate;
+    public decimal TotalInPesos => Total * CurrencyRate;
     public decimal NetTotalInPesos => NetTotal * CurrencyRate;
 
     public Order Order { get; private set; }
@@ -60,13 +61,22 @@ public class InstrumentOperation
         }
     }
 
+    public decimal UpdateSize(decimal netTotal)
+    {
+        if (Price == 0)
+            return decimal.Zero;
+        var size = Math.Truncate(netTotal / Price / InstrumentDetail.PriceConvertionFactor);
+        Size = size <= 0 ? 0 : size;
+        return Size;
+    }
+
     public async Task SubmitOrder()
     {
         Order = new Order()
         {
             Instrument = InstrumentDetail.InstrumentId,
             Expiration = Expiration.Day,
-            Type = Type.Limit,
+            Type = Primary.Data.Orders.Type.Limit,
             Side = Side,
             Quantity = (int)Size,
             Price = Price

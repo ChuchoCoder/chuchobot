@@ -1,5 +1,6 @@
 ﻿using ChuchoBot.WinFormsApp.Shared;
 using Primary.Data.Orders;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -9,9 +10,6 @@ namespace ChuchoBot.WinFormsApp.DolarArbitration;
 public class RatioTradeOperation
 {
     public string OperationLog { get; private set; } = string.Empty;
-
-    // Precio del dolar MEP/CCL o 1 cuando es todo en pesos
-    public decimal CurrencyRate { get; init; }
 
     public RatioTrade RatioTrade { get; init; }
 

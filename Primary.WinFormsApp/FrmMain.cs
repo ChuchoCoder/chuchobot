@@ -105,12 +105,13 @@ public partial class FrmMain : Form
             //frmArbitrationAnalyzer.MdiParent = this;
             //frmArbitrationAnalyzer.WindowState = FormWindowState.Maximized;
             //frmArbitrationAnalyzer.Show();
-
+            /*
             var frmSettlementAnalyzer = new FrmSettlementTermsAnalyzer
             {
                 WindowState = FormWindowState.Maximized
             };
             frmSettlementAnalyzer.Show();
+            */
         }
     }
 

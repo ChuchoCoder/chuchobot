@@ -142,7 +142,7 @@ public class Argentina
             return precioPesos / precioDolar;
         }
 
-        return 0;
+        return Properties.Settings.Default.USDARS;
     }
 
     public static decimal GetDolarMEPVenta()
@@ -157,7 +157,7 @@ public class Argentina
             return precioPesos / precioDolar;
         }
 
-        return 0;
+        return Properties.Settings.Default.USDARS;
     }
 
     public async Task Init()

@@ -734,7 +734,7 @@
             lblProfitPesos.Name = "lblProfitPesos";
             lblProfitPesos.Size = new System.Drawing.Size(214, 21);
             lblProfitPesos.TabIndex = 22;
-            lblProfitPesos.Text = "Total Ganancia:";
+            lblProfitPesos.Text = "Profit Pesos:";
             lblProfitPesos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkComprarNominales
