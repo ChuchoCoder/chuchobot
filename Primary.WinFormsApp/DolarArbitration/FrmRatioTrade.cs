@@ -67,8 +67,8 @@ public partial class FrmRatioTrade : Form
         OwnedVentaBidsOffers.LoadData(_trade.SellThenBuy.Sell.Data);
         OwnedCompraBidsOffers.LoadData(_trade.SellThenBuy.Buy.Data);
 
-        ArbitrationCompraBidsOffers.LoadData(_trade.BuyThenSell.Sell.Data);
-        ArbitrationVentaBidsOffers.LoadData(_trade.BuyThenSell.Buy.Data);
+        ArbitrationCompraBidsOffers.LoadData(_trade.BuyThenSell.Buy.Data);
+        ArbitrationVentaBidsOffers.LoadData(_trade.BuyThenSell.Sell.Data);
 
         if (OwnedVentaPriceAutoUpdate)
         {
@@ -77,12 +77,12 @@ public partial class FrmRatioTrade : Form
 
         if (ArbitrationCompraPriceAutoUpdate)
         {
-            ArbitrationCompraPrice = _trade.BuyThenSell.Sell.Data.GetTopOfferPrice();
+            ArbitrationCompraPrice = _trade.BuyThenSell.Buy.Data.GetTopOfferPrice();
         }
 
         if (ArbitrationVentaPriceAutoUpdate)
         {
-            ArbitrationVentaPrice = _trade.BuyThenSell.Buy.Data.GetTopBidPrice();
+            ArbitrationVentaPrice = _trade.BuyThenSell.Sell.Data.GetTopBidPrice();
         }
 
         if (OwnedCompraPriceAutoUpdate)
@@ -92,6 +92,10 @@ public partial class FrmRatioTrade : Form
 
         CalculateOwnedAutoSize();
 
+        if (_tradeOperation.ProfitTotalInPesos < 0)
+        {
+            Alerts.NotifyRatioTradeLoss(_trade, _tradeOperation.ProfitTotalInPesos, Handle);
+        }
     }
 
     public decimal OwnedCompraPrice
@@ -128,7 +132,9 @@ public partial class FrmRatioTrade : Form
             if (!numOwnedVentaSize.Focused)
             {
                 _tradeOperation.OwnedSell.Size = value;
+                _tradeOperation.OwnedBuy.Size = value;
                 numOwnedVentaSize.Value = value;
+                numOwnedCompraSize.Value = value;
             }
         }
     }
@@ -167,7 +173,9 @@ public partial class FrmRatioTrade : Form
             if (!numArbitrationCompraSize.Focused)
             {
                 _tradeOperation.ArbitrationBuy.Size = value;
+                _tradeOperation.ArbitrationSell.Size = value;
                 numArbitrationCompraSize.Value = value;
+                numArbitrationVentaSize.Value = value;
             }
         }
     }
@@ -289,35 +297,36 @@ public partial class FrmRatioTrade : Form
         {
             if (ArbitrationSizeAutoUpdate == false)
             {
-                if (_trade.SellThenBuy.Buy.HasOffers())
-                {
-                    var buyPrice = OwnedVentaPriceAutoUpdate ? _trade.SellThenBuy.Sell.Data.GetTopOfferPrice() : OwnedVentaPrice;
-                    var compra = ArbitrationCompraSize * ArbitrationCompraPrice * _trade.BuyThenSell.Buy.Instrument.PriceConvertionFactor;
-                    var ventaSize = compra / (buyPrice * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor);
-                    OwnedVentaSize = ventaSize;
-                }
+                var size = _trade.SellThenBuy.Sell.CalculateOfferSize(_tradeOperation.ArbitrationBuy.NetTotal);
+                OwnedVentaSize = size;
             }
             else
             {
-                var sellTotal = 1m;
-                var sellBidPrice = 1m;
-                if (_trade.SellThenBuy.Sell.HasBids())
-                {
-                    var sellBidSize = _trade.SellThenBuy.Sell.Data.GetTopBidSize();
-                    sellBidPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice() * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor;
-                    sellTotal = sellBidSize * sellBidPrice;
-                }
+                //var sellTotal = 1m;
+                //var sellBidPrice = 1m;
+                //if (_trade.SellThenBuy.Sell.HasBids())
+                //{
+                //    var sellBidSize = _trade.SellThenBuy.Sell.Data.GetTopBidSize();
+                //    sellBidPrice = _trade.SellThenBuy.Sell.Data.GetTopBidPrice() * _trade.SellThenBuy.Sell.Instrument.PriceConvertionFactor;
+                //    sellTotal = sellBidSize * sellBidPrice;
+                //}
 
-                var buyTotal = 1m;
-                if (_trade.BuyThenSell.Sell.HasOffers())
-                {
-                    var buyOfferSize = _trade.BuyThenSell.Sell.Data.GetTopOfferSize();
-                    var buyOfferPrice = _trade.BuyThenSell.Sell.Data.GetTopOfferPrice() * _trade.BuyThenSell.Sell.Instrument.PriceConvertionFactor;
-                    buyTotal = buyOfferSize * buyOfferPrice;
-                }
-
-                OwnedVentaSize = Math.Min(sellTotal, buyTotal) / sellBidPrice;
+                //var buyTotal = 1m;
+                //if (_trade.BuyThenSell.Sell.HasOffers())
+                //{
+                //    var buyOfferSize = _trade.BuyThenSell.Sell.Data.GetTopOfferSize();
+                //    var buyOfferPrice = _trade.BuyThenSell.Sell.Data.GetTopOfferPrice() * _trade.BuyThenSell.Sell.Instrument.PriceConvertionFactor;
+                //    buyTotal = buyOfferSize * buyOfferPrice;
+                //}
+                //OwnedVentaSize = Math.Min(sellTotal, buyTotal) / sellBidPrice;
+                var size = _trade.SellThenBuy.GetMinSellBidOrBuyOfferSize();
+                OwnedVentaSize = size;
             }
+        }
+        else if (ArbitrationSizeAutoUpdate)
+        {
+            // var size = _trade.BuyThenSell.GetMinBuyOfferOrSellBidSize();
+            // ArbitrationCompraSize = size;
         }
     }
 
@@ -539,11 +548,6 @@ public partial class FrmRatioTrade : Form
 
         lblHeader.ForeColor = _tradeOperation.ProfitTotalInPesos < 0 ? Color.Red : Color.DarkGreen;
 
-        if (_tradeOperation.ProfitTotalInPesos < 0)
-        {
-            Alerts.NotifyRatioTradeLoss(_trade, _tradeOperation.ProfitTotalInPesos, Handle);
-        }
-
         CompleteOwnedCompra();
     }
 
@@ -674,7 +678,10 @@ public partial class FrmRatioTrade : Form
     private void numArbitrationCompraSize_ValueChanged(object sender, EventArgs e)
     {
         _tradeOperation.ArbitrationBuy.Size = ArbitrationCompraSize;
-        UpdateOwnedVentaSize();
+        if (ArbitrationSizeAutoUpdate == false)
+        {
+            UpdateOwnedVentaSize();
+        }
     }
 
     private void numArbitrationCompraSize_KeyPress(object sender, KeyPressEventArgs e)

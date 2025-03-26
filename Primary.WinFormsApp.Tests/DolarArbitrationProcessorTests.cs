@@ -10,7 +10,7 @@ using static Primary.Api;
 
 namespace ChuchoBot.WinFormsApp.Tests;
 
-public class DolarArbitrationProcessorTests
+public class DolarArbitrationProcessorTests: InstrumentTests
 {
 
     [Fact]
@@ -33,7 +33,7 @@ public class DolarArbitrationProcessorTests
         Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - AL30D - 24hs", EntriesBuilder.Create(100, 70m, 70.01m), (s, u) => u);
         Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - AL30 - 24hs", EntriesBuilder.Create(100, 77000m, 77020m), (s, u) => u);
 
-        var dolarArbi = new DolarArbitrationProcessor();
+        var dolarArbi = new DolarArbitrationProcessor(["AL30"]);
 
         dolarArbi.Init();
 

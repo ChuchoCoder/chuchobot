@@ -10,6 +10,16 @@ namespace ChuchoBot.WinFormsApp.DolarArbitration;
 public class DolarArbitrationProcessor
 {
     public List<DolarArbitrationInstruments> dolarArbitrationPairCollection = [];
+    public IEnumerable<string> TickersToMonitor;
+
+    public DolarArbitrationProcessor() : this(Properties.Settings.Default.TickersToMonitor.Cast<string>())
+    {
+    }
+
+    public DolarArbitrationProcessor(IEnumerable<string> tickersToMonitor)
+    {
+        TickersToMonitor = tickersToMonitor;
+    }
 
     internal void Init()
     {
@@ -18,7 +28,7 @@ public class DolarArbitrationProcessor
             var ticker = ownedTicker.Symbol.GetTicker();
             var owned = new DolarTradedInstrument(ticker);
 
-            foreach (var arbitrationTicker in Properties.Settings.Default.TickersToMonitor)
+            foreach (var arbitrationTicker in TickersToMonitor)
             {
                 if (ticker != arbitrationTicker)
                 {

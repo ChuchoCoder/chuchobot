@@ -26,7 +26,7 @@ public class RatioTrade
         BuyThenSell = buyThenSell;
     }
 
-    public decimal Profit => BuyThenSell.SellPrice > 0 && SellThenBuy.BuyPrice > 0 ? (BuyThenSell.SellPrice / SellThenBuy.BuyPrice) - 1 : -100;
+    public decimal Profit => BuyThenSellRatio > 0 && SellThenBuyRatio > 0 ? (BuyThenSellRatio / SellThenBuyRatio) - 1 : -100;
 
     public decimal ProfitLast => BuyThenSell.Last > 0 && SellThenBuy.Last > 0 ? (BuyThenSell.Last / SellThenBuy.Last) - 1 : -100;
 
@@ -39,19 +39,6 @@ public class RatioTrade
     /// Ratio de compra de SellThenBuy ($ Dolar MEP/CCL o %)
     /// </summary>
     public decimal BuyThenSellRatio => BuyThenSell.InverseBuyPrice;
-
-    /// <summary>
-    /// Evalua la disponibilidad de nominales en cada una de las cajas de puntas y devuelve la máxima cantidad actualmente disponible
-    /// </summary>
-    /// <returns></returns>
-    public decimal GetAvailableMaxSize()
-    {
-        var sellThenBuyMinSize = SellThenBuy.GetMinSellOfferOrBuyBidSize();
-
-        var buyThenSellMinSize = BuyThenSell.GetMinBuyOfferOrSellBidSize();
-
-        return Math.Min(sellThenBuyMinSize, buyThenSellMinSize);
-    }
 
     public decimal CurrencyRate
     {
@@ -78,7 +65,7 @@ public class RatioTrade
     public RatioTradeOperation CalculateTrade() {
 
         // Calcular minima cantidad de nominales que tengo que operar
-        var ownedTradeSize = SellThenBuy.GetMinSellOfferOrBuyBidSize();
+        var ownedTradeSize = SellThenBuy.GetMinSellBidOrBuyOfferSize();
 
         var arbitrationTradeSize = BuyThenSell.GetMinBuyOfferOrSellBidSize();
 

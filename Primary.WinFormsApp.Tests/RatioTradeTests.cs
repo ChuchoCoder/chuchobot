@@ -67,4 +67,31 @@ public class RatioTradeTests : InstrumentTests
         operation.ComisionTotalInPesos.Should().BeApproximately(3651.49m, 0.01m);
 
     }
+
+    [Fact]
+    public void ArbitrajeDolarMepBABAAL30Trade()
+    {
+
+        Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - BABAD - 24hs", EntriesBuilder.Create(100, 10.3m, 10.5m), (s, u) => u);
+        Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - BABA - 24hs", EntriesBuilder.Create(100, 11125m, 11150m), (s, u) => u);
+        Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - AL30D - 24hs", EntriesBuilder.Create(100, 70m, 70.01m), (s, u) => u);
+        Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - AL30 - 24hs", EntriesBuilder.Create(100, 77000m, 77020m), (s, u) => u);
+
+        var ownedSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("MERV - XMEV - BABAD - 24hs"));
+        var arbitrationBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("MERV - XMEV - AL30D - 24hs"));
+        var arbitrationSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("MERV - XMEV - AL30 - 24hs"));
+        var ownedBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull("MERV - XMEV - BABA - 24hs"));
+
+        var sellThenBuy = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
+        var buyThenSell = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
+        var ratioTrade = new RatioTrade(sellThenBuy, buyThenSell);
+
+        ratioTrade.RefreshData();
+
+        ratioTrade.SellThenBuyRatio.Should().BeApproximately(1082.52m, 0.01m);
+        ratioTrade.BuyThenSellRatio.Should().BeApproximately(1099.84m, 0.01m);
+
+        ratioTrade.Profit.Should().BeGreaterThan(0);
+
+    }
 }

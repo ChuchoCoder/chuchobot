@@ -74,11 +74,11 @@ public class BuySellTrade
         return default;
     }
 
-    public decimal GetMinSellOfferOrBuyBidSize()
+    public decimal GetMinSellBidOrBuyOfferSize()
     {
-        if (Buy.HasBids() && Sell.HasOffers())
+        if (Buy.HasOffers() && Sell.HasBids())
         {
-            return Math.Min(Buy.Data.GetTopBidSize(), Sell.Data.GetTopOfferSize());
+            return Math.Min(Buy.Data.GetTopOfferSize(), Sell.Data.GetTopBidSize());
         }
 
         return default;

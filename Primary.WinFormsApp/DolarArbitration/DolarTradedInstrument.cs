@@ -1,12 +1,14 @@
 ﻿using ChuchoBot.WinFormsApp.Shared;
 using Primary.Data;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ChuchoBot.WinFormsApp.DolarArbitration;
 
 /// <summary>
 /// Permite construir a partir de un Ticker en Pesos (ej. AL30) los diferentes plazos de liquidación y dolar (D y C) en los que se puede operar
 /// </summary>
+[DebuggerDisplay("{Ticker} / {Dolar.Ticker} / {Cable.Ticker}")]
 public class DolarTradedInstrument : TradedInstrumentWithSettlementTerms
 {
     public DolarTradedInstrument(string ticker)

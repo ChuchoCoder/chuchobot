@@ -8,7 +8,7 @@ namespace ChuchoBot.WinFormsApp.DolarArbitration;
 /// <summary>
 /// Permite obtener las posibles operaciones de arbitraje de dolar (MEP o CCL) teniendo en cuenta los diferentes plazos de liquidación habilitados en BYMA
 /// </summary>
-[DebuggerDisplay("{SellThenBuy.Ticker} / {BuyThenSell.Ticker}")]
+[DebuggerDisplay("{Owned.Ticker} / {Arbitration.Ticker}")]
 public class DolarArbitrationInstruments
 {
     public DolarTradedInstrument Owned { get; set; }
@@ -44,7 +44,7 @@ public class DolarArbitrationInstruments
         CI		CI		CI		CI		
         CI		24		CI		CI		
         CI		24		CI		24		
-        CI		24		24		24			
+        CI		24		24		24		
         24		24		24		24		
 
         */
@@ -104,9 +104,9 @@ public class DolarArbitrationInstruments
         var owned_SellCI_Buy24 = new BuySellTrade(Owned.Dolar.T24, Owned.Cable.TCI);
         var owned_Sell24_Buy24 = new BuySellTrade(Owned.Dolar.T24, Owned.Cable.T24);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Dolar.TCI, Arbitration.Cable.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Dolar.T24, Arbitration.Cable.TCI);
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Dolar.T24, Arbitration.Cable.T24);
+        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.TCI);
+        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.T24);
+        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.T24);
 
         return GetTradesBasedOnSettlementTerm(
             owned_SellCI_BuyCI,
@@ -129,10 +129,10 @@ public class DolarArbitrationInstruments
 
         var owned_Sell24_Buy24 = new BuySellTrade(Owned.T24, Owned.Cable.T24);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.TCI, Arbitration.Cable.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Cable.TCI);
+        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.TCI);
+        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.T24);
 
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Cable.T24);
+        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.T24);
 
         return GetTradesBasedOnSettlementTerm(
             owned_SellCI_BuyCI,
@@ -154,9 +154,9 @@ public class DolarArbitrationInstruments
         var owned_SellCI_Buy24 = new BuySellTrade(Owned.T24, Owned.Dolar.TCI);
         var owned_Sell24_Buy24 = new BuySellTrade(Owned.T24, Owned.Dolar.T24);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.TCI, Arbitration.Dolar.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Dolar.TCI);
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.T24, Arbitration.Dolar.T24);
+        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Dolar.TCI, Arbitration.TCI);
+        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Dolar.TCI, Arbitration.T24);
+        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Dolar.T24, Arbitration.T24);
 
         return GetTradesBasedOnSettlementTerm(
              owned_SellCI_BuyCI,
