@@ -26,7 +26,10 @@ public partial class FrmRatioTradeLauncher : Form
 
             var sellTrade = new BuySellTrade(sellInstrumentWithData, sellInstrumentWithData);
             var buyTrade = new BuySellTrade(buyInstrumentWithData, buyInstrumentWithData);
-            var ratioTrade = new RatioTrade(sellTrade, buyTrade);
+            var type = sellTrade.IsSameCurrency() ? RatioTradeType.Ratio : RatioTradeType.MEP;
+
+            var ratioTrade = new RatioTrade(type, sellTrade, buyTrade);
+
 
             var frmRatioTrade = new FrmRatioTrade();
             frmRatioTrade.Init(ratioTrade);
@@ -66,7 +69,7 @@ public partial class FrmRatioTradeLauncher : Form
 
             var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
             var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
-            var ratioTrade = new RatioTrade(sellThenBuyTrade, buyThenSellTrade);
+            var ratioTrade = new RatioTrade(RatioTradeType.MEP, sellThenBuyTrade, buyThenSellTrade);
 
             var frmRatioTrade = new FrmRatioTrade();
             frmRatioTrade.Init(ratioTrade);

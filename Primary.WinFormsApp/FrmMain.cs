@@ -569,7 +569,7 @@ public partial class FrmMain : Form
 
             var longTrade = new BuySellTrade(longInstrumentWithData, longInstrumentWithData);
             var shortTrade = new BuySellTrade(shortInstrumentWithData, shortInstrumentWithData);
-            var ratioTrade = new RatioTrade(shortTrade, longTrade);
+            var ratioTrade = new RatioTrade(RatioTradeType.Ratio, shortTrade, longTrade);
 
             var frmRatioTrade = new FrmRatioTrade();
             frmRatioTrade.Init(ratioTrade);

@@ -3,6 +3,7 @@ using Primary.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ChuchoBot.WinFormsApp.DolarArbitration;
 
@@ -23,6 +24,12 @@ public class DolarArbitrationProcessor
 
     internal void Init()
     {
+        if (Argentina.Data.Positions == null || Argentina.Data.Positions.Length == 0)
+        {
+            MessageBox.Show("No hay posiciones abiertas en Argentina", "Sin Posiciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
         foreach (var ownedTicker in Argentina.Data.Positions)
         {
             var ticker = ownedTicker.Symbol.GetTicker();
@@ -71,25 +78,41 @@ public class DolarArbitrationProcessor
             if (mep)
             {
                 var dolarTrades = dolarArbitrationData.GetDolarMEPArbitrations();
-                trades.AddRange(dolarTrades.Where(x => x.Profit > minProfit));
+                var profitableTrades = dolarTrades.Where(x => !x.IsInAuction && x.Profit > minProfit);
+                if (profitableTrades.Any())
+                {
+                    trades.AddRange(profitableTrades);
+                }
             }
 
             if (ccl)
             {
                 var cableTrades = dolarArbitrationData.GetDolarCableArbitrations();
-                trades.AddRange(cableTrades.Where(x => x.Profit > minProfit));
+                var profitableTrades = cableTrades.Where(x => !x.IsInAuction && x.Profit > minProfit);
+                if (profitableTrades.Any())
+                {
+                    trades.AddRange(profitableTrades);
+                }
             }
 
             if (dc)
             {
                 var cableDolarTrades = dolarArbitrationData.GetSellDolarBuyCableArbitrationTrades();
-                trades.AddRange(cableDolarTrades.Where(x => x.Profit > minProfit));
+                var profitableTrades = cableDolarTrades.Where(x => !x.IsInAuction && x.Profit > minProfit);
+                if (profitableTrades.Any())
+                {
+                    trades.AddRange(profitableTrades);
+                }
             }
 
             if (cd)
             {
                 var dolarCableTrades = dolarArbitrationData.GetBuyDolarSellCableArbitrationTrades();
-                trades.AddRange(dolarCableTrades.Where(x => x.Profit > minProfit));
+                var profitableTrades = dolarCableTrades.Where(x => !x.IsInAuction && x.Profit > minProfit);
+                if (profitableTrades.Any())
+                {
+                    trades.AddRange(profitableTrades);
+                }
             }
         }
 

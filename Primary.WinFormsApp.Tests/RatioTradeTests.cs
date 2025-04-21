@@ -25,7 +25,7 @@ public class RatioTradeTests : InstrumentTests
 
         var sellThenBuy = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
         var buyThenSell = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
-        var ratioTrade = new RatioTrade(sellThenBuy, buyThenSell);
+        var ratioTrade = new RatioTrade(RatioTradeType.MEP, sellThenBuy, buyThenSell);
 
         ratioTrade.RefreshData();
 
@@ -84,7 +84,7 @@ public class RatioTradeTests : InstrumentTests
 
         var sellThenBuy = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
         var buyThenSell = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
-        var ratioTrade = new RatioTrade(sellThenBuy, buyThenSell);
+        var ratioTrade = new RatioTrade(RatioTradeType.MEP, sellThenBuy, buyThenSell);
 
         ratioTrade.RefreshData();
 

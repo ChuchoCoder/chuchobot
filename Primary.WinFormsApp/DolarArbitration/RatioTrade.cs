@@ -4,12 +4,22 @@ using System.Diagnostics;
 
 namespace ChuchoBot.WinFormsApp.DolarArbitration;
 
+public enum RatioTradeType
+{
+    MEP,
+    CCL,
+    DvsC,
+    CvsD,
+    Ratio
+}
 /// <summary>
 /// Permite calcular la ganancia al realizar una operación de arbitraje de dolar (MEP o CCL)
 /// </summary>
 [DebuggerDisplay("{SellThenBuy.Buy.Instrument.InstrumentId.Symbol} / {BuyThenSell.Buy.Instrument.InstrumentId.Symbol}")]
 public class RatioTrade
 {
+    public RatioTradeType Type { get; set; }
+
     /// <summary>
     /// Instrumento que está relativamente más caro
     /// </summary>
@@ -20,8 +30,9 @@ public class RatioTrade
     /// </summary>
     public BuySellTrade BuyThenSell { get; set; }
 
-    public RatioTrade(BuySellTrade sellThenBuy, BuySellTrade buyThenSell)
+    public RatioTrade(RatioTradeType type, BuySellTrade sellThenBuy, BuySellTrade buyThenSell)
     {
+        Type = type;
         SellThenBuy = sellThenBuy;
         BuyThenSell = buyThenSell;
     }
@@ -29,6 +40,8 @@ public class RatioTrade
     public decimal Profit => BuyThenSellRatio > 0 && SellThenBuyRatio > 0 ? (BuyThenSellRatio / SellThenBuyRatio) - 1 : -100;
 
     public decimal ProfitLast => BuyThenSell.Last > 0 && SellThenBuy.Last > 0 ? (BuyThenSell.Last / SellThenBuy.Last) - 1 : -100;
+
+    public bool IsInAuction => BuyThenSell.IsInAuction || SellThenBuy.IsInAuction;
 
     /// <summary>
     /// Ratio de compra de SellThenBuy ($ Dolar MEP/CCL o %)

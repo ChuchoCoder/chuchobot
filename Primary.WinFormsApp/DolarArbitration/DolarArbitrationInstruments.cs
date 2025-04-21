@@ -28,6 +28,7 @@ public class DolarArbitrationInstruments
 
 
     public IEnumerable<RatioTrade> GetTradesBasedOnSettlementTerm(
+        RatioTradeType type,
         BuySellTrade owned_SellCI_BuyCI,
         BuySellTrade owned_SellCI_Buy24,
 
@@ -49,24 +50,39 @@ public class DolarArbitrationInstruments
 
         */
 
+        var list = new List<RatioTrade>();
+
         if (Argentina.IsCIOpen(false))
         {
-            yield return new RatioTrade(owned_SellCI_BuyCI, arbitration_BuyCI_SellCI);
-
+            if (owned_SellCI_BuyCI != null && arbitration_BuyCI_SellCI != null)
             {
-                yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_SellCI);
+                list.Add(new RatioTrade(type, owned_SellCI_BuyCI, arbitration_BuyCI_SellCI));
+            }
+
+            if (owned_SellCI_Buy24 != null && arbitration_BuyCI_SellCI != null)
+            {
+                list.Add(new RatioTrade(type, owned_SellCI_Buy24, arbitration_BuyCI_SellCI));
             }
 
 
-            yield return new RatioTrade(owned_SellCI_Buy24, arbitration_BuyCI_Sell24);
+            if (owned_SellCI_Buy24 != null && arbitration_BuyCI_Sell24 != null)
+            {
+                list.Add(new RatioTrade(type, owned_SellCI_Buy24, arbitration_BuyCI_Sell24));
+            }
 
-
-            yield return new RatioTrade(owned_SellCI_Buy24, arbitration_Buy24_Sell24);
+            if (owned_SellCI_Buy24 != null && arbitration_Buy24_Sell24 != null)
+            {
+                list.Add(new RatioTrade(type, owned_SellCI_Buy24, arbitration_Buy24_Sell24));
+            }
 
         }
 
-        yield return new RatioTrade(owned_Sell24_Buy24, arbitration_Buy24_Sell24);
+        if (owned_Sell24_Buy24 != null && arbitration_Buy24_Sell24 != null)
+        {
+            list.Add(new RatioTrade(type, owned_Sell24_Buy24, arbitration_Buy24_Sell24));
+        }
 
+        return list;
     }
 
     /// <summary>
@@ -75,16 +91,17 @@ public class DolarArbitrationInstruments
     /// <returns></returns>
     public IEnumerable<RatioTrade> GetSellDolarBuyCableArbitrationTrades()
     {
-        var owned_SellCI_BuyCI = new BuySellTrade(Owned.Cable.TCI, Owned.Dolar.TCI);
-        var owned_SellCI_Buy24 = new BuySellTrade(Owned.Cable.T24, Owned.Dolar.TCI);
-        var owned_Sell24_Buy24 = new BuySellTrade(Owned.Cable.T24, Owned.Dolar.T24);
+        var owned_SellCI_BuyCI = GetBuySellTrade(Owned.Cable.TCI, Owned.Dolar.TCI);
+        var owned_SellCI_Buy24 = GetBuySellTrade(Owned.Cable.T24, Owned.Dolar.TCI);
+        var owned_Sell24_Buy24 = GetBuySellTrade(Owned.Cable.T24, Owned.Dolar.T24);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.TCI);
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.T24);
+        var arbitrarion_BuyCI_SellCI = GetBuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.TCI);
+        var arbitrarion_BuyCI_Sell24 = GetBuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.TCI);
+        var arbitrarion_Buy24_Sell24 = GetBuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.T24);
 
 
         return GetTradesBasedOnSettlementTerm(
+            RatioTradeType.DvsC,
             owned_SellCI_BuyCI,
             owned_SellCI_Buy24,
             owned_Sell24_Buy24,
@@ -100,15 +117,16 @@ public class DolarArbitrationInstruments
     /// <returns></returns>
     public IEnumerable<RatioTrade> GetBuyDolarSellCableArbitrationTrades()
     {
-        var owned_SellCI_BuyCI = new BuySellTrade(Owned.Dolar.TCI, Owned.Cable.TCI);
-        var owned_SellCI_Buy24 = new BuySellTrade(Owned.Dolar.T24, Owned.Cable.TCI);
-        var owned_Sell24_Buy24 = new BuySellTrade(Owned.Dolar.T24, Owned.Cable.T24);
+        var owned_SellCI_BuyCI = GetBuySellTrade(Owned.Dolar.TCI, Owned.Cable.TCI);
+        var owned_SellCI_Buy24 = GetBuySellTrade(Owned.Dolar.T24, Owned.Cable.TCI);
+        var owned_Sell24_Buy24 = GetBuySellTrade(Owned.Dolar.T24, Owned.Cable.T24);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.T24);
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.T24);
+        var arbitrarion_BuyCI_SellCI = GetBuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.TCI);
+        var arbitrarion_BuyCI_Sell24 = GetBuySellTrade(Arbitration.Cable.TCI, Arbitration.Dolar.T24);
+        var arbitrarion_Buy24_Sell24 = GetBuySellTrade(Arbitration.Cable.T24, Arbitration.Dolar.T24);
 
         return GetTradesBasedOnSettlementTerm(
+            RatioTradeType.CvsD,
             owned_SellCI_BuyCI,
             owned_SellCI_Buy24,
             owned_Sell24_Buy24,
@@ -124,17 +142,18 @@ public class DolarArbitrationInstruments
     /// <returns></returns>
     public IEnumerable<RatioTrade> GetDolarCableArbitrations()
     {
-        var owned_SellCI_BuyCI = new BuySellTrade(Owned.TCI, Owned.Cable.TCI);
-        var owned_SellCI_Buy24 = new BuySellTrade(Owned.T24, Owned.Cable.TCI);
+        var owned_SellCI_BuyCI = GetBuySellTrade(Owned.TCI, Owned.Cable.TCI);
+        var owned_SellCI_Buy24 = GetBuySellTrade(Owned.T24, Owned.Cable.TCI);
 
-        var owned_Sell24_Buy24 = new BuySellTrade(Owned.T24, Owned.Cable.T24);
+        var owned_Sell24_Buy24 = GetBuySellTrade(Owned.T24, Owned.Cable.T24);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Cable.TCI, Arbitration.T24);
+        var arbitrarion_BuyCI_SellCI = GetBuySellTrade(Arbitration.Cable.TCI, Arbitration.TCI);
+        var arbitrarion_BuyCI_Sell24 = GetBuySellTrade(Arbitration.Cable.TCI, Arbitration.T24);
 
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Cable.T24, Arbitration.T24);
+        var arbitrarion_Buy24_Sell24 = GetBuySellTrade(Arbitration.Cable.T24, Arbitration.T24);
 
         return GetTradesBasedOnSettlementTerm(
+            RatioTradeType.CCL,
             owned_SellCI_BuyCI,
             owned_SellCI_Buy24,
             owned_Sell24_Buy24,
@@ -150,15 +169,19 @@ public class DolarArbitrationInstruments
     /// <returns></returns>
     public IEnumerable<RatioTrade> GetDolarMEPArbitrations()
     {
-        var owned_SellCI_BuyCI = new BuySellTrade(Owned.TCI, Owned.Dolar.TCI);
-        var owned_SellCI_Buy24 = new BuySellTrade(Owned.T24, Owned.Dolar.TCI);
-        var owned_Sell24_Buy24 = new BuySellTrade(Owned.T24, Owned.Dolar.T24);
+        
+        var owned_SellCI_BuyCI = GetBuySellTrade(Owned.TCI, Owned.Dolar.TCI);
 
-        var arbitrarion_BuyCI_SellCI = new BuySellTrade(Arbitration.Dolar.TCI, Arbitration.TCI);
-        var arbitrarion_BuyCI_Sell24 = new BuySellTrade(Arbitration.Dolar.TCI, Arbitration.T24);
-        var arbitrarion_Buy24_Sell24 = new BuySellTrade(Arbitration.Dolar.T24, Arbitration.T24);
+        var owned_SellCI_Buy24 = GetBuySellTrade(Owned.T24, Owned.Dolar.TCI);
+
+        var owned_Sell24_Buy24 = GetBuySellTrade(Owned.T24, Owned.Dolar.T24);
+
+        var arbitrarion_BuyCI_SellCI = GetBuySellTrade(Arbitration.Dolar.TCI, Arbitration.TCI);
+        var arbitrarion_BuyCI_Sell24 = GetBuySellTrade(Arbitration.Dolar.TCI, Arbitration.T24);
+        var arbitrarion_Buy24_Sell24 = GetBuySellTrade(Arbitration.Dolar.T24, Arbitration.T24);
 
         return GetTradesBasedOnSettlementTerm(
+            RatioTradeType.MEP,
              owned_SellCI_BuyCI,
              owned_SellCI_Buy24,
              owned_Sell24_Buy24,
@@ -168,4 +191,12 @@ public class DolarArbitrationInstruments
              );
     }
 
+
+    private BuySellTrade GetBuySellTrade(InstrumentWithData buy, InstrumentWithData sell)
+    {
+        if (buy.Instrument != null && sell.Instrument != null)
+            return new BuySellTrade(buy, sell);
+
+        return null;
+    }
 }

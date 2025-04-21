@@ -195,7 +195,7 @@ public partial class FrmArbitrationAnalyzer : Form
             var frm = new FrmRatioTrade();
             var trade = ((DataRowView)grdArbitration.SelectedRows[0].DataBoundItem).Row["RatioTrade"] as RatioTrade;
             frm.Init(trade);
-            frm.MdiParent = MdiParent;
+            //frm.MdiParent = MdiParent;
             frm.Show();
         }
     }

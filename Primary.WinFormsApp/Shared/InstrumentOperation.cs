@@ -37,7 +37,18 @@ public class InstrumentOperation
     public InstrumentDetail InstrumentDetail { get; }
 
     public decimal Size { get; set; }
-    public decimal Price { get; set; }
+    public decimal _price;
+    public decimal Price
+    {
+        get
+        {
+            return _price;
+        }
+        set
+        {
+            _price = value;
+        }
+    }
 
     // Owned Sell es Dolar cuando es arbitraje de MEP/CCL
     public decimal Total => Size * Price * InstrumentDetail.PriceConvertionFactor;
@@ -50,7 +61,8 @@ public class InstrumentOperation
 
     public Order Order { get; private set; }
     public OrderId OrderId { get; private set; }
-    public OrderStatus OrderStatus {
+    public OrderStatus OrderStatus
+    {
         get
         {
             if (Argentina.Data.Orders.TryGetValue(OrderId.ClientOrderId, out var order))

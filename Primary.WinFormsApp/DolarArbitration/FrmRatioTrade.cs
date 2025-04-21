@@ -243,12 +243,12 @@ public partial class FrmRatioTrade : Form
             OwnedVentaPrice = _trade.SellThenBuy.Sell.Data.Last.Price.Value;
         }
 
-        if (_trade.BuyThenSell.Sell.Data?.Last != null)
+        if (_trade.BuyThenSell.Buy.Data?.Last != null)
         {
             ArbitrationCompraPrice = _trade.BuyThenSell.Buy.Data.Last.Price.Value;
         }
 
-        if (_trade.BuyThenSell.Buy.Data?.Last != null)
+        if (_trade.BuyThenSell.Sell.Data?.Last != null)
         {
             ArbitrationVentaPrice = _trade.BuyThenSell.Sell.Data.Last.Price.Value;
         }
@@ -529,7 +529,7 @@ public partial class FrmRatioTrade : Form
         lblHeader.Text = "Profit: " + _tradeOperation.ProfitTotalInPesos.ToCurrency();
 
 
-        if (_trade.SellThenBuy.IsSameCurrency())
+        if (_trade.Type == RatioTradeType.Ratio)
         {
             var ratioCompra = GetRatioCompra();
             var ratioVenta = GetRatioVenta();

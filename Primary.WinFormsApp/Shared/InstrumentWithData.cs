@@ -65,7 +65,7 @@ public class InstrumentWithData
 
     public decimal? OfferPrice()
     {
-        return HasBids() ? Data.GetTopOfferPrice() : null;
+        return HasOffers() ? Data.GetTopOfferPrice() : null;
     }
 
     public decimal CalculateOfferSize(decimal total)
@@ -93,7 +93,7 @@ public class InstrumentWithData
         var price = BidPrice();
 
         if (price == null)
-            price = decimal.MinValue;
+            price = decimal.MinValue / 2;
 
         return new InstrumentOperation(Side.Sell, size, price.Value, Instrument);
     }
@@ -103,8 +103,10 @@ public class InstrumentWithData
         var price = OfferPrice();
 
         if (price == null)
-            price = decimal.MaxValue;
+            price = decimal.MaxValue / 2;
 
         return new InstrumentOperation(Side.Buy, size, price.Value, Instrument);
     }
+
+    public bool IsInAuction => HasBids() && HasOffers() ? Data.Bids[0].Price >= Data.Offers[0].Price : false;
 }

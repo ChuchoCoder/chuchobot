@@ -35,6 +35,9 @@ public class BuySellTrade
                 ? Buy.Data.Last.Price.Value / Sell.Data.Last.Price.Value
                 : default;
 
+
+    public bool IsInAuction => Buy.IsInAuction || Sell.IsInAuction;
+
     /// <summary>
     /// Compra Dolar (Buy Offer $ / Sell Bid USD)
     /// Obtiene el tipo de cambio para Comprar Dolar utilizando Pesos.Offers / Dolar.Bids
