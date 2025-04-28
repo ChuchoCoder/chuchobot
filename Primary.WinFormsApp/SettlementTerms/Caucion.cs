@@ -14,7 +14,7 @@ public class Caucion
 
     public const decimal IVAPorcentaje = 0.21m;
 
-    public Caucion(int dias, decimal tna, decimal importeBruto)
+    public Caucion(int dias, decimal tna, decimal importeBruto, decimal arancelCaucionColocadora, decimal arancelCaucionTomadora)
     {
         Dias = dias;
         TNA = tna;
@@ -24,7 +24,7 @@ public class Caucion
 
         Tasa = Math.Abs(tna / 100m * diasAbs / 365m);
         EsColocadora = Dias < 0;
-        ArancelTNA = EsColocadora ? Settings.Default.ArancelCaucionColocadora : Settings.Default.ArancelCaucionTomadora;
+        ArancelTNA = EsColocadora ? arancelCaucionColocadora : arancelCaucionTomadora;
         Interes = importeBruto * Tasa;
         ImporteConInteres = ImporteBruto + Interes;
         Arancel = ImporteConInteres * (ArancelTNA / 100m * diasAbs / 365m);
@@ -45,6 +45,12 @@ public class Caucion
             InteresNeto = Interes + TotalGastos;
             ImporteNeto = ImporteConInteres + TotalGastos;
         }
+    }
+
+    public Caucion(int dias, decimal tna, decimal importeBruto)
+        : this (dias, tna, importeBruto, Settings.Default.ArancelCaucionColocadora, Settings.Default.ArancelCaucionTomadora)
+    {
+        
     }
 
     /// <summary>

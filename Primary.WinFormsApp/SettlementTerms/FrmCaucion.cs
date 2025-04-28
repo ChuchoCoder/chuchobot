@@ -40,7 +40,7 @@ public partial class FrmCaucion : Form
             dias *= -1;
         }
 
-        var caucion = new Caucion(dias, numTNA.Value, numImporteBruto.Value);
+        var caucion = new Caucion(dias, numTNA.Value, numImporteBruto.Value, numComisionColocadora.Value, numComisionTomadora.Value);
 
         var tipoCaucion = numDias.Value > 0 ? "Colocadora" : "Tomadora";
         grpCaucion.Text = "Caución " + tipoCaucion;
