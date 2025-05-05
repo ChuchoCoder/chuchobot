@@ -103,8 +103,8 @@ public partial class FrmArbitrationAnalyzer : Form
                 if (bestTrade.SellThenBuy.HasData() && bestTrade.BuyThenSell.HasData())
                 {
                     row["OwnedVenta"] = bestTrade.SellThenBuy.Sell.Data.HasBids() ? bestTrade.SellThenBuy.Sell.Data.Bids[0].Price : DBNull.Value;
-                    row["ArbitrationCompra"] = bestTrade.BuyThenSell.Sell.Data.HasOffers() ? bestTrade.BuyThenSell.Sell.Data.Offers[0].Price : DBNull.Value;
-                    row["ArbitrationVenta"] = bestTrade.BuyThenSell.Buy.Data.HasBids() ? bestTrade.BuyThenSell.Buy.Data.Bids[0].Price : DBNull.Value;
+                    row["ArbitrationVenta"] = bestTrade.BuyThenSell.Sell.Data.HasOffers() ? bestTrade.BuyThenSell.Sell.Data.Offers[0].Price : DBNull.Value;
+                    row["ArbitrationCompra"] = bestTrade.BuyThenSell.Buy.Data.HasBids() ? bestTrade.BuyThenSell.Buy.Data.Bids[0].Price : DBNull.Value;
                     row["OwnedCompra"] = bestTrade.SellThenBuy.Buy.Data.HasOffers() ? bestTrade.SellThenBuy.Buy.Data.Offers[0].Price : DBNull.Value;
                 }
 

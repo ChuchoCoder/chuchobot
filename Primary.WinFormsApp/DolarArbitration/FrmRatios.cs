@@ -20,15 +20,22 @@ public partial class FrmRatios : Form
 
     private void tmr_Tick(object sender, EventArgs e)
     {
-        if (grdRatios.IsCurrentCellInEditMode == true)
-            return;
-
-        tmr.Stop();
-        foreach (var ratio in Settings.Default.RatioTickers)
+        try
         {
-            _ = InitRatio(ratio, '/', ' ') || InitRatio(ratio, '\\', ' ');
+            if (grdRatios.IsCurrentCellInEditMode == true)
+                return;
+
+            tmr.Stop();
+            foreach (var ratio in Settings.Default.RatioTickers)
+            {
+                _ = InitRatio(ratio, '/', ' ') || InitRatio(ratio, '\\', ' ');
+            }
+            tmr.Start();
         }
-        tmr.Start();
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     private bool InitRatio(string ratioConfigLine, char ratioSeparator, char alertSeparator)
