@@ -209,7 +209,7 @@ public partial class FrmSettlementTermTrade : Form
     {
         if (numCompraPrice.Value > 0)
         {
-            var  cupon = numCupon.Value;
+            var cupon = numCupon.Value;
             if (chkCuponUSD.Checked)
             {
                 var dolarMep = Argentina.GetDolarMEPVenta();
@@ -380,5 +380,10 @@ public partial class FrmSettlementTermTrade : Form
     private void chkWindowsToast_CheckedChanged(object sender, EventArgs e)
     {
         numAlert.Enabled = chkWindowsToast.Checked;
+    }
+
+    private void numCupon_ValueChanged(object sender, EventArgs e)
+    {
+        CalculateOwnedCompraTotalAndProfit();
     }
 }

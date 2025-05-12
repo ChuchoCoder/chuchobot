@@ -120,8 +120,12 @@ public partial class FrmRatios : Form
         var ratioClose = instrumentBEntries.ClosePrice() > 0 ? (instrumentAEntries.ClosePrice() / instrumentBEntries.ClosePrice()) - 1 : 0;
         row["RatioYesterday"] = ratioClose.ToString(format);
 
-        var ratioVar = isSameCurrency ? ratioLast - ratioClose : ratioLast / ratioClose - 1;
-        row["RatioVariacion"] = ratioVar;
+        decimal ratioVar = 0m;
+        if (ratioClose != 0 && ratioLast.HasValue)
+        {
+            ratioVar = isSameCurrency ? ratioLast.Value - ratioClose : ratioLast.Value / ratioClose - 1;
+            row["RatioVariacion"] = ratioVar;
+        }
 
         row["AlertLower"] = alertMin.HasValue ? alertMin.Value : System.DBNull.Value;
         row["AlertGreater"] = alertMax.HasValue ? alertMax.Value : System.DBNull.Value;

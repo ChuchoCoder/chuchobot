@@ -49,6 +49,10 @@ public partial class InstrumentSearchList : UserControl
                 chkOnlyCurrentPositions.Enabled = false;
                 chkOnlyCurrentPositions.Text += " (No existen posiciones)";
             }
+            else
+            {
+                chkOnlyCurrentPositions.Checked = true;
+            }
 
             string selector(InstrumentDetail x)
             {
@@ -57,15 +61,15 @@ public partial class InstrumentSearchList : UserControl
 
             _instruments = Argentina.Data.AllInstruments.Where(x => x.IsPesos()).Select(selector).Distinct().OrderBy(x => x).ToArray();
 
-            foreach (var item in _instruments)
-            {
-                _ = listInstrumentos.Items.Add(item);
-            }
+            FilterInstruments();
         }
     }
 
     private void FilterInstruments()
     {
+        if (_instruments == null)
+            return; 
+
         IEnumerable<string> instruments = _instruments;
 
         Func<string, bool> onlyShowCurrentPositionFilter = x => true;

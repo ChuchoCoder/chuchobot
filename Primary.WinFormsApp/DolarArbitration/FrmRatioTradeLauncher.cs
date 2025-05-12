@@ -11,6 +11,7 @@ public partial class FrmRatioTradeLauncher : Form
         InitializeComponent();
         instrumentSearchListBuy.SettlementsVisible = true;
         instrumentSearchListSell.SettlementsVisible = true;
+        
     }
 
     private void btnLaunch_Click(object sender, EventArgs e)
@@ -42,38 +43,45 @@ public partial class FrmRatioTradeLauncher : Form
 
     private void FrmRatioTradeLauncher_Load(object sender, EventArgs e)
     {
+        
     }
-
     private void btnArbitrajeDolar_Click(object sender, EventArgs e)
     {
-        if (instrumentSearchListSell.ValidateSelectedInstrument()
-           && instrumentSearchListBuy.ValidateSelectedInstrument())
+        try
         {
-            var owned = instrumentSearchListSell.SelectedInstrument;
+            if (instrumentSearchListSell.ValidateSelectedInstrument()
+               && instrumentSearchListBuy.ValidateSelectedInstrument())
+            {
+                var owned = instrumentSearchListSell.SelectedInstrument;
 
-            var ownedBuySymbol = owned.AddMervalPrefix();
-            var ownedSellDolar = owned.Replace(" -", "D -");
-            var ownedSellSymbol = ownedSellDolar.AddMervalPrefix();
+                var ownedTicker = owned.Split(' ')[0];
+                var ownedBuySymbol = owned.AddMervalPrefix();
+                var ownedSellSymbol = ownedTicker.AddDolarSuffix().ToMervalSymbol24H();
 
-            var ownedBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedBuySymbol));
-            var ownedSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedSellSymbol));
+                var ownedBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedBuySymbol));
+                var ownedSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedSellSymbol));
 
-            var arbitration = instrumentSearchListBuy.SelectedInstrument;
+                var arbitration = instrumentSearchListBuy.SelectedInstrument;
 
-            var arbitrationSellSymbol = arbitration.AddMervalPrefix();
-            var arbitrationBuyDolar = arbitration.Replace(" -", "D -");
-            var arbitrationBuySymbol = arbitrationBuyDolar.AddMervalPrefix();
+                var arbitrationTicker = arbitration.Split(' ')[0];
+                var arbitrationSellSymbol = arbitration.AddMervalPrefix();
+                var arbitrationBuySymbol = arbitrationTicker.AddDolarSuffix().ToMervalSymbol24H();
 
-            var arbitrationBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationBuySymbol));
-            var arbitrationSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationSellSymbol));
+                var arbitrationBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationBuySymbol));
+                var arbitrationSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationSellSymbol));
 
-            var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
-            var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
-            var ratioTrade = new RatioTrade(RatioTradeType.MEP, sellThenBuyTrade, buyThenSellTrade);
+                var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
+                var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
+                var ratioTrade = new RatioTrade(RatioTradeType.MEP, sellThenBuyTrade, buyThenSellTrade);
 
-            var frmRatioTrade = new FrmRatioTrade();
-            frmRatioTrade.Init(ratioTrade);
-            frmRatioTrade.Show();
+                var frmRatioTrade = new FrmRatioTrade();
+                frmRatioTrade.Init(ratioTrade);
+                frmRatioTrade.Show();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

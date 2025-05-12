@@ -271,6 +271,7 @@
             numCupon.Name = "numCupon";
             numCupon.Size = new System.Drawing.Size(106, 27);
             numCupon.TabIndex = 12;
+            numCupon.ValueChanged += numCupon_ValueChanged;
             // 
             // lblBuyPriceTarget
             // 
