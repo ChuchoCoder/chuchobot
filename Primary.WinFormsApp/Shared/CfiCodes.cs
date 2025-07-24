@@ -40,4 +40,9 @@ internal static class CfiCodes
     {
         return cfiCode == CallsOpciones.Key || cfiCode == PutsOpciones.Key || cfiCode == CallsOpcionesMatbaRofex.Key || cfiCode == PutsOpcionesMatbaRofex.Key;
     }
+
+    public static bool IsFuture(string cfiCode)
+    {
+        return cfiCode == Futuros.Key;
+    }
 }
