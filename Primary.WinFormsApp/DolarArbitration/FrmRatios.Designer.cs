@@ -37,7 +37,6 @@
             var dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             var resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRatios));
             grdRatios = new System.Windows.Forms.DataGridView();
-            tmr = new System.Windows.Forms.Timer(components);
             Ratio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             RatioLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             RatioVariacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,7 @@
             ABid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             BOffer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ShortRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            tmr = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)grdRatios).BeginInit();
             SuspendLayout();
             // 
@@ -69,15 +69,9 @@
             grdRatios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             grdRatios.ShowCellErrors = false;
             grdRatios.ShowRowErrors = false;
-            grdRatios.Size = new System.Drawing.Size(1040, 341);
+            grdRatios.Size = new System.Drawing.Size(1115, 681);
             grdRatios.TabIndex = 0;
             grdRatios.CellValueChanged += grdRatios_CellValueChanged;
-            // 
-            // tmr
-            // 
-            tmr.Enabled = true;
-            tmr.Interval = 3000;
-            tmr.Tick += tmr_Tick;
             // 
             // Ratio
             // 
@@ -199,11 +193,17 @@
             ShortRatio.ToolTipText = "Vender A / Comprar B";
             ShortRatio.Width = 112;
             // 
+            // tmr
+            // 
+            tmr.Enabled = true;
+            tmr.Interval = 3000;
+            tmr.Tick += tmr_Tick;
+            // 
             // FrmRatios
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1040, 341);
+            ClientSize = new System.Drawing.Size(1115, 681);
             Controls.Add(grdRatios);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
