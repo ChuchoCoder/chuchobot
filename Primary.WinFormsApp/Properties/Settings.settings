@@ -348,7 +348,9 @@
     <Setting Name="TickersDC" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;X20Y4;XY4D;XY4D&lt;/string&gt;
+  &lt;string&gt;CRCJO;CRCJD;CRCJC&lt;/string&gt;
+  &lt;string&gt;DNC3O;DNC3D;DNC3C&lt;/string&gt;
+  &lt;string&gt;IRCOO;IRCOD;IRCOC&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Letras" Type="System.Collections.Specialized.StringCollection" Scope="Application">
@@ -483,6 +485,9 @@
   &lt;string&gt;XLF&lt;/string&gt;
   &lt;string&gt;XOM&lt;/string&gt;
   &lt;string&gt;ZM&lt;/string&gt;
+  &lt;string&gt;CRCJO&lt;/string&gt;
+  &lt;string&gt;DNC3O&lt;/string&gt;
+  &lt;string&gt;IRCOO&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>

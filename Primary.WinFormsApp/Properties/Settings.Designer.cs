@@ -12,7 +12,7 @@ namespace Primary.WinFormsApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -272,9 +272,12 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>X20Y4;XY4D;XY4D</string>\r\n</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>CRCJO;CRCJD;CRCJC</string>
+  <string>DNC3O;DNC3D;DNC3C</string>
+  <string>IRCOO;IRCOD;IRCOC</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection TickersDC {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["TickersDC"]));
@@ -339,8 +342,9 @@ namespace Primary.WinFormsApp.Properties {
             "<string>UPST</string>\r\n  <string>V</string>\r\n  <string>VALE</string>\r\n  <string>" +
             "VIST</string>\r\n  <string>VZ</string>\r\n  <string>WBA</string>\r\n  <string>WFC</str" +
             "ing>\r\n  <string>WMT</string>\r\n  <string>X20Y4</string>\r\n  <string>XLE</string>\r\n" +
-            "  <string>XLF</string>\r\n  <string>XOM</string>\r\n  <string>ZM</string>\r\n</ArrayOf" +
-            "String>")]
+            "  <string>XLF</string>\r\n  <string>XOM</string>\r\n  <string>ZM</string>\r\n  <string" +
+            ">CRCJO</string>\r\n  <string>DNC3O</string>\r\n  <string>IRCOO</string>\r\n</ArrayOfSt" +
+            "ring>")]
         public global::System.Collections.Specialized.StringCollection ArbitrationTickers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["ArbitrationTickers"]));
