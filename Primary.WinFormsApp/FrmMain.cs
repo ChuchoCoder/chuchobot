@@ -418,6 +418,7 @@ public partial class FrmMain : Form
     {
         if (Argentina.Data.AllInstruments != null)
         {
+            var tickersNotFound = new List<string>();
             foreach (var setting in settings)
             {
                 var tickers = setting.Split(' ', ';', '/', '\\');
@@ -429,12 +430,18 @@ public partial class FrmMain : Form
                     }
                     else if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
                     {
-                        _ = MessageBox.Show($"El instrumento {ticker} no existe.", "Instrumento no existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Telemetry.LogWarning($"El instrumento {ticker} no existe.");
-                        return false;
+                        tickersNotFound.Add(ticker);
                     }
                 }
             }
+            var tickersText = string.Join(", ", tickersNotFound);
+            var result = MessageBox.Show($"El/los instrumentos {tickersText} no existen. ¿Desea quitarlos de la lista?", "Instrumentos inexistentes", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            Telemetry.LogWarning($"El instrumento {tickersNotFound} no existe.");
+            if (result == DialogResult.OK)
+            {
+
+            }
+            return false;
         }
         return true;
     }
@@ -444,8 +451,7 @@ public partial class FrmMain : Form
         var frm = new Configuration.FrmInstrumentsCheckList
         {
             Text = instrumentosParaArbitrajeToolStripMenuItem.Text,
-            Setting = Properties.Settings.Default.TickersToMonitor,
-            Validator = ValidateInstrument
+            Setting = Properties.Settings.Default.TickersToMonitor
         };
 
         if (frm.ShowDialog() == DialogResult.OK)
@@ -497,7 +503,11 @@ public partial class FrmMain : Form
 
                 if (itemsToWatch.Count > 0)
                 {
-                    Properties.Settings.Default.TickersToMonitor.AddRange(itemsToWatch.ToArray());
+                    var tickers = Properties.Settings.Default.TickersToMonitor.Cast<string>();
+                    itemsToWatch.AddRange(tickers);
+                    var tickersToMonitor = tickers.Distinct().Cast<string>().ToArray();
+                    Properties.Settings.Default.TickersToMonitor.Clear();
+                    Properties.Settings.Default.TickersToMonitor.AddRange(tickersToMonitor);
                     Properties.Settings.Default.Save();
                 }
             }

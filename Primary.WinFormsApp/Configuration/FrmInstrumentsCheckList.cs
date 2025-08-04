@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChuchoBot.WinFormsApp.Shared;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ public partial class FrmInstrumentsCheckList : Form
 {
 
     public StringCollection Setting { get; set; }
-    public Func<string[], bool> Validator { get; set; }
+    //public Func<string[], bool> Validator { get; set; }
 
     public FrmInstrumentsCheckList()
     {
@@ -29,19 +30,44 @@ public partial class FrmInstrumentsCheckList : Form
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-        var settings = instrumentCheckList1.SelectedItems.Distinct().Cast<string>().ToArray();
+        var settings = instrumentCheckList1.SelectedItems.Distinct().Cast<string>().ToList();
 
-        if (Validator == null || Validator(settings))
+        if (Argentina.Data.AllInstruments != null)
         {
-            Setting.Clear();
-            Setting.AddRange(settings);
-            Properties.Settings.Default.Save();
-            Close();
+            var tickersNotFound = new List<string>();
+            foreach (var setting in settings)
+            {
+                var tickers = setting.Split(' ', ';', '/', '\\');
+                foreach (var ticker in tickers)
+                {
+                    if (decimal.TryParse(ticker, out var numValue))
+                    {
+                        // Ignore validating numbers (e.g. Ratio Alerts)
+                    }
+                    else if (Argentina.Data.AllInstruments.Any(x => x.InstrumentId.Symbol.Contains(ticker)) == false)
+                    {
+                        tickersNotFound.Add(ticker);
+                    }
+                }
+            }
+            var tickersText = string.Join(", ", tickersNotFound);
+            var result = MessageBox.Show($"El/los instrumentos {tickersText} no existen. ¿Desea quitarlos de la lista?", "Instrumentos inexistentes", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            Telemetry.LogWarning($"El instrumento {tickersNotFound} no existe.");
+            if (result == DialogResult.OK)
+            {
+                settings.RemoveAll(x => tickersNotFound.Contains(x));
+            }
+            else
+            {
+                DialogResult = DialogResult.None;
+                return;
+            }
         }
-        else
-        {
-            DialogResult = DialogResult.None;
-        }
+
+        Setting.Clear();
+        Setting.AddRange(settings.ToArray());
+        Properties.Settings.Default.Save();
+        Close();
     }
 
     private void FrmInstrumentsCheckList_Load(object sender, EventArgs e)

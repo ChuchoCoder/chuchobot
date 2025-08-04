@@ -49,18 +49,6 @@ namespace ChuchoBot.WinFormsApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1070")]
-        public decimal USDARS {
-            get {
-                return ((decimal)(this["USDARS"]));
-            }
-            set {
-                this["USDARS"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public decimal Comision {
             get {
@@ -77,15 +65,6 @@ namespace ChuchoBot.WinFormsApp.Properties {
         public decimal DerechoMercado {
             get {
                 return ((decimal)(this["DerechoMercado"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.08")]
-        public decimal DerechoMercadoAccionCEDEAR {
-            get {
-                return ((decimal)(this["DerechoMercadoAccionCEDEAR"]));
             }
         }
         
@@ -160,21 +139,16 @@ namespace ChuchoBot.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>GOOGL;GOGLD;GOGLC</string>\r\n</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>GOOGL;GOGLD;GOGLC</string>
+  <string>IRCOO;IRCOD;IRCOC</string>
+  <string>DNC3O;DNC3D;DNC3C</string>
+  <string>CRCJO;CRCJD;CRCJC</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection TickersDC {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["TickersDC"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("11:00:00")]
-        public global::System.TimeSpan MarketOpenTime {
-            get {
-                return ((global::System.TimeSpan)(this["MarketOpenTime"]));
             }
         }
         
@@ -189,19 +163,49 @@ namespace ChuchoBot.WinFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("16:30:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:03:00")]
+        public global::System.TimeSpan MarketAuctionTimePeriod {
+            get {
+                return ((global::System.TimeSpan)(this["MarketAuctionTimePeriod"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.07")]
+        public decimal DerechoMercadoAccionCEDEAR {
+            get {
+                return ((decimal)(this["DerechoMercadoAccionCEDEAR"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10:30:00")]
+        public global::System.TimeSpan MarketOpenTime {
+            get {
+                return ((global::System.TimeSpan)(this["MarketOpenTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17:00:00")]
         public global::System.TimeSpan MarketCloseCITime {
             get {
                 return ((global::System.TimeSpan)(this["MarketCloseCITime"]));
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:03:00")]
-        public global::System.TimeSpan MarketAuctionTimePeriod {
+        [global::System.Configuration.DefaultSettingValueAttribute("1300")]
+        public decimal USDARS {
             get {
-                return ((global::System.TimeSpan)(this["MarketAuctionTimePeriod"]));
+                return ((decimal)(this["USDARS"]));
+            }
+            set {
+                this["USDARS"] = value;
             }
         }
         
@@ -212,6 +216,7 @@ namespace ChuchoBot.WinFormsApp.Properties {
   <string>AL30/AE38  </string>
   <string>AL30/AL29  </string>
   <string>AL30/AL35  27</string>
+  <string>AL30D/AL30C 0 1</string>
   <string>AL30/GD29</string>
   <string>AL30/GD30  </string>
   <string>AL30/GD35</string>
@@ -231,6 +236,7 @@ namespace ChuchoBot.WinFormsApp.Properties {
   <string>GD30/AE38  </string>
   <string>GD30/AL30 3,3 4</string>
   <string>GD41/AL41  </string>
+  <string>AL30D/AL30C 0 1</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection RatioTickers {
             get {
@@ -245,69 +251,68 @@ namespace ChuchoBot.WinFormsApp.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>AA25</string>\r\n  <string>AA37</string>\r\n  <string>AAPL</string>\r\n  <string" +
-            ">AE38</string>\r\n  <string>AGCL</string>\r\n  <string>AGRO</string>\r\n  <string>AL29" +
-            "</string>\r\n  <string>AL30</string>\r\n  <string>AL35</string>\r\n  <string>AL41</str" +
-            "ing>\r\n  <string>ALUA</string>\r\n  <string>AMD</string>\r\n  <string>AMZN</string>\r\n" +
-            "  <string>ASUP</string>\r\n  <string>AUSO</string>\r\n  <string>BA37D</string>\r\n  <s" +
-            "tring>BA37E</string>\r\n  <string>BABA</string>\r\n  <string>BAD25</string>\r\n  <stri" +
-            "ng>BAO25</string>\r\n  <string>BAO26</string>\r\n  <string>BB37D</string>\r\n  <string" +
-            ">BB37E</string>\r\n  <string>BBAR</string>\r\n  <string>BBD</string>\r\n  <string>BC37" +
-            "D</string>\r\n  <string>BC37E</string>\r\n  <string>BDC28</string>\r\n  <string>BHIP</" +
-            "string>\r\n  <string>BMA</string>\r\n  <string>BMA.X</string>\r\n  <string>BOLT</strin" +
-            "g>\r\n  <string>BPAT</string>\r\n  <string>BPJ25</string>\r\n  <string>BPLD</string>\r\n" +
-            "  <string>BPLE</string>\r\n  <string>BPO27</string>\r\n  <string>BPOA7</string>\r\n  <" +
-            "string>BPOB7</string>\r\n  <string>BPOC7</string>\r\n  <string>BPOD7</string>\r\n  <st" +
-            "ring>BPY26</string>\r\n  <string>BYMA</string>\r\n  <string>CADO</string>\r\n  <string" +
-            ">CAPX</string>\r\n  <string>CARC</string>\r\n  <string>CARCX</string>\r\n  <string>CEC" +
-            "O2</string>\r\n  <string>CEDI</string>\r\n  <string>CELU</string>\r\n  <string>CEPU</s" +
-            "tring>\r\n  <string>CGPA2</string>\r\n  <string>CH24D</string>\r\n  <string>CO21D</str" +
-            "ing>\r\n  <string>CO26</string>\r\n  <string>CO27</string>\r\n  <string>COME</string>\r" +
-            "\n  <string>COY27</string>\r\n  <string>CRE3W</string>\r\n  <string>CRES</string>\r\n  " +
-            "<string>CRESX</string>\r\n  <string>CTIO</string>\r\n  <string>CUAP</string>\r\n  <str" +
-            "ing>CVH</string>\r\n  <string>DGCE</string>\r\n  <string>DGCU2</string>\r\n  <string>D" +
-            "IA0</string>\r\n  <string>DICA</string>\r\n  <string>DICP</string>\r\n  <string>DIP0</" +
-            "string>\r\n  <string>DOLAR</string>\r\n  <string>DOME</string>\r\n  <string>DYCA</stri" +
-            "ng>\r\n  <string>EDN</string>\r\n  <string>EEM</string>\r\n  <string>EMDE</string>\r\n  " +
-            "<string>ERF25</string>\r\n  <string>EWZ</string>\r\n  <string>FERR</string>\r\n  <stri" +
-            "ng>FIPL</string>\r\n  <string>GAMI</string>\r\n  <string>GARO</string>\r\n  <string>GB" +
-            "AN</string>\r\n  <string>GCDI</string>\r\n  <string>GCLA</string>\r\n  <string>GD29</s" +
-            "tring>\r\n  <string>GD30</string>\r\n  <string>GD35</string>\r\n  <string>GD38</string" +
-            ">\r\n  <string>GD41</string>\r\n  <string>GD46</string>\r\n  <string>GGAL</string>\r\n  " +
-            "<string>GGALX</string>\r\n  <string>GRIM</string>\r\n  <string>HARG</string>\r\n  <str" +
-            "ing>HAVA</string>\r\n  <string>HSAT</string>\r\n  <string>INTC</string>\r\n  <string>I" +
-            "NTR</string>\r\n  <string>INVJ</string>\r\n  <string>IRS2W</string>\r\n  <string>IRSA<" +
-            "/string>\r\n  <string>IRSAX</string>\r\n  <string>JD</string>\r\n  <string>JUS22</stri" +
-            "ng>\r\n  <string>KO</string>\r\n  <string>LEDE</string>\r\n  <string>LOMA</string>\r\n  " +
-            "<string>LONG</string>\r\n  <string>METR</string>\r\n  <string>MIRG</string>\r\n  <stri" +
-            "ng>MOLA</string>\r\n  <string>MOLI</string>\r\n  <string>MORI</string>\r\n  <string>MO" +
-            "RIX</string>\r\n  <string>MTR</string>\r\n  <string>NDT11</string>\r\n  <string>NDT25<" +
-            "/string>\r\n  <string>NVDA</string>\r\n  <string>OEST</string>\r\n  <string>OXY</strin" +
-            "g>\r\n  <string>PAA0</string>\r\n  <string>PAMP</string>\r\n  <string>PAP0</string>\r\n " +
-            " <string>PARA</string>\r\n  <string>PARP</string>\r\n  <string>PATA</string>\r\n  <str" +
-            "ing>PAY0</string>\r\n  <string>PBA25</string>\r\n  <string>PFE</string>\r\n  <string>P" +
-            "MM29</string>\r\n  <string>PNIZF</string>\r\n  <string>POLL</string>\r\n  <string>PR17" +
-            "</string>\r\n  <string>PUL26</string>\r\n  <string>QQQ</string>\r\n  <string>RICH</str" +
-            "ing>\r\n  <string>RIGO</string>\r\n  <string>RND25</string>\r\n  <string>ROSE</string>" +
-            "\r\n  <string>S12S5</string>\r\n  <string>S16A5</string>\r\n  <string>S16Y5</string>\r\n" +
-            "  <string>S18J5</string>\r\n  <string>S29G5</string>\r\n  <string>S30J5</string>\r\n  " +
-            "<string>S30S5</string>\r\n  <string>S30Y5</string>\r\n  <string>S31L5</string>\r\n  <s" +
-            "tring>SA24D</string>\r\n  <string>SAMI</string>\r\n  <string>SAMIX</string>\r\n  <stri" +
-            "ng>SEMI</string>\r\n  <string>SF27D</string>\r\n  <string>SH</string>\r\n  <string>SPY" +
-            "</string>\r\n  <string>SUPV</string>\r\n  <string>T3X5</string>\r\n  <string>TB27P</st" +
-            "ring>\r\n  <string>TC25P</string>\r\n  <string>TECO2</string>\r\n  <string>TFU27</stri" +
-            "ng>\r\n  <string>TG25P</string>\r\n  <string>TGLT</string>\r\n  <string>TGLTX</string>" +
-            "\r\n  <string>TGNO4</string>\r\n  <string>TGSU2</string>\r\n  <string>TO26</string>\r\n " +
-            " <string>TRAN</string>\r\n  <string>TV25</string>\r\n  <string>TVPA</string>\r\n  <str" +
-            "ing>TVPE</string>\r\n  <string>TVPP</string>\r\n  <string>TVPY</string>\r\n  <string>T" +
-            "VY0</string>\r\n  <string>TX25</string>\r\n  <string>TX25P</string>\r\n  <string>TX26<" +
-            "/string>\r\n  <string>TX28</string>\r\n  <string>TX31</string>\r\n  <string>TXAR</stri" +
-            "ng>\r\n  <string>TY27P</string>\r\n  <string>TZV25</string>\r\n  <string>TZV26</string" +
-            ">\r\n  <string>TZVD5</string>\r\n  <string>TZX26</string>\r\n  <string>TZX27</string>\r" +
-            "\n  <string>TZX28</string>\r\n  <string>TZXD5</string>\r\n  <string>TZXD6</string>\r\n " +
-            " <string>TZXD7</string>\r\n  <string>TZXM6</string>\r\n  <string>TZXM7</string>\r\n  <" +
-            "string>TZXO6</string>\r\n  <string>VALO</string>\r\n  <string>YPFD</string>\r\n</Array" +
-            "OfString>")]
+            "tring>AA37</string>\r\n  <string>AAPL</string>\r\n  <string>AE38</string>\r\n  <string" +
+            ">AGCL</string>\r\n  <string>AGRO</string>\r\n  <string>AL29</string>\r\n  <string>AL30" +
+            "</string>\r\n  <string>AL35</string>\r\n  <string>AL41</string>\r\n  <string>ALUA</str" +
+            "ing>\r\n  <string>AMD</string>\r\n  <string>AMZN</string>\r\n  <string>ASUP</string>\r\n" +
+            "  <string>AUSO</string>\r\n  <string>BA37D</string>\r\n  <string>BA37E</string>\r\n  <" +
+            "string>BABA</string>\r\n  <string>BAD25</string>\r\n  <string>BAK</string>\r\n  <strin" +
+            "g>BAO25</string>\r\n  <string>BAO26</string>\r\n  <string>BB37D</string>\r\n  <string>" +
+            "BB37E</string>\r\n  <string>BBAR</string>\r\n  <string>BBD</string>\r\n  <string>BC37D" +
+            "</string>\r\n  <string>BC37E</string>\r\n  <string>BDC28</string>\r\n  <string>BHIP</s" +
+            "tring>\r\n  <string>BMA</string>\r\n  <string>BMA.X</string>\r\n  <string>BOLT</string" +
+            ">\r\n  <string>BPAT</string>\r\n  <string>BPLD</string>\r\n  <string>BPLE</string>\r\n  " +
+            "<string>BPO27</string>\r\n  <string>BPOA7</string>\r\n  <string>BPOB7</string>\r\n  <s" +
+            "tring>BPOC7</string>\r\n  <string>BPOD7</string>\r\n  <string>BPY26</string>\r\n  <str" +
+            "ing>BYMA</string>\r\n  <string>CADO</string>\r\n  <string>CAPX</string>\r\n  <string>C" +
+            "ARC</string>\r\n  <string>CARCX</string>\r\n  <string>CECO2</string>\r\n  <string>CEDI" +
+            "</string>\r\n  <string>CELU</string>\r\n  <string>CEPU</string>\r\n  <string>CGPA2</st" +
+            "ring>\r\n  <string>CH24D</string>\r\n  <string>CO21D</string>\r\n  <string>CO26</strin" +
+            "g>\r\n  <string>CO27</string>\r\n  <string>COME</string>\r\n  <string>COY27</string>\r\n" +
+            "  <string>CRE3W</string>\r\n  <string>CRES</string>\r\n  <string>CRESX</string>\r\n  <" +
+            "string>CTIO</string>\r\n  <string>CUAP</string>\r\n  <string>CVH</string>\r\n  <string" +
+            ">DGCE</string>\r\n  <string>DGCU2</string>\r\n  <string>DIA0</string>\r\n  <string>DIC" +
+            "A</string>\r\n  <string>DICP</string>\r\n  <string>DIP0</string>\r\n  <string>DISN</st" +
+            "ring>\r\n  <string>DLR/NOV25</string>\r\n  <string>DLR/OCT25</string>\r\n  <string>DOL" +
+            "AR</string>\r\n  <string>DOME</string>\r\n  <string>DYCA</string>\r\n  <string>EDN</st" +
+            "ring>\r\n  <string>EEM</string>\r\n  <string>EMDE</string>\r\n  <string>ERF25</string>" +
+            "\r\n  <string>EWZ</string>\r\n  <string>FERR</string>\r\n  <string>FIPL</string>\r\n  <s" +
+            "tring>GAMI</string>\r\n  <string>GARO</string>\r\n  <string>GBAN</string>\r\n  <string" +
+            ">GCDI</string>\r\n  <string>GCLA</string>\r\n  <string>GD29</string>\r\n  <string>GD30" +
+            "</string>\r\n  <string>GD35</string>\r\n  <string>GD38</string>\r\n  <string>GD41</str" +
+            "ing>\r\n  <string>GD46</string>\r\n  <string>GGAL</string>\r\n  <string>GGALX</string>" +
+            "\r\n  <string>GOOGL</string>\r\n  <string>GRIM</string>\r\n  <string>HARG</string>\r\n  " +
+            "<string>HAVA</string>\r\n  <string>HSAT</string>\r\n  <string>INTC</string>\r\n  <stri" +
+            "ng>INTR</string>\r\n  <string>INVJ</string>\r\n  <string>IRS2W</string>\r\n  <string>I" +
+            "RSA</string>\r\n  <string>IRSAX</string>\r\n  <string>JD</string>\r\n  <string>JUS22</" +
+            "string>\r\n  <string>KO</string>\r\n  <string>LEDE</string>\r\n  <string>LOMA</string>" +
+            "\r\n  <string>LONG</string>\r\n  <string>METR</string>\r\n  <string>MIRG</string>\r\n  <" +
+            "string>MOLA</string>\r\n  <string>MOLI</string>\r\n  <string>MORI</string>\r\n  <strin" +
+            "g>MORIX</string>\r\n  <string>MTR</string>\r\n  <string>NDT11</string>\r\n  <string>ND" +
+            "T25</string>\r\n  <string>NVDA</string>\r\n  <string>OEST</string>\r\n  <string>OXY</s" +
+            "tring>\r\n  <string>PAA0</string>\r\n  <string>PAGS</string>\r\n  <string>PAMP</string" +
+            ">\r\n  <string>PAP0</string>\r\n  <string>PARA</string>\r\n  <string>PARP</string>\r\n  " +
+            "<string>PATA</string>\r\n  <string>PAY0</string>\r\n  <string>PFE</string>\r\n  <strin" +
+            "g>PMM29</string>\r\n  <string>PNIZF</string>\r\n  <string>POLL</string>\r\n  <string>P" +
+            "R17</string>\r\n  <string>PUL26</string>\r\n  <string>QQQ</string>\r\n  <string>RICH</" +
+            "string>\r\n  <string>RIGO</string>\r\n  <string>RND25</string>\r\n  <string>ROSE</stri" +
+            "ng>\r\n  <string>S12S5</string>\r\n  <string>S29G5</string>\r\n  <string>S30S5</string" +
+            ">\r\n  <string>S31L5</string>\r\n  <string>SA24D</string>\r\n  <string>SAMI</string>\r\n" +
+            "  <string>SAMIX</string>\r\n  <string>SEMI</string>\r\n  <string>SF27D</string>\r\n  <" +
+            "string>SH</string>\r\n  <string>SID</string>\r\n  <string>SPY</string>\r\n  <string>SU" +
+            "PV</string>\r\n  <string>TB27P</string>\r\n  <string>TECO2</string>\r\n  <string>TFU27" +
+            "</string>\r\n  <string>TG25P</string>\r\n  <string>TGLT</string>\r\n  <string>TGLTX</s" +
+            "tring>\r\n  <string>TGNO4</string>\r\n  <string>TGSU2</string>\r\n  <string>TO26</stri" +
+            "ng>\r\n  <string>TRAN</string>\r\n  <string>TV25</string>\r\n  <string>TVPA</string>\r\n" +
+            "  <string>TVPE</string>\r\n  <string>TVPP</string>\r\n  <string>TVPY</string>\r\n  <st" +
+            "ring>TVY0</string>\r\n  <string>TX25</string>\r\n  <string>TX25P</string>\r\n  <string" +
+            ">TX26</string>\r\n  <string>TX28</string>\r\n  <string>TX31</string>\r\n  <string>TXAR" +
+            "</string>\r\n  <string>TY27P</string>\r\n  <string>TZV26</string>\r\n  <string>TZVD5</" +
+            "string>\r\n  <string>TZX26</string>\r\n  <string>TZX27</string>\r\n  <string>TZX28</st" +
+            "ring>\r\n  <string>TZXD5</string>\r\n  <string>TZXD6</string>\r\n  <string>TZXD7</stri" +
+            "ng>\r\n  <string>TZXM6</string>\r\n  <string>TZXM7</string>\r\n  <string>TZXO6</string" +
+            ">\r\n  <string>UNH</string>\r\n  <string>VALO</string>\r\n  <string>YPFD</string>\r\n  <" +
+            "string>DOLAR</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection TickersToMonitor {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["TickersToMonitor"]));

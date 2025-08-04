@@ -8,17 +8,11 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="USDARS" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">1070</Value>
-    </Setting>
     <Setting Name="Comision" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="DerechoMercado" Type="System.Decimal" Scope="Application">
       <Value Profile="(Default)">0.01</Value>
-    </Setting>
-    <Setting Name="DerechoMercadoAccionCEDEAR" Type="System.Decimal" Scope="Application">
-      <Value Profile="(Default)">0.08</Value>
     </Setting>
     <Setting Name="ApiBaseUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://api.cocos.xoms.com.ar</Value>
@@ -46,19 +40,28 @@
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
   &lt;string&gt;GOOGL;GOGLD;GOGLC&lt;/string&gt;
+  &lt;string&gt;IRCOO;IRCOD;IRCOC&lt;/string&gt;
+  &lt;string&gt;DNC3O;DNC3D;DNC3C&lt;/string&gt;
+  &lt;string&gt;CRCJO;CRCJD;CRCJC&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="MarketOpenTime" Type="System.TimeSpan" Scope="Application">
-      <Value Profile="(Default)">11:00:00</Value>
     </Setting>
     <Setting Name="MarketCloseTime" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">17:00:00</Value>
     </Setting>
-    <Setting Name="MarketCloseCITime" Type="System.TimeSpan" Scope="Application">
-      <Value Profile="(Default)">16:30:00</Value>
-    </Setting>
     <Setting Name="MarketAuctionTimePeriod" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:03:00</Value>
+    </Setting>
+    <Setting Name="DerechoMercadoAccionCEDEAR" Type="System.Decimal" Scope="Application">
+      <Value Profile="(Default)">0.07</Value>
+    </Setting>
+    <Setting Name="MarketOpenTime" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">10:30:00</Value>
+    </Setting>
+    <Setting Name="MarketCloseCITime" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">17:00:00</Value>
+    </Setting>
+    <Setting Name="USDARS" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1300</Value>
     </Setting>
     <Setting Name="RatioTickers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -66,6 +69,7 @@
   &lt;string&gt;AL30/AE38  &lt;/string&gt;
   &lt;string&gt;AL30/AL29  &lt;/string&gt;
   &lt;string&gt;AL30/AL35  27&lt;/string&gt;
+  &lt;string&gt;AL30D/AL30C 0 1&lt;/string&gt;
   &lt;string&gt;AL30/GD29&lt;/string&gt;
   &lt;string&gt;AL30/GD30  &lt;/string&gt;
   &lt;string&gt;AL30/GD35&lt;/string&gt;
@@ -85,12 +89,12 @@
   &lt;string&gt;GD30/AE38  &lt;/string&gt;
   &lt;string&gt;GD30/AL30 3,3 4&lt;/string&gt;
   &lt;string&gt;GD41/AL41  &lt;/string&gt;
+  &lt;string&gt;AL30D/AL30C 0 1&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="TickersToMonitor" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;string&gt;AA25&lt;/string&gt;
   &lt;string&gt;AA37&lt;/string&gt;
   &lt;string&gt;AAPL&lt;/string&gt;
   &lt;string&gt;AE38&lt;/string&gt;
@@ -109,6 +113,7 @@
   &lt;string&gt;BA37E&lt;/string&gt;
   &lt;string&gt;BABA&lt;/string&gt;
   &lt;string&gt;BAD25&lt;/string&gt;
+  &lt;string&gt;BAK&lt;/string&gt;
   &lt;string&gt;BAO25&lt;/string&gt;
   &lt;string&gt;BAO26&lt;/string&gt;
   &lt;string&gt;BB37D&lt;/string&gt;
@@ -123,7 +128,6 @@
   &lt;string&gt;BMA.X&lt;/string&gt;
   &lt;string&gt;BOLT&lt;/string&gt;
   &lt;string&gt;BPAT&lt;/string&gt;
-  &lt;string&gt;BPJ25&lt;/string&gt;
   &lt;string&gt;BPLD&lt;/string&gt;
   &lt;string&gt;BPLE&lt;/string&gt;
   &lt;string&gt;BPO27&lt;/string&gt;
@@ -160,6 +164,9 @@
   &lt;string&gt;DICA&lt;/string&gt;
   &lt;string&gt;DICP&lt;/string&gt;
   &lt;string&gt;DIP0&lt;/string&gt;
+  &lt;string&gt;DISN&lt;/string&gt;
+  &lt;string&gt;DLR/NOV25&lt;/string&gt;
+  &lt;string&gt;DLR/OCT25&lt;/string&gt;
   &lt;string&gt;DOLAR&lt;/string&gt;
   &lt;string&gt;DOME&lt;/string&gt;
   &lt;string&gt;DYCA&lt;/string&gt;
@@ -183,6 +190,7 @@
   &lt;string&gt;GD46&lt;/string&gt;
   &lt;string&gt;GGAL&lt;/string&gt;
   &lt;string&gt;GGALX&lt;/string&gt;
+  &lt;string&gt;GOOGL&lt;/string&gt;
   &lt;string&gt;GRIM&lt;/string&gt;
   &lt;string&gt;HARG&lt;/string&gt;
   &lt;string&gt;HAVA&lt;/string&gt;
@@ -212,13 +220,13 @@
   &lt;string&gt;OEST&lt;/string&gt;
   &lt;string&gt;OXY&lt;/string&gt;
   &lt;string&gt;PAA0&lt;/string&gt;
+  &lt;string&gt;PAGS&lt;/string&gt;
   &lt;string&gt;PAMP&lt;/string&gt;
   &lt;string&gt;PAP0&lt;/string&gt;
   &lt;string&gt;PARA&lt;/string&gt;
   &lt;string&gt;PARP&lt;/string&gt;
   &lt;string&gt;PATA&lt;/string&gt;
   &lt;string&gt;PAY0&lt;/string&gt;
-  &lt;string&gt;PBA25&lt;/string&gt;
   &lt;string&gt;PFE&lt;/string&gt;
   &lt;string&gt;PMM29&lt;/string&gt;
   &lt;string&gt;PNIZF&lt;/string&gt;
@@ -231,13 +239,8 @@
   &lt;string&gt;RND25&lt;/string&gt;
   &lt;string&gt;ROSE&lt;/string&gt;
   &lt;string&gt;S12S5&lt;/string&gt;
-  &lt;string&gt;S16A5&lt;/string&gt;
-  &lt;string&gt;S16Y5&lt;/string&gt;
-  &lt;string&gt;S18J5&lt;/string&gt;
   &lt;string&gt;S29G5&lt;/string&gt;
-  &lt;string&gt;S30J5&lt;/string&gt;
   &lt;string&gt;S30S5&lt;/string&gt;
-  &lt;string&gt;S30Y5&lt;/string&gt;
   &lt;string&gt;S31L5&lt;/string&gt;
   &lt;string&gt;SA24D&lt;/string&gt;
   &lt;string&gt;SAMI&lt;/string&gt;
@@ -245,11 +248,10 @@
   &lt;string&gt;SEMI&lt;/string&gt;
   &lt;string&gt;SF27D&lt;/string&gt;
   &lt;string&gt;SH&lt;/string&gt;
+  &lt;string&gt;SID&lt;/string&gt;
   &lt;string&gt;SPY&lt;/string&gt;
   &lt;string&gt;SUPV&lt;/string&gt;
-  &lt;string&gt;T3X5&lt;/string&gt;
   &lt;string&gt;TB27P&lt;/string&gt;
-  &lt;string&gt;TC25P&lt;/string&gt;
   &lt;string&gt;TECO2&lt;/string&gt;
   &lt;string&gt;TFU27&lt;/string&gt;
   &lt;string&gt;TG25P&lt;/string&gt;
@@ -272,7 +274,6 @@
   &lt;string&gt;TX31&lt;/string&gt;
   &lt;string&gt;TXAR&lt;/string&gt;
   &lt;string&gt;TY27P&lt;/string&gt;
-  &lt;string&gt;TZV25&lt;/string&gt;
   &lt;string&gt;TZV26&lt;/string&gt;
   &lt;string&gt;TZVD5&lt;/string&gt;
   &lt;string&gt;TZX26&lt;/string&gt;
@@ -284,8 +285,10 @@
   &lt;string&gt;TZXM6&lt;/string&gt;
   &lt;string&gt;TZXM7&lt;/string&gt;
   &lt;string&gt;TZXO6&lt;/string&gt;
+  &lt;string&gt;UNH&lt;/string&gt;
   &lt;string&gt;VALO&lt;/string&gt;
   &lt;string&gt;YPFD&lt;/string&gt;
+  &lt;string&gt;DOLAR&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
