@@ -70,7 +70,7 @@ namespace Primary.Data
                 SettlementType.CI => "0",
                 SettlementType.T24H => "1",
                 SettlementType.T48H => "2",
-                _ => throw new InvalidEnumStringException(value.ToString()),
+                _ => value.ToString(),
             };
         }
 
@@ -81,8 +81,7 @@ namespace Primary.Data
                 "0" => SettlementType.CI,
                 "1" => SettlementType.T24H,
                 "2" => SettlementType.T24H,
-                "3" => SettlementType.Otro,
-                _ => throw new InvalidEnumStringException(value),
+                _ => SettlementType.Otro
             };
         }
 

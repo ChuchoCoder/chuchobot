@@ -115,6 +115,12 @@ public partial class FrmSettlementTermTrade : Form
         numVentaPrice.Increment = _trade.Sell.Instrument.MinPriceIncrement;
         numCompraPrice.Increment = _trade.Buy.Instrument.MinPriceIncrement;
 
+        numVentaPrice.Increment = _trade.Sell.Instrument.MinTradevol;
+        numCompraPrice.Increment = _trade.Buy.Instrument.MinTradevol;
+
+        numVentaPrice.DecimalPlaces = _trade.Sell.Instrument.InstrumentPricePrecision;
+        numCompraPrice.DecimalPlaces = _trade.Buy.Instrument.InstrumentPricePrecision;
+
         if (_trade.Sell.Instrument.IsPesos() && _trade.Buy.Instrument.IsPesos())
         {
             numDolar.Visible = false;

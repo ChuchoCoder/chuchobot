@@ -50,17 +50,20 @@ public partial class FrmInstrumentsCheckList : Form
                     }
                 }
             }
-            var tickersText = string.Join(", ", tickersNotFound);
-            var result = MessageBox.Show($"El/los instrumentos {tickersText} no existen. ¿Desea quitarlos de la lista?", "Instrumentos inexistentes", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-            Telemetry.LogWarning($"El instrumento {tickersNotFound} no existe.");
-            if (result == DialogResult.OK)
+            if (tickersNotFound.Count > 0)
             {
-                settings.RemoveAll(x => tickersNotFound.Contains(x));
-            }
-            else
-            {
-                DialogResult = DialogResult.None;
-                return;
+                var tickersText = string.Join(", ", tickersNotFound);
+                var result = MessageBox.Show($"El/los instrumentos {tickersText} no existen. ¿Desea quitarlos de la lista?", "Instrumentos inexistentes", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                Telemetry.LogWarning($"El instrumento {tickersNotFound} no existe.");
+                if (result == DialogResult.OK)
+                {
+                    settings.RemoveAll(x => tickersNotFound.Contains(x));
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                    return;
+                }
             }
         }
 
