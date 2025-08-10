@@ -61,7 +61,7 @@ public static class StringExtensions
 
     public static string AddDolarSuffix(this string ticker)
     {
-        var tickersDC = TickersDC.FirstOrDefault(x => x.Contains(ticker));
+        var tickersDC = TickersDC.FirstOrDefault(x => string.Equals(x, ticker, System.StringComparison.InvariantCultureIgnoreCase));
         if (tickersDC != null)
         {
             var dc = tickersDC.Split(';');

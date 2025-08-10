@@ -35,6 +35,8 @@
             instrumentSearchListBuy = new Shared.InstrumentSearchList();
             btnLaunch = new System.Windows.Forms.Button();
             btnArbitrajeDolar = new System.Windows.Forms.Button();
+            btnCCL = new System.Windows.Forms.Button();
+            btnDC = new System.Windows.Forms.Button();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -85,6 +87,7 @@
             // 
             // btnLaunch
             // 
+            btnLaunch.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             btnLaunch.Location = new System.Drawing.Point(4, 711);
             btnLaunch.Margin = new System.Windows.Forms.Padding(13, 15, 13, 15);
             btnLaunch.Name = "btnLaunch";
@@ -96,20 +99,47 @@
             // 
             // btnArbitrajeDolar
             // 
+            btnArbitrajeDolar.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             btnArbitrajeDolar.Location = new System.Drawing.Point(4, 751);
             btnArbitrajeDolar.Margin = new System.Windows.Forms.Padding(13, 15, 13, 15);
             btnArbitrajeDolar.Name = "btnArbitrajeDolar";
-            btnArbitrajeDolar.Size = new System.Drawing.Size(866, 39);
+            btnArbitrajeDolar.Size = new System.Drawing.Size(175, 39);
             btnArbitrajeDolar.TabIndex = 11;
-            btnArbitrajeDolar.Text = "Abrir trade de arbitraje dolar";
+            btnArbitrajeDolar.Text = "Arbitraje dolar MEP";
             btnArbitrajeDolar.UseVisualStyleBackColor = true;
             btnArbitrajeDolar.Click += btnArbitrajeDolar_Click;
+            // 
+            // btnCCL
+            // 
+            btnCCL.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnCCL.Location = new System.Drawing.Point(359, 751);
+            btnCCL.Margin = new System.Windows.Forms.Padding(13, 15, 13, 15);
+            btnCCL.Name = "btnCCL";
+            btnCCL.Size = new System.Drawing.Size(175, 39);
+            btnCCL.TabIndex = 12;
+            btnCCL.Text = "Arbitraje dolar CCL";
+            btnCCL.UseVisualStyleBackColor = true;
+            btnCCL.Click += btnCCL_Click;
+            // 
+            // btnDC
+            // 
+            btnDC.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnDC.Location = new System.Drawing.Point(695, 751);
+            btnDC.Margin = new System.Windows.Forms.Padding(13, 15, 13, 15);
+            btnDC.Name = "btnDC";
+            btnDC.Size = new System.Drawing.Size(175, 39);
+            btnDC.TabIndex = 13;
+            btnDC.Text = "Arbitraje D/C";
+            btnDC.UseVisualStyleBackColor = true;
+            btnDC.Click += btnDC_Click;
             // 
             // FrmRatioTradeLauncher
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(876, 792);
+            Controls.Add(btnDC);
+            Controls.Add(btnCCL);
             Controls.Add(btnArbitrajeDolar);
             Controls.Add(btnLaunch);
             Controls.Add(groupBox1);
@@ -134,5 +164,7 @@
         private Shared.InstrumentSearchList instrumentSearchListBuy;
         private System.Windows.Forms.Button btnLaunch;
         private System.Windows.Forms.Button btnArbitrajeDolar;
+        private System.Windows.Forms.Button btnCCL;
+        private System.Windows.Forms.Button btnDC;
     }
 }

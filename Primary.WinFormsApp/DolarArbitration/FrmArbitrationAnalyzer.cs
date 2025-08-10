@@ -23,6 +23,7 @@ public partial class FrmArbitrationAnalyzer : Form
     {
         try
         {
+            _processor.Init();
             _processor.RefreshData();
             var minProfit = numMinProfit.Value / 100;
 
@@ -152,8 +153,6 @@ public partial class FrmArbitrationAnalyzer : Form
     private void FrmArbitrationBestTrades_Load(object sender, EventArgs e)
     {
         _processor = new DolarArbitrationProcessor();
-
-        _processor.Init();
 
         _dataTable = new DataTable();
         var ownedVentaColumn = _dataTable.Columns.Add("KeyOwnedVenta", typeof(string));

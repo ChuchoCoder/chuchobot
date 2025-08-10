@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChuchoBot.WinFormsApp.DolarArbitration;
 
-[DebuggerDisplay("Profit: {ProfitTotalInPesos.ToString(\"C\"),nq} ({ProfitPercentage.ToString(\"P\"),nq}) {OwnedBuy.Instrument.InstrumentId.Ticker(),nq} / {ArbitrationSell.Instrument.InstrumentId.Ticker(),nq}")]
+[DebuggerDisplay("Profit: {ProfitTotalInPesos.ToString(\"C\"),nq} ({ProfitPercentage.ToString(\"P\"),nq}) {OwnedBuy.InstrumentDetail.InstrumentId.Ticker(),nq} / {ArbitrationSell.InstrumentDetail.InstrumentId.Ticker(),nq}")]
 public class RatioTradeOperation
 {
     public string OperationLog { get; private set; } = string.Empty;
@@ -18,8 +18,10 @@ public class RatioTradeOperation
     public InstrumentOperation ArbitrationBuy { get; init; }
     public InstrumentOperation ArbitrationSell { get; init; }
 
+    public decimal Comision => OwnedSell.Comision + ArbitrationBuy.Comision + ArbitrationSell.Comision + OwnedBuy.Comision;
     public decimal ComisionTotalInPesos => OwnedSell.ComisionInPesos + ArbitrationBuy.ComisionInPesos + ArbitrationSell.ComisionInPesos + OwnedBuy.ComisionInPesos;
 
+    public decimal ProfitTotal => OwnedSell.NetTotal - ArbitrationBuy.NetTotal + ArbitrationSell.NetTotal - OwnedBuy.NetTotal;
     public decimal ProfitTotalInPesos => OwnedSell.NetTotalInPesos - ArbitrationBuy.NetTotalInPesos + ArbitrationSell.NetTotalInPesos - OwnedBuy.NetTotalInPesos;
     public decimal ProfitPercentage => ProfitTotalInPesos / OwnedSell.NetTotalInPesos;
 

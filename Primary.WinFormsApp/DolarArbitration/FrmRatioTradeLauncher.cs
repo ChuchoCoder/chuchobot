@@ -11,7 +11,7 @@ public partial class FrmRatioTradeLauncher : Form
         InitializeComponent();
         instrumentSearchListBuy.SettlementsVisible = true;
         instrumentSearchListSell.SettlementsVisible = true;
-        
+
     }
 
     private void btnLaunch_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ public partial class FrmRatioTradeLauncher : Form
 
     private void FrmRatioTradeLauncher_Load(object sender, EventArgs e)
     {
-        
+
     }
     private void btnArbitrajeDolar_Click(object sender, EventArgs e)
     {
@@ -73,6 +73,86 @@ public partial class FrmRatioTradeLauncher : Form
                 var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
                 var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
                 var ratioTrade = new RatioTrade(RatioTradeType.MEP, sellThenBuyTrade, buyThenSellTrade);
+
+                var frmRatioTrade = new FrmRatioTrade();
+                frmRatioTrade.Init(ratioTrade);
+                frmRatioTrade.Show();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+    private void btnCCL_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (instrumentSearchListSell.ValidateSelectedInstrument()
+               && instrumentSearchListBuy.ValidateSelectedInstrument())
+            {
+                var owned = instrumentSearchListSell.SelectedInstrument;
+
+                var ownedTicker = owned.Split(' ')[0];
+                var ownedBuySymbol = owned.AddMervalPrefix();
+                var ownedSellSymbol = ownedTicker.AddCableSuffix().ToMervalSymbol24H();
+
+                var ownedBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedBuySymbol));
+                var ownedSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedSellSymbol));
+
+                var arbitration = instrumentSearchListBuy.SelectedInstrument;
+
+                var arbitrationTicker = arbitration.Split(' ')[0];
+                var arbitrationSellSymbol = arbitration.AddMervalPrefix();
+                var arbitrationBuySymbol = arbitrationTicker.AddCableSuffix().ToMervalSymbol24H();
+
+                var arbitrationBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationBuySymbol));
+                var arbitrationSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationSellSymbol));
+
+                var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
+                var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
+                var ratioTrade = new RatioTrade(RatioTradeType.CCL, sellThenBuyTrade, buyThenSellTrade);
+
+                var frmRatioTrade = new FrmRatioTrade();
+                frmRatioTrade.Init(ratioTrade);
+                frmRatioTrade.Show();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+    private void btnDC_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (instrumentSearchListSell.ValidateSelectedInstrument()
+               && instrumentSearchListBuy.ValidateSelectedInstrument())
+            {
+                var owned = instrumentSearchListSell.SelectedInstrument;
+
+                var ownedTicker = owned.Split(' ')[0];
+                var ownedBuySymbol = owned.AddDolarSuffix().ToMervalSymbol24H();
+                var ownedSellSymbol = ownedTicker.AddCableSuffix().ToMervalSymbol24H();
+
+                var ownedBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedBuySymbol));
+                var ownedSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(ownedSellSymbol));
+
+                var arbitration = instrumentSearchListBuy.SelectedInstrument;
+
+                var arbitrationTicker = arbitration.Split(' ')[0];
+                var arbitrationSellSymbol = arbitration.AddDolarSuffix().ToMervalSymbol24H();
+                var arbitrationBuySymbol = arbitrationTicker.AddCableSuffix().ToMervalSymbol24H();
+
+                var arbitrationBuyInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationBuySymbol));
+                var arbitrationSellInstrumentWithData = new InstrumentWithData(Argentina.Data.GetInstrumentDetailOrNull(arbitrationSellSymbol));
+
+                var sellThenBuyTrade = new BuySellTrade(ownedBuyInstrumentWithData, ownedSellInstrumentWithData);
+                var buyThenSellTrade = new BuySellTrade(arbitrationBuyInstrumentWithData, arbitrationSellInstrumentWithData);
+                var ratioTrade = new RatioTrade(RatioTradeType.DvsC, sellThenBuyTrade, buyThenSellTrade);
 
                 var frmRatioTrade = new FrmRatioTrade();
                 frmRatioTrade.Init(ratioTrade);

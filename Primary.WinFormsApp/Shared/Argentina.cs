@@ -27,6 +27,7 @@ public class Argentina
     public delegate void MarketDataEventHandler(Instrument instrument, Entries data);
     public event MarketDataEventHandler OnMarketData;
     public ConcurrentDictionary<string, Entries> LatestMarketData = new();
+    //public ConcurrentDictionary<string, DateTime> LatestMarketDataDateTime = new();
     public ConcurrentDictionary<string, Primary.Data.Orders.OrderStatus> Orders = new();
 
     public Instrument[] WatchedInstruments { get; private set; }
@@ -262,6 +263,7 @@ public class Argentina
             {
                 //Console.WriteLine(marketData.Instrument?.Symbol + ": " + marketData.Data?.Last?.Price);
                 _ = LatestMarketData.AddOrUpdate(marketData.Instrument.Symbol, marketData.Data, (key, data) => marketData.Data);
+                //_ = LatestMarketDataDateTime.AddOrUpdate(marketData.Instrument.Symbol, Now.UtcDateTime, (key, dateTime) => Now.UtcDateTime);
 
                 OnMarketData?.Invoke(marketData.Instrument, marketData.Data);
 
@@ -341,6 +343,21 @@ public class Argentina
             Telemetry.LogError(nameof(RefreshMarketData), ex);
             throw;
         }
+    }
+
+    public InstrumentDetail GetInstrumentDetailOrNullByTicker(string ticker)
+    {
+        var instrument = Data.AllInstruments.FirstOrDefault(x => x.InstrumentId?.Ticker() == ticker);
+
+        return instrument;
+
+    }
+
+    public InstrumentDetail GetInstrumentDetailByTicker(string ticker)
+    {
+        var instrument = GetInstrumentDetailOrNullByTicker(ticker);
+
+        return instrument ?? throw new KeyNotFoundException($"Ticker '{ticker}' not found.");
     }
 
     public InstrumentDetail GetInstrumentDetailOrNull(string symbol)

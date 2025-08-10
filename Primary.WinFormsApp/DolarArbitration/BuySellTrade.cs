@@ -7,7 +7,7 @@ namespace ChuchoBot.WinFormsApp.DolarArbitration;
 /// <summary>
 /// Permite obtener la cotización para comprar o vender Dolar
 /// </summary>
-[DebuggerDisplay("{Buy.Instrument.InstrumentId.Market,nq}:{Buy.Instrument.InstrumentId.Symbol,nq} {Buy.Instrument.Currency,nq}")]
+[DebuggerDisplay("{Buy.Instrument.InstrumentId.Symbol,nq} {Buy.Instrument.Currency,nq} / {Sell.Instrument.InstrumentId.Symbol,nq} {Sell.Instrument.Currency,nq}")]
 public class BuySellTrade
 {
     public BuySellTrade(InstrumentWithData buy, InstrumentWithData sell)
@@ -45,6 +45,9 @@ public class BuySellTrade
     public decimal BuyPrice // Barato
 => HasData() && Buy.Data.HasOffers() && Sell.Data.HasBids() ? Buy.Data.Offers[0].Price / Sell.Data.Bids[0].Price : default;
 
+    public string BuyPriceText => HasData() && Buy.Data.HasOffers() && Sell.Data.HasBids()
+        ? $"{Buy.Data.Offers[0].Price:0.00} / {Sell.Data.Bids[0].Price:0.00} = {Buy.Data.Offers[0].Price / Sell.Data.Bids[0].Price:0.00#}"
+        : "N/A";
 
     /// <summary>
     /// Compra Dolar (Sell Bid $ / USD Buy Offer)
@@ -53,6 +56,10 @@ public class BuySellTrade
     public decimal InverseBuyPrice 
 => HasData() && Buy.Data.HasOffers() && Sell.Data.HasBids() ? Sell.Data.Bids[0].Price / Buy.Data.Offers[0].Price : default;
 
+    public string InverseBuyPriceText => HasData() && Buy.Data.HasOffers() && Sell.Data.HasBids()
+        ? $"{Sell.Data.Bids[0].Price:0.00} / {Buy.Data.Offers[0].Price:0.00} = {Sell.Data.Bids[0].Price / Buy.Data.Offers[0].Price:0.00#}"
+        : "N/A";
+
     /// <summary>
     /// Venta Dolar (Buy Bid $ / Sell Offer USD)
     /// Obtiene el tipo de cambio para Vender Dolar utilizando Pesos.Bids / Dolar.Offers
@@ -60,12 +67,20 @@ public class BuySellTrade
     public decimal SellPrice // Caro
 => HasData() && Buy.Data.HasBids() && Sell.Data.HasOffers() ? Buy.Data.Bids[0].Price / Sell.Data.Offers[0].Price : default;
 
+    public string SellPriceText => HasData() && Buy.Data.HasBids() && Sell.Data.HasOffers()
+        ? $"{Buy.Data.Bids[0].Price:0.00} / {Sell.Data.Offers[0].Price:0.00} = {Buy.Data.Bids[0].Price / Sell.Data.Offers[0].Price:0.00#}"
+        : "N/A";
+
     /// <summary>
     /// Venta Dolar (Sell Offer $ / USD Buy Bid)
     /// Obtiene el tipo de cambio para Vender Dolar utilizando Sell.Offers.Price / Buy.Bids.Price
     /// </summary>
     public decimal InverseSellPrice
 => HasData() && Buy.Data.HasBids() && Sell.Data.HasOffers() ? Sell.Data.Offers[0].Price / Buy.Data.Bids[0].Price : default;
+
+    public string InverseSellPriceText => HasData() && Buy.Data.HasBids() && Sell.Data.HasOffers()
+        ? $"{Sell.Data.Offers[0].Price:0.00} / {Buy.Data.Bids[0].Price:0.00} = {Sell.Data.Offers[0].Price / Buy.Data.Bids[0].Price:0.00#}"
+        : "N/A";
 
     public decimal GetMinBuyOfferOrSellBidSize()
     {

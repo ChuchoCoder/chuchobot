@@ -12,28 +12,20 @@ namespace ChuchoBot.WinFormsApp.Tests;
 
 public class DolarArbitrationProcessorTests: InstrumentTests
 {
+    public DolarArbitrationProcessorTests()
+    {
+        Argentina.Data.LatestMarketData.Clear();
+    }
 
     [Fact]
     public void Arbitrar_Dolar_MEP_BABA_AL30()
     {
-        Argentina.Data.Positions =
-        [
-            new Position()
-            {
-                Instrument = new PositionInstrument
-                {
-                    SymbolReference = "MERV - XMEV - BABA - 24hs"
-                },
-                Symbol = "MERV - XMEV - BABA - 24hs"
-            }
-        ];
-
         Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - BABAD - 24hs", EntriesBuilder.Create(100, 10.3m, 10.5m), (s, u) => u);
         Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - BABA - 24hs", EntriesBuilder.Create(100, 11125m, 11150m), (s, u) => u);
         Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - AL30D - 24hs", EntriesBuilder.Create(100, 70m, 70.01m), (s, u) => u);
         Argentina.Data.LatestMarketData.AddOrUpdate("MERV - XMEV - AL30 - 24hs", EntriesBuilder.Create(100, 77000m, 77020m), (s, u) => u);
 
-        var dolarArbi = new DolarArbitrationProcessor(["AL30"]);
+        var dolarArbi = new DolarArbitrationProcessor(["AL30", "BABA"]);
 
         dolarArbi.Init();
 

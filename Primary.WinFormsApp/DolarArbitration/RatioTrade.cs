@@ -15,7 +15,7 @@ public enum RatioTradeType
 /// <summary>
 /// Permite calcular la ganancia al realizar una operación de arbitraje de dolar (MEP o CCL)
 /// </summary>
-[DebuggerDisplay("{SellThenBuy.Buy.Instrument.InstrumentId.Symbol} / {BuyThenSell.Buy.Instrument.InstrumentId.Symbol}")]
+[DebuggerDisplay("{SellThenBuy.Buy.Instrument.InstrumentId.Symbol} / {BuyThenSell.Sell.Instrument.InstrumentId.Symbol}")]
 public class RatioTrade
 {
     public RatioTradeType Type { get; set; }
@@ -82,6 +82,8 @@ public class RatioTrade
 
         var arbitrationTradeSize = BuyThenSell.GetMinBuyOfferOrSellBidSize();
 
+        Debug.Write($"ownedTradeSize: {ownedTradeSize}, arbitrationTradeSize: {arbitrationTradeSize}");
+
         //if (ownedTradeSize == 0 || arbitrationTradeSize == 0)
         //{
         //    return null;
@@ -91,15 +93,17 @@ public class RatioTrade
         var ownedBuyOperation = SellThenBuy.Buy.BuyOperation(ownedTradeSize);
         var arbitrationSellOperation = BuyThenSell.Sell.SellOperation(arbitrationTradeSize);
 
-        if (ownedBuyOperation.NetTotalInPesos > arbitrationSellOperation.NetTotalInPesos)
+        if (ownedBuyOperation.NetTotal < arbitrationSellOperation.NetTotal)
         {
-            arbitrationTradeSize = BuyThenSell.Sell.CalculateBidSize(ownedBuyOperation.NetTotalInPesos);
+            arbitrationTradeSize = BuyThenSell.Sell.CalculateBidSize(ownedBuyOperation.NetTotal);
             arbitrationSellOperation = BuyThenSell.Sell.SellOperation(arbitrationTradeSize);
+            Debug.WriteLine($"arbitrationTradeSize ajustado: {arbitrationTradeSize} para NetTotal: {ownedBuyOperation.NetTotal} > {arbitrationSellOperation.NetTotal}");
         }
         else
         {
-            ownedTradeSize = BuyThenSell.Buy.CalculateOfferSize(arbitrationSellOperation.NetTotalInPesos);
+            ownedTradeSize = SellThenBuy.Buy.CalculateOfferSize(arbitrationSellOperation.NetTotal);
             ownedBuyOperation = SellThenBuy.Buy.BuyOperation(ownedTradeSize);
+            Debug.WriteLine($"ownedTradeSize ajustado: {ownedTradeSize} para NetTotal: {arbitrationSellOperation.NetTotal} > {ownedBuyOperation.NetTotal}");
         }
 
         //if (ownedTradeSize == 0m && arbitrationTradeSize == 0m)

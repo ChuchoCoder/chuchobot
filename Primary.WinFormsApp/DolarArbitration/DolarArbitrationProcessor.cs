@@ -24,20 +24,18 @@ public class DolarArbitrationProcessor
 
     internal void Init()
     {
-        if (Argentina.Data.Positions == null || Argentina.Data.Positions.Length == 0)
+        if (dolarArbitrationPairCollection.Count > 0)
         {
-            MessageBox.Show("No hay posiciones abiertas en Argentina", "Sin Posiciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
-        foreach (var ownedTicker in Argentina.Data.Positions)
+        foreach (var ownedTicker in TickersToMonitor)
         {
-            var ticker = ownedTicker.Symbol.GetTicker();
-            var owned = new DolarTradedInstrument(ticker);
+            var owned = new DolarTradedInstrument(ownedTicker);
 
             foreach (var arbitrationTicker in TickersToMonitor)
             {
-                if (ticker != arbitrationTicker)
+                if (ownedTicker != arbitrationTicker)
                 {
                     if (arbitrationTicker.ContainsMultipleTickers())
                     {
