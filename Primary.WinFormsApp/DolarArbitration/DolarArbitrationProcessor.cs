@@ -12,14 +12,16 @@ public class DolarArbitrationProcessor
 {
     public List<DolarArbitrationInstruments> dolarArbitrationPairCollection = [];
     public IEnumerable<string> TickersToMonitor;
+    public IEnumerable<string> ArbitrationTickers;
 
-    public DolarArbitrationProcessor() : this(Properties.Settings.Default.TickersToMonitor.Cast<string>())
+    public DolarArbitrationProcessor() : this(Properties.Settings.Default.TickersToMonitor.Cast<string>(), Properties.Settings.Default.ArbitrationTickers.Cast<string>())
     {
     }
 
-    public DolarArbitrationProcessor(IEnumerable<string> tickersToMonitor)
+    public DolarArbitrationProcessor(IEnumerable<string> tickersToMonitor, IEnumerable<string> arbitrationTickers)
     {
         TickersToMonitor = tickersToMonitor;
+        ArbitrationTickers = arbitrationTickers;
     }
 
     internal void Init()
@@ -29,7 +31,7 @@ public class DolarArbitrationProcessor
             return;
         }
 
-        foreach (var ownedTicker in TickersToMonitor)
+        foreach (var ownedTicker in ArbitrationTickers)
         {
             var owned = new DolarTradedInstrument(ownedTicker);
 

@@ -492,8 +492,8 @@ public partial class FrmMain : Form
                     {
                         var instrument = Argentina.Data.AllInstruments.FirstOrDefault(x => x.InstrumentId.Symbol == position.Symbol);
 
-                        if (instrument != null 
-                            && CfiCodes.IsOption(instrument.CfiCode) == false 
+                        if (instrument != null
+                            && CfiCodes.IsOption(instrument.CfiCode) == false
                             && CfiCodes.IsFuture(instrument.CfiCode) == false)
                         {
                             itemsToWatch.Add(position.Symbol.GetTicker());
@@ -662,5 +662,20 @@ public partial class FrmMain : Form
     {
 
         LaunchRatioForTicker("AL35", "AL30");
+    }
+
+    private void instrumentosArbitrajeDolarToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var settings = Properties.Settings.Default.ArbitrationTickers;
+        var frm = new Configuration.FrmInstrumentsCheckList
+        {
+            Text = instrumentosArbitrajeDolarToolStripMenuItem.Text,
+            Setting = settings
+        };
+
+        if (frm.ShowDialog() == DialogResult.OK)
+        {
+            //WatchInstrumentsWithWebSocket();
+        }
     }
 }

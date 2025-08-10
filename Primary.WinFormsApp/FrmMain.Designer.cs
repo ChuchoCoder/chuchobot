@@ -75,6 +75,7 @@
             disconnected = new System.Windows.Forms.ToolStripStatusLabel();
             statusInformation = new System.Windows.Forms.ToolStripStatusLabel();
             appVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            instrumentosArbitrajeDolarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusBar.SuspendLayout();
             SuspendLayout();
@@ -99,7 +100,7 @@
             // 
             // configuraciónToolStripMenuItem
             // 
-            configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { instrumentosParaArbitrajeToolStripMenuItem, tickersDCToolStripMenuItem, ratiosToolStripMenuItem1 });
+            configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { instrumentosParaArbitrajeToolStripMenuItem, tickersDCToolStripMenuItem, ratiosToolStripMenuItem1, instrumentosArbitrajeDolarToolStripMenuItem });
             configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             configuraciónToolStripMenuItem.Text = "Configuración";
@@ -393,6 +394,13 @@
             appVersion.Text = "v2023.10.23.0";
             appVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // instrumentosArbitrajeDolarToolStripMenuItem
+            // 
+            instrumentosArbitrajeDolarToolStripMenuItem.Name = "instrumentosArbitrajeDolarToolStripMenuItem";
+            instrumentosArbitrajeDolarToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
+            instrumentosArbitrajeDolarToolStripMenuItem.Text = "Instrumentos arbitraje dolar";
+            instrumentosArbitrajeDolarToolStripMenuItem.Click += instrumentosArbitrajeDolarToolStripMenuItem_Click;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -463,6 +471,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem longAL30ShortAL35ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shortAL30LongAL35ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem instrumentosArbitrajeDolarToolStripMenuItem;
     }
 }
 
