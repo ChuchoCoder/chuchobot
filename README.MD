@@ -51,6 +51,26 @@ Además de los derechos de mercado, la comisión configurada por cada operación
 
 **Derechos de Mercado BYMA**: https://www.byma.com.ar/wp-content/uploads/dlm_uploads/2019/11/BYMA-Derechos-Mercado-sobre-Operaciones-2022-12-01.pdf
 
+## ¿Cómo configuro los horarios del mercado?
+
+La aplicación tiene configurado los horarios de funcionamiento del mercado que pueden ser modificados en el archivo de configuración `ChuchoBot.exe.config`:
+
+### Horarios del Mercado General
+
+- **MarketOpenTime**: Horario de apertura del mercado (por defecto: `10:30:00`)
+- **MarketCloseTime**: Horario de cierre del mercado sin subasta (por defecto: `17:00:00`)
+- **MarketCloseTimeWithAuction**: Horario de cierre del mercado incluyendo subasta de cierre (por defecto: `16:57:00`)
+
+### Horarios del Mercado de Contado Inmediato (CI)
+
+- **CIOpenTime**: Horario de apertura del mercado CI (por defecto: `10:30:00`)
+- **CICloseTime**: Horario de cierre del mercado CI sin subasta (por defecto: `17:00:00`)
+- **CICloseTimeWithAuction**: Horario de cierre del mercado CI incluyendo subasta de cierre (por defecto: `16:57:00`)
+
+Estos horarios se utilizan para determinar cuándo el mercado está operativo y mostrar correctamente el estado de conexión de la aplicación.
+
+Para modificar estos valores, editar el archivo `ChuchoBot.exe.config` en la sección `<applicationSettings>` dentro de `<Primary.WinFormsApp.Properties.Settings>`.
+
 ## ¿Cómo configuro la comisión de caución tomadora y colocadora?
 
 La aplicación tiene configurado valores arbitrarios para la comisión que cobra el broker al momento de colocar o tomar caución. 
