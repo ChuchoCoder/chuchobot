@@ -12,7 +12,7 @@ namespace Primary.WinFormsApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -49,7 +49,7 @@ namespace Primary.WinFormsApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("850")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1485")]
         public decimal USDARS {
             get {
                 return ((decimal)(this["USDARS"]));
@@ -301,6 +301,60 @@ namespace Primary.WinFormsApp.Properties {
         public global::System.Collections.Specialized.StringCollection Letras {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Letras"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10:30:00")]
+        public string MarketOpenTime {
+            get {
+                return ((string)(this["MarketOpenTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17:00:00")]
+        public string MarketCloseTime {
+            get {
+                return ((string)(this["MarketCloseTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16:57:00")]
+        public string MarketCloseTimeWithAuction {
+            get {
+                return ((string)(this["MarketCloseTimeWithAuction"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10:30:00")]
+        public string CIOpenTime {
+            get {
+                return ((string)(this["CIOpenTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17:00:00")]
+        public string CICloseTime {
+            get {
+                return ((string)(this["CICloseTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16:57:00")]
+        public string CICloseTimeWithAuction {
+            get {
+                return ((string)(this["CICloseTimeWithAuction"]));
             }
         }
         

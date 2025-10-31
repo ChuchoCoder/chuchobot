@@ -97,8 +97,10 @@ namespace Primary.WinFormsApp
         public static bool IsMarketOpen(bool excludeAuctionPeriod = true)
         {
             // convert everything to TimeSpan
-            var start = new TimeSpan(10, 0, 0);
-            var end = excludeAuctionPeriod ? new TimeSpan(17, 0, 0) : new TimeSpan(17, 57, 0);
+            var start = TimeSpan.Parse(Properties.Settings.Default.MarketOpenTime);
+            var end = excludeAuctionPeriod 
+                ? TimeSpan.Parse(Properties.Settings.Default.MarketCloseTime)
+                : TimeSpan.Parse(Properties.Settings.Default.MarketCloseTimeWithAuction);
             var now = Now.TimeOfDay;
 
             // see if start comes before end
@@ -113,8 +115,10 @@ namespace Primary.WinFormsApp
         public static bool IsCIOpen(bool excludeAuctionPeriod = true)
         {
             // convert everything to TimeSpan
-            var start = new TimeSpan(10, 0, 0);
-            var end = excludeAuctionPeriod ? new TimeSpan(16, 30, 0) : new TimeSpan(16, 27, 0);
+            var start = TimeSpan.Parse(Properties.Settings.Default.CIOpenTime);
+            var end = excludeAuctionPeriod 
+                ? TimeSpan.Parse(Properties.Settings.Default.CICloseTime)
+                : TimeSpan.Parse(Properties.Settings.Default.CICloseTimeWithAuction);
             var now = Now.TimeOfDay;
 
             // see if start comes before end

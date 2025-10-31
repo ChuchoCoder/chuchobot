@@ -35,7 +35,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtBaseUrl = new System.Windows.Forms.TextBox();
+            this.txtBaseUrl = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -104,9 +104,18 @@
             // 
             this.txtBaseUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBaseUrl.FormattingEnabled = true;
+            this.txtBaseUrl.Items.AddRange(new object[] {
+            "https://api.cocos.xoms.com.ar",
+            "https://api.eco.xoms.com.ar",
+            "https://api.veta.xoms.com.ar",
+            "https://api.bull.xoms.com.ar",
+            "https://api.cohen.xoms.com.ar",
+            "https://api.adcap.xoms.com.ar",
+            "https://api.bcch.xoms.com.ar"});
             this.txtBaseUrl.Location = new System.Drawing.Point(157, 6);
             this.txtBaseUrl.Name = "txtBaseUrl";
-            this.txtBaseUrl.Size = new System.Drawing.Size(326, 20);
+            this.txtBaseUrl.Size = new System.Drawing.Size(326, 21);
             this.txtBaseUrl.TabIndex = 7;
             // 
             // label2
@@ -152,7 +161,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtBaseUrl;
+        private System.Windows.Forms.ComboBox txtBaseUrl;
         private System.Windows.Forms.Label label2;
     }
 }
