@@ -48,10 +48,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 54);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(0, 35);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(231, 25);
+            this.label2.Size = new System.Drawing.Size(144, 16);
             this.label2.TabIndex = 25;
             this.label2.Text = "Comision Operación%:";
             // 
@@ -63,15 +63,15 @@
             0,
             0,
             65536});
-            this.numComisionColocadora.Location = new System.Drawing.Point(1118, 50);
-            this.numComisionColocadora.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.numComisionColocadora.Location = new System.Drawing.Point(745, 32);
+            this.numComisionColocadora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numComisionColocadora.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             this.numComisionColocadora.Name = "numComisionColocadora";
-            this.numComisionColocadora.Size = new System.Drawing.Size(164, 31);
+            this.numComisionColocadora.Size = new System.Drawing.Size(109, 22);
             this.numComisionColocadora.TabIndex = 35;
             this.numComisionColocadora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numComisionColocadora.Value = new decimal(new int[] {
@@ -84,27 +84,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(836, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(557, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 25);
+            this.label1.Size = new System.Drawing.Size(179, 16);
             this.label1.TabIndex = 34;
             this.label1.Text = "Comision Colocadora (TNA):";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(430, 4);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(287, 3);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 25);
+            this.label5.Size = new System.Drawing.Size(123, 16);
             this.label5.TabIndex = 31;
             this.label5.Text = "Dias para Liq. 24H: ";
             // 
             // numDiasLiq24H
             // 
-            this.numDiasLiq24H.Location = new System.Drawing.Point(642, 0);
-            this.numDiasLiq24H.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.numDiasLiq24H.Location = new System.Drawing.Point(428, 0);
+            this.numDiasLiq24H.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numDiasLiq24H.Maximum = new decimal(new int[] {
             10,
             0,
@@ -116,7 +116,7 @@
             0,
             -2147483648});
             this.numDiasLiq24H.Name = "numDiasLiq24H";
-            this.numDiasLiq24H.Size = new System.Drawing.Size(164, 31);
+            this.numDiasLiq24H.Size = new System.Drawing.Size(109, 22);
             this.numDiasLiq24H.TabIndex = 30;
             this.numDiasLiq24H.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDiasLiq24H.ValueChanged += new System.EventHandler(this.numDiasLiq24H_ValueChanged);
@@ -124,10 +124,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(50, 4);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(33, 3);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(176, 25);
+            this.label6.Size = new System.Drawing.Size(109, 16);
             this.label6.TabIndex = 29;
             this.label6.Text = "Tasa Caucion%: ";
             // 
@@ -139,10 +139,10 @@
             0,
             0,
             65536});
-            this.numTasa.Location = new System.Drawing.Point(236, 0);
-            this.numTasa.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.numTasa.Location = new System.Drawing.Point(157, 0);
+            this.numTasa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numTasa.Maximum = new decimal(new int[] {
-            1000,
+            100000,
             0,
             0,
             0});
@@ -152,7 +152,7 @@
             0,
             -2147483648});
             this.numTasa.Name = "numTasa";
-            this.numTasa.Size = new System.Drawing.Size(164, 31);
+            this.numTasa.Size = new System.Drawing.Size(109, 22);
             this.numTasa.TabIndex = 28;
             this.numTasa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numTasa.Value = new decimal(new int[] {
@@ -165,10 +165,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(838, 4);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(559, 3);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(272, 25);
+            this.label4.Size = new System.Drawing.Size(172, 16);
             this.label4.TabIndex = 27;
             this.label4.Text = "Comision Tomadora (TNA):";
             // 
@@ -180,15 +180,15 @@
             0,
             0,
             131072});
-            this.numComision.Location = new System.Drawing.Point(236, 50);
-            this.numComision.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.numComision.Location = new System.Drawing.Point(157, 32);
+            this.numComision.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numComision.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             this.numComision.Name = "numComision";
-            this.numComision.Size = new System.Drawing.Size(164, 31);
+            this.numComision.Size = new System.Drawing.Size(109, 22);
             this.numComision.TabIndex = 26;
             this.numComision.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numComision.Value = new decimal(new int[] {
@@ -206,15 +206,15 @@
             0,
             0,
             65536});
-            this.numComisionTomadora.Location = new System.Drawing.Point(1118, 0);
-            this.numComisionTomadora.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.numComisionTomadora.Location = new System.Drawing.Point(745, 0);
+            this.numComisionTomadora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numComisionTomadora.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             this.numComisionTomadora.Name = "numComisionTomadora";
-            this.numComisionTomadora.Size = new System.Drawing.Size(164, 31);
+            this.numComisionTomadora.Size = new System.Drawing.Size(109, 22);
             this.numComisionTomadora.TabIndex = 24;
             this.numComisionTomadora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numComisionTomadora.Value = new decimal(new int[] {
@@ -226,7 +226,7 @@
             // 
             // SettlementTermSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numComisionColocadora);
@@ -238,9 +238,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numComision);
             this.Controls.Add(this.numComisionTomadora);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SettlementTermSettings";
-            this.Size = new System.Drawing.Size(1286, 92);
+            this.Size = new System.Drawing.Size(857, 59);
             this.Load += new System.EventHandler(this.SettlementTermSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numComisionColocadora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDiasLiq24H)).EndInit();

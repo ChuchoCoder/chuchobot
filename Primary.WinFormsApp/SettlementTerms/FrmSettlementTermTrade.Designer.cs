@@ -96,9 +96,11 @@
             this.grpOwnedVenta.Controls.Add(this.label2);
             this.grpOwnedVenta.Controls.Add(this.numOwnedVentaSize);
             this.grpOwnedVenta.Controls.Add(this.label1);
-            this.grpOwnedVenta.Location = new System.Drawing.Point(20, 127);
+            this.grpOwnedVenta.Location = new System.Drawing.Point(27, 156);
+            this.grpOwnedVenta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpOwnedVenta.Name = "grpOwnedVenta";
-            this.grpOwnedVenta.Size = new System.Drawing.Size(584, 195);
+            this.grpOwnedVenta.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpOwnedVenta.Size = new System.Drawing.Size(779, 240);
             this.grpOwnedVenta.TabIndex = 4;
             this.grpOwnedVenta.TabStop = false;
             this.grpOwnedVenta.Text = "1. Venta de Bono en Cartera";
@@ -106,9 +108,10 @@
             // lblSellPriceTarget
             // 
             this.lblSellPriceTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellPriceTarget.Location = new System.Drawing.Point(26, 116);
+            this.lblSellPriceTarget.Location = new System.Drawing.Point(35, 143);
+            this.lblSellPriceTarget.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellPriceTarget.Name = "lblSellPriceTarget";
-            this.lblSellPriceTarget.Size = new System.Drawing.Size(166, 19);
+            this.lblSellPriceTarget.Size = new System.Drawing.Size(221, 23);
             this.lblSellPriceTarget.TabIndex = 30;
             this.lblSellPriceTarget.Text = "Precio Arbitrado:";
             this.lblSellPriceTarget.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -117,19 +120,20 @@
             // 
             this.VentaBidsOffers.BackColor = System.Drawing.Color.Azure;
             this.VentaBidsOffers.InstrumentDetail = null;
-            this.VentaBidsOffers.Location = new System.Drawing.Point(197, 16);
-            this.VentaBidsOffers.Margin = new System.Windows.Forms.Padding(2);
+            this.VentaBidsOffers.Location = new System.Drawing.Point(263, 20);
+            this.VentaBidsOffers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.VentaBidsOffers.Name = "VentaBidsOffers";
-            this.VentaBidsOffers.Size = new System.Drawing.Size(376, 146);
+            this.VentaBidsOffers.Size = new System.Drawing.Size(501, 180);
             this.VentaBidsOffers.TabIndex = 4;
             // 
             // txtOwnedVenta
             // 
             this.txtOwnedVenta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOwnedVenta.Location = new System.Drawing.Point(6, 168);
+            this.txtOwnedVenta.Location = new System.Drawing.Point(8, 207);
+            this.txtOwnedVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtOwnedVenta.Name = "txtOwnedVenta";
-            this.txtOwnedVenta.Size = new System.Drawing.Size(568, 24);
+            this.txtOwnedVenta.Size = new System.Drawing.Size(757, 30);
             this.txtOwnedVenta.TabIndex = 10;
             this.txtOwnedVenta.TabStop = true;
             this.txtOwnedVenta.Text = "Copiar";
@@ -139,9 +143,10 @@
             // lblVentaImporte
             // 
             this.lblVentaImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVentaImporte.Location = new System.Drawing.Point(8, 80);
+            this.lblVentaImporte.Location = new System.Drawing.Point(11, 98);
+            this.lblVentaImporte.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVentaImporte.Name = "lblVentaImporte";
-            this.lblVentaImporte.Size = new System.Drawing.Size(184, 18);
+            this.lblVentaImporte.Size = new System.Drawing.Size(245, 22);
             this.lblVentaImporte.TabIndex = 6;
             this.lblVentaImporte.Text = "Importe";
             this.lblVentaImporte.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -149,9 +154,10 @@
             // lblVentaComision
             // 
             this.lblVentaComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVentaComision.Location = new System.Drawing.Point(8, 98);
+            this.lblVentaComision.Location = new System.Drawing.Point(11, 121);
+            this.lblVentaComision.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVentaComision.Name = "lblVentaComision";
-            this.lblVentaComision.Size = new System.Drawing.Size(184, 18);
+            this.lblVentaComision.Size = new System.Drawing.Size(245, 22);
             this.lblVentaComision.TabIndex = 5;
             this.lblVentaComision.Text = "Der.Mer./Comisión";
             this.lblVentaComision.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -165,14 +171,15 @@
             0,
             0,
             131072});
-            this.numVentaPrice.Location = new System.Drawing.Point(87, 45);
+            this.numVentaPrice.Location = new System.Drawing.Point(116, 55);
+            this.numVentaPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numVentaPrice.Maximum = new decimal(new int[] {
-            100000,
+            2147483647,
             0,
             0,
             0});
             this.numVentaPrice.Name = "numVentaPrice";
-            this.numVentaPrice.Size = new System.Drawing.Size(105, 20);
+            this.numVentaPrice.Size = new System.Drawing.Size(140, 22);
             this.numVentaPrice.TabIndex = 3;
             this.numVentaPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numVentaPrice.ValueChanged += new System.EventHandler(this.numOwnedVentaPrice_ValueChanged);
@@ -183,22 +190,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 45);
+            this.label2.Location = new System.Drawing.Point(39, 55);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(49, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Precio:";
             // 
             // numOwnedVentaSize
             // 
-            this.numOwnedVentaSize.Location = new System.Drawing.Point(87, 19);
+            this.numOwnedVentaSize.Location = new System.Drawing.Point(116, 23);
+            this.numOwnedVentaSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numOwnedVentaSize.Maximum = new decimal(new int[] {
-            1000000000,
+            2147483647,
             0,
             0,
             0});
             this.numOwnedVentaSize.Name = "numOwnedVentaSize";
-            this.numOwnedVentaSize.Size = new System.Drawing.Size(105, 20);
+            this.numOwnedVentaSize.Size = new System.Drawing.Size(140, 22);
             this.numOwnedVentaSize.TabIndex = 1;
             this.numOwnedVentaSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numOwnedVentaSize.ValueChanged += new System.EventHandler(this.numOwnedVentaSize_ValueChanged);
@@ -209,9 +218,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 21);
+            this.label1.Location = new System.Drawing.Point(8, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(75, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cant. Nom.:";
             // 
@@ -228,9 +238,11 @@
             this.grpArbitrationCompra.Controls.Add(this.label6);
             this.grpArbitrationCompra.Controls.Add(this.numCompraSize);
             this.grpArbitrationCompra.Controls.Add(this.label7);
-            this.grpArbitrationCompra.Location = new System.Drawing.Point(610, 127);
+            this.grpArbitrationCompra.Location = new System.Drawing.Point(813, 156);
+            this.grpArbitrationCompra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpArbitrationCompra.Name = "grpArbitrationCompra";
-            this.grpArbitrationCompra.Size = new System.Drawing.Size(573, 195);
+            this.grpArbitrationCompra.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpArbitrationCompra.Size = new System.Drawing.Size(764, 240);
             this.grpArbitrationCompra.TabIndex = 5;
             this.grpArbitrationCompra.TabStop = false;
             this.grpArbitrationCompra.Text = "2. Compra de Bono a Arbitrar";
@@ -238,16 +250,18 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 140);
+            this.label3.Location = new System.Drawing.Point(23, 172);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 19);
+            this.label3.Size = new System.Drawing.Size(119, 23);
             this.label3.TabIndex = 32;
             this.label3.Text = "Cupón:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // numCupon
             // 
-            this.numCupon.Location = new System.Drawing.Point(112, 138);
+            this.numCupon.Location = new System.Drawing.Point(149, 170);
+            this.numCupon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numCupon.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -259,15 +273,16 @@
             0,
             -2147483648});
             this.numCupon.Name = "numCupon";
-            this.numCupon.Size = new System.Drawing.Size(80, 20);
+            this.numCupon.Size = new System.Drawing.Size(107, 22);
             this.numCupon.TabIndex = 12;
             // 
             // lblBuyPriceTarget
             // 
             this.lblBuyPriceTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuyPriceTarget.Location = new System.Drawing.Point(26, 116);
+            this.lblBuyPriceTarget.Location = new System.Drawing.Point(35, 143);
+            this.lblBuyPriceTarget.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyPriceTarget.Name = "lblBuyPriceTarget";
-            this.lblBuyPriceTarget.Size = new System.Drawing.Size(166, 19);
+            this.lblBuyPriceTarget.Size = new System.Drawing.Size(221, 23);
             this.lblBuyPriceTarget.TabIndex = 31;
             this.lblBuyPriceTarget.Text = "Precio Arbitrado:";
             this.lblBuyPriceTarget.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -275,9 +290,10 @@
             // lblCompraComision
             // 
             this.lblCompraComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompraComision.Location = new System.Drawing.Point(8, 98);
+            this.lblCompraComision.Location = new System.Drawing.Point(11, 121);
+            this.lblCompraComision.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompraComision.Name = "lblCompraComision";
-            this.lblCompraComision.Size = new System.Drawing.Size(184, 18);
+            this.lblCompraComision.Size = new System.Drawing.Size(245, 22);
             this.lblCompraComision.TabIndex = 14;
             this.lblCompraComision.Text = "Der.Mer./Comisión";
             this.lblCompraComision.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -286,19 +302,20 @@
             // 
             this.CompraBidsOffers.BackColor = System.Drawing.Color.Azure;
             this.CompraBidsOffers.InstrumentDetail = null;
-            this.CompraBidsOffers.Location = new System.Drawing.Point(197, 16);
-            this.CompraBidsOffers.Margin = new System.Windows.Forms.Padding(2);
+            this.CompraBidsOffers.Location = new System.Drawing.Point(263, 20);
+            this.CompraBidsOffers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CompraBidsOffers.Name = "CompraBidsOffers";
-            this.CompraBidsOffers.Size = new System.Drawing.Size(372, 146);
+            this.CompraBidsOffers.Size = new System.Drawing.Size(496, 180);
             this.CompraBidsOffers.TabIndex = 4;
             // 
             // txtArbitrationCompra
             // 
             this.txtArbitrationCompra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtArbitrationCompra.Location = new System.Drawing.Point(6, 168);
+            this.txtArbitrationCompra.Location = new System.Drawing.Point(8, 207);
+            this.txtArbitrationCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtArbitrationCompra.Name = "txtArbitrationCompra";
-            this.txtArbitrationCompra.Size = new System.Drawing.Size(562, 24);
+            this.txtArbitrationCompra.Size = new System.Drawing.Size(749, 30);
             this.txtArbitrationCompra.TabIndex = 12;
             this.txtArbitrationCompra.TabStop = true;
             this.txtArbitrationCompra.Text = "Copiar";
@@ -309,9 +326,10 @@
             // 
             this.lblCompraImporte.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCompraImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompraImporte.Location = new System.Drawing.Point(14, 80);
+            this.lblCompraImporte.Location = new System.Drawing.Point(19, 98);
+            this.lblCompraImporte.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompraImporte.Name = "lblCompraImporte";
-            this.lblCompraImporte.Size = new System.Drawing.Size(178, 18);
+            this.lblCompraImporte.Size = new System.Drawing.Size(237, 22);
             this.lblCompraImporte.TabIndex = 6;
             this.lblCompraImporte.Text = "Importe";
             this.lblCompraImporte.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -325,14 +343,15 @@
             0,
             0,
             131072});
-            this.numCompraPrice.Location = new System.Drawing.Point(84, 45);
+            this.numCompraPrice.Location = new System.Drawing.Point(112, 55);
+            this.numCompraPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numCompraPrice.Maximum = new decimal(new int[] {
-            100000,
+            2147483647,
             0,
             0,
             0});
             this.numCompraPrice.Name = "numCompraPrice";
-            this.numCompraPrice.Size = new System.Drawing.Size(108, 20);
+            this.numCompraPrice.Size = new System.Drawing.Size(144, 22);
             this.numCompraPrice.TabIndex = 3;
             this.numCompraPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numCompraPrice.ValueChanged += new System.EventHandler(this.numCompraPrice_ValueChanged);
@@ -343,22 +362,24 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 46);
+            this.label6.Location = new System.Drawing.Point(35, 57);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 2;
             this.label6.Text = "Precio:";
             // 
             // numCompraSize
             // 
-            this.numCompraSize.Location = new System.Drawing.Point(84, 19);
+            this.numCompraSize.Location = new System.Drawing.Point(112, 23);
+            this.numCompraSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numCompraSize.Maximum = new decimal(new int[] {
-            1000000000,
+            2147483647,
             0,
             0,
             0});
             this.numCompraSize.Name = "numCompraSize";
-            this.numCompraSize.Size = new System.Drawing.Size(108, 20);
+            this.numCompraSize.Size = new System.Drawing.Size(144, 22);
             this.numCompraSize.TabIndex = 1;
             this.numCompraSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numCompraSize.ValueChanged += new System.EventHandler(this.numCompraSize_ValueChanged);
@@ -369,9 +390,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 21);
+            this.label7.Location = new System.Drawing.Point(8, 26);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.Size = new System.Drawing.Size(75, 16);
             this.label7.TabIndex = 0;
             this.label7.Text = "Cant. Nom.:";
             // 
@@ -387,8 +409,9 @@
             this.lblHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
+            this.lblHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(1191, 43);
+            this.lblHeader.Size = new System.Drawing.Size(1588, 53);
             this.lblHeader.TabIndex = 11;
             this.lblHeader.Text = "Profit: $ / %";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -396,9 +419,10 @@
             // lblDolar
             // 
             this.lblDolar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDolar.Location = new System.Drawing.Point(389, 60);
+            this.lblDolar.Location = new System.Drawing.Point(519, 74);
+            this.lblDolar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDolar.Name = "lblDolar";
-            this.lblDolar.Size = new System.Drawing.Size(59, 18);
+            this.lblDolar.Size = new System.Drawing.Size(79, 22);
             this.lblDolar.TabIndex = 1;
             this.lblDolar.Text = "Dolar $:";
             this.lblDolar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -407,14 +431,15 @@
             // 
             this.numDolar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numDolar.DecimalPlaces = 2;
-            this.numDolar.Location = new System.Drawing.Point(454, 60);
+            this.numDolar.Location = new System.Drawing.Point(605, 74);
+            this.numDolar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numDolar.Maximum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             0});
             this.numDolar.Name = "numDolar";
-            this.numDolar.Size = new System.Drawing.Size(80, 20);
+            this.numDolar.Size = new System.Drawing.Size(107, 22);
             this.numDolar.TabIndex = 2;
             this.numDolar.Value = new decimal(new int[] {
             98,
@@ -426,27 +451,30 @@
             // lblComisionTotal
             // 
             this.lblComisionTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComisionTotal.Location = new System.Drawing.Point(8, 22);
+            this.lblComisionTotal.Location = new System.Drawing.Point(11, 27);
+            this.lblComisionTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblComisionTotal.Name = "lblComisionTotal";
-            this.lblComisionTotal.Size = new System.Drawing.Size(394, 18);
+            this.lblComisionTotal.Size = new System.Drawing.Size(525, 22);
             this.lblComisionTotal.TabIndex = 12;
             this.lblComisionTotal.Text = "Total Comisión:";
             // 
             // lblDifVentaCompra
             // 
             this.lblDifVentaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDifVentaCompra.Location = new System.Drawing.Point(9, 78);
+            this.lblDifVentaCompra.Location = new System.Drawing.Point(12, 96);
+            this.lblDifVentaCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDifVentaCompra.Name = "lblDifVentaCompra";
-            this.lblDifVentaCompra.Size = new System.Drawing.Size(385, 18);
+            this.lblDifVentaCompra.Size = new System.Drawing.Size(513, 22);
             this.lblDifVentaCompra.TabIndex = 21;
             this.lblDifVentaCompra.Text = "Dif. Venta/Compra:";
             // 
             // lblProfitPesos
             // 
             this.lblProfitPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfitPesos.Location = new System.Drawing.Point(9, 103);
+            this.lblProfitPesos.Location = new System.Drawing.Point(12, 127);
+            this.lblProfitPesos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProfitPesos.Name = "lblProfitPesos";
-            this.lblProfitPesos.Size = new System.Drawing.Size(385, 18);
+            this.lblProfitPesos.Size = new System.Drawing.Size(513, 22);
             this.lblProfitPesos.TabIndex = 22;
             this.lblProfitPesos.Text = "Profit:";
             // 
@@ -454,9 +482,10 @@
             // 
             this.lnkArbitration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnkArbitration.Location = new System.Drawing.Point(18, 59);
+            this.lnkArbitration.Location = new System.Drawing.Point(24, 73);
+            this.lnkArbitration.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkArbitration.Name = "lnkArbitration";
-            this.lnkArbitration.Size = new System.Drawing.Size(365, 19);
+            this.lnkArbitration.Size = new System.Drawing.Size(487, 23);
             this.lnkArbitration.TabIndex = 0;
             this.lnkArbitration.TabStop = true;
             this.lnkArbitration.Text = "Copiar";
@@ -466,63 +495,70 @@
             // lblDiasCaucion
             // 
             this.lblDiasCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiasCaucion.Location = new System.Drawing.Point(12, 22);
+            this.lblDiasCaucion.Location = new System.Drawing.Point(16, 27);
+            this.lblDiasCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDiasCaucion.Name = "lblDiasCaucion";
-            this.lblDiasCaucion.Size = new System.Drawing.Size(255, 18);
+            this.lblDiasCaucion.Size = new System.Drawing.Size(340, 22);
             this.lblDiasCaucion.TabIndex = 23;
             this.lblDiasCaucion.Text = "Dias Caucion:";
             // 
             // lblInteresCaucion
             // 
             this.lblInteresCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInteresCaucion.Location = new System.Drawing.Point(12, 78);
+            this.lblInteresCaucion.Location = new System.Drawing.Point(16, 96);
+            this.lblInteresCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInteresCaucion.Name = "lblInteresCaucion";
-            this.lblInteresCaucion.Size = new System.Drawing.Size(255, 18);
+            this.lblInteresCaucion.Size = new System.Drawing.Size(340, 22);
             this.lblInteresCaucion.TabIndex = 24;
             this.lblInteresCaucion.Text = "Interes Caucion:";
             // 
             // lblArancelCaucion
             // 
             this.lblArancelCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArancelCaucion.Location = new System.Drawing.Point(289, 22);
+            this.lblArancelCaucion.Location = new System.Drawing.Point(385, 27);
+            this.lblArancelCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArancelCaucion.Name = "lblArancelCaucion";
-            this.lblArancelCaucion.Size = new System.Drawing.Size(281, 18);
+            this.lblArancelCaucion.Size = new System.Drawing.Size(375, 22);
             this.lblArancelCaucion.TabIndex = 25;
             this.lblArancelCaucion.Text = "Arancel";
             // 
             // lblDerMerCaucion
             // 
             this.lblDerMerCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDerMerCaucion.Location = new System.Drawing.Point(289, 50);
+            this.lblDerMerCaucion.Location = new System.Drawing.Point(385, 62);
+            this.lblDerMerCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDerMerCaucion.Name = "lblDerMerCaucion";
-            this.lblDerMerCaucion.Size = new System.Drawing.Size(281, 18);
+            this.lblDerMerCaucion.Size = new System.Drawing.Size(375, 22);
             this.lblDerMerCaucion.TabIndex = 26;
             this.lblDerMerCaucion.Text = "Der Mer";
             // 
             // lblGtoGtiaCaucion
             // 
             this.lblGtoGtiaCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGtoGtiaCaucion.Location = new System.Drawing.Point(289, 78);
+            this.lblGtoGtiaCaucion.Location = new System.Drawing.Point(385, 96);
+            this.lblGtoGtiaCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGtoGtiaCaucion.Name = "lblGtoGtiaCaucion";
-            this.lblGtoGtiaCaucion.Size = new System.Drawing.Size(281, 18);
+            this.lblGtoGtiaCaucion.Size = new System.Drawing.Size(375, 22);
             this.lblGtoGtiaCaucion.TabIndex = 27;
             this.lblGtoGtiaCaucion.Text = "Gto Gtia";
             // 
             // lblIva
             // 
             this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIva.Location = new System.Drawing.Point(289, 103);
+            this.lblIva.Location = new System.Drawing.Point(385, 127);
+            this.lblIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIva.Name = "lblIva";
-            this.lblIva.Size = new System.Drawing.Size(281, 18);
+            this.lblIva.Size = new System.Drawing.Size(375, 22);
             this.lblIva.TabIndex = 28;
             this.lblIva.Text = "Iva";
             // 
             // lblInteresNeto
             // 
             this.lblInteresNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInteresNeto.Location = new System.Drawing.Point(12, 103);
+            this.lblInteresNeto.Location = new System.Drawing.Point(16, 127);
+            this.lblInteresNeto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInteresNeto.Name = "lblInteresNeto";
-            this.lblInteresNeto.Size = new System.Drawing.Size(255, 18);
+            this.lblInteresNeto.Size = new System.Drawing.Size(340, 22);
             this.lblInteresNeto.TabIndex = 29;
             this.lblInteresNeto.Text = "Interes Neto";
             // 
@@ -537,11 +573,11 @@
             this.grpCaucion.Controls.Add(this.lblInteresCaucion);
             this.grpCaucion.Controls.Add(this.lblDerMerCaucion);
             this.grpCaucion.Controls.Add(this.lblArancelCaucion);
-            this.grpCaucion.Location = new System.Drawing.Point(21, 327);
-            this.grpCaucion.Margin = new System.Windows.Forms.Padding(2);
+            this.grpCaucion.Location = new System.Drawing.Point(28, 402);
+            this.grpCaucion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpCaucion.Name = "grpCaucion";
-            this.grpCaucion.Padding = new System.Windows.Forms.Padding(2);
-            this.grpCaucion.Size = new System.Drawing.Size(580, 165);
+            this.grpCaucion.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpCaucion.Size = new System.Drawing.Size(773, 203);
             this.grpCaucion.TabIndex = 6;
             this.grpCaucion.TabStop = false;
             this.grpCaucion.Text = "Caucion";
@@ -549,18 +585,20 @@
             // lblMontoCaucion
             // 
             this.lblMontoCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMontoCaucion.Location = new System.Drawing.Point(12, 50);
+            this.lblMontoCaucion.Location = new System.Drawing.Point(16, 62);
+            this.lblMontoCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMontoCaucion.Name = "lblMontoCaucion";
-            this.lblMontoCaucion.Size = new System.Drawing.Size(255, 18);
+            this.lblMontoCaucion.Size = new System.Drawing.Size(340, 22);
             this.lblMontoCaucion.TabIndex = 31;
             this.lblMontoCaucion.Text = "Importe a Caucionar:";
             // 
             // lblGastosCaucion
             // 
             this.lblGastosCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGastosCaucion.Location = new System.Drawing.Point(289, 128);
+            this.lblGastosCaucion.Location = new System.Drawing.Point(385, 158);
+            this.lblGastosCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGastosCaucion.Name = "lblGastosCaucion";
-            this.lblGastosCaucion.Size = new System.Drawing.Size(278, 18);
+            this.lblGastosCaucion.Size = new System.Drawing.Size(371, 22);
             this.lblGastosCaucion.TabIndex = 30;
             this.lblGastosCaucion.Text = "Total Gastos";
             // 
@@ -570,11 +608,11 @@
             this.groupBox2.Controls.Add(this.lblComisionTotal);
             this.groupBox2.Controls.Add(this.lblDifVentaCompra);
             this.groupBox2.Controls.Add(this.lblProfitPesos);
-            this.groupBox2.Location = new System.Drawing.Point(610, 327);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(813, 402);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(573, 165);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(764, 203);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Profit / Loss";
@@ -582,24 +620,26 @@
             // lblNetoCaucion
             // 
             this.lblNetoCaucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNetoCaucion.Location = new System.Drawing.Point(9, 50);
+            this.lblNetoCaucion.Location = new System.Drawing.Point(12, 62);
+            this.lblNetoCaucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNetoCaucion.Name = "lblNetoCaucion";
-            this.lblNetoCaucion.Size = new System.Drawing.Size(385, 18);
+            this.lblNetoCaucion.Size = new System.Drawing.Size(513, 22);
             this.lblNetoCaucion.TabIndex = 23;
             this.lblNetoCaucion.Text = "Caución:";
             // 
             // settlementTermSettings1
             // 
-            this.settlementTermSettings1.Location = new System.Drawing.Point(540, 60);
+            this.settlementTermSettings1.Location = new System.Drawing.Point(720, 74);
+            this.settlementTermSettings1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.settlementTermSettings1.Name = "settlementTermSettings1";
-            this.settlementTermSettings1.Size = new System.Drawing.Size(643, 48);
+            this.settlementTermSettings1.Size = new System.Drawing.Size(857, 59);
             this.settlementTermSettings1.TabIndex = 3;
             // 
             // FrmSettlementTermTrade
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1191, 503);
+            this.ClientSize = new System.Drawing.Size(1588, 619);
             this.Controls.Add(this.settlementTermSettings1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grpCaucion);
@@ -611,6 +651,7 @@
             this.Controls.Add(this.grpOwnedVenta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FrmSettlementTermTrade";
             this.Text = "Operación de Arbitraje";
