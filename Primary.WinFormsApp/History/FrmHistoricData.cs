@@ -36,7 +36,10 @@ namespace Primary.WinFormsApp
         {
             try
             {
-                var data = await Argentina.Data.Api.GetHistoricalTrades(((Primary.Data.InstrumentDetail)cmbInstruments.SelectedItem).InstrumentId, DateTime.Today.AddMonths(-2), DateTime.Now);
+                var instrumentId = ((Primary.Data.InstrumentDetail)cmbInstruments.SelectedItem).InstrumentId;
+                var dateFrom = DateTime.Today.AddMonths(-2);
+                var dateTo = DateTime.Now;
+                var data = await Argentina.Data.Api.GetHistoricalTrades(instrumentId, dateFrom, dateTo);
 
                 var dataTable = new DataTable();
                 dataTable.Columns.Add("DateTime", typeof(DateTime));
@@ -56,6 +59,7 @@ namespace Primary.WinFormsApp
             }
             catch (Exception ex)
             {
+                MessageBox.Show("An error occurred while fetching historical data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Telemetry.LogError(nameof(btnGetHistoricData_Click), ex);
             }
 
