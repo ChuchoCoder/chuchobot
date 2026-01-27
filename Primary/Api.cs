@@ -135,36 +135,38 @@ namespace Primary
             public List<InstrumentEntry> Instruments { get; set; }
         }
 
-        #endregion
+		#endregion
 
-        #region Historical data
+		#region Historical data
 
-        /// <summary>
-        /// Get historical trades for a specific instrument.
-        /// </summary>
-        /// <param name="instrument">Instrument to get information for.</param>
-        /// <param name="dateFrom">First date of trading information.</param>
-        /// <param name="dateTo">Last date of trading information.</param>
-        /// <returns>Trade information for the instrument in the specified period.</returns>
-        public async Task<IEnumerable<Trade>> GetHistoricalTrades(Instrument instrument,
-                                                                    DateTime dateFrom,
-                                                                    DateTime dateTo)
-        {
-            var builder = new UriBuilder(BaseUri + "rest/data/getTrades");
-            var query = HttpUtility.ParseQueryString(builder.Query);
-            query["marketId"] = instrument.Market;
-            query["symbol"] = instrument.Symbol;
-            query["dateFrom"] = dateFrom.ToString("yyyy-MM-dd");
-            query["dateTo"] = dateTo.ToString("yyyy-MM-dd");
-            builder.Query = query.ToString();
+		/// <summary>
+		/// Get historical trades for a specific instrument.
+		/// </summary>
+		/// <param name="instrument">Instrument to get information for.</param>
+		/// <param name="dateFrom">First date of trading information.</param>
+		/// <param name="dateTo">Last date of trading information.</param>
+		/// <returns>Trade information for the instrument in the specified period.</returns>
+		public async Task<IEnumerable<Trade>> GetHistoricalTrades(Instrument instrument,
+																	DateTime dateFrom,
+																	DateTime dateTo)
+		{
+			var builder = new UriBuilder(BaseUri + "rest/data/getTrades");
+			var query = HttpUtility.ParseQueryString(builder.Query);
+			//query["marketId"] = instrument.Market; // Por defecto, el valor es ROFX, pero no funciona.
+			query["marketId"] = "MERV";
+			query["symbol"] = instrument.Symbol;
+			query["dateFrom"] = dateFrom.ToString("yyyy-MM-dd");
+			query["dateTo"] = dateTo.ToString("yyyy-MM-dd");
+			query["external"] = "1";    // Hay que forzar este valor para que devuelva datos.
+			builder.Query = query.ToString();
 
-            var response = await HttpClient.GetStringAsync(builder.Uri);
-            var data = JsonConvert.DeserializeObject<GetTradesResponse>(response);
+			var response = await HttpClient.GetStringAsync(builder.Uri);
+			var data = JsonConvert.DeserializeObject<GetTradesResponse>(response);
 
-            return data.Status == Status.Error ? throw new Exception($"{data.Message} ({data.Description})") : (IEnumerable<Trade>)data.Trades;
-        }
+			return data.Status == Status.Error ? throw new Exception($"{data.Message} ({data.Description})") : (IEnumerable<Trade>)data.Trades;
+		}
 
-        private class GetTradesResponse
+		private class GetTradesResponse
         {
             [JsonProperty("status")]
             public string Status;
