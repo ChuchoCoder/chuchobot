@@ -36,7 +36,7 @@ namespace Primary.WinFormsApp
         {
             try
             {
-                var data = await Argentina.Data.Api.GetHistoricalTrades(((Primary.Data.InstrumentDetail)cmbInstruments.SelectedItem).InstrumentId, DateTime.Today.AddMonths(-3), DateTime.Now);
+                var data = await Argentina.Data.Api.GetHistoricalTrades(((Primary.Data.InstrumentDetail)cmbInstruments.SelectedItem).InstrumentId, DateTime.Today.AddMonths(-2), DateTime.Now);
 
                 var dataTable = new DataTable();
                 dataTable.Columns.Add("DateTime", typeof(DateTime));
