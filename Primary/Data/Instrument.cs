@@ -25,6 +25,7 @@ namespace Primary.Data
         public string MaturityDate { get; set; }
         public decimal ContractMultiplier { get; set; }
         public decimal RoundLot { get; set; }
+        [JsonProperty(nameof(PriceConvertionFactor), NullValueHandling = NullValueHandling.Ignore)]
         public decimal PriceConvertionFactor { get; set; }
         public string Currency { get; set; }
         public int InstrumentPricePrecision { get; set; }
